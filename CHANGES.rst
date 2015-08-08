@@ -2,10 +2,10 @@ ChangeLog
 =========
 
 
-0.1.1 (unreleased)
+0.1.1 (2015-08-08)
 ------------------
 
-* No changes yet.
+* Package re-release to fix bad version number.
 
 
 0.1.0 (2015-08-08)
