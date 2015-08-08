@@ -16,8 +16,8 @@ Development philosophy
 ----------------------
 
 1. First create something that work.
-1. Then something that's beautiful.
-1. Finally works on performance.
+2. Then something that's beautiful.
+3. Finally works on performance.
 
 
 Install
