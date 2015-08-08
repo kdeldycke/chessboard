@@ -36,7 +36,7 @@ Usage
 .. code-block:: bash
 
     $ chessboard --help
-    Usage: chessboard [OPTIONS] COMMAND [ARGS]...
+    Usage: chessboard [OPTIONS]
 
       Python CLI to explore chessboard positions.
 
