@@ -5,7 +5,7 @@ ChangeLog
 0.1.2 (unreleased)
 ------------------
 
-* No changes yet.
+* Allow initialization of board pieces.
 
 
 0.1.1 (2015-08-08)

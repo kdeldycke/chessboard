@@ -28,6 +28,7 @@ from chessboard import Chessboard
 class TestChessboard(unittest.TestCase):
 
     def test_instanciation(self):
-        board = Chessboard(3, 3)
+        board = Chessboard(3, 3, king=2, queen=7)
         self.assertEquals(board.length, 3)
         self.assertEquals(board.height, 3)
+        self.assertDictContainsSubset({'king': 2, 'queen': 7}, board.pieces)

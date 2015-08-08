@@ -32,17 +32,29 @@ from . import Chessboard
 log = logging.getLogger(__name__)
 
 
-@click.command()
+class CLI(click.Command):
+
+    def __init__(self, *args, **kwargs):
+        """ Override default constructor to add dynamic parameters. """
+        for piece_type in Chessboard.PIECE_TYPES:
+            kwargs['params'].append(click.Option(
+                ('--{}'.format(piece_type), ),
+                default=0,
+                help='Number of {}s to add to the board.'.format(piece_type)))
+        super(CLI, self).__init__(*args, **kwargs)
+
+
+@click.command(cls=CLI)
 @click.version_option(__version__)
 @click.option('-l', '--length', default=3, help='Length of the board.')
 @click.option('-h', '--height', default=3, help='Height of the board.')
 @click.option('-v', '--verbose', is_flag=True, default=False,
               help='Print much more debug statements.')
-def cli(length, height, verbose):
+def cli(length, height, verbose, **pieces):
     """ Python CLI to explore chessboard positions. """
     logging.basicConfig(level=logging.DEBUG if verbose else logging.INFO)
 
     click.echo('Building up a chessboard...')
-    board = Chessboard(length, height)
+    board = Chessboard(length, height, **pieces)
 
     click.echo('{!r}'.format(board))

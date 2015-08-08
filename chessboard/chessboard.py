@@ -32,14 +32,32 @@ class Chessboard(object):
     # Restrict dimension since we haven't benchmarked the perforances yet.
     MAX_DIMENSION = 3
 
-    def __init__(self, length, height):
+    # List of recognized pieces.
+    PIECE_TYPES = frozenset([
+        'king',
+        'queen',
+        'bishop',
+        'rook',
+        'knight'])
+
+    def __init__(self, length, height, **pieces):
         """ Initialize board dimensions. """
         self.length = length
         self.height = height
         assert isinstance(self.length, int)
         assert isinstance(self.height, int)
+        # Store the number of pieces on the board.
+        self.pieces = dict.fromkeys(self.PIECE_TYPES, 0)
+        self.add(**pieces)
 
     def __repr__(self):
         """ Display all relevant object internals. """
-        return '<Chessboard: length={}, height={}>'.format(
-            self.length, self.height)
+        return '<Chessboard: length={}, height={}, pieces={}>'.format(
+            self.length, self.height, self.pieces)
+
+    def add(self, **pieces):
+        """ Add an arbitrary number of pieces to the board. """
+        for piece_type, quantity in pieces.items():
+            assert piece_type in self.PIECE_TYPES
+            assert isinstance(quantity, int)
+            self.pieces[piece_type] += quantity
