@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (c) 2015 Kevin Deldycke <kdeldycke@scaleway.com> and contributors.
+# Copyright (c) 2015 Kevin Deldycke <kevin@deldycke.com> and contributors.
 # All Rights Reserved.
 #
 # This program is Free Software; you can redistribute it and/or
