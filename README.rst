@@ -20,6 +20,32 @@ Development philosophy
 1. Finally works on performance.
 
 
+Install
+-------
+
+.. code-block:: bash
+
+    $ git clone git@github.com:kdeldycke/chessboard.git
+    $ cd ./chessboard
+    $ python ./setup.py develop
+
+
+Usage
+-----
+
+.. code-block:: bash
+
+    $ chessboard
+    Usage: chessboard [OPTIONS] COMMAND [ARGS]...
+
+      Python CLI to explore chessboard positions.
+
+    Options:
+      --version      Show the version and exit.
+      -v, --verbose  Print much more debug statements.
+      --help         Show this message and exit.
+
+
 Third-party
 -----------
 
