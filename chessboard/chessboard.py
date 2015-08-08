@@ -33,11 +33,13 @@ class Chessboard(object):
     MAX_DIMENSION = 3
 
     def __init__(self, length, height):
+        """ Initialize board dimensions. """
         self.length = length
         self.height = height
         assert isinstance(self.length, int)
         assert isinstance(self.height, int)
 
     def __repr__(self):
+        """ Display all relevant object internals. """
         return '<Chessboard: length={}, height={}>'.format(
             self.length, self.height)
