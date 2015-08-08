@@ -48,6 +48,14 @@ Usage
       --help                Show this message and exit.
 
 
+Unit-tests
+----------
+
+.. code-block:: bash
+
+      $ python ./setup.py nosetests
+
+
 Third-party
 -----------
 
