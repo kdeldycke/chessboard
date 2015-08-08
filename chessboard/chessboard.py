@@ -40,4 +40,4 @@ class Chessboard(object):
 
     def __repr__(self):
         return '<Chessboard: length={}, height={}>'.format(
-        self.length, self.height)
+            self.length, self.height)
