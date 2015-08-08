@@ -6,7 +6,6 @@ Python CLI to explore chessboard positions.
 TODO
 ----
 
-* Write a simple, stupid CLI.
 * Implement a brute force algorithm.
 * Add unit tests.
 * Make algorithm faster and smarter.
