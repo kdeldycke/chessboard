@@ -32,7 +32,7 @@ from . import Chessboard
 log = logging.getLogger(__name__)
 
 
-@click.group(invoke_without_command=True)
+@click.command()
 @click.version_option(__version__)
 @click.option('-l', '--length', default=3, help='Length of the board.')
 @click.option('-h', '--height', default=3, help='Height of the board.')
