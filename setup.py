@@ -59,6 +59,7 @@ setup(
     license='GPLv2+',
 
     install_requires=[
+        'click',
     ],
 
     packages=find_packages(),

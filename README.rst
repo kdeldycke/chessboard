@@ -20,6 +20,20 @@ Development philosophy
 1. Finally works on performance.
 
 
+Third-party
+-----------
+
+This project package's boilerplate is sourced from the `code I wrote
+<https://github.com/scaleway/postal-address/graphs/contributors>`_ for
+`Scaleway <https://scaleway.com/>`_'s `postal-address module
+<https://github.com/scaleway/postal-address>`_, which is published under a
+`GPLv2+ License <https://github.com/scaleway/postal-address#license>`_.
+
+The CLI code is based on the one I wrote for the `kdenlive-tools module
+<https://github.com/kdeldycke/kdenlive-tools>`_, published under a `BSD
+license <https://github.com/kdeldycke/kdenlive-tools/blob/master/LICENSE>`_.
+
+
 License
 -------
 
