@@ -26,7 +26,7 @@ import logging
 import click
 
 from . import __version__
-from .chessboard import Chessboard
+from . import Chessboard
 
 
 log = logging.getLogger(__name__)
