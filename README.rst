@@ -35,15 +35,17 @@ Usage
 
 .. code-block:: bash
 
-    $ chessboard
+    $ chessboard --help
     Usage: chessboard [OPTIONS] COMMAND [ARGS]...
 
       Python CLI to explore chessboard positions.
 
     Options:
-      --version      Show the version and exit.
-      -v, --verbose  Print much more debug statements.
-      --help         Show this message and exit.
+      --version             Show the version and exit.
+      -l, --length INTEGER  Length of the board.
+      -h, --height INTEGER  Height of the board.
+      -v, --verbose         Print much more debug statements.
+      --help                Show this message and exit.
 
 
 Third-party
