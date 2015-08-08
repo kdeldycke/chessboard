@@ -32,13 +32,17 @@ from .chessboard import Chessboard
 log = logging.getLogger(__name__)
 
 
-@click.group()
+@click.group(invoke_without_command=True)
 @click.version_option(__version__)
+@click.option('-l', '--length', default=3, help='Length of the board.')
+@click.option('-h', '--height', default=3, help='Height of the board.')
 @click.option('-v', '--verbose', is_flag=True, default=False,
               help='Print much more debug statements.')
-def cli(verbose):
+def cli(length, height, verbose):
     """ Python CLI to explore chessboard positions. """
     logging.basicConfig(level=logging.DEBUG if verbose else logging.INFO)
 
     click.echo('Building up a chessboard...')
     board = Chessboard(length, height)
+
+    click.echo('{!r}'.format(board))
