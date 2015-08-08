@@ -23,6 +23,7 @@ from __future__ import (
     division, print_function, absolute_import, unicode_literals
 )
 
+import time
 import logging
 
 
@@ -46,9 +47,13 @@ class Chessboard(object):
         self.height = height
         assert isinstance(self.length, int)
         assert isinstance(self.height, int)
+
         # Store the number of pieces on the board.
         self.pieces = dict.fromkeys(self.PIECE_TYPES, 0)
         self.add(**pieces)
+
+        # Solver data.
+        processing_time = None
 
     def __repr__(self):
         """ Display all relevant object internals. """
@@ -61,3 +66,20 @@ class Chessboard(object):
             assert piece_type in self.PIECE_TYPES
             assert isinstance(quantity, int)
             self.pieces[piece_type] += quantity
+
+    def solve(self):
+        """ Solve all possible positions of pieces.
+
+        Use a stupid brute-force approach for now.
+        """
+        results = None
+
+        # Start solving the board.
+        start = time.time()
+
+        # Nope.
+
+        end = time.time()
+        self.processing_time = end - start
+
+        return results

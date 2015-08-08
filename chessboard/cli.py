@@ -56,5 +56,9 @@ def cli(length, height, verbose, **pieces):
 
     click.echo('Building up a chessboard...')
     board = Chessboard(length, height, **pieces)
-
     click.echo('{!r}'.format(board))
+
+    click.echo('Solving the chessboard...')
+    results = board.solve()
+    click.echo('Results: {}'.format(results))
+    click.echo('Processing time: {:.2f} seconds.'.format(board.processing_time))
