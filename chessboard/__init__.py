@@ -19,4 +19,4 @@
 
 __version__ = '0.2.0.dev'
 
-from chessboard import Chessboard
+from chessboard import Chessboard, Board

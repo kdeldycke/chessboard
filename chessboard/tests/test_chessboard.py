@@ -22,8 +22,8 @@ from __future__ import (unicode_literals, print_function, absolute_import,
 
 import unittest
 
-from chessboard import Chessboard
-from chessboard.chessboard import Board, King
+from chessboard import Chessboard, Board
+from chessboard.chessboard import King
 
 
 class TestChessboard(unittest.TestCase):
