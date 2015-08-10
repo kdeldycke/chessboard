@@ -121,6 +121,12 @@ class Board(object):
         return '<Board: length={}, height={}, pieces={}>'.format(
             self.length, self.height, self.pieces)
 
+    def all_positions(self):
+        """ Generator producing all positions. """
+        for x in range(0, self.length - 1):
+            for y in range(0, self.height - 1):
+                yield x, y
+
     def validate_position(self, x, y):
         """ Check if a 2D position is within the board. """
         if not(x >= 0 and x < self.length and y >= 0 and y < self.height):
