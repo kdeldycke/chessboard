@@ -17,15 +17,15 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-""" Chess pieces and their behavioural properties. """
+""" Definition of chess pieces and their behavioural properties. """
 
 from __future__ import (
     division, print_function, absolute_import, unicode_literals
 )
 
 
-class King(object):
-    """ King model. """
+class Piece(object):
+    """ A generic piece. """
 
     # List of relative movements allowed.
     MOVEMENTS = [
@@ -47,6 +47,11 @@ class King(object):
         vector_index = (target_x * board.length) + target_y
         return vector_index
 
+    @classmethod
+    def movements(cls):
+        """ Return list of relative movements allowed. """
+        raise NotImplementedError
+
     def territory(self, board):
         """ given a position on the checkboard, give a vector
         of places the king is allowed to occupy.
@@ -67,7 +72,7 @@ class King(object):
         vector[current_position] = True
 
         # List all places reacheable by the piece from its current position.
-        for x_shift, y_shift in self.MOVEMENTS:
+        for x_shift, y_shift in self.movements():
             # Mark side positions as reachable if in the limit of the board.
             try:
                 target_position = self.translate(board, x_shift, y_shift)
@@ -76,3 +81,16 @@ class King(object):
             vector[target_position] = True
 
         return vector
+
+
+class King(Piece):
+    """ King model. """
+
+    @classmethod
+    def movements(cls):
+        """ A king move up, down and sideways in 1-case increment. """
+        return [
+            (+1,  0),
+            (-1,  0),
+            ( 0, +1),
+            ( 0, -1)]
