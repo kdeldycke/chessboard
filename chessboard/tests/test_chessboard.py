@@ -23,6 +23,7 @@ from __future__ import (unicode_literals, print_function, absolute_import,
 import unittest
 
 from chessboard import Chessboard
+from chessboard.chessboard import Board
 
 
 class TestChessboard(unittest.TestCase):
@@ -32,3 +33,22 @@ class TestChessboard(unittest.TestCase):
         self.assertEquals(board.length, 3)
         self.assertEquals(board.height, 3)
         self.assertDictContainsSubset({'king': 2, 'queen': 7}, board.pieces)
+
+
+
+class TestBoard(unittest.TestCase):
+
+    def test_validate_position(self):
+        """ Test validation of 2D position. """
+        Board(3, 3).validate_position(0, 0)
+        Board(3, 3).validate_position(0, 2)
+        Board(3, 3).validate_position(2, 0)
+        Board(3, 3).validate_position(2, 2)
+        with self.assertRaises(ValueError):
+            Board(3, 3).validate_position(-1, 0)
+        with self.assertRaises(ValueError):
+            Board(3, 3).validate_position(0, -1)
+        with self.assertRaises(ValueError):
+            Board(3, 3).validate_position(0, 3)
+        with self.assertRaises(ValueError):
+            Board(3, 3).validate_position(3, 0)

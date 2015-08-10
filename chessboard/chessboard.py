@@ -28,7 +28,10 @@ import logging
 
 
 class Chessboard(object):
-    """ Model representing a chessboard of arbitrary dimensions. """
+    """ Initialize a chessboard context.
+
+    TODO: This initialization code belongs to the CLI domain really.
+    """
 
     # Restrict dimension since we haven't benchmarked the perforances yet.
     MAX_DIMENSION = 3
@@ -83,3 +86,42 @@ class Chessboard(object):
         self.processing_time = end - start
 
         return results
+
+
+class Board(object):
+    """ Chessboard of arbitrary dimensions with placed pieces.
+
+    This kind of chessboard only accept new pieces which are not overlapping
+    cases of:
+        * a piece already occupying the case
+        * a case reachable by another piece.
+    """
+
+    # Restrict dimension since we haven't benchmarked the perforances yet.
+    MAX_DIMENSION = 3
+
+    def __init__(self, length, height):
+        """ Initialize board dimensions. """
+        self.length = length
+        self.height = height
+        assert isinstance(self.length, int)
+        assert isinstance(self.height, int)
+        assert self.MAX_DIMENSION >= self.length > 0
+        assert self.MAX_DIMENSION >= self.height > 0
+
+        # Initialize board states. This is a linear list of bolean flags
+        # indicating if a case on the board is available or not.
+        self.states = [False] * self.length * self.height
+
+        # Store pieces and their position on the board.
+        self.pieces = []
+
+    def __repr__(self):
+        """ Display all relevant object internals. """
+        return '<Board: length={}, height={}, pieces={}>'.format(
+            self.length, self.height, self.pieces)
+
+    def validate_position(self, x, y):
+        """ Check if a 2D position is within the board. """
+        if not(x >= 0 and x < self.length and y >= 0 and y < self.height):
+            raise ValueError
