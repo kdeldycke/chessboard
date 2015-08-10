@@ -39,6 +39,10 @@ class Piece(object):
         self.x = x
         self.y = y
 
+    def __repr__(self):
+        """ Display all relevant object internals. """
+        return '<Piece: x={};, y={}>'.format(self.x, self.y)
+
     def translate(self, board, x_shift=0, y_shift=0):
         """ Translate 2D coordinates to vector index. """
         target_x = self.x + x_shift
