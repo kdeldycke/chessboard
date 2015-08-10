@@ -19,4 +19,5 @@
 
 __version__ = '0.2.0.dev'
 
+from pieces import King
 from chessboard import Chessboard, Board
