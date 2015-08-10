@@ -8,7 +8,6 @@ TODO
 ----
 
 * Implement a brute force algorithm.
-* Add unit tests.
 * Make algorithm faster and smarter.
 
 
