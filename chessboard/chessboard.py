@@ -52,6 +52,8 @@ class Chessboard(object):
         self.height = height
         assert isinstance(self.length, int)
         assert isinstance(self.height, int)
+        assert self.MAX_DIMENSION >= self.length > 0
+        assert self.MAX_DIMENSION >= self.height > 0
 
         # Store the number of pieces on the board.
         self.pieces = dict.fromkeys(self.PIECE_TYPES, 0)
