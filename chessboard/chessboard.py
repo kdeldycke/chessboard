@@ -131,3 +131,57 @@ class Board(object):
         """ Check if a 2D position is within the board. """
         if not(x >= 0 and x < self.length and y >= 0 and y < self.height):
             raise ValueError
+
+
+class King(object):
+    """ King model and behavioural properties. """
+
+    # List of relative movements allowed.
+    MOVEMENTS = [
+        (+1,  0),
+        (-1,  0),
+        ( 0, +1),
+        ( 0, -1)]
+
+    def __init__(self, x, y):
+        """ Initialize the piece at the (x, y) coordinates of the board. """
+        self.x = x
+        self.y = y
+
+    def translate(self, board, x_shift=0, y_shift=0):
+        """ Translate 2D coordinates to vector index. """
+        target_x = self.x + x_shift
+        target_y = self.y + y_shift
+        board.validate_position(target_x, target_y)
+        vector_index = (target_x * board.length) + target_y
+        return vector_index
+
+    def territory(self, board):
+        """ given a position on the checkboard, give a vector
+        of places the king is allowed to occupy.
+
+        x: horizontal position of the king
+        y: vertical position of the king
+
+        m: length of the board.
+        n: height of the board.
+        """
+        # Initialize the state vector of the board.
+        vector = [False] * board.length * board.height
+
+        # Translate (x, y) coordinates to linear position.
+        current_position = (self.x * board.length) + self.y
+
+        # Mark current position as occupied.
+        vector[current_position] = True
+
+        # List all places reacheable by the piece from its current position.
+        for x_shift, y_shift in self.MOVEMENTS:
+            # Mark side positions as reachable if in the limit of the board.
+            try:
+                target_position = self.translate(board, x_shift, y_shift)
+            except ValueError:
+                continue
+            vector[target_position] = True
+
+        return vector
