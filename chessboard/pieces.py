@@ -27,13 +27,6 @@ from __future__ import (
 class Piece(object):
     """ A generic piece. """
 
-    # List of relative movements allowed.
-    MOVEMENTS = [
-        (+1,  0),
-        (-1,  0),
-        ( 0, +1),
-        ( 0, -1)]
-
     def __init__(self, x, y):
         """ Initialize the piece at the (x, y) coordinates of the board. """
         self.x = x
