@@ -53,7 +53,7 @@ class TestKing(unittest.TestCase):
              True, False, False,
             False, False, False,
         ])
-        self.assertEquals(King(0, 2).territory(Board(3, 3)), [
+        self.assertEquals(King(2, 0).territory(Board(3, 3)), [
             False,  True,  True,
             False, False,  True,
             False, False, False,
@@ -63,7 +63,7 @@ class TestKing(unittest.TestCase):
             False, False,  True,
             False,  True,  True,
         ])
-        self.assertEquals(King(2, 0).territory(Board(3, 3)), [
+        self.assertEquals(King(0, 2).territory(Board(3, 3)), [
             False, False, False,
              True, False, False,
              True,  True, False,

@@ -41,7 +41,7 @@ class Piece(object):
         target_x = self.x + x_shift
         target_y = self.y + y_shift
         board.validate_position(target_x, target_y)
-        vector_index = (target_x * board.length) + target_y
+        vector_index = (target_y * board.length) + target_x
         return vector_index
 
     @classmethod
@@ -60,7 +60,7 @@ class Piece(object):
         vector = [False] * board.length * board.height
 
         # Translate (x, y) coordinates to linear position.
-        current_position = (self.x * board.length) + self.y
+        current_position = (self.y * board.length) + self.x
 
         # Mark current position as occupied.
         vector[current_position] = True

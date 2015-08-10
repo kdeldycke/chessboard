@@ -17,7 +17,27 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-""" Chessboard objects and utilities. """
+""" Chessboard objects and utilities.
+
+2D positions on the board are noted (x, y).
+
+The horizontal range x goes from 0 to m-1.
+The vertical range y goes from 0 to n-1.
+
+The top-left position is (0, 0).
+The top-right position is (0, m-1).
+The bottom-left position is (n-1, 0).
+The bottom-right position is (n-1, m-1).
+
+          0 1 2 3 4 ...
+        0 . . . . .
+        1 . . . . .
+        2 . . . . .
+        3 . . . . .
+        4 . . . . .
+        ...
+
+"""
 
 from __future__ import (
     division, print_function, absolute_import, unicode_literals
