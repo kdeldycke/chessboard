@@ -7,13 +7,13 @@ Python CLI to explore chessboard positions.
 TODO
 ----
 
-* Implement a brute force algorithm.
 * Make algorithm faster and smarter.
 
 
 Development philosophy
 ----------------------
 
+1. First create something that work.
 2. Then something that's beautiful.
 3. Finally works on performance.
 
