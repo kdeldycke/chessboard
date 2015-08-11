@@ -2,7 +2,7 @@ ChangeLog
 =========
 
 
-0.2.2 (unreleased)
+0.3.0 (unreleased)
 ------------------
 
 * Add Queen piece.
