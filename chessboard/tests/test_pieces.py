@@ -41,7 +41,7 @@ class TestKing(unittest.TestCase):
             King(5, 0).translate(Board(3, 3))
 
     def test_territory(self):
-        """ Test computation of territory at the center and cardinal points.
+        """ Test computation of territory at each positions of a 3x3 board.
         """
         self.assertEquals(King(1, 1).territory(Board(3, 3)), [
              True,  True,  True,
