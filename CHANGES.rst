@@ -6,6 +6,7 @@ ChangeLog
 ------------------
 
 * Add Queen piece.
+* Fix displaying of piece representation.
 
 
 0.2.1 (2015-08-11)

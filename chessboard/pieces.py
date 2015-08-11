@@ -40,7 +40,8 @@ class Piece(object):
 
     def __repr__(self):
         """ Display all relevant object internals. """
-        return '<Piece: x={}, y={}>'.format(self.x, self.y)
+        return '<{}: x={}, y={}>'.format(
+            self.__class__.__name__, self.x, self.y)
 
     def bottom_distance(self, board):
         """ Number of squares separating the piece from the bottom of the board.
