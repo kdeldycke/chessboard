@@ -60,5 +60,10 @@ def cli(length, height, verbose, **pieces):
 
     click.echo('Solving the chessboard...')
     results = board.solve()
-    click.echo('Results: {}'.format(results))
-    click.echo('Processing time: {:.2f} seconds.'.format(board.processing_time))
+
+    click.echo('Results:')
+    for result in results:
+        click.echo('{}'.format(result))
+
+    click.echo('{} results found in {:.2f} seconds.'.format(
+        len(results), board.processing_time))

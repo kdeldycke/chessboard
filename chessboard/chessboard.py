@@ -44,9 +44,10 @@ from __future__ import (
 )
 
 import time
-import logging
+from itertools import chain, permutations
+from operator import and_
 
-from . import King
+from chessboard import King
 
 
 class Chessboard(object):
@@ -61,10 +62,11 @@ class Chessboard(object):
     # List of recognized pieces.
     PIECE_TYPES = frozenset([
         'king',
-        'queen',
-        'bishop',
-        'rook',
-        'knight'])
+        #'queen',
+        #'bishop',
+        #'rook',
+        #'knight'
+    ])
 
     def __init__(self, length, height, **pieces):
         """ Initialize board dimensions. """
@@ -79,7 +81,7 @@ class Chessboard(object):
         self.pieces = dict.fromkeys(self.PIECE_TYPES, 0)
         self.add(**pieces)
 
-        # Solver data.
+        # Solver metadata.
         processing_time = None
 
     def __repr__(self):
@@ -89,25 +91,74 @@ class Chessboard(object):
 
     def add(self, **pieces):
         """ Add an arbitrary number of pieces to the board. """
-        for piece_type, quantity in pieces.items():
-            assert piece_type in self.PIECE_TYPES
+        for kind, quantity in pieces.items():
+            assert kind in self.PIECE_TYPES
             assert isinstance(quantity, int)
-            self.pieces[piece_type] += quantity
+            assert quantity >= 0
+            self.pieces[kind] += quantity
+
+    @property
+    def vector_size(self):
+        return self.length * self.height
+
+    @property
+    def vector_indexes(self):
+        return range(self.vector_size)
+
+    def permutations(self):
+        """ Returns unique permutations of piece types and linear positions.
+
+        TODO: Refactor to a pure unique iterator.
+        TODO: use symetries to reduce the search space.
+        """
+        # Use a set to deduplicate permutations.
+        unique_perms = set()
+
+        # Serialize and freeze pieces index by kind.
+        pieces = list(chain(*[
+            [kind] * quantity for kind, quantity in self.pieces.items()]))
+
+        # Iterate all permutations of pieces over all linear positions of the
+        # board.
+        for positions in permutations(self.vector_indexes, len(pieces)):
+            unique_perms.add(frozenset(zip(pieces, positions)))
+
+        return unique_perms
 
     def solve(self):
         """ Solve all possible positions of pieces.
 
         Use a stupid brute-force approach for now.
+
+        TODO: Use a binary search to exlude whole branches as soon as possible.
         """
-        results = None
+        results = []
 
         # Start solving the board.
         start = time.time()
 
-        # Nope.
+        # Try all permutations of available pieces within the board vector.
+        for positions in self.permutations():
 
-        end = time.time()
-        self.processing_time = end - start
+            # Initialize a board.
+            board = Board(self.length, self.height)
+
+            try:
+                for piece_type, vector_index in positions:
+                    # Translate linear index to 2D dimension.
+                    x = int(vector_index / self.length)
+                    y = int(vector_index % self.height)
+                    # Try to place the piece.
+                    board.add(King(x, y))
+            # If one of the piece was not added to an allowed position try next
+            # permutation of positions.
+            except ValueError:
+                continue
+
+            # All pieces fits, save solution and proceeed to next permutation.
+            results.append(board)
+
+        self.processing_time = time.time() - start
 
         return results
 
@@ -137,7 +188,7 @@ class Board(object):
         # indicating if a case on the board is available or not.
         self.states = [False] * self.length * self.height
 
-        # Store pieces and their position on the board.
+        # Store positionned pieces on the board.
         self.pieces = []
 
     def __repr__(self):
@@ -155,3 +206,20 @@ class Board(object):
         """ Check if a 2D position is within the board. """
         if not(x >= 0 and x < self.length and y >= 0 and y < self.height):
             raise ValueError
+
+    def add(self, piece):
+        """ Add a piece to the board. """
+        assert isinstance(piece, King)
+
+        # Get piece's occupied and reachable territory in the context of the
+        # board.
+        territory = piece.territory(self)
+
+        # Check that the piece's territory doesn't overlap the territory already
+        # reserved by other pieces.
+        overlap = filter(lambda case: case is True, map(and_, self.states, territory))
+        if overlap:
+            raise ValueError
+
+        # Mark the piece's territory as no longer available.
+        self.pieces.append(piece)

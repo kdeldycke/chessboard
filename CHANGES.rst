@@ -6,6 +6,7 @@ ChangeLog
 ------------------
 
 * Allow initialization of board pieces.
+* Implement brute-force solver.
 
 
 0.1.1 (2015-08-08)
