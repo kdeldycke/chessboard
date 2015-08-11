@@ -177,7 +177,7 @@ class Board(object):
     """
 
     # Restrict dimension since we haven't benchmarked the perforances yet.
-    MAX_DIMENSION = 3
+    MAX_DIMENSION = Chessboard.MAX_DIMENSION
 
     def __init__(self, length, height):
         """ Initialize board dimensions. """
