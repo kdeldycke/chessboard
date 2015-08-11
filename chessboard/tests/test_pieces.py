@@ -44,27 +44,42 @@ class TestKing(unittest.TestCase):
         """ Test computation of territory at the center and cardinal points.
         """
         self.assertEquals(King(1, 1).territory(Board(3, 3)), [
-            False,  True, False,
              True,  True,  True,
-            False,  True, False,
+             True,  True,  True,
+             True,  True,  True,
         ])
         self.assertEquals(King(0, 0).territory(Board(3, 3)), [
              True,  True, False,
-             True, False, False,
+             True,  True, False,
+            False, False, False,
+        ])
+        self.assertEquals(King(1, 0).territory(Board(3, 3)), [
+             True,  True,  True,
+             True,  True,  True,
             False, False, False,
         ])
         self.assertEquals(King(2, 0).territory(Board(3, 3)), [
             False,  True,  True,
-            False, False,  True,
+            False,  True,  True,
             False, False, False,
+        ])
+        self.assertEquals(King(2, 1).territory(Board(3, 3)), [
+            False,  True,  True,
+            False,  True,  True,
+            False,  True,  True,
         ])
         self.assertEquals(King(2, 2).territory(Board(3, 3)), [
             False, False, False,
-            False, False,  True,
             False,  True,  True,
+            False,  True,  True,
+        ])
+        self.assertEquals(King(1, 2).territory(Board(3, 3)), [
+            False, False, False,
+             True,  True,  True,
+             True,  True,  True,
         ])
         self.assertEquals(King(0, 2).territory(Board(3, 3)), [
             False, False, False,
-             True, False, False,
+             True,  True, False,
              True,  True, False,
         ])

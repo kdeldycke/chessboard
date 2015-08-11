@@ -5,7 +5,7 @@ ChangeLog
 0.2.1 (unreleased)
 ------------------
 
-* No changes yet.
+* Fix King displacement map.
 
 
 0.2.0 (2015-08-11)

@@ -84,7 +84,10 @@ class King(Piece):
     def movements(cls):
         """ A king move up, down and sideways in 1-case increment. """
         return [
-            (+1,  0),
-            (-1,  0),
-            ( 0, +1),
-            ( 0, -1)]
+            # Horizontal movements.
+            (+1, 0), (-1, 0),
+            # Vertical movements.
+            (0, +1), (0, -1),
+            # Diagonal movements.
+            (+1, +1), (-1, -1), (-1, +1), (+1, -1),
+        ]
