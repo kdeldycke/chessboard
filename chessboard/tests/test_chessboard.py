@@ -34,6 +34,19 @@ class TestChessboard(unittest.TestCase):
         self.assertDictContainsSubset({'king': 2, 'queen': 7}, board.pieces)
 
 
+class TestSolver(unittest.TestCase):
+
+    def test_tinyest_board(self):
+        board = Chessboard(1, 1, king=1)
+        results = board.solve()
+        self.assertEquals(len(results), 1)
+
+    def test_single_king(self):
+        board = Chessboard(3, 3, king=1)
+        results = board.solve()
+        self.assertEquals(len(results), 9)
+
+
 class TestBoard(unittest.TestCase):
 
     def test_validate_position(self):
