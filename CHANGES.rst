@@ -5,7 +5,7 @@ ChangeLog
 0.2.2 (unreleased)
 ------------------
 
-* No changes yet.
+* Add Queen piece.
 
 
 0.2.1 (2015-08-11)

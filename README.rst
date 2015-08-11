@@ -44,6 +44,7 @@ Usage
       -h, --height INTEGER  Height of the board.
       -v, --verbose         Print much more debug statements.
       --king INTEGER        Number of kings to add to the board.
+      --queen INTEGER       Number of queens to add to the board.
       --help                Show this message and exit.
 
 

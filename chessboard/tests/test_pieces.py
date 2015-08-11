@@ -22,7 +22,7 @@ from __future__ import (unicode_literals, print_function, absolute_import,
 
 import unittest
 
-from chessboard import Board, King
+from chessboard import Board, King, Queen
 
 
 class TestKing(unittest.TestCase):
@@ -82,4 +82,51 @@ class TestKing(unittest.TestCase):
             False, False, False,
              True,  True, False,
              True,  True, False,
+        ])
+
+
+class TestQueen(unittest.TestCase):
+
+    def test_territory(self):
+        """ Test computation of territory at each positions of a 3x3 board.
+        """
+        self.assertEquals(Queen(1, 1).territory(Board(3, 3)), [
+             True,  True,  True,
+             True,  True,  True,
+             True,  True,  True,
+        ])
+        self.assertEquals(Queen(0, 0).territory(Board(3, 3)), [
+             True,  True,  True,
+             True,  True, False,
+             True, False,  True,
+        ])
+        self.assertEquals(Queen(1, 0).territory(Board(3, 3)), [
+             True,  True,  True,
+             True,  True,  True,
+            False,  True, False,
+        ])
+        self.assertEquals(Queen(2, 0).territory(Board(3, 3)), [
+             True,  True,  True,
+            False,  True,  True,
+             True, False,  True,
+        ])
+        self.assertEquals(Queen(2, 1).territory(Board(3, 3)), [
+            False,  True,  True,
+             True,  True,  True,
+            False,  True,  True,
+        ])
+        self.assertEquals(Queen(2, 2).territory(Board(3, 3)), [
+             True, False,  True,
+            False,  True,  True,
+             True,  True,  True,
+        ])
+        self.assertEquals(Queen(1, 2).territory(Board(3, 3)), [
+            False,  True, False,
+             True,  True,  True,
+             True,  True,  True,
+        ])
+        self.assertEquals(Queen(0, 2).territory(Board(3, 3)), [
+             True, False,  True,
+             True,  True, False,
+             True,  True,  True,
         ])

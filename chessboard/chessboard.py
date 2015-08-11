@@ -62,7 +62,7 @@ class Chessboard(object):
     # List of recognized pieces.
     PIECE_TYPES = frozenset([
         'king',
-        #'queen',
+        'queen',
         #'bishop',
         #'rook',
         #'knight'
