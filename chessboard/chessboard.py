@@ -43,11 +43,14 @@ from __future__ import (
     division, print_function, absolute_import, unicode_literals
 )
 
+#https://news.ycombinator.com/item?id=10028742
+
 import time
 from itertools import chain, permutations
 from operator import and_
 
-from chessboard import King
+from chessboard import Piece
+from chessboard import pieces as piece_module
 
 
 class Chessboard(object):
@@ -144,12 +147,13 @@ class Chessboard(object):
             board = Board(self.length, self.height)
 
             try:
-                for piece_type, vector_index in positions:
+                for piece_kind, vector_index in positions:
                     # Translate linear index to 2D dimension.
                     x = int(vector_index / self.length)
                     y = int(vector_index % self.height)
                     # Try to place the piece.
-                    board.add(King(x, y))
+                    klass = getattr(piece_module, piece_kind.title())
+                    board.add(klass(x, y))
             # If one of the piece was not added to an allowed position try next
             # permutation of positions.
             except ValueError:
@@ -209,7 +213,7 @@ class Board(object):
 
     def add(self, piece):
         """ Add a piece to the board. """
-        assert isinstance(piece, King)
+        assert issubclass(piece.__class__, Piece)
 
         # Get piece's occupied and reachable territory in the context of the
         # board.
