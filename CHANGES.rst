@@ -7,6 +7,7 @@ ChangeLog
 
 * Add Queen piece.
 * Fix displaying of piece representation.
+* Fix persistence of square occupancy between each piece addition.
 
 
 0.2.1 (2015-08-11)

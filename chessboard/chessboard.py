@@ -47,7 +47,7 @@ from __future__ import (
 
 import time
 from itertools import chain, permutations
-from operator import and_
+from operator import and_, or_
 
 from chessboard import Piece
 from chessboard import pieces as piece_module
@@ -229,3 +229,4 @@ class Board(object):
 
         # Mark the piece's territory as no longer available.
         self.pieces.append(piece)
+        self.square_occupancy = map(or_, self.square_occupancy, territory)
