@@ -167,9 +167,9 @@ class Board(object):
     """ Chessboard of arbitrary dimensions with placed pieces.
 
     This kind of chessboard only accept new pieces which are not overlapping
-    cases of:
-        * a piece already occupying the case
-        * a case reachable by another piece.
+    squares:
+        * occupied by another piece;
+        * directly reachable by another piece.
     """
 
     # Restrict dimension since we haven't benchmarked the perforances yet.
@@ -185,8 +185,8 @@ class Board(object):
         assert self.MAX_DIMENSION >= self.height > 0
 
         # Initialize board states. This is a linear list of bolean flags
-        # indicating if a case on the board is available or not.
-        self.states = [False] * self.length * self.height
+        # indicating if a square on the board is available or not.
+        self.square_occupancy = [False] * self.length * self.height
 
         # Store positionned pieces on the board.
         self.pieces = []
@@ -217,7 +217,9 @@ class Board(object):
 
         # Check that the piece's territory doesn't overlap the territory already
         # reserved by other pieces.
-        overlap = filter(lambda case: case is True, map(and_, self.states, territory))
+        overlap = filter(
+            lambda square: square is True,
+            map(and_, self.square_occupancy, territory))
         if overlap:
             raise ValueError
 

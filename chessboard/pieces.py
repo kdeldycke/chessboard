@@ -56,7 +56,7 @@ class Piece(object):
         x: horizontal position of the king
         y: vertical position of the king
         """
-        # Initialize the state vector of the board.
+        # Initialize the square occupancy vector of the board.
         vector = [False] * board.length * board.height
 
         # Translate (x, y) coordinates to linear position.
