@@ -46,6 +46,16 @@ class TestSolver(unittest.TestCase):
         results = board.solve()
         self.assertEquals(len(results), 9)
 
+    def test_single_queen(self):
+        board = Chessboard(3, 3, queen=1)
+        results = board.solve()
+        self.assertEquals(len(results), 9)
+
+    def test_no_queen_solutions(self):
+        board = Chessboard(3, 3, queen=2)
+        results = board.solve()
+        self.assertEquals(len(results), 0)
+
 
 class TestBoard(unittest.TestCase):
 
