@@ -6,6 +6,8 @@ ChangeLog
 ------------------
 
 * Add project status badges.
+* Enable continuous integration metrics: build status, coverage and code
+  quality.
 
 
 0.3.0 (2015-08-12)
