@@ -22,7 +22,7 @@ from __future__ import (unicode_literals, print_function, absolute_import,
 
 import unittest
 
-from chessboard import Chessboard, Board, ForbiddenPosition
+from chessboard import Chessboard, Board, ForbiddenIndex
 
 
 class TestChessboard(unittest.TestCase):
@@ -46,6 +46,16 @@ class TestSolver(unittest.TestCase):
         results = board.solve()
         self.assertEquals(len(results), 9)
 
+    def test_wide_board(self):
+        board = Chessboard(4, 1, king=1)
+        results = board.solve()
+        self.assertEquals(len(results), 4)
+
+    def test_long_board(self):
+        board = Chessboard(1, 4, king=1)
+        results = board.solve()
+        self.assertEquals(len(results), 4)
+
     def test_single_queen(self):
         board = Chessboard(3, 3, queen=1)
         results = board.solve()
@@ -55,3 +65,23 @@ class TestSolver(unittest.TestCase):
         board = Chessboard(3, 3, queen=2)
         results = board.solve()
         self.assertEquals(len(results), 0)
+
+
+class TestBoard(unittest.TestCase):
+
+    def test_linear_position(self):
+        self.assertEquals(Board(3, 3).linear_position(0), (0, 0))
+        self.assertEquals(Board(3, 3).linear_position(1), (1, 0))
+        self.assertEquals(Board(3, 3).linear_position(2), (2, 0))
+        self.assertEquals(Board(3, 3).linear_position(3), (0, 1))
+        self.assertEquals(Board(3, 3).linear_position(4), (1, 1))
+        self.assertEquals(Board(3, 3).linear_position(5), (2, 1))
+        self.assertEquals(Board(3, 3).linear_position(6), (0, 2))
+        self.assertEquals(Board(3, 3).linear_position(7), (1, 2))
+        self.assertEquals(Board(3, 3).linear_position(8), (2, 2))
+
+    def test_linear_position_error(self):
+        with self.assertRaises(ForbiddenIndex):
+            Board(3, 3).linear_position(-1)
+        with self.assertRaises(ForbiddenIndex):
+            Board(3, 3).linear_position(9)

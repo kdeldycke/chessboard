@@ -24,7 +24,11 @@ __version__ = '0.3.1.dev'
 # Defines custom exception first to avoid circular imports.
 
 class ForbiddenPosition(Exception):
-    """ Raised when a position is out of board's bounds. """
+    """ Raised when a 2D (x, y) position is out of board's bounds. """
+
+
+class ForbiddenIndex(Exception):
+    """ Raised when a linear index of a square is out of board's bounds. """
 
 
 # Expose important classes to the root of the module.

@@ -8,6 +8,7 @@ ChangeLog
 * Add project status badges.
 * Enable continuous integration metrics: build status, coverage and code
   quality.
+* Fix index to position computation in non-square boards.
 
 
 0.3.0 (2015-08-12)

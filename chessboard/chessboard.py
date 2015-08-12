@@ -49,7 +49,7 @@ import time
 from itertools import chain, permutations
 from operator import and_, or_
 
-from chessboard import Piece, pieces as piece_module
+from chessboard import ForbiddenIndex, Piece, pieces as piece_module
 
 
 class Chessboard(object):
@@ -148,8 +148,7 @@ class Chessboard(object):
             try:
                 for piece_kind, vector_index in positions:
                     # Translate linear index to 2D dimension.
-                    x = int(vector_index / self.length)
-                    y = int(vector_index % self.height)
+                    x, y = board.linear_position(vector_index)
                     # Try to place the piece on the board.
                     board.add(piece_kind, x, y)
             # If one of the piece was not added to an allowed position try next
@@ -203,6 +202,29 @@ class Board(object):
         for x in range(0, self.length - 1):
             for y in range(0, self.height - 1):
                 yield x, y
+
+    @property
+    def size(self):
+        return self.length * self.height
+
+    @property
+    def indexes(self):
+        """ Returns an ordered list of linear indexes of all squares. """
+        return range(self.size)
+
+    def validate_index(self, index):
+        """ Checks that a linear index of a square is within board's bounds.
+        """
+        if index < 0 or index >= self.size:
+            raise ForbiddenIndex("Linear index {} not in {}x{} board.".format(
+                index, self.length, self.height))
+
+    def linear_position(self, index):
+        """ Returns a set of 2D (x, y) coordinates from a linear index. """
+        self.validate_index(index)
+        x = int(index % self.length)
+        y = int((index - x) / self.height)
+        return x, y
 
     def add(self, piece_kind, x, y):
         """ Add a piece to the board. """
