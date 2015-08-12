@@ -80,6 +80,18 @@ class TestBoard(unittest.TestCase):
         self.assertEquals(Board(3, 3).linear_position(7), (1, 2))
         self.assertEquals(Board(3, 3).linear_position(8), (2, 2))
 
+    def test_wide_linear_position(self):
+        self.assertEquals(Board(1, 4).linear_position(0), (0, 0))
+        self.assertEquals(Board(1, 4).linear_position(1), (0, 1))
+        self.assertEquals(Board(1, 4).linear_position(2), (0, 2))
+        self.assertEquals(Board(1, 4).linear_position(3), (0, 3))
+
+    def test_long_linear_position(self):
+        self.assertEquals(Board(4, 1).linear_position(0), (0, 0))
+        self.assertEquals(Board(4, 1).linear_position(1), (1, 0))
+        self.assertEquals(Board(4, 1).linear_position(2), (2, 0))
+        self.assertEquals(Board(4, 1).linear_position(3), (3, 0))
+
     def test_linear_position_error(self):
         with self.assertRaises(ForbiddenIndex):
             Board(3, 3).linear_position(-1)

@@ -220,7 +220,7 @@ class Board(object):
         """ Returns a set of 2D (x, y) coordinates from a linear index. """
         self.validate_index(index)
         x = int(index % self.length)
-        y = int((index - x) / self.height)
+        y = int((index - x) / self.length)
         return x, y
 
     def add(self, piece_kind, x, y):
