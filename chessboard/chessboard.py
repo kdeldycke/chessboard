@@ -143,7 +143,7 @@ class Chessboard(object):
         # Try all permutations of available pieces within the board vector.
         for positions in self.permutations():
 
-            # Initialize a board.
+            # Create a new, empty board.
             board = Board(self.length, self.height)
 
             try:
