@@ -140,15 +140,15 @@ class Chessboard(object):
         start = time.time()
 
         # Try all permutations of available pieces within the board vector.
-        for positions in self.permutations():
+        for pieces_set in self.permutations():
 
             # Create a new, empty board.
             board = Board(self.length, self.height)
 
             try:
-                for piece_kind, vector_index in positions:
+                for piece_kind, linear_position in pieces_set:
                     # Translate linear index to 2D dimension.
-                    x, y = board.linear_position(vector_index)
+                    x, y = board.linear_position(linear_position)
                     # Try to place the piece on the board.
                     board.add(piece_kind, x, y)
             # If one of the piece can't be added because the territory is
