@@ -187,15 +187,15 @@ class Board(object):
 
         # Initialize board states. This is a linear list of bolean flags
         # indicating if a square on the board is available or not.
-        self.square_occupancy = [False] * self.length * self.height
+        self.square_occupancy = [False] * self.size
 
         # Store positionned pieces on the board.
         self.pieces = []
 
     def __repr__(self):
         """ Display all relevant object internals. """
-        return '<Board: length={}, height={}, pieces={}>'.format(
-            self.length, self.height, self.pieces)
+        return '<Board: length={}, height={}, size={}, pieces={}>'.format(
+            self.length, self.height, self.size, self.pieces)
 
     def all_positions(self):
         """ Generator producing all positions. """
