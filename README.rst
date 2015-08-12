@@ -3,7 +3,6 @@ Chessboard
 
 Python CLI to explore chessboard positions.
 
-
 .. image:: https://img.shields.io/travis/kdeldycke/chessboard/develop.svg?style=flat
     :target: https://travis-ci.org/kdeldycke/chessboard
     :alt: Unit-tests status
@@ -16,9 +15,6 @@ Python CLI to explore chessboard positions.
 .. image:: https://img.shields.io/scrutinizer/g/kdeldycke/chessboard.svg?style=flat
     :target: https://scrutinizer-ci.com/g/kdeldycke/chessboard/?branch=develop
     :alt: Code Quality
-.. image:: https://img.shields.io/pypi/l/chessboard.svg?style=flat
-    :target: https://www.gnu.org/licenses/gpl-2.0.html
-    :alt: Software license
 
 
 Development philosophy
