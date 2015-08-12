@@ -10,6 +10,7 @@ ChangeLog
   quality.
 * Fix index to position computation in non-square boards.
 * Remove restriction on board dimensions.
+* Unit-tests result sets produced by the solver.
 
 
 0.3.0 (2015-08-12)

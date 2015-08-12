@@ -20,6 +20,7 @@
 from __future__ import (unicode_literals, print_function, absolute_import,
                         division)
 
+from operator import itemgetter
 import unittest
 
 from chessboard import Chessboard, Board, ForbiddenIndex
@@ -36,30 +37,86 @@ class TestChessboard(unittest.TestCase):
 
 class TestSolver(unittest.TestCase):
 
+    def check_results(self, results, expected):
+        """ Check found results. """
+        self.assertEquals(len(results), len(expected))
+
+        # Normalize result sets into hashable sets so we can make them easily
+        # comparable.
+        normalized_expected = set([tuple(sorted(
+            r,
+            key=itemgetter(0, 1, 2)))
+            for r in expected])
+
+        normalized_results = set([tuple(sorted([
+            (p.__class__.__name__, p.x, p.y) for p in r.pieces],
+            key=itemgetter(0, 1, 2)))
+            for r in results])
+
+        # Check that our transformation to a set for convenience doesn't
+        # artificialy deduplicate the result set.
+        self.assertEquals(len(results), len(normalized_results))
+        self.assertEquals(len(expected), len(normalized_expected))
+
+        self.assertSetEqual(normalized_results, normalized_expected)
+
     def test_tinyest_board(self):
         board = Chessboard(1, 1, king=1)
         results = board.solve()
         self.assertEquals(len(results), 1)
+        self.check_results(results, [
+            [('King', 0, 0)],
+        ])
 
     def test_single_king(self):
         board = Chessboard(3, 3, king=1)
         results = board.solve()
-        self.assertEquals(len(results), 9)
+        self.check_results(results, [
+            [('King', 0, 0)],
+            [('King', 0, 1)],
+            [('King', 0, 2)],
+            [('King', 1, 0)],
+            [('King', 1, 1)],
+            [('King', 1, 2)],
+            [('King', 2, 0)],
+            [('King', 2, 1)],
+            [('King', 2, 2)],
+        ])
 
     def test_wide_board(self):
         board = Chessboard(4, 1, king=1)
         results = board.solve()
-        self.assertEquals(len(results), 4)
+        self.check_results(results, [
+            [('King', 0, 0)],
+            [('King', 1, 0)],
+            [('King', 2, 0)],
+            [('King', 3, 0)],
+        ])
 
     def test_long_board(self):
         board = Chessboard(1, 4, king=1)
         results = board.solve()
-        self.assertEquals(len(results), 4)
+        self.check_results(results, [
+            [('King', 0, 0)],
+            [('King', 0, 1)],
+            [('King', 0, 2)],
+            [('King', 0, 3)],
+        ])
 
     def test_single_queen(self):
         board = Chessboard(3, 3, queen=1)
         results = board.solve()
-        self.assertEquals(len(results), 9)
+        self.check_results(results, [
+            [('Queen', 0, 0)],
+            [('Queen', 0, 1)],
+            [('Queen', 0, 2)],
+            [('Queen', 1, 0)],
+            [('Queen', 1, 1)],
+            [('Queen', 1, 2)],
+            [('Queen', 2, 0)],
+            [('Queen', 2, 1)],
+            [('Queen', 2, 2)],
+        ])
 
     def test_no_queen_solutions(self):
         board = Chessboard(3, 3, queen=2)
