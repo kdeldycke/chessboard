@@ -26,6 +26,10 @@ from __future__ import (
 from itertools import chain, izip_longest
 
 
+class ForbiddenPosition(Exception):
+    """ Raised when a piece is outside the board. """
+
+
 class Piece(object):
     """ A generic piece.
 
@@ -39,11 +43,20 @@ class Piece(object):
         self.x = x
         self.y = y
         self.board = board
+        self.validate_position()
 
     def __repr__(self):
         """ Display all relevant object internals. """
         return '<{}: x={}, y={}>'.format(
             self.__class__.__name__, self.x, self.y)
+
+    def validate_position(self, x=None, y=None):
+        """ Check if the piece lie within the board. """
+        x = self.x if x is None else x
+        y = self.y if y is None else y
+        if not(x >= 0 and x < self.board.length and
+               y >= 0 and y < self.board.height):
+            raise ForbiddenPosition
 
     @property
     def bottom_distance(self):
@@ -73,7 +86,7 @@ class Piece(object):
         """ Translate 2D coordinates to vector index. """
         target_x = self.x + x_shift
         target_y = self.y + y_shift
-        self.board.validate_position(target_x, target_y)
+        self.validate_position(target_x, target_y)
         vector_index = (target_y * self.board.length) + target_x
         return vector_index
 
@@ -104,7 +117,7 @@ class Piece(object):
             # Mark side positions as reachable if in the limit of the board.
             try:
                 target_position = self.translate(x_shift, y_shift)
-            except ValueError:
+            except ForbiddenPosition:
                 continue
             vector[target_position] = True
 

@@ -55,21 +55,3 @@ class TestSolver(unittest.TestCase):
         board = Chessboard(3, 3, queen=2)
         results = board.solve()
         self.assertEquals(len(results), 0)
-
-
-class TestBoard(unittest.TestCase):
-
-    def test_validate_position(self):
-        """ Test validation of 2D position. """
-        Board(3, 3).validate_position(0, 0)
-        Board(3, 3).validate_position(0, 2)
-        Board(3, 3).validate_position(2, 0)
-        Board(3, 3).validate_position(2, 2)
-        with self.assertRaises(ValueError):
-            Board(3, 3).validate_position(-1, 0)
-        with self.assertRaises(ValueError):
-            Board(3, 3).validate_position(0, -1)
-        with self.assertRaises(ValueError):
-            Board(3, 3).validate_position(0, 3)
-        with self.assertRaises(ValueError):
-            Board(3, 3).validate_position(3, 0)

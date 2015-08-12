@@ -23,6 +23,7 @@ from __future__ import (unicode_literals, print_function, absolute_import,
 import unittest
 
 from chessboard import Board, King, Queen
+from chessboard.pieces import ForbiddenPosition
 
 
 class TestKing(unittest.TestCase):
@@ -35,10 +36,14 @@ class TestKing(unittest.TestCase):
         self.assertEquals(King(Board(3, 3), 2, 2).translate(), 8)
 
     def test_translate_error(self):
-        with self.assertRaises(ValueError):
-            King(Board(3, 3), 0, 5).translate()
-        with self.assertRaises(ValueError):
-            King(Board(3, 3), 5, 0).translate()
+        with self.assertRaises(ForbiddenPosition):
+            King(Board(3, 3), -1, 0).translate()
+        with self.assertRaises(ForbiddenPosition):
+            King(Board(3, 3), 0, -1).translate()
+        with self.assertRaises(ForbiddenPosition):
+            King(Board(3, 3), 0, 3).translate()
+        with self.assertRaises(ForbiddenPosition):
+            King(Board(3, 3), 3, 0).translate()
 
     def test_territory(self):
         """ Test computation of territory at each positions of a 3x3 board.

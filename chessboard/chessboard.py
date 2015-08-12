@@ -205,11 +205,6 @@ class Board(object):
             for y in range(0, self.height - 1):
                 yield x, y
 
-    def validate_position(self, x, y):
-        """ Check if a 2D position is within the board. """
-        if not(x >= 0 and x < self.length and y >= 0 and y < self.height):
-            raise ValueError
-
     def add(self, piece_kind, x, y):
         """ Add a piece to the board. """
         # Create a new instance of the piece.
