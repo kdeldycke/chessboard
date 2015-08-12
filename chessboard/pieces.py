@@ -56,7 +56,9 @@ class Piece(object):
         y = self.y if y is None else y
         if not(x >= 0 and x < self.board.length and
                y >= 0 and y < self.board.height):
-            raise ForbiddenPosition
+            raise ForbiddenPosition(
+                "x={}, y={} outside of {}x{} board.".format(
+                    x, y, self.board.length, self.board.height))
 
     @property
     def bottom_distance(self):
