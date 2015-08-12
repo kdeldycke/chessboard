@@ -22,7 +22,7 @@ from __future__ import (unicode_literals, print_function, absolute_import,
 
 import unittest
 
-from chessboard import Chessboard, Board
+from chessboard import Chessboard, Board, ForbiddenPosition
 
 
 class TestChessboard(unittest.TestCase):

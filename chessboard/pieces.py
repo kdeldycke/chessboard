@@ -25,9 +25,7 @@ from __future__ import (
 
 from itertools import chain, izip_longest
 
-
-class ForbiddenPosition(Exception):
-    """ Raised when a piece is outside the board. """
+from chessboard import ForbiddenPosition
 
 
 class Piece(object):
