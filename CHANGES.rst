@@ -2,7 +2,7 @@ ChangeLog
 =========
 
 
-0.3.1 (unreleased)
+0.4.0 (unreleased)
 ------------------
 
 * Add project status badges.
