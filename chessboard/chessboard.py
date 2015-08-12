@@ -84,7 +84,7 @@ class Chessboard(object):
         self.add(**pieces)
 
         # Solver metadata.
-        processing_time = None
+        self.processing_time = None
 
     def __repr__(self):
         """ Display all relevant object internals. """
