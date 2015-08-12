@@ -217,8 +217,8 @@ class Board(object):
         # board.
         territory = piece.territory
 
-        # Check that the piece's territory doesn't overlap the territory already
-        # reserved by other pieces.
+        # Check that the piece's territory doesn't overlap the territory
+        # already reserved by other pieces.
         overlap = filter(
             lambda square: square is True,
             map(and_, self.square_occupancy, territory))
