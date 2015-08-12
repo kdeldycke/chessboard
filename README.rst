@@ -4,6 +4,23 @@ Chessboard
 Python CLI to explore chessboard positions.
 
 
+.. image:: https://img.shields.io/travis/kdeldycke/chessboard/develop.svg?style=flat
+    :target: https://travis-ci.org/kdeldycke/chessboard
+    :alt: Unit-tests status
+.. image:: https://img.shields.io/coveralls/kdeldycke/chessboard/develop.svg?style=flat
+    :target: https://coveralls.io/r/kdeldycke/chessboard?branch=develop
+    :alt: Coverage Status
+.. image:: https://img.shields.io/requires/github/kdeldycke/chessboard/master.svg?style=flat
+    :target: https://requires.io/github/kdeldycke/chessboard/requirements/?branch=master
+    :alt: Requirements freshness
+.. image:: https://img.shields.io/scrutinizer/g/kdeldycke/chessboard.svg?style=flat
+    :target: https://scrutinizer-ci.com/g/kdeldycke/chessboard/?branch=develop
+    :alt: Code Quality
+.. image:: https://img.shields.io/pypi/l/chessboard.svg?style=flat
+    :target: https://www.gnu.org/licenses/gpl-2.0.html
+    :alt: Software license
+
+
 TODO
 ----
 

@@ -5,7 +5,7 @@ ChangeLog
 0.3.1 (unreleased)
 ------------------
 
-* No changes yet.
+* Add project status badges.
 
 
 0.3.0 (2015-08-12)
