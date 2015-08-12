@@ -49,7 +49,12 @@ import time
 from itertools import chain, permutations
 from operator import and_, or_
 
-from chessboard import ForbiddenIndex, Piece, pieces as piece_module
+from chessboard import (
+    ForbiddenIndex,
+    OccupiedPosition,
+    Piece,
+    pieces as piece_module
+)
 
 
 class Chessboard(object):
@@ -146,9 +151,9 @@ class Chessboard(object):
                     x, y = board.linear_position(vector_index)
                     # Try to place the piece on the board.
                     board.add(piece_kind, x, y)
-            # If one of the piece was not added to an allowed position try next
-            # permutation of positions.
-            except ValueError:
+            # If one of the piece can't be added because the territory is
+            # already occupied, throw the whole set and proceed to the next.
+            except OccupiedPosition:
                 continue
 
             # All pieces fits, save solution and proceeed to next permutation.
@@ -236,7 +241,7 @@ class Board(object):
             lambda square: square is True,
             map(and_, self.square_occupancy, territory))
         if overlap:
-            raise ValueError
+            raise OccupiedPosition
 
         # Mark the piece's territory as no longer available.
         self.pieces.append(piece)

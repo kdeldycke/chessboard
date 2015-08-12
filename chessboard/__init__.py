@@ -31,6 +31,10 @@ class ForbiddenIndex(Exception):
     """ Raised when a linear index of a square is out of board's bounds. """
 
 
+class OccupiedPosition(Exception):
+    """ Raised when we try to add a piece to an occupied position. """
+
+
 # Expose important classes to the root of the module.
 from pieces import Piece, King, Queen
 from chessboard import Chessboard, Board
