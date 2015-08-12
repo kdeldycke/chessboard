@@ -9,6 +9,7 @@ ChangeLog
 * Enable continuous integration metrics: build status, coverage and code
   quality.
 * Fix index to position computation in non-square boards.
+* Remove restriction on board dimensions.
 
 
 0.3.0 (2015-08-12)

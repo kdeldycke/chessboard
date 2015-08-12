@@ -56,10 +56,9 @@ class Chessboard(object):
     """ Initialize a chessboard context.
 
     TODO: This initialization code belongs to the CLI domain really.
-    """
 
-    # Restrict dimension since we haven't benchmarked the perforances yet.
-    MAX_DIMENSION = 3
+    TODO: or rename to solver instead.
+    """
 
     # List of recognized pieces.
     PIECE_TYPES = frozenset([
@@ -76,8 +75,8 @@ class Chessboard(object):
         self.height = height
         assert isinstance(self.length, int)
         assert isinstance(self.height, int)
-        assert self.MAX_DIMENSION >= self.length > 0
-        assert self.MAX_DIMENSION >= self.height > 0
+        assert self.length > 0
+        assert self.height > 0
 
         # Store the number of pieces on the board.
         self.pieces = {}
@@ -169,17 +168,14 @@ class Board(object):
         * directly reachable by another piece.
     """
 
-    # Restrict dimension since we haven't benchmarked the perforances yet.
-    MAX_DIMENSION = Chessboard.MAX_DIMENSION
-
     def __init__(self, length, height):
         """ Initialize board dimensions. """
         self.length = length
         self.height = height
         assert isinstance(self.length, int)
         assert isinstance(self.height, int)
-        assert self.MAX_DIMENSION >= self.length > 0
-        assert self.MAX_DIMENSION >= self.height > 0
+        assert self.length > 0
+        assert self.height > 0
 
         # Initialize board states. This is a linear list of bolean flags
         # indicating if a square on the board is available or not.
