@@ -80,8 +80,12 @@ class Chessboard(object):
         assert self.MAX_DIMENSION >= self.height > 0
 
         # Store the number of pieces on the board.
-        self.pieces = dict.fromkeys(self.PIECE_TYPES, 0)
-        self.add(**pieces)
+        self.pieces = {}
+        for kind, quantity in pieces.items():
+            assert kind in self.PIECE_TYPES
+            assert isinstance(quantity, int)
+            assert quantity >= 0
+            self.pieces[kind] = quantity
 
         # Solver metadata.
         self.processing_time = None
@@ -90,14 +94,6 @@ class Chessboard(object):
         """ Display all relevant object internals. """
         return '<Chessboard: length={}, height={}, pieces={}>'.format(
             self.length, self.height, self.pieces)
-
-    def add(self, **pieces):
-        """ Add an arbitrary number of pieces to the board. """
-        for kind, quantity in pieces.items():
-            assert kind in self.PIECE_TYPES
-            assert isinstance(quantity, int)
-            assert quantity >= 0
-            self.pieces[kind] += quantity
 
     @property
     def vector_size(self):
