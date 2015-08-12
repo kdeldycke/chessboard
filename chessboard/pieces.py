@@ -33,49 +33,51 @@ class Piece(object):
     y: vertical position of the piece.
     """
 
-    def __init__(self, x, y):
-        """ Initialize the piece at the (x, y) coordinates of the board. """
+    def __init__(self, board, x, y):
+        """ Place the piece at the (x, y) coordinates of the provided board.
+        """
         self.x = x
         self.y = y
+        self.board = board
 
     def __repr__(self):
         """ Display all relevant object internals. """
         return '<{}: x={}, y={}>'.format(
             self.__class__.__name__, self.x, self.y)
 
-    def bottom_distance(self, board):
+    def bottom_distance(self):
         """ Number of squares separating the piece from the bottom of the board.
         """
-        return board.height - 1 - self.y
+        return self.board.height - 1 - self.y
 
-    def right_distance(self, board):
+    def right_distance(self):
         """ Number of squares separating the piece from the right of the board.
         """
-        return board.length - 1 - self.x
+        return self.board.length - 1 - self.x
 
-    def top_distance(self, board):
+    def top_distance(self):
         """ Number of squares separating the piece from the top of the board.
         """
         return self.y
 
-    def left_distance(self, board):
+    def left_distance(self):
         """ Number of squares separating the piece from the left of the board.
         """
         return self.x
 
-    def translate(self, board, x_shift=0, y_shift=0):
+    def translate(self, x_shift=0, y_shift=0):
         """ Translate 2D coordinates to vector index. """
         target_x = self.x + x_shift
         target_y = self.y + y_shift
-        board.validate_position(target_x, target_y)
-        vector_index = (target_y * board.length) + target_x
+        self.board.validate_position(target_x, target_y)
+        vector_index = (target_y * self.board.length) + target_x
         return vector_index
 
-    def movements(self, board):
+    def movements(self):
         """ Return list of relative movements allowed. """
         raise NotImplementedError
 
-    def territory(self, board):
+    def territory(self):
         """ given a position on the checkboard, give a vector
         of places the king is allowed to occupy.
 
@@ -83,19 +85,19 @@ class Piece(object):
         y: vertical position of the king
         """
         # Initialize the square occupancy vector of the board.
-        vector = [False] * board.length * board.height
+        vector = [False] * self.board.length * self.board.height
 
         # Translate (x, y) coordinates to linear position.
-        current_position = (self.y * board.length) + self.x
+        current_position = (self.y * self.board.length) + self.x
 
         # Mark current position as occupied.
         vector[current_position] = True
 
         # List all places reacheable by the piece from its current position.
-        for x_shift, y_shift in self.movements(board):
+        for x_shift, y_shift in self.movements():
             # Mark side positions as reachable if in the limit of the board.
             try:
-                target_position = self.translate(board, x_shift, y_shift)
+                target_position = self.translate(x_shift, y_shift)
             except ValueError:
                 continue
             vector[target_position] = True
@@ -106,7 +108,7 @@ class Piece(object):
 class King(Piece):
     """ King model. """
 
-    def movements(self, board):
+    def movements(self):
         """ King moves one square in any direction. """
         return set([
             # Horizontal movements.
@@ -121,23 +123,23 @@ class King(Piece):
 class Queen(Piece):
     """ Queen model. """
 
-    def movements(self, board):
+    def movements(self):
         """ Queen moves unrestricted vertically, horizontally and diagonally.
         """
         horizontal_shifts = izip_longest(map(
-            lambda i: i - self.x, range(board.length)), [], fillvalue=0)
+            lambda i: i - self.x, range(self.board.length)), [], fillvalue=0)
 
         vertical_shifts = izip_longest([], map(
-            lambda i: i - self.y, range(board.height)), fillvalue=0)
+            lambda i: i - self.y, range(self.board.height)), fillvalue=0)
 
         left_top_shifts = map(lambda i: (-(i+1), -(i+1)), range(min(
-            self.left_distance(board), self.top_distance(board))))
+            self.left_distance(), self.top_distance())))
         left_bottom_shifts = map(lambda i: (-(i+1), +(i+1)), range(min(
-            self.left_distance(board), self.bottom_distance(board))))
+            self.left_distance(), self.bottom_distance())))
         right_top_shifts = map(lambda i: (+(i+1), -(i+1)), range(min(
-            self.right_distance(board), self.top_distance(board))))
+            self.right_distance(), self.top_distance())))
         right_bottom_shifts = map(lambda i: (+(i+1), +(i+1)), range(min(
-            self.right_distance(board), self.bottom_distance(board))))
+            self.right_distance(), self.bottom_distance())))
 
         shifts = set(chain(
             horizontal_shifts, vertical_shifts,

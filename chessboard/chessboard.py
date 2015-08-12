@@ -151,9 +151,8 @@ class Chessboard(object):
                     # Translate linear index to 2D dimension.
                     x = int(vector_index / self.length)
                     y = int(vector_index % self.height)
-                    # Try to place the piece.
-                    klass = getattr(piece_module, piece_kind.title())
-                    board.add(klass(x, y))
+                    # Try to place the piece on the board.
+                    board.add(piece_kind, x, y)
             # If one of the piece was not added to an allowed position try next
             # permutation of positions.
             except ValueError:
@@ -211,13 +210,17 @@ class Board(object):
         if not(x >= 0 and x < self.length and y >= 0 and y < self.height):
             raise ValueError
 
-    def add(self, piece):
+    def add(self, piece_kind, x, y):
         """ Add a piece to the board. """
-        assert issubclass(piece.__class__, Piece)
+        # Create a new instance of the piece.
+        klass_name = piece_kind.title()
+        klass = getattr(piece_module, klass_name)
+        assert issubclass(klass, Piece)
+        piece = klass(self, x, y)
 
         # Get piece's occupied and reachable territory in the context of the
         # board.
-        territory = piece.territory(self)
+        territory = piece.territory()
 
         # Check that the piece's territory doesn't overlap the territory already
         # reserved by other pieces.
