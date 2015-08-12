@@ -45,21 +45,25 @@ class Piece(object):
         return '<{}: x={}, y={}>'.format(
             self.__class__.__name__, self.x, self.y)
 
+    @property
     def bottom_distance(self):
         """ Number of squares separating the piece from the bottom of the board.
         """
         return self.board.height - 1 - self.y
 
+    @property
     def right_distance(self):
         """ Number of squares separating the piece from the right of the board.
         """
         return self.board.length - 1 - self.x
 
+    @property
     def top_distance(self):
         """ Number of squares separating the piece from the top of the board.
         """
         return self.y
 
+    @property
     def left_distance(self):
         """ Number of squares separating the piece from the left of the board.
         """
@@ -73,10 +77,12 @@ class Piece(object):
         vector_index = (target_y * self.board.length) + target_x
         return vector_index
 
+    @property
     def movements(self):
         """ Return list of relative movements allowed. """
         raise NotImplementedError
 
+    @property
     def territory(self):
         """ given a position on the checkboard, give a vector
         of places the king is allowed to occupy.
@@ -94,7 +100,7 @@ class Piece(object):
         vector[current_position] = True
 
         # List all places reacheable by the piece from its current position.
-        for x_shift, y_shift in self.movements():
+        for x_shift, y_shift in self.movements:
             # Mark side positions as reachable if in the limit of the board.
             try:
                 target_position = self.translate(x_shift, y_shift)
@@ -108,6 +114,7 @@ class Piece(object):
 class King(Piece):
     """ King model. """
 
+    @property
     def movements(self):
         """ King moves one square in any direction. """
         return set([
@@ -123,6 +130,7 @@ class King(Piece):
 class Queen(Piece):
     """ Queen model. """
 
+    @property
     def movements(self):
         """ Queen moves unrestricted vertically, horizontally and diagonally.
         """
@@ -133,13 +141,13 @@ class Queen(Piece):
             lambda i: i - self.y, range(self.board.height)), fillvalue=0)
 
         left_top_shifts = map(lambda i: (-(i+1), -(i+1)), range(min(
-            self.left_distance(), self.top_distance())))
+            self.left_distance, self.top_distance)))
         left_bottom_shifts = map(lambda i: (-(i+1), +(i+1)), range(min(
-            self.left_distance(), self.bottom_distance())))
+            self.left_distance, self.bottom_distance)))
         right_top_shifts = map(lambda i: (+(i+1), -(i+1)), range(min(
-            self.right_distance(), self.top_distance())))
+            self.right_distance, self.top_distance)))
         right_bottom_shifts = map(lambda i: (+(i+1), +(i+1)), range(min(
-            self.right_distance(), self.bottom_distance())))
+            self.right_distance, self.bottom_distance)))
 
         shifts = set(chain(
             horizontal_shifts, vertical_shifts,

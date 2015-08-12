@@ -43,42 +43,42 @@ class TestKing(unittest.TestCase):
     def test_territory(self):
         """ Test computation of territory at each positions of a 3x3 board.
         """
-        self.assertEquals(King(Board(3, 3), 1, 1).territory(), [
+        self.assertEquals(King(Board(3, 3), 1, 1).territory, [
              True,  True,  True,
              True,  True,  True,
              True,  True,  True,
         ])
-        self.assertEquals(King(Board(3, 3), 0, 0).territory(), [
+        self.assertEquals(King(Board(3, 3), 0, 0).territory, [
              True,  True, False,
              True,  True, False,
             False, False, False,
         ])
-        self.assertEquals(King(Board(3, 3), 1, 0).territory(), [
+        self.assertEquals(King(Board(3, 3), 1, 0).territory, [
              True,  True,  True,
              True,  True,  True,
             False, False, False,
         ])
-        self.assertEquals(King(Board(3, 3), 2, 0).territory(), [
+        self.assertEquals(King(Board(3, 3), 2, 0).territory, [
             False,  True,  True,
             False,  True,  True,
             False, False, False,
         ])
-        self.assertEquals(King(Board(3, 3), 2, 1).territory(), [
+        self.assertEquals(King(Board(3, 3), 2, 1).territory, [
             False,  True,  True,
             False,  True,  True,
             False,  True,  True,
         ])
-        self.assertEquals(King(Board(3, 3), 2, 2).territory(), [
+        self.assertEquals(King(Board(3, 3), 2, 2).territory, [
             False, False, False,
             False,  True,  True,
             False,  True,  True,
         ])
-        self.assertEquals(King(Board(3, 3), 1, 2).territory(), [
+        self.assertEquals(King(Board(3, 3), 1, 2).territory, [
             False, False, False,
              True,  True,  True,
              True,  True,  True,
         ])
-        self.assertEquals(King(Board(3, 3), 0, 2).territory(), [
+        self.assertEquals(King(Board(3, 3), 0, 2).territory, [
             False, False, False,
              True,  True, False,
              True,  True, False,
@@ -90,42 +90,42 @@ class TestQueen(unittest.TestCase):
     def test_territory(self):
         """ Test computation of territory at each positions of a 3x3 board.
         """
-        self.assertEquals(Queen(Board(3, 3), 1, 1).territory(), [
+        self.assertEquals(Queen(Board(3, 3), 1, 1).territory, [
              True,  True,  True,
              True,  True,  True,
              True,  True,  True,
         ])
-        self.assertEquals(Queen(Board(3, 3), 0, 0).territory(), [
+        self.assertEquals(Queen(Board(3, 3), 0, 0).territory, [
              True,  True,  True,
              True,  True, False,
              True, False,  True,
         ])
-        self.assertEquals(Queen(Board(3, 3), 1, 0).territory(), [
+        self.assertEquals(Queen(Board(3, 3), 1, 0).territory, [
              True,  True,  True,
              True,  True,  True,
             False,  True, False,
         ])
-        self.assertEquals(Queen(Board(3, 3), 2, 0).territory(), [
+        self.assertEquals(Queen(Board(3, 3), 2, 0).territory, [
              True,  True,  True,
             False,  True,  True,
              True, False,  True,
         ])
-        self.assertEquals(Queen(Board(3, 3), 2, 1).territory(), [
+        self.assertEquals(Queen(Board(3, 3), 2, 1).territory, [
             False,  True,  True,
              True,  True,  True,
             False,  True,  True,
         ])
-        self.assertEquals(Queen(Board(3, 3), 2, 2).territory(), [
+        self.assertEquals(Queen(Board(3, 3), 2, 2).territory, [
              True, False,  True,
             False,  True,  True,
              True,  True,  True,
         ])
-        self.assertEquals(Queen(Board(3, 3), 1, 2).territory(), [
+        self.assertEquals(Queen(Board(3, 3), 1, 2).territory, [
             False,  True, False,
              True,  True,  True,
              True,  True,  True,
         ])
-        self.assertEquals(Queen(Board(3, 3), 0, 2).territory(), [
+        self.assertEquals(Queen(Board(3, 3), 0, 2).territory, [
              True, False,  True,
              True,  True, False,
              True,  True,  True,

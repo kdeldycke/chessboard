@@ -220,7 +220,7 @@ class Board(object):
 
         # Get piece's occupied and reachable territory in the context of the
         # board.
-        territory = piece.territory()
+        territory = piece.territory
 
         # Check that the piece's territory doesn't overlap the territory already
         # reserved by other pieces.
