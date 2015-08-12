@@ -21,12 +21,6 @@ Python CLI to explore chessboard positions.
     :alt: Software license
 
 
-TODO
-----
-
-* Make algorithm faster and smarter.
-
-
 Development philosophy
 ----------------------
 
