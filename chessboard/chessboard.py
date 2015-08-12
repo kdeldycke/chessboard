@@ -49,8 +49,7 @@ import time
 from itertools import chain, permutations
 from operator import and_, or_
 
-from chessboard import Piece
-from chessboard import pieces as piece_module
+from chessboard import Piece, pieces as piece_module
 
 
 class Chessboard(object):
