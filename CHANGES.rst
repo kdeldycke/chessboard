@@ -2,7 +2,7 @@ ChangeLog
 =========
 
 
-0.4.0 (unreleased)
+0.4.0 (2015-08-123)
 ------------------
 
 * Add project status badges.
