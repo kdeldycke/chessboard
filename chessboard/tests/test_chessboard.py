@@ -133,6 +133,28 @@ class TestSolver(unittest.TestCase):
             [('King', 0, 2), ('King', 2, 2), ('Rook', 1, 0)],
         ])
 
+    def test_two_rooks_four_knights(self):
+        board = Chessboard(4, 4, rook=2, knight=4)
+        results = board.solve()
+        self.check_results(results, [
+            [('Rook', 0, 3), ('Rook', 2, 1),
+             ('Knight', 1, 0), ('Knight', 3, 0), ('Knight', 1, 2), ('Knight', 3, 2)],
+            [('Rook', 0, 1), ('Rook', 2, 3),
+             ('Knight', 1, 0), ('Knight', 3, 0), ('Knight', 1, 2), ('Knight', 3, 2)],
+            [('Rook', 0, 0), ('Rook', 2, 2),
+             ('Knight', 1, 1), ('Knight', 3, 1), ('Knight', 1, 3), ('Knight', 3, 3)],
+            [('Rook', 0, 2), ('Rook', 2, 0),
+             ('Knight', 1, 1), ('Knight', 3, 1), ('Knight', 1, 3), ('Knight', 3, 3)],
+            [('Rook', 1, 0), ('Rook', 3, 2),
+             ('Knight', 0, 1), ('Knight', 2, 1), ('Knight', 0, 3), ('Knight', 2, 3)],
+            [('Rook', 3, 0), ('Rook', 1, 2),
+             ('Knight', 0, 1), ('Knight', 2, 1), ('Knight', 0, 3), ('Knight', 2, 3)],
+            [('Rook', 1, 3), ('Rook', 3, 1),
+             ('Knight', 0, 0), ('Knight', 2, 0), ('Knight', 0, 2), ('Knight', 2, 2)],
+            [('Rook', 1, 1), ('Rook', 3, 3),
+             ('Knight', 0, 0), ('Knight', 2, 0), ('Knight', 0, 2), ('Knight', 2, 2)],
+       ])
+
 
 class TestBoard(unittest.TestCase):
 

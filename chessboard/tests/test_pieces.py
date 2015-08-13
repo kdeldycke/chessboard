@@ -234,3 +234,54 @@ class TestBishop(unittest.TestCase):
              True, False, False,
             False,  True, False,
         ])
+
+
+class TestKnight(unittest.TestCase):
+
+    def test_territory(self):
+        """ Test computation of territory at each positions of a 3x3 board. """
+        self.assertEquals(Knight(Board(3, 3), 1, 1).territory, [
+            False, False, False,
+            False,  True, False,
+            False, False, False,
+        ])
+        self.assertEquals(Knight(Board(3, 3), 0, 0).territory, [
+             True, False, False,
+            False, False,  True,
+            False,  True, False,
+        ])
+        self.assertEquals(Knight(Board(3, 3), 1, 0).territory, [
+            False,  True, False,
+            False, False, False,
+             True, False,  True,
+        ])
+        self.assertEquals(Knight(Board(3, 3), 2, 0).territory, [
+            False, False,  True,
+             True, False, False,
+            False,  True, False,
+        ])
+        self.assertEquals(Knight(Board(3, 3), 2, 1).territory, [
+             True, False, False,
+            False, False,  True,
+             True, False, False,
+        ])
+        self.assertEquals(Knight(Board(3, 3), 2, 2).territory, [
+            False,  True, False,
+             True, False, False,
+            False, False,  True,
+         ])
+        self.assertEquals(Knight(Board(3, 3), 1, 2).territory, [
+             True, False,  True,
+            False, False, False,
+            False,  True, False,
+        ])
+        self.assertEquals(Knight(Board(3, 3), 0, 2).territory, [
+            False,  True, False,
+            False, False,  True,
+             True, False, False,
+        ])
+        self.assertEquals(Knight(Board(3, 3), 0, 1).territory, [
+            False, False,  True,
+             True, False, False,
+            False, False,  True,
+        ])
