@@ -155,6 +155,11 @@ class TestSolver(unittest.TestCase):
              ('Knight', 0, 0), ('Knight', 2, 0), ('Knight', 0, 2), ('Knight', 2, 2)],
        ])
 
+    @unittest.skip("Solver too slow")
+    def test_big_family(self):
+        board = Chessboard(7, 7, king=2, queen=2, bishop=2, knight=1)
+        results = board.solve()
+
 
 class TestBoard(unittest.TestCase):
 
