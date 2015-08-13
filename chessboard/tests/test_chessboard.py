@@ -126,6 +126,12 @@ class TestSolver(unittest.TestCase):
 
 class TestBoard(unittest.TestCase):
 
+    def test_all_positions(self):
+        self.assertEquals(list(Board(3, 3).positions), [
+            (0, 0), (1, 0), (2, 0),
+            (0, 1), (1, 1), (2, 1),
+            (0, 2), (1, 2), (2, 2)])
+
     def test_coord_to_index(self):
         self.assertEquals(Board(3, 3).coordinates_to_index(0, 0), 0)
         self.assertEquals(Board(3, 3).coordinates_to_index(1, 1), 4)

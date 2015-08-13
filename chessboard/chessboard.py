@@ -208,8 +208,8 @@ class Board(object):
     @property
     def positions(self):
         """ Generator producing all 2D positions of all squares. """
-        for x in range(0, self.length - 1):
-            for y in range(0, self.height - 1):
+        for y in range(self.height):
+            for x in range(self.length):
                 yield x, y
 
     def new_vector(self):
