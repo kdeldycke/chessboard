@@ -5,7 +5,7 @@ ChangeLog
 0.7.0 (unreleased)
 ------------------
 
-* No changes yet.
+* Display results in unicode-art.
 
 
 0.6.0 (2015-08-14)

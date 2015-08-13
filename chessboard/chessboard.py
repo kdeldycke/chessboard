@@ -203,6 +203,33 @@ class Board(object):
         return '<Board: length={}, height={}, size={}, pieces={}>'.format(
             self.length, self.height, self.size, self.pieces)
 
+    def __str__(self):
+        """ Render the board with pieces in Unicode-art. """
+        lines = []
+
+        # Draw top line.
+        lines.append((('┬───' * self.length) + '┐').replace('┬', '┌', 1))
+
+        # Draw each line.
+        for y in range(self.height):
+
+            # Draw line with the pieces.
+            l = ''
+            for x in range(self.length):
+                piece = self.get(x, y)
+                l += '│ {} '.format(piece.symbol if piece else ' ')
+            lines.append(l + '│')
+
+            # Draw line separator but the last one.
+            if y < (self.height -1):
+                lines.append(
+                    (('┼───' * self.length) + '┤').replace('┼', '├', 1))
+
+        # Draw bottom line.
+        lines.append((('┴───' * self.length) + '┘').replace('┴', '└', 1))
+
+        return '\n'.join(lines)
+
     @property
     def size(self):
         """ Return the number of squares in the board. """
@@ -287,3 +314,9 @@ class Board(object):
         self.pieces.append(piece)
         self.occupancy[piece.index] = True
         self.exposed_territory = map(or_, self.exposed_territory, territory)
+
+    def get(self, x, y):
+        """ Return piece placed at the provided coordinates. """
+        for piece in self.pieces:
+            if (piece.x, piece.y) == (x, y):
+                return piece

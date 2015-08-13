@@ -151,6 +151,8 @@ class Piece(object):
 class King(Piece):
     """ King model. """
 
+    symbol = '♚'
+
     @property
     def movements(self):
         """ King moves one square in any direction.
@@ -171,6 +173,8 @@ class King(Piece):
 class Queen(Piece):
     """ Queen model. """
 
+    symbol = '♛'
+
     @property
     def movements(self):
         """ Queen moves unrestricted horizontally, vertically and diagonally.
@@ -181,6 +185,8 @@ class Queen(Piece):
 class Rook(Piece):
     """ Rook model. """
 
+    symbol = '♜'
+
     @property
     def movements(self):
         """ Rook moves unrestricted horizontally and vertically. """
@@ -190,6 +196,8 @@ class Rook(Piece):
 class Bishop(Piece):
     """ Bishop model. """
 
+    symbol = '♝'
+
     @property
     def movements(self):
         """ Bishop moves unrestricted diagonally. """
@@ -198,6 +206,8 @@ class Bishop(Piece):
 
 class Knight(Piece):
     """ Knight model. """
+
+    symbol = '♞'
 
     @property
     def movements(self):
