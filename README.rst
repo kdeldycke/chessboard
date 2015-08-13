@@ -6,7 +6,7 @@ Python CLI to explore chessboard positions.
 .. image:: https://img.shields.io/travis/kdeldycke/chessboard/develop.svg?style=flat
     :target: https://travis-ci.org/kdeldycke/chessboard
     :alt: Unit-tests status
-.. image:: https://img.shields.io/coveralls/kdeldycke/chessboard/develop.svg?style=flat
+.. image:: https://coveralls.io/repos/kdeldycke/chessboard/badge.svg?branch=develop&service=github
     :target: https://coveralls.io/r/kdeldycke/chessboard?branch=develop
     :alt: Coverage Status
 .. image:: https://img.shields.io/requires/github/kdeldycke/chessboard/master.svg?style=flat
