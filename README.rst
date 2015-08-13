@@ -50,8 +50,11 @@ Usage
       -l, --length INTEGER  Length of the board.
       -h, --height INTEGER  Height of the board.
       -v, --verbose         Print much more debug statements.
+      --rook INTEGER        Number of rooks to add to the board.
       --king INTEGER        Number of kings to add to the board.
       --queen INTEGER       Number of queens to add to the board.
+      --bishop INTEGER      Number of bishops to add to the board.
+      --knight INTEGER      Number of knights to add to the board.
       --help                Show this message and exit.
 
 
