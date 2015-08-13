@@ -29,7 +29,6 @@ from chessboard import (
     Rook,
     Bishop,
     Knight,
-    ForbiddenPosition
 )
 
 
