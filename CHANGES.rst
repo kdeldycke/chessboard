@@ -2,7 +2,7 @@ ChangeLog
 =========
 
 
-0.5.0 (unreleased)
+0.5.0 (2015-08-13)
 ------------------
 
 * Add Rook and Bishop models.
