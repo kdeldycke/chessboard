@@ -2,7 +2,7 @@ ChangeLog
 =========
 
 
-0.6.0 (unreleased)
+0.6.0 (2015-08-14)
 ------------------
 
 * Add Knight model.
