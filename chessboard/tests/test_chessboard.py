@@ -119,9 +119,19 @@ class TestSolver(unittest.TestCase):
         ])
 
     def test_no_queen_solutions(self):
-        board = Chessboard(3, 3, queen=2)
+        board = Chessboard(3, 3, queen=3)
         results = board.solve()
         self.assertEquals(len(results), 0)
+
+    def test_two_kings_one_rook(self):
+        board = Chessboard(3, 3, king=2, rook=1)
+        results = board.solve()
+        self.check_results(results, [
+            [('King', 0, 0), ('King', 2, 0), ('Rook', 1, 2)],
+            [('King', 0, 0), ('King', 0, 2), ('Rook', 2, 1)],
+            [('King', 2, 0), ('King', 2, 2), ('Rook', 0, 1)],
+            [('King', 0, 2), ('King', 2, 2), ('Rook', 1, 0)],
+        ])
 
 
 class TestBoard(unittest.TestCase):

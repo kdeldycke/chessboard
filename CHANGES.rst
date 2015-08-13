@@ -6,6 +6,7 @@ ChangeLog
 ------------------
 
 * Add Rook and Bishop models.
+* Allow overlapping but non-threatening territory of pieces to co-exists.
 
 
 0.4.0 (2015-08-13)

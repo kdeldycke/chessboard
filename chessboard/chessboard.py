@@ -47,12 +47,14 @@ from __future__ import (
 
 import time
 from itertools import chain, permutations
-from operator import and_, or_
+from operator import and_, or_, truth
 
 from chessboard import (
     ForbiddenIndex,
     ForbiddenCoordinates,
     OccupiedPosition,
+    VulnerablePosition,
+    AttackablePiece,
     Piece,
     pieces as piece_module
 )
@@ -154,7 +156,7 @@ class Chessboard(object):
                     board.add(piece_kind, x, y)
             # If one of the piece can't be added because the territory is
             # already occupied, throw the whole set and proceed to the next.
-            except OccupiedPosition:
+            except (OccupiedPosition, VulnerablePosition, AttackablePiece):
                 continue
 
             # All pieces fits, save solution and proceeed to next permutation.
@@ -172,6 +174,9 @@ class Board(object):
     squares:
         * occupied by another piece;
         * directly reachable by another piece.
+
+    Internal states of the board is materialized by a vector. A vector is a
+    simple list of boolean for which each element represent a square.
     """
 
     def __init__(self, length, height):
@@ -183,12 +188,15 @@ class Board(object):
         assert self.length > 0
         assert self.height > 0
 
-        # Initialize board states. This is a linear list of boolean flags
-        # indicating if a square on the board is available or not.
-        self.square_occupancy = self.new_vector()
-
         # Store positionned pieces on the board.
         self.pieces = []
+
+        # Squares on the board already occupied by a piece.
+        self.occupancy = self.new_vector()
+
+        # Territory susceptible to attacke, i.e. squares reachable by at least
+        # a piece,
+        self.exposed_territory = self.new_vector()
 
     def __repr__(self):
         """ Display all relevant object internals. """
@@ -258,18 +266,24 @@ class Board(object):
         assert issubclass(klass, Piece)
         piece = klass(self, x, y)
 
-        # Get piece's occupied and reachable territory in the context of the
-        # board.
-        territory = piece.territory
+        # Try to place the piece on the board.
+        index = piece.index
 
-        # Check that the piece's territory doesn't overlap the territory
-        # already reserved by other pieces.
-        overlap = filter(
-            lambda square: square is True,
-            map(and_, self.square_occupancy, territory))
-        if overlap:
+        # Square already occupied by another piece.
+        if self.occupancy[index]:
             raise OccupiedPosition
 
-        # Mark the piece's territory as no longer available.
+        # Square reachable by another piece.
+        if self.exposed_territory[index]:
+            raise VulnerablePosition
+
+        # Check if a piece can attack another one from its position.
+        territory = piece.territory
+        if filter(truth, map(and_, self.occupancy, territory)):
+            raise AttackablePiece
+
+        # Mark the piece's territory as vulnerable and secure its position on
+        # the board.
         self.pieces.append(piece)
-        self.square_occupancy = map(or_, self.square_occupancy, territory)
+        self.occupancy[piece.index] = True
+        self.exposed_territory = map(or_, self.exposed_territory, territory)

@@ -24,15 +24,23 @@ __version__ = '0.5.0.dev'
 # Defines custom exception first to avoid circular imports.
 
 class ForbiddenCoordinates(Exception):
-    """ Raised when 2D (x, y) coordinates are out of board's bounds. """
+    """ A position given as 2D coordinates are out of board's bounds. """
 
 
 class ForbiddenIndex(Exception):
-    """ Raised when a linear index of a square is out of board's bounds. """
+    """ A position given as an index is out of board's bounds. """
 
 
 class OccupiedPosition(Exception):
-    """ Raised when we try to add a piece to an occupied position. """
+    """ A piece is added to a position already occupied by another. """
+
+
+class VulnerablePosition(Exception):
+    """ A piece is added to a position reachable by another. """
+
+
+class AttackablePiece(Exception):
+    """ A piece is added to a position from which it can attack another. """
 
 
 # Expose important classes to the root of the module.
