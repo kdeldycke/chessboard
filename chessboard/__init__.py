@@ -23,8 +23,8 @@ __version__ = '0.5.0.dev'
 
 # Defines custom exception first to avoid circular imports.
 
-class ForbiddenPosition(Exception):
-    """ Raised when a 2D (x, y) position is out of board's bounds. """
+class ForbiddenCoordinates(Exception):
+    """ Raised when 2D (x, y) coordinates are out of board's bounds. """
 
 
 class ForbiddenIndex(Exception):

@@ -25,7 +25,7 @@ from __future__ import (
 
 from itertools import chain, izip_longest
 
-from chessboard import ForbiddenPosition
+from chessboard import ForbiddenCoordinates
 
 
 class Piece(object):
@@ -137,7 +137,7 @@ class Piece(object):
             try:
                 reachable_index = self.board.coordinates_to_index(
                     self.x, self.y, x_shift, y_shift)
-            except ForbiddenPosition:
+            except ForbiddenCoordinates:
                 continue
             vector[reachable_index] = True
 

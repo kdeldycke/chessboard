@@ -51,7 +51,7 @@ from operator import and_, or_
 
 from chessboard import (
     ForbiddenIndex,
-    ForbiddenPosition,
+    ForbiddenCoordinates,
     OccupiedPosition,
     Piece,
     pieces as piece_module
@@ -228,7 +228,7 @@ class Board(object):
     def validate_coordinates(self, x, y):
         """ Check if the piece lie within the board. """
         if not(x >= 0 and x < self.length and y >= 0 and y < self.height):
-            raise ForbiddenPosition(
+            raise ForbiddenCoordinates(
                 "x={}, y={} outside of {}x{} board.".format(
                     x, y, self.length, self.height))
 

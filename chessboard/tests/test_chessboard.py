@@ -23,7 +23,7 @@ from __future__ import (unicode_literals, print_function, absolute_import,
 from operator import itemgetter
 import unittest
 
-from chessboard import Chessboard, Board, ForbiddenIndex, ForbiddenPosition
+from chessboard import Chessboard, Board, ForbiddenIndex, ForbiddenCoordinates
 
 
 class TestChessboard(unittest.TestCase):
@@ -132,13 +132,13 @@ class TestBoard(unittest.TestCase):
         self.assertEquals(Board(3, 3).coordinates_to_index(2, 2), 8)
 
     def test_translate_error(self):
-        with self.assertRaises(ForbiddenPosition):
+        with self.assertRaises(ForbiddenCoordinates):
             Board(3, 3).coordinates_to_index(-1, 0)
-        with self.assertRaises(ForbiddenPosition):
+        with self.assertRaises(ForbiddenCoordinates):
             Board(3, 3).coordinates_to_index(0, -1)
-        with self.assertRaises(ForbiddenPosition):
+        with self.assertRaises(ForbiddenCoordinates):
             Board(3, 3).coordinates_to_index(0, 3)
-        with self.assertRaises(ForbiddenPosition):
+        with self.assertRaises(ForbiddenCoordinates):
             Board(3, 3).coordinates_to_index(3, 0)
 
     def test_index_to_coord(self):
