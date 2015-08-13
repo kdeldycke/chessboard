@@ -51,6 +51,7 @@ from operator import and_, or_
 
 from chessboard import (
     ForbiddenIndex,
+    ForbiddenPosition,
     OccupiedPosition,
     Piece,
     pieces as piece_module
@@ -146,9 +147,9 @@ class Chessboard(object):
             board = Board(self.length, self.height)
 
             try:
-                for piece_kind, linear_position in pieces_set:
+                for piece_kind, index_position in pieces_set:
                     # Translate linear index to 2D dimension.
-                    x, y = board.linear_position(linear_position)
+                    x, y = board.index_to_coordinates(index_position)
                     # Try to place the piece on the board.
                     board.add(piece_kind, x, y)
             # If one of the piece can't be added because the territory is
@@ -182,9 +183,9 @@ class Board(object):
         assert self.length > 0
         assert self.height > 0
 
-        # Initialize board states. This is a linear list of bolean flags
+        # Initialize board states. This is a linear list of boolean flags
         # indicating if a square on the board is available or not.
-        self.square_occupancy = [False] * self.size
+        self.square_occupancy = self.new_vector()
 
         # Store positionned pieces on the board.
         self.pieces = []
@@ -194,14 +195,9 @@ class Board(object):
         return '<Board: length={}, height={}, size={}, pieces={}>'.format(
             self.length, self.height, self.size, self.pieces)
 
-    def all_positions(self):
-        """ Generator producing all positions. """
-        for x in range(0, self.length - 1):
-            for y in range(0, self.height - 1):
-                yield x, y
-
     @property
     def size(self):
+        """ Return the number of squares in the board. """
         return self.length * self.height
 
     @property
@@ -209,19 +205,50 @@ class Board(object):
         """ Returns an ordered list of linear indexes of all squares. """
         return range(self.size)
 
-    def validate_index(self, index):
-        """ Checks that a linear index of a square is within board's bounds.
+    @property
+    def positions(self):
+        """ Generator producing all 2D positions of all squares. """
+        for x in range(0, self.length - 1):
+            for y in range(0, self.height - 1):
+                yield x, y
+
+    def new_vector(self):
+        """ Returns a list of boolean flags of squares indexed linearly.
+
+        All states are initialized to False.
         """
+        return [False] * self.size
+
+    def validate_index(self, index):
+        """ Check that a linear index of a square is within board's bounds. """
         if index < 0 or index >= self.size:
             raise ForbiddenIndex("Linear index {} not in {}x{} board.".format(
                 index, self.length, self.height))
 
-    def linear_position(self, index):
-        """ Returns a set of 2D (x, y) coordinates from a linear index. """
+    def validate_coordinates(self, x, y):
+        """ Check if the piece lie within the board. """
+        if not(x >= 0 and x < self.length and y >= 0 and y < self.height):
+            raise ForbiddenPosition(
+                "x={}, y={} outside of {}x{} board.".format(
+                    x, y, self.length, self.height))
+
+    def index_to_coordinates(self, index):
+        """ Return a set of 2D (x, y) coordinates from a linear index. """
         self.validate_index(index)
         x = int(index % self.length)
         y = int((index - x) / self.length)
         return x, y
+
+    def coordinates_to_index(self, x, y, x_shift=0, y_shift=0):
+        """ Return a linear index from a set of 2D coordinates.
+
+        Optionnal vertical and horizontal shifts might be applied.
+        """
+        target_x = x + x_shift
+        target_y = y + y_shift
+        self.validate_coordinates(target_x, target_y)
+        index = (target_y * self.length) + target_x
+        return index
 
     def add(self, piece_kind, x, y):
         """ Add a piece to the board. """

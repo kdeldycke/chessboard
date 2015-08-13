@@ -41,22 +41,12 @@ class Piece(object):
         self.x = x
         self.y = y
         self.board = board
-        self.validate_position()
+        self.board.validate_coordinates(self.x, self.y)
 
     def __repr__(self):
         """ Display all relevant object internals. """
         return '<{}: x={}, y={}>'.format(
             self.__class__.__name__, self.x, self.y)
-
-    def validate_position(self, x=None, y=None):
-        """ Check if the piece lie within the board. """
-        x = self.x if x is None else x
-        y = self.y if y is None else y
-        if not(x >= 0 and x < self.board.length and
-               y >= 0 and y < self.board.height):
-            raise ForbiddenPosition(
-                "x={}, y={} outside of {}x{} board.".format(
-                    x, y, self.board.length, self.board.height))
 
     @property
     def bottom_distance(self):
@@ -81,14 +71,6 @@ class Piece(object):
         """ Number of squares separating the piece from the left of the board.
         """
         return self.x
-
-    def translate(self, x_shift=0, y_shift=0):
-        """ Translate 2D coordinates to vector index. """
-        target_x = self.x + x_shift
-        target_y = self.y + y_shift
-        self.validate_position(target_x, target_y)
-        vector_index = (target_y * self.board.length) + target_x
-        return vector_index
 
     @property
     def horizontals(self):
@@ -137,29 +119,27 @@ class Piece(object):
 
     @property
     def territory(self):
-        """ given a position on the checkboard, give a vector
-        of places the king is allowed to occupy.
+        """ Territory reachable by the piece from its current position.
 
-        x: horizontal position of the king
-        y: vertical position of the king
+        Returns a list of boolean flags of squares indexed linearly, for which
+        a True means the square is reachable.
         """
         # Initialize the square occupancy vector of the board.
-        vector = [False] * self.board.length * self.board.height
-
-        # Translate (x, y) coordinates to linear position.
-        current_position = (self.y * self.board.length) + self.x
+        vector = self.board.new_vector()
 
         # Mark current position as occupied.
-        vector[current_position] = True
+        current_index = self.board.coordinates_to_index(self.x, self.y)
+        vector[current_index] = True
 
         # List all places reacheable by the piece from its current position.
         for x_shift, y_shift in self.movements:
             # Mark side positions as reachable if in the limit of the board.
             try:
-                target_position = self.translate(x_shift, y_shift)
+                reachable_index = self.board.coordinates_to_index(
+                    self.x, self.y, x_shift, y_shift)
             except ForbiddenPosition:
                 continue
-            vector[target_position] = True
+            vector[reachable_index] = True
 
         return vector
 
@@ -169,7 +149,11 @@ class King(Piece):
 
     @property
     def movements(self):
-        """ King moves one square in any direction. """
+        """ King moves one square in any direction.
+
+        Don't mind out of bounds relative positions: forbidden one will be
+        silently discarded within the ``Piece.territory()`` method above.
+        """
         return set([
             # Horizontal movements.
             (+1, 0), (-1, 0),

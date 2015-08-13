@@ -23,7 +23,7 @@ from __future__ import (unicode_literals, print_function, absolute_import,
 from operator import itemgetter
 import unittest
 
-from chessboard import Chessboard, Board, ForbiddenIndex
+from chessboard import Chessboard, Board, ForbiddenIndex, ForbiddenPosition
 
 
 class TestChessboard(unittest.TestCase):
@@ -126,31 +126,46 @@ class TestSolver(unittest.TestCase):
 
 class TestBoard(unittest.TestCase):
 
-    def test_linear_position(self):
-        self.assertEquals(Board(3, 3).linear_position(0), (0, 0))
-        self.assertEquals(Board(3, 3).linear_position(1), (1, 0))
-        self.assertEquals(Board(3, 3).linear_position(2), (2, 0))
-        self.assertEquals(Board(3, 3).linear_position(3), (0, 1))
-        self.assertEquals(Board(3, 3).linear_position(4), (1, 1))
-        self.assertEquals(Board(3, 3).linear_position(5), (2, 1))
-        self.assertEquals(Board(3, 3).linear_position(6), (0, 2))
-        self.assertEquals(Board(3, 3).linear_position(7), (1, 2))
-        self.assertEquals(Board(3, 3).linear_position(8), (2, 2))
+    def test_coord_to_index(self):
+        self.assertEquals(Board(3, 3).coordinates_to_index(0, 0), 0)
+        self.assertEquals(Board(3, 3).coordinates_to_index(1, 1), 4)
+        self.assertEquals(Board(3, 3).coordinates_to_index(2, 2), 8)
 
-    def test_wide_linear_position(self):
-        self.assertEquals(Board(1, 4).linear_position(0), (0, 0))
-        self.assertEquals(Board(1, 4).linear_position(1), (0, 1))
-        self.assertEquals(Board(1, 4).linear_position(2), (0, 2))
-        self.assertEquals(Board(1, 4).linear_position(3), (0, 3))
+    def test_translate_error(self):
+        with self.assertRaises(ForbiddenPosition):
+            Board(3, 3).coordinates_to_index(-1, 0)
+        with self.assertRaises(ForbiddenPosition):
+            Board(3, 3).coordinates_to_index(0, -1)
+        with self.assertRaises(ForbiddenPosition):
+            Board(3, 3).coordinates_to_index(0, 3)
+        with self.assertRaises(ForbiddenPosition):
+            Board(3, 3).coordinates_to_index(3, 0)
 
-    def test_long_linear_position(self):
-        self.assertEquals(Board(4, 1).linear_position(0), (0, 0))
-        self.assertEquals(Board(4, 1).linear_position(1), (1, 0))
-        self.assertEquals(Board(4, 1).linear_position(2), (2, 0))
-        self.assertEquals(Board(4, 1).linear_position(3), (3, 0))
+    def test_index_to_coord(self):
+        self.assertEquals(Board(3, 3).index_to_coordinates(0), (0, 0))
+        self.assertEquals(Board(3, 3).index_to_coordinates(1), (1, 0))
+        self.assertEquals(Board(3, 3).index_to_coordinates(2), (2, 0))
+        self.assertEquals(Board(3, 3).index_to_coordinates(3), (0, 1))
+        self.assertEquals(Board(3, 3).index_to_coordinates(4), (1, 1))
+        self.assertEquals(Board(3, 3).index_to_coordinates(5), (2, 1))
+        self.assertEquals(Board(3, 3).index_to_coordinates(6), (0, 2))
+        self.assertEquals(Board(3, 3).index_to_coordinates(7), (1, 2))
+        self.assertEquals(Board(3, 3).index_to_coordinates(8), (2, 2))
 
-    def test_linear_position_error(self):
+    def test_wide_index_to_coord(self):
+        self.assertEquals(Board(1, 4).index_to_coordinates(0), (0, 0))
+        self.assertEquals(Board(1, 4).index_to_coordinates(1), (0, 1))
+        self.assertEquals(Board(1, 4).index_to_coordinates(2), (0, 2))
+        self.assertEquals(Board(1, 4).index_to_coordinates(3), (0, 3))
+
+    def test_long_index_to_coord(self):
+        self.assertEquals(Board(4, 1).index_to_coordinates(0), (0, 0))
+        self.assertEquals(Board(4, 1).index_to_coordinates(1), (1, 0))
+        self.assertEquals(Board(4, 1).index_to_coordinates(2), (2, 0))
+        self.assertEquals(Board(4, 1).index_to_coordinates(3), (3, 0))
+
+    def test_index_to_coord_error(self):
         with self.assertRaises(ForbiddenIndex):
-            Board(3, 3).linear_position(-1)
+            Board(3, 3).index_to_coordinates(-1)
         with self.assertRaises(ForbiddenIndex):
-            Board(3, 3).linear_position(9)
+            Board(3, 3).index_to_coordinates(9)

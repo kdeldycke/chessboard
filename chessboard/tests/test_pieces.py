@@ -35,22 +35,6 @@ from chessboard import (
 
 class TestKing(unittest.TestCase):
 
-    def test_translate(self):
-        """ Test computation of translation and position conversion. """
-        self.assertEquals(King(Board(3, 3), 0, 0).translate(), 0)
-        self.assertEquals(King(Board(3, 3), 1, 1).translate(), 4)
-        self.assertEquals(King(Board(3, 3), 2, 2).translate(), 8)
-
-    def test_translate_error(self):
-        with self.assertRaises(ForbiddenPosition):
-            King(Board(3, 3), -1, 0).translate()
-        with self.assertRaises(ForbiddenPosition):
-            King(Board(3, 3), 0, -1).translate()
-        with self.assertRaises(ForbiddenPosition):
-            King(Board(3, 3), 0, 3).translate()
-        with self.assertRaises(ForbiddenPosition):
-            King(Board(3, 3), 3, 0).translate()
-
     def test_territory(self):
         """ Test computation of territory at each positions of a 3x3 board. """
         self.assertEquals(King(Board(3, 3), 1, 1).territory, [
