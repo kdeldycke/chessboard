@@ -45,8 +45,13 @@ class Piece(object):
 
     def __repr__(self):
         """ Display all relevant object internals. """
-        return '<{}: x={}, y={}>'.format(
-            self.__class__.__name__, self.x, self.y)
+        return '<{}: x={}, y={}; index={}>'.format(
+            self.__class__.__name__, self.x, self.y, self.index)
+
+    @property
+    def index(self):
+        """ Return current linear index of the piece on the board. """
+        return self.board.coordinates_to_index(self.x, self.y)
 
     @property
     def bottom_distance(self):
@@ -127,9 +132,8 @@ class Piece(object):
         # Initialize the square occupancy vector of the board.
         vector = self.board.new_vector()
 
-        # Mark current position as occupied.
-        current_index = self.board.coordinates_to_index(self.x, self.y)
-        vector[current_index] = True
+        # Mark current position as reachable.
+        vector[self.index] = True
 
         # List all places reacheable by the piece from its current position.
         for x_shift, y_shift in self.movements:
