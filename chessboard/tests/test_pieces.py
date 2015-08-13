@@ -22,14 +22,21 @@ from __future__ import (unicode_literals, print_function, absolute_import,
 
 import unittest
 
-from chessboard import Board, King, Queen, ForbiddenPosition
+from chessboard import (
+    Board,
+    King,
+    Queen,
+    Rook,
+    Bishop,
+    Knight,
+    ForbiddenPosition
+)
 
 
 class TestKing(unittest.TestCase):
 
     def test_translate(self):
-        """ Test computation of translation and position conversion.
-        """
+        """ Test computation of translation and position conversion. """
         self.assertEquals(King(Board(3, 3), 0, 0).translate(), 0)
         self.assertEquals(King(Board(3, 3), 1, 1).translate(), 4)
         self.assertEquals(King(Board(3, 3), 2, 2).translate(), 8)
@@ -45,8 +52,7 @@ class TestKing(unittest.TestCase):
             King(Board(3, 3), 3, 0).translate()
 
     def test_territory(self):
-        """ Test computation of territory at each positions of a 3x3 board.
-        """
+        """ Test computation of territory at each positions of a 3x3 board. """
         self.assertEquals(King(Board(3, 3), 1, 1).territory, [
              True,  True,  True,
              True,  True,  True,
@@ -87,13 +93,17 @@ class TestKing(unittest.TestCase):
              True,  True, False,
              True,  True, False,
         ])
+        self.assertEquals(King(Board(3, 3), 0, 1).territory, [
+             True,  True, False,
+             True,  True, False,
+             True,  True, False,
+        ])
 
 
 class TestQueen(unittest.TestCase):
 
     def test_territory(self):
-        """ Test computation of territory at each positions of a 3x3 board.
-        """
+        """ Test computation of territory at each positions of a 3x3 board. """
         self.assertEquals(Queen(Board(3, 3), 1, 1).territory, [
              True,  True,  True,
              True,  True,  True,
@@ -133,4 +143,111 @@ class TestQueen(unittest.TestCase):
              True, False,  True,
              True,  True, False,
              True,  True,  True,
+        ])
+        self.assertEquals(Queen(Board(3, 3), 0, 1).territory, [
+             True,  True, False,
+             True,  True,  True,
+             True,  True, False,
+        ])
+
+
+class TestRook(unittest.TestCase):
+
+    def test_territory(self):
+        """ Test computation of territory at each positions of a 3x3 board. """
+        self.assertEquals(Rook(Board(3, 3), 1, 1).territory, [
+            False,  True,  False,
+             True,  True,  True,
+            False,  True,  False,
+        ])
+        self.assertEquals(Rook(Board(3, 3), 0, 0).territory, [
+             True,  True,  True,
+             True, False, False,
+             True, False, False,
+        ])
+        self.assertEquals(Rook(Board(3, 3), 1, 0).territory, [
+             True,  True,  True,
+            False,  True, False,
+            False,  True, False,
+        ])
+        self.assertEquals(Rook(Board(3, 3), 2, 0).territory, [
+             True,  True,  True,
+            False, False,  True,
+            False, False,  True,
+        ])
+        self.assertEquals(Rook(Board(3, 3), 2, 1).territory, [
+            False, False,  True,
+             True,  True,  True,
+            False, False,  True,
+        ])
+        self.assertEquals(Rook(Board(3, 3), 2, 2).territory, [
+            False, False,  True,
+            False, False,  True,
+             True,  True,  True,
+        ])
+        self.assertEquals(Rook(Board(3, 3), 1, 2).territory, [
+            False,  True, False,
+            False,  True, False,
+             True,  True,  True,
+        ])
+        self.assertEquals(Rook(Board(3, 3), 0, 2).territory, [
+             True, False, False,
+             True, False, False,
+             True,  True,  True,
+        ])
+        self.assertEquals(Rook(Board(3, 3), 0, 1).territory, [
+             True, False, False,
+             True,  True,  True,
+             True, False, False,
+        ])
+
+
+class TestBishop(unittest.TestCase):
+
+    def test_territory(self):
+        """ Test computation of territory at each positions of a 3x3 board. """
+        self.assertEquals(Bishop(Board(3, 3), 1, 1).territory, [
+             True, False,  True,
+            False,  True, False,
+             True, False,  True,
+        ])
+        self.assertEquals(Bishop(Board(3, 3), 0, 0).territory, [
+             True, False, False,
+            False,  True, False,
+            False, False,  True,
+        ])
+        self.assertEquals(Bishop(Board(3, 3), 1, 0).territory, [
+            False,  True, False,
+             True, False,  True,
+            False, False, False,
+        ])
+        self.assertEquals(Bishop(Board(3, 3), 2, 0).territory, [
+            False, False,  True,
+            False,  True, False,
+             True, False, False,
+        ])
+        self.assertEquals(Bishop(Board(3, 3), 2, 1).territory, [
+            False,  True, False,
+            False, False,  True,
+            False,  True, False,
+        ])
+        self.assertEquals(Bishop(Board(3, 3), 2, 2).territory, [
+             True, False, False,
+            False,  True, False,
+            False, False,  True,
+         ])
+        self.assertEquals(Bishop(Board(3, 3), 1, 2).territory, [
+            False, False, False,
+             True, False,  True,
+            False,  True, False,
+        ])
+        self.assertEquals(Bishop(Board(3, 3), 0, 2).territory, [
+            False, False,  True,
+            False,  True, False,
+             True, False, False,
+        ])
+        self.assertEquals(Bishop(Board(3, 3), 0, 1).territory, [
+            False,  True, False,
+             True, False, False,
+            False,  True, False,
         ])

@@ -91,6 +91,46 @@ class Piece(object):
         return vector_index
 
     @property
+    def horizontals(self):
+        """ All horizontal squares from the piece's point of view.
+
+        Returns a list of relative movements up to the board's bound.
+        """
+        horizontal_shifts = set(izip_longest(map(
+            lambda i: i - self.x, range(self.board.length)), [], fillvalue=0))
+        horizontal_shifts.discard((0, 0))
+        return horizontal_shifts
+
+    @property
+    def verticals(self):
+        """ All vertical squares from the piece's point of view.
+
+        Returns a list of relative movements up to the board's bound.
+        """
+        vertical_shifts = set(izip_longest([], map(
+            lambda i: i - self.y, range(self.board.height)), fillvalue=0))
+        vertical_shifts.discard((0, 0))
+        return vertical_shifts
+
+    @property
+    def diagonals(self):
+        """ All diagonal squares from the piece's point of view.
+
+        Returns a list of relative movements up to the board's bound.
+        """
+        left_top_shifts = map(lambda i: (-(i+1), -(i+1)), range(min(
+            self.left_distance, self.top_distance)))
+        left_bottom_shifts = map(lambda i: (-(i+1), +(i+1)), range(min(
+            self.left_distance, self.bottom_distance)))
+        right_top_shifts = map(lambda i: (+(i+1), -(i+1)), range(min(
+            self.right_distance, self.top_distance)))
+        right_bottom_shifts = map(lambda i: (+(i+1), +(i+1)), range(min(
+            self.right_distance, self.bottom_distance)))
+        return set(chain(
+            left_top_shifts, left_bottom_shifts,
+            right_top_shifts, right_bottom_shifts))
+
+    @property
     def movements(self):
         """ Return list of relative movements allowed. """
         raise NotImplementedError
@@ -145,29 +185,33 @@ class Queen(Piece):
 
     @property
     def movements(self):
-        """ Queen moves unrestricted vertically, horizontally and diagonally.
+        """ Queen moves unrestricted horizontally, vertically and diagonally.
         """
-        horizontal_shifts = izip_longest(map(
-            lambda i: i - self.x, range(self.board.length)), [], fillvalue=0)
+        return self.horizontals | self.verticals | self.diagonals
 
-        vertical_shifts = izip_longest([], map(
-            lambda i: i - self.y, range(self.board.height)), fillvalue=0)
 
-        left_top_shifts = map(lambda i: (-(i+1), -(i+1)), range(min(
-            self.left_distance, self.top_distance)))
-        left_bottom_shifts = map(lambda i: (-(i+1), +(i+1)), range(min(
-            self.left_distance, self.bottom_distance)))
-        right_top_shifts = map(lambda i: (+(i+1), -(i+1)), range(min(
-            self.right_distance, self.top_distance)))
-        right_bottom_shifts = map(lambda i: (+(i+1), +(i+1)), range(min(
-            self.right_distance, self.bottom_distance)))
+class Rook(Piece):
+    """ Rook model. """
 
-        shifts = set(chain(
-            horizontal_shifts, vertical_shifts,
-            left_top_shifts, left_bottom_shifts,
-            right_top_shifts, right_bottom_shifts,
-        ))
+    @property
+    def movements(self):
+        """ Rook moves unrestricted horizontally and vertically. """
+        return self.horizontals | self.verticals
 
-        shifts.discard((0, 0))
 
-        return shifts
+class Bishop(Piece):
+    """ Bishop model. """
+
+    @property
+    def movements(self):
+        """ Bishop moves unrestricted diagonally. """
+        return self.diagonals
+
+
+class Knight(Piece):
+    """ Knight model. """
+
+    #@property
+    #def movements(self):
+    #    """ Knight moves unrestricted diagonally. """
+    #    return self.diagonals

@@ -36,5 +36,5 @@ class OccupiedPosition(Exception):
 
 
 # Expose important classes to the root of the module.
-from pieces import Piece, King, Queen
+from pieces import Piece, King, Queen, Rook, Bishop, Knight
 from chessboard import Chessboard, Board

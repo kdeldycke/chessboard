@@ -69,9 +69,9 @@ class Chessboard(object):
     PIECE_TYPES = frozenset([
         'king',
         'queen',
-        #'bishop',
-        #'rook',
-        #'knight'
+        'rook',
+        'bishop',
+        'knight',
     ])
 
     def __init__(self, length, height, **pieces):
