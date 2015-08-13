@@ -2,7 +2,7 @@ ChangeLog
 =========
 
 
-0.7.0 (unreleased)
+0.7.0 (2015-08-14)
 ------------------
 
 * Display results in unicode-art.
