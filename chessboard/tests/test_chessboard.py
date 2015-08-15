@@ -34,6 +34,24 @@ class TestChessboard(unittest.TestCase):
         self.assertEquals(board.height, 3)
         self.assertDictContainsSubset({'king': 2, 'queen': 7}, board.pieces)
 
+    def test_tree(self):
+        self.assertEquals(
+            list(Chessboard.tree('abc')),
+            ['a', 'b', 'c'])
+
+        self.assertEquals(
+            [list(i) for i in list(Chessboard.tree('abc', 'cde'))], [
+                ['a', 'c'],
+                ['a', 'd'],
+                ['a', 'e'],
+                ['b', 'c'],
+                ['b', 'd'],
+                ['b', 'e'],
+                ['c', 'c'],
+                ['c', 'd'],
+                ['c', 'e'],
+            ])
+
 
 class TestSolver(unittest.TestCase):
 

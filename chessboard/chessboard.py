@@ -123,7 +123,8 @@ class Chessboard(object):
                 self.vector_indexes, quantity)))
         return perms
 
-    def tree(self, level, *sub_levels):
+    @classmethod
+    def tree(cls, level, *sub_levels):
         """ Iterative cartesian product of level sets.
 
         Depth-first, tree-traversal of the product space.
