@@ -5,7 +5,8 @@ ChangeLog
 0.8.0 (unreleased)
 ------------------
 
-* No changes yet.
+* Refactor solver to deduplicate positions by kind (combination) before
+  iterating the search space by brute force (cartesian product).
 
 
 0.7.0 (2015-08-14)

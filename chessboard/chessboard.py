@@ -46,7 +46,8 @@ from __future__ import (
 #https://news.ycombinator.com/item?id=10028742
 
 import time
-from itertools import chain, permutations
+from itertools import chain, combinations
+from functools import partial
 from operator import and_, or_, truth
 
 from chessboard import (
@@ -95,6 +96,7 @@ class Chessboard(object):
             self.pieces[kind] = quantity
 
         # Solver metadata.
+        self.result_counter = 0
         self.processing_time = None
 
     def __repr__(self):
@@ -110,40 +112,36 @@ class Chessboard(object):
     def vector_indexes(self):
         return range(self.vector_size)
 
-    def permutations(self):
-        """ Returns unique permutations of piece types and linear positions.
-
-        TODO: Refactor to a pure unique iterator.
-        TODO: use symetries to reduce the search space.
+    def grouped_permutations(self):
+        """ Return unique permutations of linear index grouped by pieces kind.
         """
-        # Use a set to deduplicate permutations.
-        unique_perms = set()
+        perms = []
+        for kind, quantity in self.pieces.items():
+            if quantity <= 0:
+                continue
+            perms.append(map(partial(zip, [kind] * quantity), combinations(
+                self.vector_indexes, quantity)))
+        return perms
 
-        # Serialize and freeze pieces index by kind.
-        pieces = list(chain(*[
-            [kind] * quantity for kind, quantity in self.pieces.items()]))
+    def tree(self, level, *sub_levels):
+        """ Iterative cartesian product of level sets.
 
-        # Iterate all permutations of pieces over all linear positions of the
-        # board.
-        for positions in permutations(self.vector_indexes, len(pieces)):
-            unique_perms.add(frozenset(zip(pieces, positions)))
-
-        return unique_perms
+        Depth-first, tree-traversal of the product space.
+        """
+        for positions in level:
+            if sub_levels:
+                for sub_positions in self.tree(*sub_levels):
+                    yield chain(positions, sub_positions)
+            else:
+                yield positions
 
     def solve(self):
-        """ Solve all possible positions of pieces.
-
-        Use a stupid brute-force approach for now.
-
-        TODO: Use a binary search to exlude whole branches as soon as possible.
-        """
-        results = []
-
+        """ Solve all possible positions of pieces. """
         # Start solving the board.
         start = time.time()
 
-        # Try all permutations of available pieces within the board vector.
-        for pieces_set in self.permutations():
+        # Iterate through all combinations of positions.
+        for pieces_set in self.tree(*self.grouped_permutations()):
 
             # Create a new, empty board.
             board = Board(self.length, self.height)
@@ -154,17 +152,15 @@ class Chessboard(object):
                     x, y = board.index_to_coordinates(index_position)
                     # Try to place the piece on the board.
                     board.add(piece_kind, x, y)
-            # If one of the piece can't be added because the territory is
-            # already occupied, throw the whole set and proceed to the next.
+            # If one of the piece can't be added, throw the whole set and
+            # proceed to the next.
             except (OccupiedPosition, VulnerablePosition, AttackablePiece):
                 continue
 
             # All pieces fits, save solution and proceeed to next permutation.
-            results.append(board)
-
-        self.processing_time = time.time() - start
-
-        return results
+            self.result_counter += 1
+            self.processing_time = time.time() - start
+            yield board
 
 
 class Board(object):

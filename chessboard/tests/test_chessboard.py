@@ -38,32 +38,25 @@ class TestChessboard(unittest.TestCase):
 class TestSolver(unittest.TestCase):
 
     def check_results(self, results, expected):
-        """ Check found results. """
-        self.assertEquals(len(results), len(expected))
+        """ Check found results.
 
-        # Normalize result sets into hashable sets so we can make them easily
-        # comparable.
+        Normalize result sets into hashable sets so we can make them easily
+        comparable.
+        """
         normalized_expected = set([tuple(sorted(
             r,
             key=itemgetter(0, 1, 2)))
             for r in expected])
-
         normalized_results = set([tuple(sorted([
             (p.__class__.__name__, p.x, p.y) for p in r.pieces],
             key=itemgetter(0, 1, 2)))
             for r in results])
-
-        # Check that our transformation to a set for convenience doesn't
-        # artificialy deduplicate the result set.
-        self.assertEquals(len(results), len(normalized_results))
-        self.assertEquals(len(expected), len(normalized_expected))
-
+        self.assertEquals(len(normalized_results), len(expected))
         self.assertSetEqual(normalized_results, normalized_expected)
 
     def test_tinyest_board(self):
         board = Chessboard(1, 1, king=1)
         results = board.solve()
-        self.assertEquals(len(results), 1)
         self.check_results(results, [
             [('King', 0, 0)],
         ])
@@ -121,7 +114,7 @@ class TestSolver(unittest.TestCase):
     def test_no_queen_solutions(self):
         board = Chessboard(3, 3, queen=3)
         results = board.solve()
-        self.assertEquals(len(results), 0)
+        self.check_results(results, [])
 
     def test_two_kings_one_rook(self):
         board = Chessboard(3, 3, king=2, rook=1)
