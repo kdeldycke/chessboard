@@ -2,7 +2,7 @@ ChangeLog
 =========
 
 
-0.8.0 (unreleased)
+0.8.0 (2015-08-15)
 ------------------
 
 * Refactor solver to deduplicate positions by kind (combination) before
