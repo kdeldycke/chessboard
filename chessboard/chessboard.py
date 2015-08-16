@@ -160,8 +160,9 @@ class Chessboard(object):
 
             # All pieces fits, save solution and proceeed to next permutation.
             self.result_counter += 1
-            self.processing_time = time.time() - start
             yield board
+
+        self.processing_time = time.time() - start
 
 
 class Board(object):
