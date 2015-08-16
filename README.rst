@@ -95,6 +95,7 @@ Exemples
     ├───┼───┼───┤
     │ ♚ │   │ ♚ │
     └───┴───┴───┘
+    4 results found in 0.03 seconds.
 
 
 Unit-tests
