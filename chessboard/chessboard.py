@@ -95,7 +95,6 @@ class Chessboard(object):
 
         # Solver metadata.
         self.result_counter = 0
-        self.processing_time = None
 
     def __repr__(self):
         """ Display all relevant object internals. """
@@ -136,9 +135,6 @@ class Chessboard(object):
 
     def solve(self):
         """ Solve all possible positions of pieces. """
-        # Start solving the board.
-        start = time.time()
-
         # Iterate through all combinations of positions.
         for pieces_set in self.tree(*self.grouped_permutations()):
 
@@ -159,8 +155,6 @@ class Chessboard(object):
             # All pieces fits, save solution and proceeed to next permutation.
             self.result_counter += 1
             yield board
-
-        self.processing_time = time.time() - start
 
 
 class Board(object):

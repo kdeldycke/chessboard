@@ -21,6 +21,7 @@ from __future__ import (
     division, print_function, absolute_import, unicode_literals
 )
 
+import time
 import logging
 
 import click
@@ -59,8 +60,10 @@ def cli(length, height, verbose, **pieces):
     click.echo('{!r}'.format(board))
 
     click.echo('Solving the chessboard...')
+    start = time.time()
     for result in board.solve():
         click.echo('{}'.format(result))
+    processing_time = time.time() - start
 
     click.echo('{} results found in {:.2f} seconds.'.format(
-        board.result_counter, board.processing_time))
+        board.result_counter, processing_time))
