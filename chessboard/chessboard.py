@@ -131,7 +131,7 @@ class Chessboard(object):
         """
         for positions in level:
             if sub_levels:
-                for sub_positions in self.tree(*sub_levels):
+                for sub_positions in cls.tree(*sub_levels):
                     yield chain(positions, sub_positions)
             else:
                 yield positions
