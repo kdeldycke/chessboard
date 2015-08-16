@@ -43,8 +43,6 @@ from __future__ import (
     division, print_function, absolute_import, unicode_literals
 )
 
-#https://news.ycombinator.com/item?id=10028742
-
 import time
 from itertools import chain, combinations
 from functools import partial
