@@ -78,6 +78,7 @@ class TestSolver(unittest.TestCase):
         self.check_results(results, [
             [('King', 0, 0)],
         ])
+        self.assertEquals(board.result_counter, 1)
 
     def test_single_king(self):
         board = Chessboard(3, 3, king=1)
@@ -93,6 +94,7 @@ class TestSolver(unittest.TestCase):
             [('King', 2, 1)],
             [('King', 2, 2)],
         ])
+        self.assertEquals(board.result_counter, 9)
 
     def test_wide_board(self):
         board = Chessboard(4, 1, king=1)
@@ -103,6 +105,7 @@ class TestSolver(unittest.TestCase):
             [('King', 2, 0)],
             [('King', 3, 0)],
         ])
+        self.assertEquals(board.result_counter, 4)
 
     def test_long_board(self):
         board = Chessboard(1, 4, king=1)
@@ -113,6 +116,7 @@ class TestSolver(unittest.TestCase):
             [('King', 0, 2)],
             [('King', 0, 3)],
         ])
+        self.assertEquals(board.result_counter, 4)
 
     def test_single_queen(self):
         board = Chessboard(3, 3, queen=1)
@@ -128,11 +132,13 @@ class TestSolver(unittest.TestCase):
             [('Queen', 2, 1)],
             [('Queen', 2, 2)],
         ])
+        self.assertEquals(board.result_counter, 9)
 
     def test_no_queen_solutions(self):
         board = Chessboard(3, 3, queen=3)
         results = board.solve()
         self.check_results(results, [])
+        self.assertEquals(board.result_counter, 0)
 
     def test_two_kings_one_rook(self):
         board = Chessboard(3, 3, king=2, rook=1)
@@ -143,6 +149,7 @@ class TestSolver(unittest.TestCase):
             [('King', 2, 0), ('King', 2, 2), ('Rook', 0, 1)],
             [('King', 0, 2), ('King', 2, 2), ('Rook', 1, 0)],
         ])
+        self.assertEquals(board.result_counter, 4)
 
     def test_two_rooks_four_knights(self):
         board = Chessboard(4, 4, rook=2, knight=4)
@@ -164,7 +171,8 @@ class TestSolver(unittest.TestCase):
              ('Knight', 0, 0), ('Knight', 2, 0), ('Knight', 0, 2), ('Knight', 2, 2)],
             [('Rook', 1, 1), ('Rook', 3, 3),
              ('Knight', 0, 0), ('Knight', 2, 0), ('Knight', 0, 2), ('Knight', 2, 2)],
-       ])
+        ])
+        self.assertEquals(board.result_counter, 8)
 
     @unittest.skip("Solver too slow")
     def test_big_family(self):
