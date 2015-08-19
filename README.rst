@@ -17,6 +17,17 @@ Python CLI to explore chessboard positions.
     :alt: Code Quality
 
 
+Motivation
+----------
+
+This project is a playground to test some optimization strategies in Python.
+
+The current implementation work but `is quite slow 
+<https://github.com/kdeldycke/chessboard/blob/v0.8.0/chessboard/tests/test_chessboard.py#L151-L154>`_.
+The `pending work <https://github.com/kdeldycke/chessboard/issues>`_ is 
+available in the form of issues.
+
+
 Development philosophy
 ----------------------
 
