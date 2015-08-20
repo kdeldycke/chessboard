@@ -25,12 +25,29 @@ import time
 import logging
 
 import click
+from click.exceptions import BadParameter
 
 from . import __version__
 from . import Chessboard
 
 
-log = logging.getLogger(__name__)
+class PositiveInt(click.types.IntParamType):
+
+    def __init__(self, allow_zero=True):
+        self.allow_zero = True
+
+    def convert(self, value, param, ctx):
+        """ Like standard int, but check sign and zero. """
+        value = super(PositiveInt, self).convert(value, param, ctx)
+        if value < 0:
+            self.fail('%s is not positive' % value, param, ctx)
+        if not self.allow_zero and not value:
+            self.fail('%s is not greater than 0' % value, param, ctx)
+        return value
+
+
+POSITIVE_INT = PositiveInt(allow_zero=False)
+POSITIVE_OR_ZERO_INT = PositiveInt(allow_zero=True)
 
 
 class CLI(click.Command):
@@ -41,19 +58,25 @@ class CLI(click.Command):
             kwargs['params'].append(click.Option(
                 ('--{}'.format(piece_type), ),
                 default=0,
+                type=POSITIVE_OR_ZERO_INT,
                 help='Number of {}s to add to the board.'.format(piece_type)))
         super(CLI, self).__init__(*args, **kwargs)
 
 
 @click.command(cls=CLI)
 @click.version_option(__version__)
-@click.option('-l', '--length', default=3, help='Length of the board.')
-@click.option('-h', '--height', default=3, help='Height of the board.')
+@click.option('-l', '--length', required=True, type=POSITIVE_INT,
+              help='Length of the board.')
+@click.option('-h', '--height', required=True, type=POSITIVE_INT,
+              help='Height of the board.')
 @click.option('-v', '--verbose', is_flag=True, default=False,
               help='Print much more debug statements.')
 def cli(length, height, verbose, **pieces):
     """ Python CLI to explore chessboard positions. """
-    logging.basicConfig(level=logging.DEBUG if verbose else logging.INFO)
+    if not sum(pieces.values()):
+        context = click.get_current_context()
+        raise BadParameter('No piece provided.', ctx=context, param_hint=[
+            '--{}'.format(piece_type) for piece_type in Chessboard.PIECE_TYPES])
 
     click.echo('Building up a chessboard...')
     board = Chessboard(length, height, **pieces)

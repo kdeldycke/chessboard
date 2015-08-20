@@ -5,7 +5,7 @@ ChangeLog
 0.9.0 (unreleased)
 ------------------
 
-* No changes yet.
+* Validate CLI user inputs and provides hints.
 
 
 0.8.0 (2015-08-15)

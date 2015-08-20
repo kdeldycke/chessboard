@@ -92,6 +92,7 @@ class Chessboard(object):
             assert isinstance(quantity, int)
             assert quantity >= 0
             self.pieces[kind] = quantity
+        assert sum(self.pieces.values()) > 0
 
         # Solver metadata.
         self.result_counter = 0
