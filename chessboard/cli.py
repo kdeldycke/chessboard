@@ -80,7 +80,6 @@ def cli(length, height, verbose, **pieces):
 
     click.echo('Building up a chessboard...')
     board = Chessboard(length, height, **pieces)
-    click.echo('{!r}'.format(board))
 
     click.echo('Solving the chessboard...')
     start = time.time()
