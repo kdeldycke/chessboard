@@ -58,8 +58,9 @@ Usage
 
     Options:
       --version             Show the version and exit.
-      -l, --length INTEGER  Length of the board.
-      -h, --height INTEGER  Height of the board.
+      -l, --length INTEGER  Length of the board.  [required]
+      -h, --height INTEGER  Height of the board.  [required]
+      -s, --silent          Do not display result board, only final count.
       -v, --verbose         Print much more debug statements.
       --rook INTEGER        Number of rooks to add to the board.
       --king INTEGER        Number of kings to add to the board.
@@ -77,7 +78,6 @@ Exemples
     $ chessboard --length=3 --height=3 --king=2 --rook=1
     Building up a chessboard...
     Solving the chessboard...
-    Results:
     ┌───┬───┬───┐
     │ ♚ │   │   │
     ├───┼───┼───┤
