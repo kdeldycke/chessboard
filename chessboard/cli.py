@@ -27,8 +27,7 @@ import logging
 import click
 from click.exceptions import BadParameter
 
-from . import __version__
-from . import Chessboard
+from . import __version__, SolverContext
 
 
 class PositiveInt(click.types.IntParamType):
