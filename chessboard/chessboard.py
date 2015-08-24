@@ -43,9 +43,7 @@ from __future__ import (
     division, print_function, absolute_import, unicode_literals
 )
 
-import time
-from itertools import chain, combinations
-from functools import partial
+from itertools import chain
 from operator import and_, or_, truth
 
 from chessboard import (
@@ -57,6 +55,67 @@ from chessboard import (
     Piece,
     pieces as piece_module
 )
+
+
+class Permutations(object):
+    """ Produce permutations of piece iteratively. """
+
+    def __init__(self, pieces, range_size=None):
+        # Transform the description of pieces population into a linear vector
+        # sorted by kind.
+        self.pieces = sorted(list(chain(*[
+            [kind] * quantity for kind, quantity in pieces.items()])))
+
+        # Maximal depth of the tree.
+        self.depth = len(self.pieces)
+
+        # Range of permutations.
+        self.range_size = range_size if range_size else self.depth
+
+        # Keep track of our current progression in the tree.
+        # This is the last permutation to be returned.
+        self.indexes = None
+
+    def increment_perm(self):
+        for index in reversed(range(self.depth)):
+            self.indexes[index] += 1
+            if self.indexes[index] < self.range_size:
+                break
+            self.indexes[index] = 0
+
+        # Now that we incrementally move our indexes, deduplicate positions of
+        # the same kind.
+        # Reset to adjacent position of the parent for pieces of the same
+        # kind.
+
+        for i in range(self.depth - 1):
+            if (self.pieces[i] == self.pieces[i + 1]) and (
+                    self.indexes[i] > self.indexes[i + 1]):
+                self.indexes[i + 1] = self.indexes[i]
+
+    def __iter__(self):
+        return self
+
+    def next(self):
+        """ Return next valid permutation. """
+        if self.indexes is None:
+            self.indexes = [0] * self.depth
+        elif self.indexes == [self.range_size - 1] * self.depth:
+            raise StopIteration
+        else:
+            self.increment_perm()
+        return zip(self.pieces, self.indexes)
+
+    def skip_branch(self, level):
+        """ Abandon the branch at the provided level and skip to the next.
+
+        When we call out to skip to the next branch of the search space, we
+        push sublevel pieces to the maximum positions on the board. So that the
+        next time the permutation iterator is called, it can produce the vector
+        state of the next adjacent branch.
+        """
+        for i in range(level + 1, self.depth):
+            self.indexes[i] = self.range_size - 1
 
 
 class Chessboard(object):
@@ -110,52 +169,45 @@ class Chessboard(object):
     def vector_indexes(self):
         return range(self.vector_size)
 
-    def grouped_permutations(self):
-        """ Return unique permutations of linear index grouped by pieces kind.
-        """
-        perms = []
-        for kind, quantity in self.pieces.items():
-            if quantity <= 0:
-                continue
-            perms.append(map(partial(zip, [kind] * quantity), combinations(
-                self.vector_indexes, quantity)))
-        return perms
+    def solve(self):
+        """ Solve all possible positions of pieces.
 
-    @classmethod
-    def tree(cls, level, *sub_levels):
-        """ Iterative cartesian product of level sets.
-
+        Iterative cartesian product of level sets.
         Depth-first, tree-traversal of the product space.
         """
-        for positions in level:
-            if sub_levels:
-                for sub_positions in cls.tree(*sub_levels):
-                    yield chain(positions, sub_positions)
-            else:
-                yield positions
+        gen = Permutations(self.pieces, self.vector_size)
 
-    def solve(self):
-        """ Solve all possible positions of pieces. """
         # Iterate through all combinations of positions.
-        for pieces_set in self.tree(*self.grouped_permutations()):
+        while True:
+
+            try:
+                pos = gen.next()
+            except StopIteration:
+                break
 
             # Create a new, empty board.
             board = Board(self.length, self.height)
 
-            try:
-                for piece_kind, index_position in pieces_set:
+            for level, (piece_kind, index_position) in enumerate(pos):
+                try:
                     # Translate linear index to 2D dimension.
                     x, y = board.index_to_coordinates(index_position)
                     # Try to place the piece on the board.
                     board.add(piece_kind, x, y)
-            # If one of the piece can't be added, throw the whole set and
-            # proceed to the next.
-            except (OccupiedPosition, VulnerablePosition, AttackablePiece):
-                continue
+                # If one of the piece can't be added, throw the whole set and
+                # proceed to the next.
+                except (OccupiedPosition, VulnerablePosition, AttackablePiece):
+                    # Fetch next piece set but tell the generator this branch is
+                    # rotten.
+                    gen.skip_branch(level)
+                    break
 
-            # All pieces fits, save solution and proceeed to next permutation.
-            self.result_counter += 1
-            yield board
+            else:
+                # Nothing to say about this branch, let's continue walking the tree.
+                #pieces_set = tree.send(None)
+                # All pieces fits, save solution and proceeed to next permutation.
+                self.result_counter += 1
+                yield board
 
 
 class Board(object):
