@@ -3,26 +3,29 @@ Chessboard
 
 Python CLI to explore chessboard positions.
 
-Stable release: .. image:: https://img.shields.io/pypi/v/chessboard.svg?style=flat
+Stable release: |release| |dependencies| |license| |popularity|
+
+Development: |build| |coverage| |quality|
+
+.. |release| image:: https://img.shields.io/pypi/v/chessboard.svg?style=flat
     :target: https://pypi.python.org/pypi/chessboard
     :alt: Last release
-.. image:: https://img.shields.io/pypi/l/chessboard.svg?style=flat
+.. |license| image:: https://img.shields.io/pypi/l/chessboard.svg?style=flat
     :target: https://www.gnu.org/licenses/gpl-2.0.html
     :alt: Software license
-.. image:: https://img.shields.io/pypi/dm/chessboard.svg?style=flat
+.. |popularity| image:: https://img.shields.io/pypi/dm/chessboard.svg?style=flat
     :target: https://pypi.python.org/pypi/chessboard#downloads
     :alt: Popularity
-.. image:: https://img.shields.io/requires/github/kdeldycke/chessboard/master.svg?style=flat
+.. |dependencies| image:: https://img.shields.io/requires/github/kdeldycke/chessboard/master.svg?style=flat
     :target: https://requires.io/github/kdeldycke/chessboard/requirements/?branch=master
     :alt: Requirements freshness
-
-Development: .. image:: https://img.shields.io/travis/kdeldycke/chessboard/develop.svg?style=flat
+.. |build| image:: https://img.shields.io/travis/kdeldycke/chessboard/develop.svg?style=flat
     :target: https://travis-ci.org/kdeldycke/chessboard
     :alt: Unit-tests status
-.. image:: https://coveralls.io/repos/kdeldycke/chessboard/badge.svg?branch=develop&service=github
+.. |coverage| image:: https://coveralls.io/repos/kdeldycke/chessboard/badge.svg?branch=develop&service=github
     :target: https://coveralls.io/r/kdeldycke/chessboard?branch=develop
     :alt: Coverage Status
-.. image:: https://img.shields.io/scrutinizer/g/kdeldycke/chessboard.svg?style=flat
+.. |quality| image:: https://img.shields.io/scrutinizer/g/kdeldycke/chessboard.svg?style=flat
     :target: https://scrutinizer-ci.com/g/kdeldycke/chessboard/?branch=develop
     :alt: Code Quality
 
