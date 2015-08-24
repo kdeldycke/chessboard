@@ -20,7 +20,7 @@
 """ Expose package-wide elements. """
 
 
-__version__ = '0.9.0'
+__version__ = '0.9.1'
 
 
 # Defines custom exception first to avoid circular imports.
