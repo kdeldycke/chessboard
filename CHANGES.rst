@@ -7,6 +7,7 @@ ChangeLog
 
 * Validate CLI user inputs and provides hints.
 * Abandon branches of the search space as soon as possible. Closes #3.
+* Add ``--silent`` option to skip displaying of all board results in ASCII art.
 
 
 0.8.0 (2015-08-15)

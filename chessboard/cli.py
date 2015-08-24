@@ -68,9 +68,11 @@ class CLI(click.Command):
               help='Length of the board.')
 @click.option('-h', '--height', required=True, type=POSITIVE_INT,
               help='Height of the board.')
+@click.option('-s', '--silent', is_flag=True, default=False,
+              help='Do not display result board, only final count.')
 @click.option('-v', '--verbose', is_flag=True, default=False,
               help='Print much more debug statements.')
-def cli(length, height, verbose, **pieces):
+def cli(length, height, silent, verbose, **pieces):
     """ Python CLI to explore chessboard positions. """
     if not sum(pieces.values()):
         context = click.get_current_context()
@@ -83,7 +85,8 @@ def cli(length, height, verbose, **pieces):
     click.echo('Solving the chessboard...')
     start = time.time()
     for result in solver.solve():
-        click.echo('{}'.format(result))
+        if not silent:
+            click.echo('{}'.format(result))
     processing_time = time.time() - start
 
     click.echo('{} results found in {:.2f} seconds.'.format(
