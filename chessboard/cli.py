@@ -27,7 +27,7 @@ import logging
 import click
 from click.exceptions import BadParameter
 
-from . import __version__, SolverContext
+from . import __version__, PIECE_TYPES, SolverContext
 
 
 class PositiveInt(click.types.IntParamType):
@@ -53,7 +53,7 @@ class CLI(click.Command):
 
     def __init__(self, *args, **kwargs):
         """ Override default constructor to add dynamic parameters. """
-        for piece_type in Chessboard.PIECE_TYPES:
+        for piece_type in PIECE_TYPES:
             kwargs['params'].append(click.Option(
                 ('--{}'.format(piece_type), ),
                 default=0,
@@ -75,16 +75,16 @@ def cli(length, height, verbose, **pieces):
     if not sum(pieces.values()):
         context = click.get_current_context()
         raise BadParameter('No piece provided.', ctx=context, param_hint=[
-            '--{}'.format(piece_type) for piece_type in Chessboard.PIECE_TYPES])
+            '--{}'.format(piece_type) for piece_type in PIECE_TYPES])
 
     click.echo('Building up a chessboard...')
-    board = Chessboard(length, height, **pieces)
+    solver = SolverContext(length, height, **pieces)
 
     click.echo('Solving the chessboard...')
     start = time.time()
-    for result in board.solve():
+    for result in solver.solve():
         click.echo('{}'.format(result))
     processing_time = time.time() - start
 
     click.echo('{} results found in {:.2f} seconds.'.format(
-        board.result_counter, processing_time))
+        solver.result_counter, processing_time))

@@ -24,8 +24,10 @@ from itertools import product, izip, repeat
 from operator import itemgetter
 import unittest
 
-from chessboard import Chessboard, Board, ForbiddenIndex, ForbiddenCoordinates
-from chessboard.chessboard import Permutations
+from chessboard import (
+    Permutations,
+    SolverContext,
+)
 
 
 class TestPermutations(unittest.TestCase):
@@ -360,16 +362,13 @@ class TestPermutations(unittest.TestCase):
             [('a', 4), ('b', 4), ('c', 4), ('c', 4)]])
 
 
-class TestChessboard(unittest.TestCase):
+class TestSolverContext(unittest.TestCase):
 
     def test_instanciation(self):
-        board = Chessboard(3, 3, king=2, queen=7)
-        self.assertEquals(board.length, 3)
-        self.assertEquals(board.height, 3)
-        self.assertDictContainsSubset({'king': 2, 'queen': 7}, board.pieces)
-
-
-class TestSolver(unittest.TestCase):
+        solver = SolverContext(3, 3, king=2, queen=7)
+        self.assertEquals(solver.length, 3)
+        self.assertEquals(solver.height, 3)
+        self.assertDictContainsSubset({'king': 2, 'queen': 7}, solver.pieces)
 
     def check_results(self, results, expected):
         """ Check found results.
@@ -389,16 +388,16 @@ class TestSolver(unittest.TestCase):
         self.assertSetEqual(normalized_results, normalized_expected)
 
     def test_tinyest_board(self):
-        board = Chessboard(1, 1, king=1)
-        results = board.solve()
+        solver = SolverContext(1, 1, king=1)
+        results = solver.solve()
         self.check_results(results, [
             [('King', 0, 0)],
         ])
-        self.assertEquals(board.result_counter, 1)
+        self.assertEquals(solver.result_counter, 1)
 
     def test_single_king(self):
-        board = Chessboard(3, 3, king=1)
-        results = board.solve()
+        solver = SolverContext(3, 3, king=1)
+        results = solver.solve()
         self.check_results(results, [
             [('King', 0, 0)],
             [('King', 0, 1)],
@@ -410,33 +409,33 @@ class TestSolver(unittest.TestCase):
             [('King', 2, 1)],
             [('King', 2, 2)],
         ])
-        self.assertEquals(board.result_counter, 9)
+        self.assertEquals(solver.result_counter, 9)
 
     def test_wide_board(self):
-        board = Chessboard(4, 1, king=1)
-        results = board.solve()
+        solver = SolverContext(4, 1, king=1)
+        results = solver.solve()
         self.check_results(results, [
             [('King', 0, 0)],
             [('King', 1, 0)],
             [('King', 2, 0)],
             [('King', 3, 0)],
         ])
-        self.assertEquals(board.result_counter, 4)
+        self.assertEquals(solver.result_counter, 4)
 
     def test_long_board(self):
-        board = Chessboard(1, 4, king=1)
-        results = board.solve()
+        solver = SolverContext(1, 4, king=1)
+        results = solver.solve()
         self.check_results(results, [
             [('King', 0, 0)],
             [('King', 0, 1)],
             [('King', 0, 2)],
             [('King', 0, 3)],
         ])
-        self.assertEquals(board.result_counter, 4)
+        self.assertEquals(solver.result_counter, 4)
 
     def test_single_queen(self):
-        board = Chessboard(3, 3, queen=1)
-        results = board.solve()
+        solver = SolverContext(3, 3, queen=1)
+        results = solver.solve()
         self.check_results(results, [
             [('Queen', 0, 0)],
             [('Queen', 0, 1)],
@@ -448,28 +447,28 @@ class TestSolver(unittest.TestCase):
             [('Queen', 2, 1)],
             [('Queen', 2, 2)],
         ])
-        self.assertEquals(board.result_counter, 9)
+        self.assertEquals(solver.result_counter, 9)
 
     def test_no_queen_solutions(self):
-        board = Chessboard(3, 3, queen=3)
-        results = board.solve()
+        solver = SolverContext(3, 3, queen=3)
+        results = solver.solve()
         self.check_results(results, [])
-        self.assertEquals(board.result_counter, 0)
+        self.assertEquals(solver.result_counter, 0)
 
     def test_two_kings_one_rook(self):
-        board = Chessboard(3, 3, king=2, rook=1)
-        results = board.solve()
+        solver = SolverContext(3, 3, king=2, rook=1)
+        results = solver.solve()
         self.check_results(results, [
             [('King', 0, 0), ('King', 2, 0), ('Rook', 1, 2)],
             [('King', 0, 0), ('King', 0, 2), ('Rook', 2, 1)],
             [('King', 2, 0), ('King', 2, 2), ('Rook', 0, 1)],
             [('King', 0, 2), ('King', 2, 2), ('Rook', 1, 0)],
         ])
-        self.assertEquals(board.result_counter, 4)
+        self.assertEquals(solver.result_counter, 4)
 
     def test_two_rooks_four_knights(self):
-        board = Chessboard(4, 4, rook=2, knight=4)
-        results = board.solve()
+        solver = SolverContext(4, 4, rook=2, knight=4)
+        results = solver.solve()
         self.check_results(results, [
             [('Rook', 0, 3), ('Rook', 2, 1),
              ('Knight', 1, 0), ('Knight', 3, 0), ('Knight', 1, 2), ('Knight', 3, 2)],
@@ -488,69 +487,16 @@ class TestSolver(unittest.TestCase):
             [('Rook', 1, 1), ('Rook', 3, 3),
              ('Knight', 0, 0), ('Knight', 2, 0), ('Knight', 0, 2), ('Knight', 2, 2)],
         ])
-        self.assertEquals(board.result_counter, 8)
+        self.assertEquals(solver.result_counter, 8)
 
     @unittest.skip("Solver too slow")
     def test_big_family(self):
-        board = Chessboard(7, 7, king=2, queen=2, bishop=2, knight=1)
-        results = board.solve()
+        solver = SolverContext(7, 7, king=2, queen=2, bishop=2, knight=1)
+        results = solver.solve()
 
     @unittest.skip("Solver too slow")
     def test_eight_queens(self):
-        board = Chessboard(8, 8, queen=8)
+        solver = SolverContext(8, 8, queen=8)
         while True:
-            board.solve()
-        self.assertEquals(board.result_counter, 92)
-
-
-class TestBoard(unittest.TestCase):
-
-    def test_all_positions(self):
-        self.assertEquals(list(Board(3, 3).positions), [
-            (0, 0), (1, 0), (2, 0),
-            (0, 1), (1, 1), (2, 1),
-            (0, 2), (1, 2), (2, 2)])
-
-    def test_coord_to_index(self):
-        self.assertEquals(Board(3, 3).coordinates_to_index(0, 0), 0)
-        self.assertEquals(Board(3, 3).coordinates_to_index(1, 1), 4)
-        self.assertEquals(Board(3, 3).coordinates_to_index(2, 2), 8)
-
-    def test_translate_error(self):
-        with self.assertRaises(ForbiddenCoordinates):
-            Board(3, 3).coordinates_to_index(-1, 0)
-        with self.assertRaises(ForbiddenCoordinates):
-            Board(3, 3).coordinates_to_index(0, -1)
-        with self.assertRaises(ForbiddenCoordinates):
-            Board(3, 3).coordinates_to_index(0, 3)
-        with self.assertRaises(ForbiddenCoordinates):
-            Board(3, 3).coordinates_to_index(3, 0)
-
-    def test_index_to_coord(self):
-        self.assertEquals(Board(3, 3).index_to_coordinates(0), (0, 0))
-        self.assertEquals(Board(3, 3).index_to_coordinates(1), (1, 0))
-        self.assertEquals(Board(3, 3).index_to_coordinates(2), (2, 0))
-        self.assertEquals(Board(3, 3).index_to_coordinates(3), (0, 1))
-        self.assertEquals(Board(3, 3).index_to_coordinates(4), (1, 1))
-        self.assertEquals(Board(3, 3).index_to_coordinates(5), (2, 1))
-        self.assertEquals(Board(3, 3).index_to_coordinates(6), (0, 2))
-        self.assertEquals(Board(3, 3).index_to_coordinates(7), (1, 2))
-        self.assertEquals(Board(3, 3).index_to_coordinates(8), (2, 2))
-
-    def test_wide_index_to_coord(self):
-        self.assertEquals(Board(1, 4).index_to_coordinates(0), (0, 0))
-        self.assertEquals(Board(1, 4).index_to_coordinates(1), (0, 1))
-        self.assertEquals(Board(1, 4).index_to_coordinates(2), (0, 2))
-        self.assertEquals(Board(1, 4).index_to_coordinates(3), (0, 3))
-
-    def test_long_index_to_coord(self):
-        self.assertEquals(Board(4, 1).index_to_coordinates(0), (0, 0))
-        self.assertEquals(Board(4, 1).index_to_coordinates(1), (1, 0))
-        self.assertEquals(Board(4, 1).index_to_coordinates(2), (2, 0))
-        self.assertEquals(Board(4, 1).index_to_coordinates(3), (3, 0))
-
-    def test_index_to_coord_error(self):
-        with self.assertRaises(ForbiddenIndex):
-            Board(3, 3).index_to_coordinates(-1)
-        with self.assertRaises(ForbiddenIndex):
-            Board(3, 3).index_to_coordinates(9)
+            solver.solve()
+        self.assertEquals(solver.result_counter, 92)

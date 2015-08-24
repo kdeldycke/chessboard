@@ -17,33 +17,12 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-""" Chessboard objects and utilities.
-
-2D positions on the board are noted (x, y).
-
-The horizontal range x goes from 0 to m-1.
-The vertical range y goes from 0 to n-1.
-
-The top-left position is (0, 0).
-The top-right position is (0, m-1).
-The bottom-left position is (n-1, 0).
-The bottom-right position is (n-1, m-1).
-
-          0 1 2 3 4 ...
-        0 . . . . .
-        1 . . . . .
-        2 . . . . .
-        3 . . . . .
-        4 . . . . .
-        ...
-
-"""
+""" Board repesentation and utilities. """
 
 from __future__ import (
     division, print_function, absolute_import, unicode_literals
 )
 
-from itertools import chain
 from operator import and_, or_, truth
 
 from chessboard import (
@@ -57,159 +36,6 @@ from chessboard import (
 )
 
 
-class Permutations(object):
-    """ Produce permutations of piece iteratively. """
-
-    def __init__(self, pieces, range_size=None):
-        # Transform the description of pieces population into a linear vector
-        # sorted by kind.
-        self.pieces = sorted(list(chain(*[
-            [kind] * quantity for kind, quantity in pieces.items()])))
-
-        # Maximal depth of the tree.
-        self.depth = len(self.pieces)
-
-        # Range of permutations.
-        self.range_size = range_size if range_size else self.depth
-
-        # Keep track of our current progression in the tree.
-        # This is the last permutation to be returned.
-        self.indexes = None
-
-    def increment_perm(self):
-        for index in reversed(range(self.depth)):
-            self.indexes[index] += 1
-            if self.indexes[index] < self.range_size:
-                break
-            self.indexes[index] = 0
-
-        # Now that we incrementally move our indexes, deduplicate positions of
-        # the same kind.
-        # Reset to adjacent position of the parent for pieces of the same
-        # kind.
-
-        for i in range(self.depth - 1):
-            if (self.pieces[i] == self.pieces[i + 1]) and (
-                    self.indexes[i] > self.indexes[i + 1]):
-                self.indexes[i + 1] = self.indexes[i]
-
-    def __iter__(self):
-        return self
-
-    def next(self):
-        """ Return next valid permutation. """
-        if self.indexes is None:
-            self.indexes = [0] * self.depth
-        elif self.indexes == [self.range_size - 1] * self.depth:
-            raise StopIteration
-        else:
-            self.increment_perm()
-        return zip(self.pieces, self.indexes)
-
-    def skip_branch(self, level):
-        """ Abandon the branch at the provided level and skip to the next.
-
-        When we call out to skip to the next branch of the search space, we
-        push sublevel pieces to the maximum positions on the board. So that the
-        next time the permutation iterator is called, it can produce the vector
-        state of the next adjacent branch.
-        """
-        for i in range(level + 1, self.depth):
-            self.indexes[i] = self.range_size - 1
-
-
-class Chessboard(object):
-    """ Initialize a chessboard context.
-
-    TODO: This initialization code belongs to the CLI domain really.
-
-    TODO: or rename to solver instead.
-    """
-
-    # List of recognized pieces.
-    PIECE_TYPES = frozenset([
-        'king',
-        'queen',
-        'rook',
-        'bishop',
-        'knight',
-    ])
-
-    def __init__(self, length, height, **pieces):
-        """ Initialize board dimensions. """
-        self.length = length
-        self.height = height
-        assert isinstance(self.length, int)
-        assert isinstance(self.height, int)
-        assert self.length > 0
-        assert self.height > 0
-
-        # Store the number of pieces on the board.
-        self.pieces = {}
-        for kind, quantity in pieces.items():
-            assert kind in self.PIECE_TYPES
-            assert isinstance(quantity, int)
-            assert quantity >= 0
-            self.pieces[kind] = quantity
-        assert sum(self.pieces.values()) > 0
-
-        # Solver metadata.
-        self.result_counter = 0
-
-    def __repr__(self):
-        """ Display all relevant object internals. """
-        return '<Chessboard: length={}, height={}, pieces={}>'.format(
-            self.length, self.height, self.pieces)
-
-    @property
-    def vector_size(self):
-        return self.length * self.height
-
-    @property
-    def vector_indexes(self):
-        return range(self.vector_size)
-
-    def solve(self):
-        """ Solve all possible positions of pieces.
-
-        Iterative cartesian product of level sets.
-        Depth-first, tree-traversal of the product space.
-        """
-        gen = Permutations(self.pieces, self.vector_size)
-
-        # Iterate through all combinations of positions.
-        while True:
-
-            try:
-                pos = gen.next()
-            except StopIteration:
-                break
-
-            # Create a new, empty board.
-            board = Board(self.length, self.height)
-
-            for level, (piece_kind, index_position) in enumerate(pos):
-                try:
-                    # Translate linear index to 2D dimension.
-                    x, y = board.index_to_coordinates(index_position)
-                    # Try to place the piece on the board.
-                    board.add(piece_kind, x, y)
-                # If one of the piece can't be added, throw the whole set and
-                # proceed to the next.
-                except (OccupiedPosition, VulnerablePosition, AttackablePiece):
-                    # Fetch next piece set but tell the generator this branch is
-                    # rotten.
-                    gen.skip_branch(level)
-                    break
-
-            else:
-                # Nothing to say about this branch, let's continue walking the tree.
-                #pieces_set = tree.send(None)
-                # All pieces fits, save solution and proceeed to next permutation.
-                self.result_counter += 1
-                yield board
-
-
 class Board(object):
     """ Chessboard of arbitrary dimensions with placed pieces.
 
@@ -220,6 +46,22 @@ class Board(object):
 
     Internal states of the board is materialized by a vector. A vector is a
     simple list of boolean for which each element represent a square.
+
+    2D positions on the board are noted (x, y):
+        * horizontal range x goes from 0 to m-1.
+        * vertical range y goes from 0 to n-1.
+        * top-left position is (0, 0).
+        * top-right position is (0, m-1).
+        * bottom-left position is (n-1, 0).
+        * bottom-right position is (n-1, m-1).
+
+          0 1 2 3 4 …
+        0 . . . . .
+        1 . . . . .
+        2 . . . . .
+        3 . . . . .
+        4 . . . . .
+        …
     """
 
     def __init__(self, length, height):
@@ -238,7 +80,7 @@ class Board(object):
         self.occupancy = self.new_vector()
 
         # Territory susceptible to attacke, i.e. squares reachable by at least
-        # a piece,
+        # a piece.
         self.exposed_territory = self.new_vector()
 
     def __repr__(self):
