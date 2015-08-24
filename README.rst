@@ -20,7 +20,9 @@ Python CLI to explore chessboard positions.
 Motivation
 ----------
 
-This project is a playground to test some optimization strategies in Python.
+This project is a playground to test some optimization strategies in Python,
+but is essentially an exemple of a real-life Python package, and serve me as
+a boilerplate project for future CLI.
 
 
 Development philosophy
