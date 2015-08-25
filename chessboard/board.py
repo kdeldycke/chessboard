@@ -164,17 +164,8 @@ class Board(object):
         index = (target_y * self.length) + target_x
         return index
 
-    def add(self, piece_kind, x, y):
+    def add(self, piece_kind, index):
         """ Add a piece to the board. """
-        # Create a new instance of the piece.
-        klass_name = piece_kind.title()
-        klass = getattr(piece_module, klass_name)
-        assert issubclass(klass, Piece)
-        piece = klass(self, x, y)
-
-        # Try to place the piece on the board.
-        index = piece.index
-
         # Square already occupied by another piece.
         if self.occupancy[index]:
             raise OccupiedPosition
@@ -182,6 +173,12 @@ class Board(object):
         # Square reachable by another piece.
         if self.exposed_territory[index]:
             raise VulnerablePosition
+
+        # Create a new instance of the piece.
+        klass_name = piece_kind.title()
+        klass = getattr(piece_module, klass_name)
+        assert issubclass(klass, Piece)
+        piece = klass(self, *self.index_to_coordinates(index))
 
         # Check if a piece can attack another one from its position.
         territory = piece.territory
@@ -191,7 +188,7 @@ class Board(object):
         # Mark the piece's territory as vulnerable and secure its position on
         # the board.
         self.pieces.append(piece)
-        self.occupancy[piece.index] = True
+        self.occupancy[index] = True
         self.exposed_territory = map(or_, self.exposed_territory, territory)
 
     def get(self, x, y):
