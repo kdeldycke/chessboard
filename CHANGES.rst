@@ -22,6 +22,7 @@ ChangeLog
 
 * Validate CLI user inputs and provides hints.
 * Abandon branches of the search space as soon as possible. Closes #3.
+* Deduplicate per-kind piece group permutations early. Closes #7.
 * Add ``--silent`` option to skip displaying of all board results in ASCII art.
 
 
