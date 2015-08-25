@@ -155,10 +155,8 @@ class SolverContext(object):
             board = Board(self.length, self.height)
 
             for level, (piece_kind, linear_position) in enumerate(positions):
+                # Try to place the piece on the board.
                 try:
-                    # Translate linear index to 2D dimension.
-                    x, y = board.index_to_coordinates(linear_position)
-                    # Try to place the piece on the board.
                     board.add(piece_kind, linear_position)
                 # If one of the piece can't be added, throw the whole set, skip
                 # the rotten branch and proceed to the next.
