@@ -7,7 +7,7 @@ ChangeLog
 
 * Fix rendering of unicode string in terminal.
 * Document stability policy and release process.
-* Ass PyPi-based badges.
+* Add PyPi-based badges.
 
 
 0.9.0 (2015-08-25)
