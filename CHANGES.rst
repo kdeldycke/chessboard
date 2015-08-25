@@ -2,7 +2,7 @@ ChangeLog
 =========
 
 
-0.9.1 (unreleased)
+0.9.1 (2015-08-25)
 ------------------
 
 * Fix rendering of unicode string in terminal.
