@@ -91,28 +91,22 @@ class Board(object):
     def __str__(self):
         """ Render the board with pieces in Unicode-art. """
         lines = []
-
         # Draw top line.
         lines.append((('┬───' * self.length) + '┐').replace('┬', '┌', 1))
-
         # Draw each line.
         for y in range(self.height):
-
             # Draw line with the pieces.
-            l = ''
+            line = ''
             for x in range(self.length):
                 piece = self.get(x, y)
-                l += '│ {} '.format(piece.symbol if piece else ' ')
-            lines.append(l + '│')
-
+                line += '│ {} '.format(piece.symbol if piece else ' ')
+            lines.append(line + '│')
             # Draw line separator but the last one.
-            if y < (self.height -1):
+            if y < (self.height - 1):
                 lines.append(
                     (('┼───' * self.length) + '┤').replace('┼', '├', 1))
-
         # Draw bottom line.
         lines.append((('┴───' * self.length) + '┘').replace('┴', '└', 1))
-
         return '\n'.join(lines)
 
     @property
