@@ -43,7 +43,8 @@ Development philosophy
 
 1. First create something that work (to provide business value).
 2. Then something that's beautiful (to lower maintenance costs).
-3. Finally works on performance (to avoid wasting time on premature optimizations).
+3. Finally works on performance (to avoid wasting time on premature
+   optimizations).
 
 
 Install
