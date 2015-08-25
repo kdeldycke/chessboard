@@ -50,17 +50,11 @@ class AttackablePiece(Exception):
     """ A piece is added to a position from which it can attack another. """
 
 
-# Symbols of recognized pieces.
-PIECE_TYPES = frozenset([
-    'king',
-    'queen',
-    'rook',
-    'bishop',
-    'knight',
-])
-
-
 # Expose important classes to the root of the module.
-from chessboard.pieces import Piece, King, Queen, Rook, Bishop, Knight
+from chessboard.pieces import (
+    Piece,
+    King, Queen, Rook, Bishop, Knight,
+    KING, QUEEN, ROOK, BISHOP, KNIGHT,
+    PIECE_LABELS, PIECE_CLASSES)
 from chessboard.board import Board
 from chessboard.solver import Permutations, SolverContext

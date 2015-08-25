@@ -31,8 +31,7 @@ from chessboard import (
     OccupiedPosition,
     VulnerablePosition,
     AttackablePiece,
-    Piece,
-    pieces as piece_module
+    PIECE_CLASSES,
 )
 
 
@@ -160,7 +159,7 @@ class Board(object):
         index = (target_y * self.length) + target_x
         return index
 
-    def add(self, piece_kind, index):
+    def add(self, piece_symbol, index):
         """ Add a piece to the board at the provided linear position. """
         # Square already occupied by another piece.
         if self.occupancy[index]:
@@ -171,7 +170,7 @@ class Board(object):
             raise VulnerablePosition
 
         # Create a new instance of the piece.
-        klass = getattr(piece_module, piece_kind.title())
+        klass = PIECE_CLASSES[piece_symbol]
         piece = klass(self, index)
 
         # Check if a piece can attack another one from its position.

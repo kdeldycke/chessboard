@@ -23,11 +23,12 @@ from __future__ import (
 
 import time
 import logging
+import sys
 
 import click
 from click.exceptions import BadParameter
 
-from . import __version__, PIECE_TYPES, SolverContext
+from . import __version__, PIECE_LABELS, SolverContext
 
 
 class PositiveInt(click.types.IntParamType):
@@ -53,12 +54,12 @@ class CLI(click.Command):
 
     def __init__(self, *args, **kwargs):
         """ Override default constructor to add dynamic parameters. """
-        for piece_type in PIECE_TYPES:
+        for label in PIECE_LABELS:
             kwargs['params'].append(click.Option(
-                ('--{}'.format(piece_type), ),
+                ('--{}'.format(label), ),
                 default=0,
                 type=POSITIVE_OR_ZERO_INT,
-                help='Number of {}s to add to the board.'.format(piece_type)))
+                help='Number of {}s to add to the board.'.format(label)))
         super(CLI, self).__init__(*args, **kwargs)
 
 
@@ -77,7 +78,7 @@ def cli(length, height, silent, verbose, **pieces):
     if not sum(pieces.values()):
         context = click.get_current_context()
         raise BadParameter('No piece provided.', ctx=context, param_hint=[
-            '--{}'.format(piece_type) for piece_type in PIECE_TYPES])
+            '--{}'.format(label) for label in PIECE_LABELS])
 
     click.echo('Building up a chessboard...')
     solver = SolverContext(length, height, **pieces)

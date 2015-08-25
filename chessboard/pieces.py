@@ -28,6 +28,20 @@ from itertools import chain, izip_longest
 from chessboard import ForbiddenCoordinates
 
 
+# Symbols of recognized pieces. Pieces are weighted by their territory
+# coverage. See #5.
+QUEEN, ROOK, BISHOP, KING, KNIGHT = range(5)
+
+# Piece labels mainly used for CLI.
+PIECE_LABELS = {
+    'king': KING,
+    'queen': QUEEN,
+    'rook': ROOK,
+    'bishop': BISHOP,
+    'knight': KNIGHT,
+}
+
+
 class Piece(object):
     """ A generic piece.
 
@@ -219,3 +233,13 @@ class Knight(Piece):
             # Bottom-left movements.
             (-2, -1), (-1, -2),
         ])
+
+
+# Map piece symbols to their class.
+PIECE_CLASSES = {
+    QUEEN: Queen,
+    ROOK: Rook,
+    BISHOP: Bishop,
+    KING: King,
+    KNIGHT: Knight,
+}

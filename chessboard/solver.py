@@ -29,19 +29,22 @@ from chessboard import (
     AttackablePiece,
     Board,
     OccupiedPosition,
-    PIECE_TYPES,
+    PIECE_CLASSES,
+    PIECE_LABELS,
     VulnerablePosition,
 )
 
 
 class Permutations(object):
-    """ Produce permutations of piece iteratively. """
+    """ Produce permutations of pieces iteratively. """
 
     def __init__(self, pieces, range_size=None):
         # Transform the description of pieces population into a linear vector
-        # sorted by kind.
+        # sorted by kind. Piece symbols are represented by an integer whose
+        # weight indicate the priority in the permutation tree, so that pieces
+        # covering the widest area are tested first. See #5.
         self.pieces = sorted(list(chain(*[
-            [kind] * quantity for kind, quantity in pieces.items()])))
+            [symbol] * quantity for symbol, quantity in pieces.items()])))
 
         # Maximal depth of the tree.
         self.depth = len(self.pieces)
@@ -117,13 +120,12 @@ class SolverContext(object):
         assert self.length > 0
         assert self.height > 0
 
-        # Store the number of pieces on the board.
+        # Store the number of pieces on the board by their symbol.
         self.pieces = {}
-        for kind, quantity in pieces.items():
-            assert kind in PIECE_TYPES
+        for label, quantity in pieces.items():
             assert isinstance(quantity, int)
             assert quantity >= 0
-            self.pieces[kind] = quantity
+            self.pieces[PIECE_LABELS[label]] = quantity
         assert sum(self.pieces.values()) > 0
 
         # Solver metadata.
@@ -131,8 +133,11 @@ class SolverContext(object):
 
     def __repr__(self):
         """ Display all relevant object internals. """
+        symbols_to_labels = {v: k for k, v in PIECE_LABELS.items()}
         return '<SolverContext: length={}, height={}, pieces={}>'.format(
-            self.length, self.height, self.pieces)
+            self.length, self.height, {
+                symbols_to_labels[symbol]: quantity
+                for symbol, quantity in self.pieces.items()})
 
     @property
     def vector_size(self):
@@ -155,10 +160,10 @@ class SolverContext(object):
             # Create a new, empty board.
             board = Board(self.length, self.height)
 
-            for level, (piece_kind, linear_position) in enumerate(positions):
+            for level, (piece_symbol, linear_position) in enumerate(positions):
                 # Try to place the piece on the board.
                 try:
-                    board.add(piece_kind, linear_position)
+                    board.add(piece_symbol, linear_position)
                 # If one of the piece can't be added, throw the whole set, skip
                 # the rotten branch and proceed to the next.
                 except (OccupiedPosition, VulnerablePosition, AttackablePiece):

@@ -6,7 +6,9 @@ ChangeLog
 ------------------
 
 * Do not spend time converting back and forth linear position to 2D position.
-  Provides a ~15% speed-up.
+  Provides a 1.16x speed-up.
+* Proceed permutation exploration with pieces of biggest territory coverage
+  first. Adds 16x speed-up. Closes #5.
 
 
 0.9.1 (2015-08-25)
