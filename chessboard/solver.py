@@ -68,6 +68,7 @@ class Permutations(object):
         # Now that we incremented our indexes, we need to deduplicate positions
         # of the same kind, by aligning piece's indexes to their parents. This
         # works thanks to the sort performed on self.pieces initialization.
+        # See #7.
         for i in range(self.depth - 1):
             if (self.pieces[i] == self.pieces[i + 1]) and (
                     self.indexes[i] > self.indexes[i + 1]):
