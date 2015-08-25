@@ -161,7 +161,7 @@ class Board(object):
         return index
 
     def add(self, piece_kind, index):
-        """ Add a piece to the board. """
+        """ Add a piece to the board at the provided linear position. """
         # Square already occupied by another piece.
         if self.occupancy[index]:
             raise OccupiedPosition
@@ -181,8 +181,8 @@ class Board(object):
         if filter(truth, map(and_, self.occupancy, territory)):
             raise AttackablePiece
 
-        # Mark the piece's territory as vulnerable and secure its position on
-        # the board.
+        # Mark the territory covered by the piece as exposed and secure its
+        # position on the board.
         self.pieces.append(piece)
         self.occupancy[index] = True
         self.exposed_territory = map(or_, self.exposed_territory, territory)
