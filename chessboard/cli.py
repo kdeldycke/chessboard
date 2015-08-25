@@ -86,7 +86,7 @@ def cli(length, height, silent, verbose, **pieces):
     start = time.time()
     for result in solver.solve():
         if not silent:
-            click.echo('{}'.format(result))
+            click.echo(u'{}'.format(result))
     processing_time = time.time() - start
 
     click.echo('{} results found in {:.2f} seconds.'.format(

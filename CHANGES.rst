@@ -5,7 +5,7 @@ ChangeLog
 0.9.1 (unreleased)
 ------------------
 
-* No changes yet.
+* Fix rendering of unicode string in terminal.
 
 
 0.9.0 (2015-08-25)
