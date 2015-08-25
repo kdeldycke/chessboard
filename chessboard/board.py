@@ -68,10 +68,6 @@ class Board(object):
         """ Initialize board dimensions. """
         self.length = length
         self.height = height
-        assert isinstance(self.length, int)
-        assert isinstance(self.height, int)
-        assert self.length > 0
-        assert self.height > 0
 
         # Store positionned pieces on the board.
         self.pieces = []
