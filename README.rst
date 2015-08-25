@@ -50,11 +50,12 @@ Development philosophy
 Install
 -------
 
+This package is available on PyPi, so you can install the latest stable release
+and its dependencies with a simple `pip` call:
+
 .. code-block:: bash
 
-    $ git clone git@github.com:kdeldycke/chessboard.git
-    $ cd ./chessboard
-    $ python ./setup.py develop
+    $ pip install chessboard
 
 
 Usage
@@ -120,12 +121,22 @@ Exemples
     4 results found in 0.03 seconds.
 
 
-Unit-tests
-----------
+Development
+-----------
+
+Check out latest development branch:
 
 .. code-block:: bash
 
-      $ python ./setup.py nosetests
+    $ git clone git@github.com:kdeldycke/chessboard.git
+    $ cd ./chessboard
+    $ python ./setup.py develop
+
+Run unit-tests:
+
+.. code-block:: bash
+
+    $ python ./setup.py nosetests
 
 
 Stability policy
