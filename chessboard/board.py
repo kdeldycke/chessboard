@@ -171,10 +171,8 @@ class Board(object):
             raise VulnerablePosition
 
         # Create a new instance of the piece.
-        klass_name = piece_kind.title()
-        klass = getattr(piece_module, klass_name)
-        assert issubclass(klass, Piece)
-        piece = klass(self, *self.index_to_coordinates(index))
+        klass = getattr(piece_module, piece_kind.title())
+        piece = klass(self, index)
 
         # Check if a piece can attack another one from its position.
         territory = piece.territory

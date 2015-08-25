@@ -35,23 +35,16 @@ class Piece(object):
     y: vertical position of the piece.
     """
 
-    def __init__(self, board, x, y):
-        """ Place the piece at the (x, y) coordinates of the provided board.
-        """
-        self.x = x
-        self.y = y
+    def __init__(self, board, index):
+        """ Place the piece on a board at the provided linear position. """
         self.board = board
-        self.board.validate_coordinates(self.x, self.y)
+        self.index = index
+        self.x, self.y = self.board.index_to_coordinates(self.index)
 
     def __repr__(self):
         """ Display all relevant object internals. """
         return '<{}: x={}, y={}; index={}>'.format(
             self.__class__.__name__, self.x, self.y, self.index)
-
-    @property
-    def index(self):
-        """ Return current linear index of the piece on the board. """
-        return self.board.coordinates_to_index(self.x, self.y)
 
     @property
     def bottom_distance(self):

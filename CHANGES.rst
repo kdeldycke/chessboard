@@ -6,7 +6,7 @@ ChangeLog
 ------------------
 
 * Do not spend time converting back and forth linear position to 2D position.
-  Provides a ~5% speed-up.
+  Provides a ~15% speed-up.
 
 
 0.9.1 (2015-08-25)
