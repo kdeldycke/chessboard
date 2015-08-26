@@ -23,6 +23,7 @@ from __future__ import (
 
 import time
 
+from bprofile import BProfile
 import click
 from click.exceptions import BadParameter
 
@@ -71,22 +72,33 @@ class CLI(click.Command):
               help='Do not display result board, only final count.')
 @click.option('-v', '--verbose', is_flag=True, default=False,
               help='Print much more debug statements.')
-def cli(length, height, silent, verbose, **pieces):
+@click.option('-p', '--profile', is_flag=True, default=False,
+              help='Produce a profiling graph.')
+def cli(length, height, silent, verbose, profile, **pieces):
     """ Python CLI to explore chessboard positions. """
+    # Check that at least one piece is provided.
     if not sum(pieces.values()):
         context = click.get_current_context()
         raise BadParameter('No piece provided.', ctx=context, param_hint=[
             '--{}'.format(label) for label in PIECE_LABELS])
 
+    # Setup the optionnal profiler.
+    profiler = BProfile('solver-profile.png', enabled=profile)
+
     click.echo('Building up a chessboard...')
     solver = SolverContext(length, height, **pieces)
 
-    click.echo('Solving the chessboard...')
-    start = time.time()
-    for result in solver.solve():
-        if not silent:
-            click.echo(u'{}'.format(result))
-    processing_time = time.time() - start
+    click.echo('Searching positions...')
+    with profiler:
+        start = time.time()
+        for result in solver.solve():
+            if not silent:
+                click.echo(u'{}'.format(result))
+        processing_time = time.time() - start
 
     click.echo('{} results found in {:.2f} seconds.'.format(
         solver.result_counter, processing_time))
+
+    if profile:
+        click.echo('Execution profile saved at {}'.format(
+            profiler.output_path))

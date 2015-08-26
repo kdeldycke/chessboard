@@ -60,6 +60,7 @@ setup(
 
     install_requires=[
         'click >= 5.0',
+        'bprofile',
     ],
 
     packages=find_packages(),

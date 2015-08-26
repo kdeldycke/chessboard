@@ -10,6 +10,8 @@ ChangeLog
 * Proceed permutation exploration with pieces of biggest territory coverage
   first. Adds 16x speed-up. Closes #5.
 * Add support for bumpversion.
+* Add new ``--profile`` option to produce an execution profile of the solver.
+
 
 0.9.1 (2015-08-25)
 ------------------
