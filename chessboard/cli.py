@@ -22,8 +22,6 @@ from __future__ import (
 )
 
 import time
-import logging
-import sys
 
 import click
 from click.exceptions import BadParameter
