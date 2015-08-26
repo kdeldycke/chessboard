@@ -9,7 +9,7 @@ ChangeLog
   Provides a 1.16x speed-up.
 * Proceed permutation exploration with pieces of biggest territory coverage
   first. Adds 16x speed-up. Closes #5.
-
+* Add support for bumpversion.
 
 0.9.1 (2015-08-25)
 ------------------

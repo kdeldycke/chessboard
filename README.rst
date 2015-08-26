@@ -168,11 +168,11 @@ Start from the ``develop`` branch:
     $ git clone git@github.com:kdeldycke/chessboard.git
     $ git checkout develop
 
-Update revision to its release number and update change log:
+Revision should already be set to the next version, so we just need to set the
+released date in the changelog:
 
 .. code-block:: bash
 
-    $ vi ./chessboard/__init__.py
     $ vi ./CHANGES.rst
 
 Create a release commit, tag it and merge it back to ``master`` branch:
@@ -189,32 +189,43 @@ Create a release commit, tag it and merge it back to ``master`` branch:
     $ git merge "vX.Y.Z"
     $ git push
 
-Push packaging to the test cheeseshop:
+Push packaging to the `test cheeseshop
+<https://wiki.python.org/moin/TestPyPI>`_:
 
 .. code-block:: bash
 
-    $ python setup.py register -r testpypi
     $ pip install wheel
+    $ python ./setup.py register -r testpypi
     $ rm -rf ./build ./dist
-    $ python setup.py sdist bdist_egg bdist_wheel upload -r testpypi
+    $ python ./setup.py sdist bdist_egg bdist_wheel upload -r testpypi
 
-Publish packaging to PyPi:
+Publish packaging to `PyPi <https://pypi.python.org>`_:
 
 .. code-block:: bash
 
-    $ python setup.py register -r pypi
+    $ python ./setup.py register -r pypi
     $ rm -rf ./build ./dist
-    $ python setup.py sdist bdist_egg bdist_wheel upload -r pypi
+    $ python ./setup.py sdist bdist_egg bdist_wheel upload -r pypi
 
 Bump revision back to its development state:
 
 .. code-block:: bash
 
+    $ pip install bumpversion
     $ git checkout develop
-    $ vi ./chessboard/__init__.py
-    $ vi ./CHANGES.rst
+    $ bumpversion --verbose patch
     $ git add ./chessboard/__init__.py ./CHANGES.rst
     $ git commit -m "Post release version bump."
+    $ git push
+
+Now if the next revision is no longer bug-fix only:
+
+.. code-block:: bash
+
+    $ bumpversion --verbose minor
+    $ git add ./chessboard/__init__.py ./CHANGES.rst
+    $ git commit -m "Next release no longer bug-fix only. Bump revision."
+    $ git push
 
 
 Third-party
