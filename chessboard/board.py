@@ -160,7 +160,7 @@ class Board(object):
         index = (target_y * self.length) + target_x
         return index
 
-    def add(self, piece_symbol, index):
+    def add(self, piece_uid, index):
         """ Add a piece to the board at the provided linear position. """
         # Square already occupied by another piece.
         if self.occupancy[index]:
@@ -171,7 +171,7 @@ class Board(object):
             raise VulnerablePosition
 
         # Create a new instance of the piece.
-        klass = PIECE_CLASSES[piece_symbol]
+        klass = PIECE_CLASSES[piece_uid]
         piece = klass(self, index)
 
         # Check if a piece can attack another one from its position.

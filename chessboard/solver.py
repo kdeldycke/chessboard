@@ -39,7 +39,7 @@ class Permutations(object):
 
     def __init__(self, pieces, range_size=None):
         # Transform the description of pieces population into a linear vector
-        # sorted by kind. Piece symbols are represented by an integer whose
+        # sorted by UID. Piece symbols are represented by an integer whose
         # weight indicate the priority in the permutation tree, so that pieces
         # covering the widest area are tested first. See #5.
         self.pieces = tuple(chain.from_iterable([
@@ -75,9 +75,9 @@ class Permutations(object):
             self.indexes[index] = 0
 
         # Now that we incremented our indexes, we need to deduplicate positions
-        # of the same kind, by aligning piece's indexes to their parents. This
-        # works thanks to the sort performed on self.pieces initialization.
-        # See #7.
+        # shering the same UIDs, by aligning piece's indexes to their parents.
+        # This works thanks to the sort performed on self.pieces
+        # initialization. See #7.
         for i in range(self.depth - 1):
             if (self.pieces[i] == self.pieces[i + 1]) and (
                     self.indexes[i] > self.indexes[i + 1]):
@@ -126,7 +126,7 @@ class SolverContext(object):
         assert self.length > 0
         assert self.height > 0
 
-        # Store the number of pieces on the board by their symbol.
+        # Store the number of pieces on the board by their UIDs.
         self.pieces = {}
         for label, quantity in pieces.items():
             assert isinstance(quantity, int)
@@ -139,11 +139,11 @@ class SolverContext(object):
 
     def __repr__(self):
         """ Display all relevant object internals. """
-        symbols_to_labels = {v: k for k, v in PIECE_LABELS.items()}
+        uids_to_labels = {uid: label for label, uid in PIECE_LABELS.items()}
         return '<SolverContext: length={}, height={}, pieces={}>'.format(
             self.length, self.height, {
-                symbols_to_labels[symbol]: quantity
-                for symbol, quantity in self.pieces.items()})
+                uids_to_labels[uid]: quantity
+                for uid, quantity in self.pieces.items()})
 
     @property
     def vector_size(self):
@@ -166,10 +166,10 @@ class SolverContext(object):
             # Create a new, empty board.
             board = Board(self.length, self.height)
 
-            for level, (piece_symbol, linear_position) in enumerate(positions):
+            for level, (piece_uid, linear_position) in enumerate(positions):
                 # Try to place the piece on the board.
                 try:
-                    board.add(piece_symbol, linear_position)
+                    board.add(piece_uid, linear_position)
                 # If one of the piece can't be added, throw the whole set, skip
                 # the rotten branch and proceed to the next.
                 except (OccupiedPosition, VulnerablePosition, AttackablePiece):

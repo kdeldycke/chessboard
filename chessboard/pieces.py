@@ -28,26 +28,22 @@ from itertools import chain, izip_longest
 from chessboard import ForbiddenCoordinates
 
 
-# Symbols of recognized pieces. Pieces are weighted by their territory
-# coverage. See #5.
-QUEEN, ROOK, BISHOP, KING, KNIGHT = range(5)
-
-# Piece labels mainly used for CLI.
-PIECE_LABELS = {
-    'king': KING,
-    'queen': QUEEN,
-    'rook': ROOK,
-    'bishop': BISHOP,
-    'knight': KNIGHT,
-}
-
-
 class Piece(object):
     """ A generic piece.
 
     x: horizontal position of the piece.
     y: vertical position of the piece.
     """
+    # Simple ASCII string identifying the kind of piece.
+    label = None
+
+    # Single unicode character used to represent the piece on a board.
+    symbol = None
+
+    # Integer uniquely identifying the type/kind of the piece. Used as a
+    # shortcut to the class itself. Also serves as a ranking weight of the
+    # territory coverage (see #5).
+    uid = None
 
     def __init__(self, board, index):
         """ Place the piece on a board at the provided linear position. """
@@ -57,8 +53,11 @@ class Piece(object):
 
     def __repr__(self):
         """ Display all relevant object internals. """
-        return '<{}: x={}, y={}; index={}>'.format(
-            self.__class__.__name__, self.x, self.y, self.index)
+        return (
+            '<{}: uid={}; label={}, symbol={}; x={}, y={}; index={}>'.format(
+                self.__class__.__name__,
+                self.uid, self.label, self.symbol,
+                self.x, self.y, self.index))
 
     @property
     def bottom_distance(self):
@@ -235,11 +234,17 @@ class Knight(Piece):
         ])
 
 
-# Map piece symbols to their class.
-PIECE_CLASSES = {
-    QUEEN: Queen,
-    ROOK: Rook,
-    BISHOP: Bishop,
-    KING: King,
-    KNIGHT: Knight,
-}
+PIECES = set([Queen, Rook, Bishop, King, Knight])
+
+# Initialize territory coverage ranking.
+Queen.uid, Rook.uid, Bishop.uid, King.uid, Knight.uid = range(5)
+
+# Initialize piece labels.
+for klass in PIECES:
+    klass.label = klass.__name__.lower()
+
+# Map labels to UIDs.
+PIECE_LABELS = {klass.label: klass.uid for klass in PIECES}
+
+# Map piece UIDs to their class.
+PIECE_CLASSES = {klass.uid: klass for klass in PIECES}

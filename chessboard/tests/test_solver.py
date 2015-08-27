@@ -27,7 +27,8 @@ import unittest
 from chessboard import (
     Permutations,
     SolverContext,
-    KING, QUEEN,
+    King,
+    Queen,
 )
 
 
@@ -369,7 +370,8 @@ class TestSolverContext(unittest.TestCase):
         solver = SolverContext(3, 3, king=2, queen=7)
         self.assertEquals(solver.length, 3)
         self.assertEquals(solver.height, 3)
-        self.assertDictContainsSubset({KING: 2, QUEEN: 7}, solver.pieces)
+        self.assertDictContainsSubset(
+            {King.uid: 2, Queen.uid: 7}, solver.pieces)
 
     def check_results(self, results, expected):
         """ Check found results.
