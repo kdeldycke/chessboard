@@ -29,7 +29,6 @@ from chessboard import (
     AttackablePiece,
     Board,
     OccupiedPosition,
-    PIECE_CLASSES,
     PIECE_LABELS,
     VulnerablePosition,
 )
