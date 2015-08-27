@@ -2,7 +2,7 @@ ChangeLog
 =========
 
 
-1.0.1 (unreleased)
+1.1.0 (unreleased)
 ------------------
 
 * Use `bytearray` to represent board states. Closes #4.
