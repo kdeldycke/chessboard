@@ -69,7 +69,7 @@ class Board(object):
         self.height = height
 
         # Store positionned pieces on the board.
-        self.pieces = []
+        self.pieces = set()
 
         # Squares on the board already occupied by a piece.
         self.occupancy = self.new_vector()
@@ -180,7 +180,7 @@ class Board(object):
 
         # Mark the territory covered by the piece as exposed and secure its
         # position on the board.
-        self.pieces.append(piece)
+        self.pieces.add(piece)
         self.occupancy[index] = True
         self.exposed_territory = map(or_, self.exposed_territory, territory)
 
