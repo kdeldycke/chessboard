@@ -42,8 +42,9 @@ class Permutations(object):
         # sorted by kind. Piece symbols are represented by an integer whose
         # weight indicate the priority in the permutation tree, so that pieces
         # covering the widest area are tested first. See #5.
-        self.pieces = sorted(list(chain(*[
-            [symbol] * quantity for symbol, quantity in pieces.items()])))
+        self.pieces = tuple(chain.from_iterable([
+            [symbol] * quantity
+            for symbol, quantity in sorted(pieces.items())]))
 
         # Maximal depth of the tree.
         self.depth = len(self.pieces)
