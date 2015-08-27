@@ -6,6 +6,8 @@ ChangeLog
 ------------------
 
 * Use `bytearray` to represent board states. Closes #4.
+* Cache piece territories to speed solver up to 3x on board with big population
+  of pieces.
 
 
 1.0.0 (2015-08-27)

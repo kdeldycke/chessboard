@@ -45,6 +45,9 @@ class Piece(object):
     # territory coverage (see #5).
     uid = None
 
+    # Cache territory occupied by pieces at a given position for a fixed board.
+    territory_cache = {}
+
     def __init__(self, board, index):
         """ Place the piece on a board at the provided linear position. """
         self.board = board
@@ -130,7 +133,17 @@ class Piece(object):
 
     @property
     def territory(self):
-        """ Territory reachable by the piece from its current position.
+        """ Return the cached territory occupied by the piece. """
+        cache_key = (self.board.length, self.board.height, self.uid, self.index)
+        if cache_key not in self.territory_cache:
+            vector = self.compute_territory()
+            self.territory_cache[cache_key] = vector
+        else:
+            vector = self.territory_cache[cache_key]
+        return vector
+
+    def compute_territory(self):
+        """ Compute territory reachable by the piece from its current position.
 
         Returns a list of boolean flags of squares indexed linearly, for which
         a True means the square is reachable.
