@@ -150,10 +150,6 @@ class SolverContext(object):
     def vector_size(self):
         return self.length * self.height
 
-    @property
-    def vector_indexes(self):
-        return range(self.vector_size)
-
     def solve(self):
         """ Solve all possible positions of pieces within the context.
 
