@@ -492,11 +492,13 @@ class TestSolverContext(unittest.TestCase):
 
     def test_eight_queens(self):
         solver = SolverContext(8, 8, queen=8)
-        while True:
-            solver.solve()
+        for _ in solver.solve():
+            pass
         self.assertEquals(solver.result_counter, 92)
 
     @unittest.skip("Solver too slow")
     def test_big_family(self):
         solver = SolverContext(7, 7, king=2, queen=2, bishop=2, knight=1)
-        results = solver.solve()
+        for _ in solver.solve():
+            pass
+        self.assertEquals(solver.result_counter, 1000000)
