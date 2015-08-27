@@ -2,7 +2,7 @@ ChangeLog
 =========
 
 
-0.9.2 (unreleased)
+1.0.0 (unreleased)
 ------------------
 
 * Do not spend time converting back and forth linear position to 2D position.
