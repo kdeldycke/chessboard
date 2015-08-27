@@ -176,8 +176,9 @@ class Board(object):
 
         # Check if a piece can attack another one from its position.
         territory = piece.territory
-        if filter(truth, map(and_, self.occupancy, territory)):
-            raise AttackablePiece
+        for i in self.indexes:
+            if self.occupancy[i] and territory[i]:
+                raise AttackablePiece
 
         # Mark the territory covered by the piece as exposed and secure its
         # position on the board.
