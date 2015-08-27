@@ -5,7 +5,7 @@ ChangeLog
 1.0.1 (unreleased)
 ------------------
 
-* No changes yet.
+* Use `bytearray` to represent board states. Closes #4.
 
 
 1.0.0 (2015-08-27)

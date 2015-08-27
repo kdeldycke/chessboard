@@ -127,7 +127,7 @@ class Board(object):
 
         All states are initialized to False.
         """
-        return [False] * self.size
+        return bytearray(self.size)
 
     def validate_index(self, index):
         """ Check that a linear index of a square is within board's bounds. """

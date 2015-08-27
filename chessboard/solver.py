@@ -51,10 +51,16 @@ class Permutations(object):
 
         # Range of permutations.
         self.range_size = range_size if range_size else self.depth
+        # Because we're using bytearray to store permutations states, we can't
+        # keep track of pieces above the 255 position.
+        assert self.range_size < 256
 
         # Keep track of our current progression in search space. This variable
         # always holds the last permutation we returned.
         self.indexes = None
+
+        # Compute the terminal iteration the generator may reach.
+        self.terminal_iteration = bytearray([self.range_size - 1] * self.depth)
 
     def increment(self):
         """ Increment the last permutation we returned to the next. """
@@ -86,8 +92,8 @@ class Permutations(object):
         Raise iteration exception when we explored all permutations.
         """
         if self.indexes is None:
-            self.indexes = [0] * self.depth
-        elif self.indexes == [self.range_size - 1] * self.depth:
+            self.indexes = bytearray(self.depth)
+        elif self.indexes == self.terminal_iteration:
             raise StopIteration
         else:
             self.increment()
