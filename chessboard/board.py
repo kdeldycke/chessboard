@@ -80,7 +80,8 @@ class Board(object):
 
     def __repr__(self):
         """ Display all relevant object internals. """
-        return '<Board: length={}, height={}, size={}, pieces={}>'.format(
+        return '<{}: length={}, height={}, size={}, pieces={}>'.format(
+            self.__class__.__name__,
             self.length, self.height, self.size, self.pieces)
 
     def __str__(self):
