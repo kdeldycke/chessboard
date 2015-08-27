@@ -84,6 +84,7 @@ class Permutations(object):
                 self.indexes[i + 1] = self.indexes[i]
 
     def __iter__(self):
+        """ Return the generator itself, not its results. """
         return self
 
     def next(self):
