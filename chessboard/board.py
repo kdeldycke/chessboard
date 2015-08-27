@@ -23,7 +23,7 @@ from __future__ import (
     division, print_function, absolute_import, unicode_literals
 )
 
-from operator import and_, or_, truth
+from operator import or_
 
 from chessboard import (
     ForbiddenIndex,
