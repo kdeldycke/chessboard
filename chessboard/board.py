@@ -136,7 +136,7 @@ class Board(object):
 
     def validate_coordinates(self, x, y):
         """ Check if the piece lie within the board. """
-        if not(x >= 0 and x < self.length and y >= 0 and y < self.height):
+        if not(0 <= x < self.length and 0 <= y < self.height):
             raise ForbiddenCoordinates(
                 "x={}, y={} outside of {}x{} board.".format(
                     x, y, self.length, self.height))
