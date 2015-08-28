@@ -85,6 +85,8 @@ Usage
 Exemples
 --------
 
+Simple 3x3 board with 2 kings and a rook:
+
 .. code-block:: bash
 
     $ chessboard --length=3 --height=3 --king=2 --rook=1
@@ -119,6 +121,16 @@ Exemples
     │ ♚ │   │ ♚ │
     └───┴───┴───┘
     4 results found in 0.03 seconds.
+
+
+Famous eight queens puzzle:
+
+.. code-block:: bash
+
+    $ chessboard --length=8 --height=8 --queen=8 --silent
+    Building up a chessboard...
+    Searching positions...
+    92 results found in 119.87 seconds.
 
 
 Development
