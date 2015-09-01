@@ -134,6 +134,16 @@ Famous eight queens puzzle:
     92 results found in 119.87 seconds.
 
 
+Huge combinatoric problem:
+
+.. code-block:: bash
+
+    $ chessboard --length=7 --height=7 --king=2 --queen=2 --bishop=2 --knight=1 --silent
+    Building up a chessboard...
+    Searching positions...
+    3063828 results found in 93614.93 seconds.
+
+
 Development
 -----------
 
