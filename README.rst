@@ -134,7 +134,7 @@ Famous eight queens puzzle:
     92 results found in 119.87 seconds.
 
 
-Huge combinatoric problem running on a `Scaleway C1 instance <https://scaleway.com>_`:
+Huge combinatoric problem running on a `Scaleway C1 instance <https://scaleway.com>`_:
 
 .. code-block:: bash
 
