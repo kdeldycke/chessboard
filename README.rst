@@ -50,8 +50,9 @@ Development philosophy
 Install
 -------
 
-This package is available on PyPi, so you can install the latest stable release
-and its dependencies with a simple `pip` call:
+This package is `available on PyPi <https://pypi.python.org/pypi/chessboard>`_,
+so you can install the latest stable release and its dependencies with a simple
+`pip` call:
 
 .. code-block:: bash
 
