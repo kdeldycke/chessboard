@@ -2,7 +2,7 @@ ChangeLog
 =========
 
 
-1.1.1 (unreleased)
+1.2.0 (unreleased)
 ------------------
 
 * Pre-compute some Board properties. Add 1.12x speedup.
