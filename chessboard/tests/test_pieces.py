@@ -38,51 +38,51 @@ class TestKing(unittest.TestCase):
         """ Test computation of territory at each positions of a 3x3 board. """
         board = Board(3, 3)
         c2i = board.coordinates_to_index
-        self.assertEquals(King(board, c2i(1, 1)).territory, bytearray([
+        self.assertEquals(King(board, c2i(1, 1)).territory, [
              True,  True,  True,
              True,  True,  True,
              True,  True,  True,
-        ]))
-        self.assertEquals(King(board, c2i(0, 0)).territory, bytearray([
+        ])
+        self.assertEquals(King(board, c2i(0, 0)).territory, [
              True,  True, False,
              True,  True, False,
             False, False, False,
-        ]))
-        self.assertEquals(King(board, c2i(1, 0)).territory, bytearray([
+        ])
+        self.assertEquals(King(board, c2i(1, 0)).territory, [
              True,  True,  True,
              True,  True,  True,
             False, False, False,
-        ]))
-        self.assertEquals(King(board, c2i(2, 0)).territory, bytearray([
+        ])
+        self.assertEquals(King(board, c2i(2, 0)).territory, [
             False,  True,  True,
             False,  True,  True,
             False, False, False,
-        ]))
-        self.assertEquals(King(board, c2i(2, 1)).territory, bytearray([
+        ])
+        self.assertEquals(King(board, c2i(2, 1)).territory, [
             False,  True,  True,
             False,  True,  True,
             False,  True,  True,
-        ]))
-        self.assertEquals(King(board, c2i(2, 2)).territory, bytearray([
+        ])
+        self.assertEquals(King(board, c2i(2, 2)).territory, [
             False, False, False,
             False,  True,  True,
             False,  True,  True,
-        ]))
-        self.assertEquals(King(board, c2i(1, 2)).territory, bytearray([
+        ])
+        self.assertEquals(King(board, c2i(1, 2)).territory, [
             False, False, False,
              True,  True,  True,
              True,  True,  True,
-        ]))
-        self.assertEquals(King(board, c2i(0, 2)).territory, bytearray([
+        ])
+        self.assertEquals(King(board, c2i(0, 2)).territory, [
             False, False, False,
              True,  True, False,
              True,  True, False,
-        ]))
-        self.assertEquals(King(board, c2i(0, 1)).territory, bytearray([
+        ])
+        self.assertEquals(King(board, c2i(0, 1)).territory, [
              True,  True, False,
              True,  True, False,
              True,  True, False,
-        ]))
+        ])
 
 
 class TestQueen(unittest.TestCase):
@@ -91,51 +91,51 @@ class TestQueen(unittest.TestCase):
         """ Test computation of territory at each positions of a 3x3 board. """
         board = Board(3, 3)
         c2i = board.coordinates_to_index
-        self.assertEquals(Queen(board, c2i(1, 1)).territory, bytearray([
+        self.assertEquals(Queen(board, c2i(1, 1)).territory, [
              True,  True,  True,
              True,  True,  True,
              True,  True,  True,
-        ]))
-        self.assertEquals(Queen(board, c2i(0, 0)).territory, bytearray([
+        ])
+        self.assertEquals(Queen(board, c2i(0, 0)).territory, [
              True,  True,  True,
              True,  True, False,
              True, False,  True,
-        ]))
-        self.assertEquals(Queen(board, c2i(1, 0)).territory, bytearray([
+        ])
+        self.assertEquals(Queen(board, c2i(1, 0)).territory, [
              True,  True,  True,
              True,  True,  True,
             False,  True, False,
-        ]))
-        self.assertEquals(Queen(board, c2i(2, 0)).territory, bytearray([
+        ])
+        self.assertEquals(Queen(board, c2i(2, 0)).territory, [
              True,  True,  True,
             False,  True,  True,
              True, False,  True,
-        ]))
-        self.assertEquals(Queen(board, c2i(2, 1)).territory, bytearray([
+        ])
+        self.assertEquals(Queen(board, c2i(2, 1)).territory, [
             False,  True,  True,
              True,  True,  True,
             False,  True,  True,
-        ]))
-        self.assertEquals(Queen(board, c2i(2, 2)).territory, bytearray([
+        ])
+        self.assertEquals(Queen(board, c2i(2, 2)).territory, [
              True, False,  True,
             False,  True,  True,
              True,  True,  True,
-        ]))
-        self.assertEquals(Queen(board, c2i(1, 2)).territory, bytearray([
+        ])
+        self.assertEquals(Queen(board, c2i(1, 2)).territory, [
             False,  True, False,
              True,  True,  True,
              True,  True,  True,
-        ]))
-        self.assertEquals(Queen(board, c2i(0, 2)).territory, bytearray([
+        ])
+        self.assertEquals(Queen(board, c2i(0, 2)).territory, [
              True, False,  True,
              True,  True, False,
              True,  True,  True,
-        ]))
-        self.assertEquals(Queen(board, c2i(0, 1)).territory, bytearray([
+        ])
+        self.assertEquals(Queen(board, c2i(0, 1)).territory, [
              True,  True, False,
              True,  True,  True,
              True,  True, False,
-        ]))
+        ])
 
 
 class TestRook(unittest.TestCase):
@@ -144,51 +144,51 @@ class TestRook(unittest.TestCase):
         """ Test computation of territory at each positions of a 3x3 board. """
         board = Board(3, 3)
         c2i = board.coordinates_to_index
-        self.assertEquals(Rook(board, c2i(1, 1)).territory, bytearray([
+        self.assertEquals(Rook(board, c2i(1, 1)).territory, [
             False,  True,  False,
              True,  True,  True,
             False,  True,  False,
-        ]))
-        self.assertEquals(Rook(board, c2i(0, 0)).territory, bytearray([
+        ])
+        self.assertEquals(Rook(board, c2i(0, 0)).territory, [
              True,  True,  True,
              True, False, False,
              True, False, False,
-        ]))
-        self.assertEquals(Rook(board, c2i(1, 0)).territory, bytearray([
+        ])
+        self.assertEquals(Rook(board, c2i(1, 0)).territory, [
              True,  True,  True,
             False,  True, False,
             False,  True, False,
-        ]))
-        self.assertEquals(Rook(board, c2i(2, 0)).territory, bytearray([
+        ])
+        self.assertEquals(Rook(board, c2i(2, 0)).territory, [
              True,  True,  True,
             False, False,  True,
             False, False,  True,
-        ]))
-        self.assertEquals(Rook(board, c2i(2, 1)).territory, bytearray([
+        ])
+        self.assertEquals(Rook(board, c2i(2, 1)).territory, [
             False, False,  True,
              True,  True,  True,
             False, False,  True,
-        ]))
-        self.assertEquals(Rook(board, c2i(2, 2)).territory, bytearray([
+        ])
+        self.assertEquals(Rook(board, c2i(2, 2)).territory, [
             False, False,  True,
             False, False,  True,
              True,  True,  True,
-        ]))
-        self.assertEquals(Rook(board, c2i(1, 2)).territory, bytearray([
+        ])
+        self.assertEquals(Rook(board, c2i(1, 2)).territory, [
             False,  True, False,
             False,  True, False,
              True,  True,  True,
-        ]))
-        self.assertEquals(Rook(board, c2i(0, 2)).territory, bytearray([
+        ])
+        self.assertEquals(Rook(board, c2i(0, 2)).territory, [
              True, False, False,
              True, False, False,
              True,  True,  True,
-        ]))
-        self.assertEquals(Rook(board, c2i(0, 1)).territory, bytearray([
+        ])
+        self.assertEquals(Rook(board, c2i(0, 1)).territory, [
              True, False, False,
              True,  True,  True,
              True, False, False,
-        ]))
+        ])
 
 
 class TestBishop(unittest.TestCase):
@@ -197,51 +197,51 @@ class TestBishop(unittest.TestCase):
         """ Test computation of territory at each positions of a 3x3 board. """
         board = Board(3, 3)
         c2i = board.coordinates_to_index
-        self.assertEquals(Bishop(board, c2i(1, 1)).territory, bytearray([
+        self.assertEquals(Bishop(board, c2i(1, 1)).territory, [
              True, False,  True,
             False,  True, False,
              True, False,  True,
-        ]))
-        self.assertEquals(Bishop(board, c2i(0, 0)).territory, bytearray([
+        ])
+        self.assertEquals(Bishop(board, c2i(0, 0)).territory, [
              True, False, False,
             False,  True, False,
             False, False,  True,
-        ]))
-        self.assertEquals(Bishop(board, c2i(1, 0)).territory, bytearray([
+        ])
+        self.assertEquals(Bishop(board, c2i(1, 0)).territory, [
             False,  True, False,
              True, False,  True,
             False, False, False,
-        ]))
-        self.assertEquals(Bishop(board, c2i(2, 0)).territory, bytearray([
+        ])
+        self.assertEquals(Bishop(board, c2i(2, 0)).territory, [
             False, False,  True,
             False,  True, False,
              True, False, False,
-        ]))
-        self.assertEquals(Bishop(board, c2i(2, 1)).territory, bytearray([
+        ])
+        self.assertEquals(Bishop(board, c2i(2, 1)).territory, [
             False,  True, False,
             False, False,  True,
             False,  True, False,
-        ]))
-        self.assertEquals(Bishop(board, c2i(2, 2)).territory, bytearray([
+        ])
+        self.assertEquals(Bishop(board, c2i(2, 2)).territory, [
              True, False, False,
             False,  True, False,
             False, False,  True,
-         ]))
-        self.assertEquals(Bishop(board, c2i(1, 2)).territory, bytearray([
+         ])
+        self.assertEquals(Bishop(board, c2i(1, 2)).territory, [
             False, False, False,
              True, False,  True,
             False,  True, False,
-        ]))
-        self.assertEquals(Bishop(board, c2i(0, 2)).territory, bytearray([
+        ])
+        self.assertEquals(Bishop(board, c2i(0, 2)).territory, [
             False, False,  True,
             False,  True, False,
              True, False, False,
-        ]))
-        self.assertEquals(Bishop(board, c2i(0, 1)).territory, bytearray([
+        ])
+        self.assertEquals(Bishop(board, c2i(0, 1)).territory, [
             False,  True, False,
              True, False, False,
             False,  True, False,
-        ]))
+        ])
 
 
 class TestKnight(unittest.TestCase):
@@ -250,48 +250,48 @@ class TestKnight(unittest.TestCase):
         """ Test computation of territory at each positions of a 3x3 board. """
         board = Board(3, 3)
         c2i = board.coordinates_to_index
-        self.assertEquals(Knight(board, c2i(1, 1)).territory, bytearray([
+        self.assertEquals(Knight(board, c2i(1, 1)).territory, [
             False, False, False,
             False,  True, False,
             False, False, False,
-        ]))
-        self.assertEquals(Knight(board, c2i(0, 0)).territory, bytearray([
+        ])
+        self.assertEquals(Knight(board, c2i(0, 0)).territory, [
              True, False, False,
             False, False,  True,
             False,  True, False,
-        ]))
-        self.assertEquals(Knight(board, c2i(1, 0)).territory, bytearray([
+        ])
+        self.assertEquals(Knight(board, c2i(1, 0)).territory, [
             False,  True, False,
             False, False, False,
              True, False,  True,
-        ]))
-        self.assertEquals(Knight(board, c2i(2, 0)).territory, bytearray([
+        ])
+        self.assertEquals(Knight(board, c2i(2, 0)).territory, [
             False, False,  True,
              True, False, False,
             False,  True, False,
-        ]))
-        self.assertEquals(Knight(board, c2i(2, 1)).territory, bytearray([
+        ])
+        self.assertEquals(Knight(board, c2i(2, 1)).territory, [
              True, False, False,
             False, False,  True,
              True, False, False,
-        ]))
-        self.assertEquals(Knight(board, c2i(2, 2)).territory, bytearray([
+        ])
+        self.assertEquals(Knight(board, c2i(2, 2)).territory, [
             False,  True, False,
              True, False, False,
             False, False,  True,
-        ]))
-        self.assertEquals(Knight(board, c2i(1, 2)).territory, bytearray([
+        ])
+        self.assertEquals(Knight(board, c2i(1, 2)).territory, [
              True, False,  True,
             False, False, False,
             False,  True, False,
-        ]))
-        self.assertEquals(Knight(board, c2i(0, 2)).territory, bytearray([
+        ])
+        self.assertEquals(Knight(board, c2i(0, 2)).territory, [
             False,  True, False,
             False, False,  True,
              True, False, False,
-        ]))
-        self.assertEquals(Knight(board, c2i(0, 1)).territory, bytearray([
+        ])
+        self.assertEquals(Knight(board, c2i(0, 1)).territory, [
             False, False,  True,
              True, False, False,
             False, False,  True,
-        ]))
+        ])
