@@ -192,11 +192,10 @@ detached background process:
 
 All tests are run with the ``--silent`` option.
 
-.. [#] MacBook Air 5,2; x86 64 bits, 2.0 GHz 2-cores i7-3667U CPU; 8 GB,
-       1600 MHz DDR3 RAM; SSD Flash storage; OSX Yosemite 10.10.5;
-       Python 2.7.10.
+.. [#] MacBook Air 5,2; x86 64 bits 2.0 GHz 2-cores i7-3667U CPU; 8 GB 1600 MHz
+       DDR3 RAM; SSD Flash storage; OSX Yosemite 10.10.5; Python 2.7.10.
 
-.. [#] `Scaleway C1 compute instance <https://scaleway.com>`_; ARMv7 32 bits,
+.. [#] `Scaleway C1 compute instance <https://scaleway.com>`_; ARMv7 32 bits
        4-cores Marvell Cortex A9 Armada 370/XP CPU; 2 GB RAM; SSD Flash
        storage; Ubuntu Vivid 15.04; Python 2.7.9.
 
