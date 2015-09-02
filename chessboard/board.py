@@ -74,15 +74,8 @@ class Board(object):
         # Ordered list of linear indexes of all squares.
         self.indexes = range(self.size)
 
-        # Store positionned pieces on the board.
-        self.pieces = set()
-
-        # Squares on the board already occupied by a piece.
-        self.occupancy = self.new_vector()
-
-        # Territory susceptible to attacke, i.e. squares reachable by at least
-        # a piece.
-        self.exposed_territory = self.new_vector()
+        # Call reset() to initialize internal states.
+        self.reset()
 
     def __repr__(self):
         """ Display all relevant object internals. """
@@ -110,6 +103,18 @@ class Board(object):
         # Draw bottom line.
         lines.append((('┴───' * self.length) + '┘').replace('┴', '└', 1))
         return '\n'.join(lines)
+
+    def reset(self):
+        """ Empty board, remove all pieces and reset internal states. """
+        # Store positionned pieces on the board.
+        self.pieces = set()
+
+        # Squares on the board already occupied by a piece.
+        self.occupancy = self.new_vector()
+
+        # Territory susceptible to attacke, i.e. squares reachable by at least
+        # a piece.
+        self.exposed_territory = self.new_vector()
 
     @property
     def positions(self):

@@ -6,6 +6,7 @@ ChangeLog
 ------------------
 
 * Pre-compute some board properties. Add 1.12x speedup.
+* Reuse board object. Add 1.06x speedup.
 
 
 1.1.0 (2015-08-28)

@@ -155,13 +155,15 @@ class SolverContext(object):
 
         Depth-first, tree-traversal of the product space.
         """
-        permutations = Permutations(self.pieces, self.vector_size)
+        # Create a new, empty board.
+        board = Board(self.length, self.height)
 
         # Iterate through all combinations of positions.
+        permutations = Permutations(self.pieces, self.vector_size)
         for positions in permutations:
 
-            # Create a new, empty board.
-            board = Board(self.length, self.height)
+            # Reuse board but flush all pieces.
+            board.reset()
 
             for level, (piece_uid, linear_position) in enumerate(positions):
                 # Try to place the piece on the board.
