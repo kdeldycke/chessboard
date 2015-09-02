@@ -190,8 +190,6 @@ detached background process:
     $ nohup ./benchmark.sh > benchmark.out 2> benchmark.err < /dev/null &
     $ tail -F benchmark.out
 
-All tests are run with the ``--silent`` option.
-
 .. [#] MacBook Air 5,2; x86 64 bits 2.0 GHz 2-cores i7-3667U CPU; 8 GB 1600 MHz
        DDR3 RAM; SSD Flash storage; OSX Yosemite 10.10.5; Python 2.7.10.
 
