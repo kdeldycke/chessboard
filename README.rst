@@ -129,19 +129,68 @@ Famous eight queens puzzle:
 .. code-block:: bash
 
     $ chessboard --length=8 --height=8 --queen=8 --silent
-    Building up a chessboard...
+    <SolverContext: length=8, height=8, pieces={'rook': 0, 'king': 0, 'queen': 8, 'bishop': 0, 'knight': 0}>
     Searching positions...
     92 results found in 119.87 seconds.
 
 
-Huge combinatoric problem running on a `Scaleway C1 instance <https://scaleway.com>`_:
+Huge combinatoric problem:
 
 .. code-block:: bash
 
     $ chessboard --length=7 --height=7 --king=2 --queen=2 --bishop=2 --knight=1 --silent
-    Building up a chessboard...
+    <SolverContext: length=7, height=7, pieces={'rook': 0, 'king': 2, 'queen': 2, 'bishop': 2, 'knight': 1}>
     Searching positions...
     3063828 results found in 93614.93 seconds.
+
+
+Performances
+------------
+
+Results below were run with the ``--silent`` option.
+
++--------------------+------+-----------+-----------------+-------------------------+
+| Pieces             | Size | Solutions | MacBook Air 5,2 | `Scaleway C1 instance   |
+|                    |      |           |                 | <http://scaleway.com>`_ |
++====================+======+===========+=================+=========================+
+| 2 kings, 1 rook    |  3x3 |         4 |         0.01 s. |                      ?  |
++--------------------+------+-----------+-----------------+-------------------------+
+| 2 rooks, 4 knights |  4x4 |         8 |         0.15 s. |                 1.06 s. |
++--------------------+------+-----------+-----------------+-------------------------+
+| 1 queen            |  1x1 |         1 |              s. |                      s. |
++--------------------+------+-----------+-----------------+-------------------------+
+| 2 queens           |  2x2 |         0 |              s. |                      s. |
++--------------------+------+-----------+-----------------+-------------------------+
+| 3 queens           |  3x3 |         0 |              s. |                      s. |
++--------------------+------+-----------+-----------------+-------------------------+
+| 4 queens           |  4x4 |         2 |              s. |                      s. |
++--------------------+------+-----------+-----------------+-------------------------+
+| 5 queens           |  5x5 |        10 |              s. |                      s. |
++--------------------+------+-----------+-----------------+-------------------------+
+| 6 queens           |  6x6 |         4 |              s. |                      s. |
++--------------------+------+-----------+-----------------+-------------------------+
+| 7 queens           |  7x7 |        40 |              s. |                      s. |
++--------------------+------+-----------+-----------------+-------------------------+
+| 8 queens           |  8x8 |        92 |        94.05 s. |               742.09 s. |
++--------------------+------+-----------+-----------------+-------------------------+
+| 9 queens           |  9x9 |       352 |              s. |                      s. |
++--------------------+------+-----------+-----------------+-------------------------+
+| 2 kings,           |  5x5 |         8 |         3.79 s. |                27.42 s. |
+| 2 queens,          +------+-----------+-----------------+-------------------------+
+| 2 bishops,         |  6x6 |    23 752 |       228.36 s. |             1 754.60 s. |
+| 1 knight           +------+-----------+-----------------+-------------------------+
+|                    |  7x7 | 3 063 828 |              s. |            93 614.93 s. |
++--------------------+------+-----------+-----------------+-------------------------+
+
+Results from the table above came from running the ``benchmark.sh`` script in a
+detached background process:
+
+.. code-block:: bash
+
+    $ nohup ./benchmark.sh > benchmark.out 2> benchmark.err < /dev/null &
+    $ tail -F benchmark.out
+
+All tests are run with the ``--silent`` option.
 
 
 Development

@@ -9,6 +9,7 @@ ChangeLog
 * Reuse Board object. Add 1.06x speedup.
 * Use list of boolean instead of bytearray for states in Board. Add 1.11x
   speedup.
+* Add a little benchmark suite.
 
 
 1.1.0 (2015-08-28)
