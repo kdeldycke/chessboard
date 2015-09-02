@@ -43,8 +43,11 @@ class Board(object):
         * occupied by another piece;
         * directly reachable by another piece.
 
-    Internal states of the board is materialized by a vector. A vector is a
-    simple list of boolean for which each element represent a square.
+    Internal states of the board are  materialized by a vector. A vector is a
+    simple iterable for which each element represent a square. If in the Piece
+    class we use a bytearray type so we can pack a lot of states in memory for
+    caching, here we prefer a list as it seems Python is a little bit faster
+    dealing with a list of boolean.
 
     2D positions on the board are noted (x, y):
         * horizontal range x goes from 0 to m-1.
@@ -128,7 +131,7 @@ class Board(object):
 
         All states are initialized to False.
         """
-        return bytearray(self.size)
+        return [False] * self.size
 
     def validate_index(self, index):
         """ Check that a linear index of a square is within board's bounds. """

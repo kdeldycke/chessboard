@@ -5,8 +5,10 @@ ChangeLog
 1.1.1 (unreleased)
 ------------------
 
-* Pre-compute some board properties. Add 1.12x speedup.
-* Reuse board object. Add 1.06x speedup.
+* Pre-compute some Board properties. Add 1.12x speedup.
+* Reuse Board object. Add 1.06x speedup.
+* Use list of boolean instead of bytearray for states in Board. Add 1.11x
+  speedup.
 
 
 1.1.0 (2015-08-28)
