@@ -83,7 +83,7 @@ Usage
       --help                Show this message and exit.
 
 
-Exemples
+Examples
 --------
 
 Simple 3x3 board with 2 kings and a rook:
