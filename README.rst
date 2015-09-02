@@ -34,7 +34,7 @@ Motivation
 ----------
 
 This project is a playground to test some optimization strategies in Python,
-but is essentially an exemple of a real-life Python package, and serve me as
+but is essentially an example of a real-life Python package, and serve me as
 a boilerplate project for future CLI.
 
 
