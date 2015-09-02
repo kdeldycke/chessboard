@@ -67,7 +67,8 @@ class Permutations(object):
         # Increment position from the deepest place of the tree first.
         for index in reversed(range(self.depth)):
             self.indexes[index] += 1
-            # We haven't reach the end of board, no beed to adjust upper level.
+            # We haven't reached the end of board, no need to adjust upper
+            # level.
             if self.indexes[index] < self.range_size:
                 break
             # We've reached the end of board. Reset current level and increment
