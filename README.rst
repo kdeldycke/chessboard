@@ -91,8 +91,8 @@ Simple 3x3 board with 2 kings and a rook:
 .. code-block:: bash
 
     $ chessboard --length=3 --height=3 --king=2 --rook=1
-    Building up a chessboard...
-    Solving the chessboard...
+    <SolverContext: length=3, height=3, pieces={'rook': 1, 'king': 2, 'queen': 0, 'bishop': 0, 'knight': 0}>
+    Searching positions...
     ┌───┬───┬───┐
     │ ♚ │   │   │
     ├───┼───┼───┤

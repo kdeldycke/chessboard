@@ -85,8 +85,8 @@ def cli(length, height, silent, verbose, profile, **pieces):
     # Setup the optionnal profiler.
     profiler = BProfile('solver-profile.png', enabled=profile)
 
-    click.echo('Building up a chessboard...')
     solver = SolverContext(length, height, **pieces)
+    click.echo(repr(solver))
 
     click.echo('Searching positions...')
     with profiler:
