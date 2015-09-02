@@ -68,6 +68,12 @@ class Board(object):
         self.length = length
         self.height = height
 
+        # Number of squares in the board.
+        self.size = self.length * self.height
+
+        # Ordered list of linear indexes of all squares.
+        self.indexes = range(self.size)
+
         # Store positionned pieces on the board.
         self.pieces = set()
 
@@ -104,16 +110,6 @@ class Board(object):
         # Draw bottom line.
         lines.append((('┴───' * self.length) + '┘').replace('┴', '└', 1))
         return '\n'.join(lines)
-
-    @property
-    def size(self):
-        """ Return the number of squares in the board. """
-        return self.length * self.height
-
-    @property
-    def indexes(self):
-        """ Returns an ordered list of linear indexes of all squares. """
-        return range(self.size)
 
     @property
     def positions(self):

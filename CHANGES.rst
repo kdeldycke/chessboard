@@ -5,7 +5,7 @@ ChangeLog
 1.1.1 (unreleased)
 ------------------
 
-* No changes yet.
+* Pre-compute some board properties. Add 1.12x speedup.
 
 
 1.1.0 (2015-08-28)
