@@ -124,8 +124,7 @@ Simple 3x3 board with 2 kings and a rook:
     └───┴───┴───┘
     4 results found in 0.03 seconds.
 
-
-Famous eight queens puzzle:
+Famous eight queens puzzle, without printing the solutions to speed things up:
 
 .. code-block:: bash
 
@@ -134,15 +133,29 @@ Famous eight queens puzzle:
     Searching positions...
     92 results found in 119.87 seconds.
 
-
-Huge combinatoric problem:
+Huge combinatoric problem can take some time to solve:
 
 .. code-block:: bash
 
     $ chessboard --length=7 --height=7 --king=2 --queen=2 --bishop=2 --knight=1 --silent
     <SolverContext: length=7, height=7, pieces={'rook': 0, 'king': 2, 'queen': 2, 'bishop': 2, 'knight': 1}>
     Searching positions...
-    3063828 results found in 93614.93 seconds.
+    3063828 results found in 9328.33 seconds.
+
+The CLI allow the production of a profiling graph, to identify code hot spots and
+bottleneck:.
+
+.. code-block:: bash
+
+    $ chessboard --length=6 --height=6 --king=2 --queen=2 --bishop=2 --knight=1 --silent --profile
+    <SolverContext: length=6, height=6, pieces={'rook': 0, 'king': 2, 'queen': 2, 'bishop': 2, 'knight': 1}>
+    Searching positions...
+    23752 results found in 207.25 seconds.
+    Execution profile saved at /homr/kevin/chessboard/solver-profile.png
+
+.. image:: solver-profile.png
+   :alt: Solver profiling graph
+   :align: center
 
 
 Performances
