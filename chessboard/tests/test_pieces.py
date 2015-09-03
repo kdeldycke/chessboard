@@ -145,9 +145,9 @@ class TestRook(unittest.TestCase):
         board = Board(3, 3)
         c2i = board.coordinates_to_index
         self.assertEquals(Rook(board, c2i(1, 1)).territory, [
-            False, True,  False,
+            False, True, False,
             True, True, True,
-            False, True,  False,
+            False, True, False,
         ])
         self.assertEquals(Rook(board, c2i(0, 0)).territory, [
             True, True, True,
