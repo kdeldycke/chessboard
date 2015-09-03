@@ -64,26 +64,23 @@ class Piece(object):
 
     @property
     def bottom_distance(self):
-        """ Number of squares separating the piece from the bottom of the board.
+        """ Number of squares separating the piece from board's bottom edge.
         """
         return self.board.height - 1 - self.y
 
     @property
     def right_distance(self):
-        """ Number of squares separating the piece from the right of the board.
-        """
+        """ Number of squares separating the piece from board's right edge. """
         return self.board.length - 1 - self.x
 
     @property
     def top_distance(self):
-        """ Number of squares separating the piece from the top of the board.
-        """
+        """ Number of squares separating the piece from board's top edge. """
         return self.y
 
     @property
     def left_distance(self):
-        """ Number of squares separating the piece from the left of the board.
-        """
+        """ Number of squares separating the piece from board's left edge. """
         return self.x
 
     @property
