@@ -52,7 +52,7 @@ class Piece(object):
         """ Place the piece on a board at the provided linear position. """
         self.board = board
         self.index = index
-        self.x, self.y = self.board.index_to_coordinates(self.index)
+        self._x, self._y = None, None
 
     def __repr__(self):
         """ Display all relevant object internals. """
@@ -61,6 +61,30 @@ class Piece(object):
                 self.__class__.__name__,
                 self.uid, self.label, self.symbol,
                 self.x, self.y, self.index))
+
+    def compute_coordinates(self):
+        """ Compute 2D coordinates of the piece. """
+        self._x, self._y = self.board.index_to_coordinates(self.index)
+
+    @property
+    def x(self):
+        """ Return the piece's hosrizontal position.
+
+        Property is used here so we only compute position once when needed.
+        """
+        if self._x is None:
+            self.compute_coordinates()
+        return self._x
+
+    @property
+    def y(self):
+        """ Return the piece's vertical position.
+
+        Property is used here so we only compute position once when needed.
+        """
+        if self._y is None:
+            self.compute_coordinates()
+        return self._y
 
     @property
     def bottom_distance(self):

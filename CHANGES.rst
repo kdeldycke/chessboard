@@ -5,6 +5,9 @@ ChangeLog
 1.3.0 (unreleased)
 ------------------
 
+* Only compute 2D coordinates of each piece instance when needed, so we can
+  reach immediately the cache if we're only interested by the territory. Adds
+  a 1.21x speedup.
 * Add custom PEP8 configuration.
 * Add custom Pylint configuration.
 
