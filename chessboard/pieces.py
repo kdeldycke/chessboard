@@ -131,7 +131,8 @@ class Piece(object):
     @property
     def territory(self):
         """ Return the cached territory occupied by the piece. """
-        cache_key = (self.board.length, self.board.height, self.uid, self.index)
+        cache_key = (
+            self.board.length, self.board.height, self.uid, self.index)
         if cache_key not in self.territory_cache:
             vector = self.compute_territory()
             self.territory_cache[cache_key] = vector
