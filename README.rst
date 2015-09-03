@@ -216,6 +216,13 @@ Run unit-tests:
 
     $ python ./setup.py nosetests
 
+Run Pylint code style checks:
+
+.. code-block:: bash
+
+    $ pip install pylint
+    $ pylint --rcfile=setup.cfg chessboard
+
 
 Stability policy
 ----------------

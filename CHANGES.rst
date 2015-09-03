@@ -5,7 +5,7 @@ ChangeLog
 1.3.0 (unreleased)
 ------------------
 
-* No changes yet.
+* Add custom Pylint configuration.
 
 
 1.2.0 (2015-09-03)
