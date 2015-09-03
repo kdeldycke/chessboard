@@ -180,7 +180,7 @@ Results below are given in seconds, and were run with the ``--silent`` option.
 | 2 queens,          +------+-----------+-----------+-------------+
 | 2 bishops,         |  6x6 |    23 752 |    224.52 |    1 723.26 |
 | 1 knight           +------+-----------+-----------+-------------+
-|                    |  7x7 | 3 063 828 |  9 328.33 |   93 614.93 |
+|                    |  7x7 | 3 063 828 |  9 328.33 |   69 690.11 |
 +--------------------+------+-----------+-----------+-------------+
 
 Results from the table above came from running the ``benchmark.sh`` script in a
