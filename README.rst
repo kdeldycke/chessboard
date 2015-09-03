@@ -222,7 +222,7 @@ Run `PEP8 <https://pep8.readthedocs.org>`_ and `Pylint
 .. code-block:: bash
 
     $ pip install pep8 pylint
-    $ pep8
+    $ pep8 chessboard
     $ pylint --rcfile=setup.cfg chessboard
 
 
