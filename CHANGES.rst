@@ -5,6 +5,7 @@ ChangeLog
 1.3.0 (unreleased)
 ------------------
 
+* Add custom PEP8 configuration.
 * Add custom Pylint configuration.
 
 

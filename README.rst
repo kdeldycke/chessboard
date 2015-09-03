@@ -216,11 +216,13 @@ Run unit-tests:
 
     $ python ./setup.py nosetests
 
-Run Pylint code style checks:
+Run `PEP8 <https://pep8.readthedocs.org>`_ and `Pylint
+<http://docs.pylint.org>`_ code style checks:
 
 .. code-block:: bash
 
-    $ pip install pylint
+    $ pip install pep8 pylint
+    $ pep8
     $ pylint --rcfile=setup.cfg chessboard
 
 
