@@ -5,7 +5,8 @@ ChangeLog
 1.4.0 (unreleased)
 ------------------
 
-* No changes yet.
+* Make the solver into a CLI sub-command so that we can add other commands in
+  the future.
 
 
 1.3.0 (2015-09-06)

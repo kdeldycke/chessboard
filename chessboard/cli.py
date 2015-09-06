@@ -53,34 +53,49 @@ POSITIVE_INT = PositiveInt(allow_zero=False)
 POSITIVE_OR_ZERO_INT = PositiveInt(allow_zero=True)
 
 
-class CLI(click.Command):
-    """ Main command class. """
+class Solve(click.Command):
+    """ Manage the solve command. """
 
     def __init__(self, *args, **kwargs):
-        """ Override default constructor to add dynamic pieces parameters. """
+        """ Override default constructor to dynamiccaly add pieces options. """
         for label in PIECE_LABELS:
             kwargs['params'].append(click.Option(
                 ('--{}'.format(label), ),
                 default=0,
                 type=POSITIVE_OR_ZERO_INT,
-                help='Number of {}s to add to the board.'.format(label)))
-        super(CLI, self).__init__(*args, **kwargs)
+                help='Number of {}s.'.format(label)))
+        super(Solve, self).__init__(*args, **kwargs)
 
 
-@click.command(cls=CLI)
+@click.group(invoke_without_command=True)
 @click.version_option(__version__)
+@click.option('-v', '--verbose', is_flag=True, default=False,
+              help='Print much more debug statements.')
+@click.pass_context
+def cli(ctx, verbose):
+    """ CLI to solve combinatoric chess puzzles. """
+    # Print help screen and exit if no sub-commands provided.
+    if ctx.invoked_subcommand is None:
+        click.echo(ctx.get_help())
+        ctx.exit()
+    # Load up global options to the context.
+    ctx.obj = {'verbose': verbose}
+    if ctx.obj['verbose']:
+        click.echo('I am about to invoke %s' % ctx.invoked_subcommand)
+
+
+@cli.command(cls=Solve, short_help='Solve a chess puzzle.')
 @click.option('-l', '--length', required=True, type=POSITIVE_INT,
               help='Length of the board.')
 @click.option('-h', '--height', required=True, type=POSITIVE_INT,
               help='Height of the board.')
 @click.option('-s', '--silent', is_flag=True, default=False,
-              help='Do not display result board, only final count.')
-@click.option('-v', '--verbose', is_flag=True, default=False,
-              help='Print much more debug statements.')
+              help='Do not render result boards in ASCII-art.')
 @click.option('-p', '--profile', is_flag=True, default=False,
               help='Produce a profiling graph.')
-def cli(length, height, silent, verbose, profile, **pieces):
-    """ Python CLI to explore chessboard positions. """
+@click.pass_context
+def solve(ctx, length, height, silent, profile, **pieces):
+    """ Solve a puzzle constrained by board dimensions and pieces. """
     # Check that at least one piece is provided.
     if not sum(pieces.values()):
         context = click.get_current_context()

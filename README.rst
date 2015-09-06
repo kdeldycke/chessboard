@@ -62,25 +62,42 @@ so you can install the latest stable release and its dependencies with a simple
 Usage
 -----
 
+List global options and commands:
+
 .. code-block:: bash
 
     $ chessboard --help
-    Usage: chessboard [OPTIONS]
+    Usage: chessboard [OPTIONS] COMMAND [ARGS]...
 
-      Python CLI to explore chessboard positions.
+      CLI to solve combinatoric chess puzzles.
 
     Options:
-      --version             Show the version and exit.
+      --version      Show the version and exit.
+      -v, --verbose  Print much more debug statements.
+      --help         Show this message and exit.
+
+    Commands:
+      solve      Solve chess puzzle.
+
+Solver specific options:
+
+.. code-block:: bash
+
+    $ chessboard solve --help
+    Usage: chessboard solve [OPTIONS]
+
+      Solve a puzzle constrained by board dimensions and pieces.
+
+    Options:
       -l, --length INTEGER  Length of the board.  [required]
       -h, --height INTEGER  Height of the board.  [required]
-      -s, --silent          Do not display result board, only final count.
-      -v, --verbose         Print much more debug statements.
+      -s, --silent          Do not render result boards in ASCII-art.
       -p, --profile         Produce a profiling graph.
-      --rook INTEGER        Number of rooks to add to the board.
-      --knight INTEGER      Number of knights to add to the board.
-      --queen INTEGER       Number of queens to add to the board.
-      --bishop INTEGER      Number of bishops to add to the board.
-      --king INTEGER        Number of kings to add to the board.
+      --rook INTEGER        Number of rooks.
+      --king INTEGER        Number of kings.
+      --queen INTEGER       Number of queens.
+      --bishop INTEGER      Number of bishops.
+      --knight INTEGER      Number of knights.
       --help                Show this message and exit.
 
 
@@ -91,7 +108,7 @@ Simple 3x3 board with 2 kings and a rook:
 
 .. code-block:: bash
 
-    $ chessboard --length=3 --height=3 --king=2 --rook=1
+    $ chessboard solve --length=3 --height=3 --king=2 --rook=1
     <SolverContext: length=3, height=3, pieces={'rook': 1, 'king': 2, 'queen': 0, 'bishop': 0, 'knight': 0}>
     Searching positions...
     ┌───┬───┬───┐
@@ -128,7 +145,7 @@ Famous eight queens puzzle, without printing the solutions to speed things up:
 
 .. code-block:: bash
 
-    $ chessboard --length=8 --height=8 --queen=8 --silent
+    $ chessboard solve --length=8 --height=8 --queen=8 --silent
     <SolverContext: length=8, height=8, pieces={'rook': 0, 'king': 0, 'queen': 8, 'bishop': 0, 'knight': 0}>
     Searching positions...
     92 results found in 119.87 seconds.
@@ -137,7 +154,7 @@ Huge combinatoric problem can take some time to solve:
 
 .. code-block:: bash
 
-    $ chessboard --length=7 --height=7 --king=2 --queen=2 --bishop=2 --knight=1 --silent
+    $ chessboard solve --length=7 --height=7 --king=2 --queen=2 --bishop=2 --knight=1 --silent
     <SolverContext: length=7, height=7, pieces={'rook': 0, 'king': 2, 'queen': 2, 'bishop': 2, 'knight': 1}>
     Searching positions...
     3063828 results found in 9328.33 seconds.
@@ -147,7 +164,7 @@ bottleneck:.
 
 .. code-block:: bash
 
-    $ chessboard --length=6 --height=6 --king=2 --queen=2 --bishop=2 --knight=1 --silent --profile
+    $ chessboard solve --length=6 --height=6 --king=2 --queen=2 --bishop=2 --knight=1 --silent --profile
     <SolverContext: length=6, height=6, pieces={'rook': 0, 'king': 2, 'queen': 2, 'bishop': 2, 'knight': 1}>
     Searching positions...
     23752 results found in 207.25 seconds.
