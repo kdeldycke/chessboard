@@ -151,7 +151,7 @@ bottleneck:.
     <SolverContext: length=6, height=6, pieces={'rook': 0, 'king': 2, 'queen': 2, 'bishop': 2, 'knight': 1}>
     Searching positions...
     23752 results found in 207.25 seconds.
-    Execution profile saved at /homr/kevin/chessboard/solver-profile.png
+    Execution profile saved at /home/kevin/chessboard/solver-profile.png
 
 .. image:: https://raw.githubusercontent.com/kdeldycke/chessboard/v1.4.0/solver-profile.png
    :alt: Solver profiling graph
