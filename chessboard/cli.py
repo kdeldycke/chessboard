@@ -54,9 +54,10 @@ POSITIVE_OR_ZERO_INT = PositiveInt(allow_zero=True)
 
 
 class CLI(click.Command):
+    """ Main command class. """
 
     def __init__(self, *args, **kwargs):
-        """ Override default constructor to add dynamic parameters. """
+        """ Override default constructor to add dynamic pieces parameters. """
         for label in PIECE_LABELS:
             kwargs['params'].append(click.Option(
                 ('--{}'.format(label), ),
