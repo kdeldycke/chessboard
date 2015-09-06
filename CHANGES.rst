@@ -15,9 +15,9 @@ ChangeLog
 1.2.0 (2015-09-03)
 ------------------
 
-* Pre-compute some Board properties. Add 1.12x speedup.
-* Reuse Board object. Add 1.06x speedup.
-* Use list of boolean instead of bytearray for states in Board. Add 1.11x
+* Pre-compute some Board properties. Adds a 1.12x speedup.
+* Reuse Board object. Adds a 1.06x speedup.
+* Use list of boolean instead of bytearray for states in Board. Adds a 1.11x
   speedup.
 * Add a little benchmark suite.
 
@@ -34,7 +34,7 @@ ChangeLog
 ------------------
 
 * Do not spend time converting back and forth linear position to 2D position.
-  Provides a 1.16x speed-up.
+  Provides a 1.16x speedup.
 * Proceed permutation exploration with pieces of biggest territory coverage
   first. Adds 16x speed-up. Closes #5.
 * Add support for bumpversion.
