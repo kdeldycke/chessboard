@@ -35,7 +35,7 @@ class PositiveInt(click.types.IntParamType):
 
     def __init__(self, allow_zero=True):
         """ Validator can be customized to consider 0 as allowed or not. """
-        self.allow_zero = True
+        self.allow_zero = allow_zero
 
     def convert(self, value, param, ctx):
         """ Reuse standard integer validator but add checks on sign and zero.
