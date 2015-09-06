@@ -31,12 +31,15 @@ from . import __version__, PIECE_LABELS, SolverContext
 
 
 class PositiveInt(click.types.IntParamType):
+    """ Custom type class for click to validate positive integers. """
 
     def __init__(self, allow_zero=True):
+        """ Validator can be customized to consider 0 as allowed or not. """
         self.allow_zero = True
 
     def convert(self, value, param, ctx):
-        """ Like standard int, but check sign and zero. """
+        """ Reuse standard integer validator but add checks on sign and zero.
+        """
         value = super(PositiveInt, self).convert(value, param, ctx)
         if value < 0:
             self.fail('%s is not positive' % value, param, ctx)
