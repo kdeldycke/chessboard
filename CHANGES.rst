@@ -2,7 +2,7 @@ ChangeLog
 =========
 
 
-1.3.0 (unreleased)
+1.3.0 (2015-09-06)
 ------------------
 
 * Only compute 2D coordinates of each piece instance when needed, so we can
