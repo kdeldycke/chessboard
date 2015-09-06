@@ -50,7 +50,7 @@ def get_long_description():
 setup(
     name='chessboard',
     version=get_version(),
-    description="Python CLI to explore chessboard positions.",
+    description="CLI to solve combinatoric chess puzzles.",
     long_description=get_long_description(),
 
     author='Kevin Deldycke',

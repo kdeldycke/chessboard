@@ -1,7 +1,7 @@
 Chessboard
 ==========
 
-Python CLI to explore chessboard positions.
+CLI to solve combinatoric chess puzzles.
 
 Stable release: |release| |dependencies| |license| |popularity|
 
