@@ -48,6 +48,7 @@ class PositiveInt(click.types.IntParamType):
         return value
 
 
+# Shortcut to pre-configured validators.
 POSITIVE_INT = PositiveInt(allow_zero=False)
 POSITIVE_OR_ZERO_INT = PositiveInt(allow_zero=True)
 
