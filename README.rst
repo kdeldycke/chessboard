@@ -313,6 +313,7 @@ Push packaging to the `test cheeseshop
 
     $ pip install wheel
     $ python ./setup.py register -r testpypi
+    $ python ./setup.py clean
     $ rm -rf ./build ./dist
     $ python ./setup.py sdist bdist_egg bdist_wheel upload -r testpypi
 
@@ -321,6 +322,7 @@ Publish packaging to `PyPi <https://pypi.python.org>`_:
 .. code-block:: bash
 
     $ python ./setup.py register -r pypi
+    $ python ./setup.py clean
     $ rm -rf ./build ./dist
     $ python ./setup.py sdist bdist_egg bdist_wheel upload -r pypi
 
