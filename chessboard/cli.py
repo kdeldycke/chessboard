@@ -137,8 +137,8 @@ def solve(ctx, length, height, silent, profile, **pieces):
 def benchmark():
     """ Run a benchmarking suite and measure time taken by the solver.
 
-    Each scenario is run in an isolated processe, and save results in a CSV
-    file.
+    Each scenario is run in an isolated process, and results are appended to
+    CSV file.
     """
     # Use all cores but one on multi-core CPUs.
     pool_size = multiprocessing.cpu_count() - 1

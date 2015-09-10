@@ -78,7 +78,7 @@ List global options and commands:
 
     Commands:
       benchmark  Benchmark the solver.
-      solve      Solve chess puzzle.
+      solve      Solve a chess puzzle.
 
 Solver specific options:
 
@@ -94,9 +94,9 @@ Solver specific options:
       -h, --height INTEGER  Height of the board.  [required]
       -s, --silent          Do not render result boards in ASCII-art.
       -p, --profile         Produce a profiling graph.
-      --rook INTEGER        Number of rooks.
-      --king INTEGER        Number of kings.
       --queen INTEGER       Number of queens.
+      --king INTEGER        Number of kings.
+      --rook INTEGER        Number of rooks.
       --bishop INTEGER      Number of bishops.
       --knight INTEGER      Number of knights.
       --help                Show this message and exit.
@@ -108,7 +108,10 @@ Benchmark specific options:
     $ chessboard benchmark --help
     Usage: chessboard benchmark [OPTIONS]
 
-      Run a set of pre-defined scenarii and measure time taken by the solver.
+      Run a benchmarking suite and measure time taken by the solver.
+
+      Each scenario is run in an isolated process, and results are appended to
+      CSV file.
 
     Options:
       --help  Show this message and exit.
