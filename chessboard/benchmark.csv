@@ -1,0 +1,13 @@
+linux,osx,rook,java,king,windows,knight,chessboard,queen,system,height,machine,execution_time,length,solutions,implementation,python,bishop,architecture
+,10.10.5,,,,,,1.4.dev0,1,Darwin,1,x86_64,0.00038909912109375,1,1,CPython,2.7.10,,64bit
+,10.10.5,1,,2,,,1.4.dev0,,Darwin,3,x86_64,0.00565791130065918,3,4,CPython,2.7.10,,64bit
+,10.10.5,,,,,,1.4.dev0,2,Darwin,2,x86_64,0.0012431144714355469,2,0,CPython,2.7.10,,64bit
+,10.10.5,,,,,,1.4.dev0,3,Darwin,3,x86_64,0.0028960704803466797,3,0,CPython,2.7.10,,64bit
+,10.10.5,2,,,,4,1.4.dev0,,Darwin,4,x86_64,0.11968207359313965,4,8,CPython,2.7.10,,64bit
+,10.10.5,,,,,,1.4.dev0,4,Darwin,4,x86_64,0.018872976303100586,4,2,CPython,2.7.10,,64bit
+,10.10.5,,,,,,1.4.dev0,5,Darwin,5,x86_64,0.12907004356384277,5,10,CPython,2.7.10,,64bit
+,10.10.5,,,,,,1.4.dev0,6,Darwin,6,x86_64,1.3294720649719238,6,4,CPython,2.7.10,,64bit
+,10.10.5,,,2,,1,1.4.dev0,2,Darwin,5,x86_64,4.238147974014282,5,8,CPython,2.7.10,2,64bit
+,10.10.5,,,,,,1.4.dev0,7,Darwin,7,x86_64,12.827723026275635,7,40,CPython,2.7.10,,64bit
+,10.10.5,,,,,,1.4.dev0,8,Darwin,8,x86_64,97.29745197296143,8,92,CPython,2.7.10,,64bit
+,10.10.5,,,2,,1,1.4.dev0,2,Darwin,6,x86_64,193.3370180130005,6,23752,CPython,2.7.10,2,64bit

@@ -5,8 +5,8 @@ ChangeLog
 1.4.0 (unreleased)
 ------------------
 
-* Make the solver into a CLI sub-command so that we can add other commands in
-  the future.
+* Make the solver into a CLI sub-command.
+* Pythonize benchmarking and include it as a CLI sub-command.
 
 
 1.3.0 (2015-09-06)

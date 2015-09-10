@@ -77,6 +77,7 @@ List global options and commands:
       --help         Show this message and exit.
 
     Commands:
+      benchmark  Benchmark the solver.
       solve      Solve chess puzzle.
 
 Solver specific options:
@@ -99,6 +100,18 @@ Solver specific options:
       --bishop INTEGER      Number of bishops.
       --knight INTEGER      Number of knights.
       --help                Show this message and exit.
+
+Benchmark specific options:
+
+.. code-block:: bash
+
+    $ chessboard benchmark --help
+    Usage: chessboard benchmark [OPTIONS]
+
+      Run a set of pre-defined scenarii and measure time taken by the solver.
+
+    Options:
+      --help  Show this message and exit.
 
 
 Examples
