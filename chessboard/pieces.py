@@ -23,7 +23,9 @@ from __future__ import (
     division, print_function, absolute_import, unicode_literals
 )
 
+from collections import OrderedDict
 from itertools import chain, izip_longest
+from operator import attrgetter
 
 from chessboard import ForbiddenCoordinates
 
@@ -269,17 +271,18 @@ class Knight(Piece):
         ])
 
 
-PIECES = set([Queen, Rook, Bishop, King, Knight])
-
 # Initialize territory coverage ranking.
 Queen.uid, Rook.uid, Bishop.uid, King.uid, Knight.uid = range(5)
+
+# Keep pieces sorted by rank.
+PIECES = sorted([Queen, Rook, Bishop, King, Knight], key=attrgetter('uid'))
 
 # Initialize piece labels.
 for klass in PIECES:
     klass.label = klass.__name__.lower()
 
 # Map labels to UIDs.
-PIECE_LABELS = {klass.label: klass.uid for klass in PIECES}
+PIECE_LABELS = OrderedDict([(klass.label, klass.uid) for klass in PIECES])
 
 # Map piece UIDs to their class.
-PIECE_CLASSES = {klass.uid: klass for klass in PIECES}
+PIECE_CLASSES = OrderedDict([(klass.uid, klass) for klass in PIECES])
