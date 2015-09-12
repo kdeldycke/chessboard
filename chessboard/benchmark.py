@@ -24,13 +24,14 @@ from __future__ import (
 )
 
 import csv
+from collections import OrderedDict
 import time
 import platform
 from os import path
 from operator import methodcaller
 from itertools import chain
 
-from chessboard import __version__, SolverContext
+from chessboard import __version__, SolverContext, PIECE_LABELS
 
 
 def run_scenario(params):
@@ -80,17 +81,25 @@ class Benchmark(object):
     csv_filepath = path.join(path.dirname(__file__), 'benchmark.csv')
 
     # Gather software and hardware metadata.
-    context = {
-        'chessboard': __version__,
-        'python': platform.python_version(),
-        'architecture': platform.architecture()[0],
-        'machine': platform.machine(),
-        'implementation': platform.python_implementation(),
-        'system': platform.system(),
-        'osx': platform.mac_ver()[0],
-        'windows': platform.win32_ver()[1],
-        'java': platform.java_ver()[0],
-        'linux': ' '.join(platform.linux_distribution()).strip()}
+    context = OrderedDict([
+        # Solver.
+        ('chessboard', __version__),
+        # Python interpreter.
+        ('implementation', platform.python_implementation()),
+        ('python', platform.python_version()),
+        # Underlaying OS.
+        ('system', platform.system()),
+        ('osx', platform.mac_ver()[0]),
+        ('linux', ' '.join(platform.linux_distribution()).strip()),
+        ('windows', platform.win32_ver()[1]),
+        ('java', platform.java_ver()[0]),
+        # Hardware.
+        ('architecture', platform.architecture()[0]),
+        ('machine', platform.machine())])
+
+    # Sorted column IDs.
+    column_ids = ['length', 'height'] + PIECE_LABELS.keys() + [
+        'solutions', 'execution_time'] + context.keys()
 
     @classmethod
     def update_csv(cls, results):
@@ -104,10 +113,6 @@ class Benchmark(object):
             result.update(cls.context)
             benchmarks.append(result)
 
-        # Extract all column IDs.
-        column_ids = set(chain.from_iterable(
-            map(methodcaller('keys'), benchmarks)))
-
         # A CSV file is considered already having its headers if it exists and
         # is not empty.
         has_headers = path.exists(cls.csv_filepath) and path.getsize(
@@ -115,7 +120,7 @@ class Benchmark(object):
 
         # Appends benchmark results to the local CSV database.
         with open(cls.csv_filepath, 'a') as csv_file:
-            writer = csv.DictWriter(csv_file, column_ids)
+            writer = csv.DictWriter(csv_file, cls.column_ids)
             if not has_headers:
                 writer.writeheader()
             writer.writerows(benchmarks)
