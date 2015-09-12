@@ -17,7 +17,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-""" Benchmarking tools and scenarii. """
+""" Benchmarking tools. """
 
 from __future__ import (
     division, print_function, absolute_import, unicode_literals
@@ -29,33 +29,8 @@ import platform
 from os import path
 from operator import methodcaller
 from itertools import chain
-import multiprocessing
 
 from chessboard import __version__, SolverContext
-
-
-scenarii = [
-    # Tiny boards
-    {'length': 3, 'height': 3, 'king': 2, 'rook': 1},
-    {'length': 4, 'height': 4, 'rook': 2, 'knight': 4},
-    # n queens problems.
-    {'length': 1, 'height': 1, 'queen': 1},
-    {'length': 2, 'height': 2, 'queen': 2},
-    {'length': 3, 'height': 3, 'queen': 3},
-    {'length': 4, 'height': 4, 'queen': 4},
-    {'length': 5, 'height': 5, 'queen': 5},
-    {'length': 6, 'height': 6, 'queen': 6},
-    {'length': 7, 'height': 7, 'queen': 7},
-    {'length': 8, 'height': 8, 'queen': 8},
-    #{'length': 9, 'height': 9, 'queen': 9},
-    # Big family.
-    {'length': 5, 'height': 5,
-     'king': 2, 'queen': 2, 'bishop': 2, 'knight': 1},
-    {'length': 6, 'height': 6,
-     'king': 2, 'queen': 2, 'bishop': 2, 'knight': 1},
-    #{'length': 7, 'height': 7,
-    # 'king': 2, 'queen': 2, 'bishop': 2, 'knight': 1},
-]
 
 
 def run_scenario(params):
@@ -72,3 +47,75 @@ def run_scenario(params):
         'solutions': count,
         'execution_time': execution_time})
     return params
+
+
+class Benchmark(object):
+
+    """ Defines benchmark suite and utility to save and render the results. """
+
+    scenarii = [
+        # Tiny boards
+        {'length': 3, 'height': 3, 'king': 2, 'rook': 1},
+        {'length': 4, 'height': 4, 'rook': 2, 'knight': 4},
+        # n queens problems.
+        {'length': 1, 'height': 1, 'queen': 1},
+        {'length': 2, 'height': 2, 'queen': 2},
+        {'length': 3, 'height': 3, 'queen': 3},
+        {'length': 4, 'height': 4, 'queen': 4},
+        {'length': 5, 'height': 5, 'queen': 5},
+        {'length': 6, 'height': 6, 'queen': 6},
+        {'length': 7, 'height': 7, 'queen': 7},
+        {'length': 8, 'height': 8, 'queen': 8},
+        # {'length': 9, 'height': 9, 'queen': 9},
+        # Big family.
+        {'length': 5, 'height': 5,
+         'king': 2, 'queen': 2, 'bishop': 2, 'knight': 1},
+        {'length': 6, 'height': 6,
+         'king': 2, 'queen': 2, 'bishop': 2, 'knight': 1},
+        # {'length': 7, 'height': 7,
+        #  'king': 2, 'queen': 2, 'bishop': 2, 'knight': 1},
+    ]
+
+    # Data are going in a CSV file along this file.
+    csv_filepath = path.join(path.dirname(__file__), 'benchmark.csv')
+
+    # Gather software and hardware metadata.
+    context = {
+        'chessboard': __version__,
+        'python': platform.python_version(),
+        'architecture': platform.architecture()[0],
+        'machine': platform.machine(),
+        'implementation': platform.python_implementation(),
+        'system': platform.system(),
+        'osx': platform.mac_ver()[0],
+        'windows': platform.win32_ver()[1],
+        'java': platform.java_ver()[0],
+        'linux': ' '.join(platform.linux_distribution()).strip()}
+
+    @classmethod
+    def update_csv(cls, results):
+        """ Append benchmark results to CSV database.
+
+        Create missing CSV file if it doesn't exist.
+        """
+        # Compile all results in a dict.
+        benchmarks = []
+        for result in results:
+            result.update(cls.context)
+            benchmarks.append(result)
+
+        # Extract all column IDs.
+        column_ids = set(chain.from_iterable(
+            map(methodcaller('keys'), benchmarks)))
+
+        # A CSV file is considered already having its headers if it exists and
+        # is not empty.
+        has_headers = path.exists(cls.csv_filepath) and path.getsize(
+            cls.csv_filepath)
+
+        # Appends benchmark results to the local CSV database.
+        with open(cls.csv_filepath, 'a') as csv_file:
+            writer = csv.DictWriter(csv_file, column_ids)
+            if not has_headers:
+                writer.writeheader()
+            writer.writerows(benchmarks)

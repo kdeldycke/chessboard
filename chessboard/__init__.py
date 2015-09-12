@@ -50,15 +50,12 @@ class AttackablePiece(Exception):
     """ A piece is added to a position from which it can attack another. """
 
 
-# Init global logger.
-import logging
-logger = logging.getLogger(__name__)
-
-
-# Expose important classes to the root of the module.
+# Expose important classes to the root of the module. These are not
+# lexicographically sorted to avoid cyclic imports.
 from chessboard.pieces import (
     Piece,
     King, Queen, Rook, Bishop, Knight,
     PIECE_LABELS, PIECE_CLASSES)
 from chessboard.board import Board
 from chessboard.solver import Permutations, SolverContext
+from chessboard.benchmark import Benchmark

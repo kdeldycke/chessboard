@@ -22,21 +22,14 @@ from __future__ import (
 )
 
 import time
-import logging
-import sys
 import multiprocessing
-import platform
-from operator import methodcaller
-import csv
-from os import path
-from itertools import chain
 
 from bprofile import BProfile
 import click
 from click.exceptions import BadParameter
 
-from . import __version__, PIECE_LABELS, SolverContext, logger
-from chessboard.benchmark import run_scenario, scenarii
+from . import __version__, PIECE_LABELS, SolverContext, Benchmark
+from chessboard.benchmark import run_scenario
 
 
 class PositiveInt(click.types.IntParamType):
@@ -148,44 +141,8 @@ def benchmark():
     # Start a pool of workers. Only allow 1 task per child, to force flushing
     # of solver's internal caches.
     pool = multiprocessing.Pool(processes=pool_size, maxtasksperchild=1)
-    results = pool.imap_unordered(run_scenario, scenarii)
+    results = pool.imap_unordered(run_scenario, Benchmark.scenarii)
     pool.close()
     pool.join()
 
-    # Gather software and hardware metadata.
-    context = {
-        'chessboard': __version__,
-        'python': platform.python_version(),
-        'architecture': platform.architecture()[0],
-        'machine': platform.machine(),
-        'implementation': platform.python_implementation(),
-        'system': platform.system(),
-        'osx': platform.mac_ver()[0],
-        'windows': platform.win32_ver()[1],
-        'java': platform.java_ver()[0],
-        'linux': ' '.join(platform.linux_distribution()).strip()}
-
-    # Compile all results in a dict.
-    benchmarks = []
-    for r in results:
-        r.update(context)
-        benchmarks.append(r)
-
-    # Extract all column IDs.
-    column_ids = set(chain.from_iterable(
-        map(methodcaller('keys'), benchmarks)))
-
-    # Data are going in a CSV file along this one.
-    csv_filepath = path.join(path.dirname(__file__), 'benchmark.csv')
-    click.echo('Append results to {}'.format(csv_filepath))
-
-    # A CSV file is considered already having its headers if it exists and is
-    # not empty.
-    has_headers = path.exists(csv_filepath) and path.getsize(csv_filepath)
-
-    # Appends benchmark results to the local CSV database.
-    with open(csv_filepath, 'a') as csv_file:
-        writer = csv.DictWriter(csv_file, column_ids)
-        if not has_headers:
-            writer.writeheader()
-        writer.writerows(benchmarks)
+    Benchmark.update_csv(results)
