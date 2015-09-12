@@ -61,6 +61,7 @@ setup(
     install_requires=[
         'click >= 5.0',
         'bprofile',
+        'pandas',
     ],
 
     packages=find_packages(),

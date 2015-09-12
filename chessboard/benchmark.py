@@ -23,11 +23,12 @@ from __future__ import (
     division, print_function, absolute_import, unicode_literals
 )
 
-import csv
 from collections import OrderedDict
 import time
 import platform
 from os import path
+
+import pandas
 
 from chessboard import __version__, SolverContext, PIECE_LABELS
 
@@ -101,25 +102,23 @@ class Benchmark(object):
 
     def __init__(self):
         """ Initialize the result database. """
-        self.database = []
+        self.results = pandas.DataFrame(columns=self.column_ids)
 
     def load_csv(self):
         """ Load old benchmark results from CSV. """
-        if path.exists(self.csv_filepath):
-            with open(self.csv_filepath, 'rb') as csv_file:
-                reader = csv.DictReader(csv_file)
-                for row in reader:
-                    self.database.append(row)
+        self.results = self.results.append(pandas.read_csv(self.csv_filepath))
 
     def add(self, new_results):
         """ Add new benchmark results. """
         for result in new_results:
             result.update(self.context)
-            self.database.append(result)
+            self.results = self.results.append(result, ignore_index=True)
 
     def save_csv(self):
         """ Dump all results to CSV. """
-        with open(self.csv_filepath, 'wb') as csv_file:
-            writer = csv.DictWriter(csv_file, self.column_ids)
-            writer.writeheader()
-            writer.writerows(self.database)
+        # Sort results so we can start to see patterns right in the raw CSV.
+        self.results.sort(columns=self.column_ids, inplace=True)
+        # Gotcha: integers seems to be promoted to float64 because of
+        # reindexation. See: http://pandas.pydata.org/pandas-docs/stable
+        # /gotchas.html#na-type-promotions
+        self.results.to_csv(self.csv_filepath, index=False)
