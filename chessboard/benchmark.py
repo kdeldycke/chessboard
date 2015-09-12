@@ -28,8 +28,6 @@ from collections import OrderedDict
 import time
 import platform
 from os import path
-from operator import methodcaller
-from itertools import chain
 
 from chessboard import __version__, SolverContext, PIECE_LABELS
 
@@ -101,26 +99,27 @@ class Benchmark(object):
     column_ids = ['length', 'height'] + PIECE_LABELS.keys() + [
         'solutions', 'execution_time'] + context.keys()
 
-    @classmethod
-    def update_csv(cls, results):
-        """ Append benchmark results to CSV database.
+    def __init__(self):
+        """ Initialize the result database. """
+        self.database = []
 
-        Create missing CSV file if it doesn't exist.
-        """
-        # Compile all results in a dict.
-        benchmarks = []
-        for result in results:
-            result.update(cls.context)
-            benchmarks.append(result)
+    def load_csv(self):
+        """ Load old benchmark results from CSV. """
+        if path.exists(self.csv_filepath):
+            with open(self.csv_filepath, 'rb') as csv_file:
+                reader = csv.DictReader(csv_file)
+                for row in reader:
+                    self.database.append(row)
 
-        # A CSV file is considered already having its headers if it exists and
-        # is not empty.
-        has_headers = path.exists(cls.csv_filepath) and path.getsize(
-            cls.csv_filepath)
+    def add(self, new_results):
+        """ Add new benchmark results. """
+        for result in new_results:
+            result.update(self.context)
+            self.database.append(result)
 
-        # Appends benchmark results to the local CSV database.
-        with open(cls.csv_filepath, 'a') as csv_file:
-            writer = csv.DictWriter(csv_file, cls.column_ids)
-            if not has_headers:
-                writer.writeheader()
-            writer.writerows(benchmarks)
+    def save_csv(self):
+        """ Dump all results to CSV. """
+        with open(self.csv_filepath, 'wb') as csv_file:
+            writer = csv.DictWriter(csv_file, self.column_ids)
+            writer.writeheader()
+            writer.writerows(self.database)

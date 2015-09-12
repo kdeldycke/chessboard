@@ -145,4 +145,8 @@ def benchmark():
     pool.close()
     pool.join()
 
-    Benchmark.update_csv(results)
+    # Update CSV database with the new results.
+    benchmark = Benchmark()
+    benchmark.load_csv()
+    benchmark.add(results)
+    benchmark.save_csv()
