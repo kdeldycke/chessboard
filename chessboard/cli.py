@@ -150,3 +150,14 @@ def benchmark():
     benchmark.load_csv()
     benchmark.add(results)
     benchmark.save_csv()
+
+
+@cli.command(short_help='Plot solver performances.')
+def graph():
+    """ Update all kind of performance graphs from the benchmark data.
+
+    All data come from CSV database.
+    """
+    benchmark = Benchmark()
+    benchmark.load_csv()
+    benchmark.nqueen_graph()

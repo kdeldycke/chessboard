@@ -245,6 +245,13 @@ detached background process:
        storage; Ubuntu Vivid 15.04; Python 2.7.9.
 
 
+N-queens problem solving time:
+
+.. image:: https://raw.githubusercontent.com/kdeldycke/chessboard/develop/nqueen-performances.png
+   :alt: N-queens problem solving time.
+   :align: center
+
+
 Development
 -----------
 

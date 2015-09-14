@@ -28,7 +28,9 @@ import time
 import platform
 from os import path
 
+from numpy import median
 import pandas
+import seaborn
 
 from chessboard import __version__, SolverContext, PIECE_LABELS
 
@@ -122,3 +124,36 @@ class Benchmark(object):
         # reindexation. See: http://pandas.pydata.org/pandas-docs/stable
         # /gotchas.html#na-type-promotions
         self.results.to_csv(self.csv_filepath, index=False)
+
+    def nqueen_graph(self):
+        """ Graph n-queens problem for the current version and context. """
+        # Filters out boards with pieces other than queens.
+        nqueens = self.results
+        for piece_label in set(PIECE_LABELS.keys()).difference(['queen']):
+            nqueens = nqueens[nqueens[piece_label].map(pandas.isnull)]
+
+        # Filters out non-square boards whose dimension are not aligned to the
+        # number of queens.
+        nqueens = nqueens[nqueens['length'] == nqueens['queen']]
+        nqueens = nqueens[nqueens['height'] == nqueens['queen']]
+
+        # Filters out results not obtained from this system.
+        for label, value in self.context.items():
+            if not value:
+                nqueens = nqueens[nqueens[label].map(pandas.isnull)]
+            else:
+                nqueens = nqueens[nqueens[label] == value]
+
+        plot = seaborn.factorplot(
+            x='queen',
+            y='execution_time',
+            data=nqueens.sort(columns='queen'),
+            estimator=median,
+            kind='bar',
+            palette='BuGn_d',
+            aspect=1.5)
+        plot.set_xlabels('Number of queens')
+        plot.set_ylabels('Solving time in seconds (log scale)')
+        plot.fig.get_axes()[0].set_yscale('log')
+
+        plot.savefig('nqueens-performances.png')

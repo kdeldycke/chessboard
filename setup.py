@@ -61,7 +61,9 @@ setup(
     install_requires=[
         'click >= 5.0',
         'bprofile',
+        'numpy',
         'pandas',
+        'seaborn',
     ],
 
     packages=find_packages(),
