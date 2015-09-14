@@ -186,7 +186,7 @@ bottleneck:.
     23752 results found in 207.25 seconds.
     Execution profile saved at /home/kevin/chessboard/solver-profile.png
 
-.. image:: https://raw.githubusercontent.com/kdeldycke/chessboard/v1.4.0/solver-profile.png
+.. image:: https://raw.githubusercontent.com/kdeldycke/chessboard/develop/solver-profile.png
    :alt: Solver profiling graph
    :align: center
 
