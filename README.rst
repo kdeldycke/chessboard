@@ -247,7 +247,7 @@ detached background process:
 
 N-queens problem solving time:
 
-.. image:: https://raw.githubusercontent.com/kdeldycke/chessboard/develop/nqueen-performances.png
+.. image:: https://raw.githubusercontent.com/kdeldycke/chessboard/develop/nqueens-performances.png
    :alt: N-queens problem solving time.
    :align: center
 
