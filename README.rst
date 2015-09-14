@@ -78,6 +78,7 @@ List global options and commands:
 
     Commands:
       benchmark  Benchmark the solver.
+      graph      Plot solver performances.
       solve      Solve a chess puzzle.
 
 Solver specific options:
@@ -112,6 +113,20 @@ Benchmark specific options:
 
       Each scenario is run in an isolated process, and results are appended to
       CSV file.
+
+    Options:
+      --help  Show this message and exit.
+
+PLotting specific options:
+
+.. code-block:: bash
+
+    $ chessboard plot --help
+    Usage: chessboard graph [OPTIONS]
+
+      Update all kind of performance graphs from the benchmark data.
+
+      All data come from CSV database.
 
     Options:
       --help  Show this message and exit.
