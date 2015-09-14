@@ -244,13 +244,12 @@ Results below are given in seconds, and were run with the ``--silent`` option.
 |                    |  7x7 | 3 063 828 |  8 150.86 |   62 704.99 |
 +--------------------+------+-----------+-----------+-------------+
 
-Results from the table above came from running the ``benchmark.sh`` script in a
-detached background process:
+To run the standard benchmark suite and add results to the database, run the
+benchmark in a detached background process:
 
 .. code-block:: bash
 
-    $ nohup ./benchmark.sh > benchmark.out 2> benchmark.err < /dev/null &
-    $ tail -F benchmark.out
+    $ nohup chessboard benchmark > /dev/null 2>&1 &
 
 .. [#] MacBook Air 5,2; x86 64 bits 2.0 GHz 2-cores i7-3667U CPU; 8 GB 1600 MHz
        DDR3 RAM; SSD Flash storage; OSX Yosemite 10.10.5; Python 2.7.10.
