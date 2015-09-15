@@ -1,6 +1,7 @@
 # After changing this file, check it on:
 #   http://lint.travis-ci.org/
 language: python
+sudo: false
 
 python:
   - "2.7"
@@ -8,8 +9,11 @@ python:
 virtualenv:
   system_site_packages: true
 
-before_install:
-  - sudo apt-get install -qq python-numpy python-scipy
+addons:
+  apt:
+    packages:
+      - python-numpy
+      - python-scipy
 
 install:
   - pip install -e .
