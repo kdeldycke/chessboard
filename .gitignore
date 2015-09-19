@@ -1,7 +1,7 @@
 *~
 *#
 .#*
-*.pyc
+*.py[cod]
 *.sw[op]
 .coverage
 *.egg-info/
