@@ -117,7 +117,7 @@ Benchmark specific options:
     Options:
       --help  Show this message and exit.
 
-PLotting specific options:
+Plotting specific options:
 
 .. code-block:: bash
 
