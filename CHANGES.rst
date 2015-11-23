@@ -2,7 +2,7 @@ ChangeLog
 =========
 
 
-1.4.0 (unreleased)
+1.4.0 (2015-11-23)
 ------------------
 
 * Make the solver into a CLI sub-command.
