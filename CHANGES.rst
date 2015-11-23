@@ -8,6 +8,7 @@ ChangeLog
 * Make the solver into a CLI sub-command.
 * Pythonize benchmarking and include it as a CLI sub-command.
 * Plot n-queens graph from benchmark data.
+* Switch from coveralls.io to codecov.io.
 
 
 1.3.0 (2015-09-06)

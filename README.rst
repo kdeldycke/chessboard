@@ -22,8 +22,8 @@ Development: |build| |coverage| |quality|
 .. |build| image:: https://img.shields.io/travis/kdeldycke/chessboard/develop.svg?style=flat
     :target: https://travis-ci.org/kdeldycke/chessboard
     :alt: Unit-tests status
-.. |coverage| image:: https://coveralls.io/repos/kdeldycke/chessboard/badge.svg?branch=develop&service=github
-    :target: https://coveralls.io/r/kdeldycke/chessboard?branch=develop
+.. |coverage| image:: https://codecov.io/githiub/kdeldycke/chessboard/coverage.svg?branch=develop&service=github
+    :target: https://codecov.io/github/kdeldycke/chessboard?branch=develop
     :alt: Coverage Status
 .. |quality| image:: https://img.shields.io/scrutinizer/g/kdeldycke/chessboard.svg?style=flat
     :target: https://scrutinizer-ci.com/g/kdeldycke/chessboard/?branch=develop
