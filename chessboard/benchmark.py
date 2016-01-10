@@ -20,19 +20,21 @@
 """ Benchmarking tools. """
 
 from __future__ import (
-    division, print_function, absolute_import, unicode_literals
+    absolute_import,
+    division,
+    print_function,
+    unicode_literals
 )
 
-from collections import OrderedDict
-import time
 import platform
+import time
+from collections import OrderedDict
 from os import path
 
-from numpy import median
 import pandas
 import seaborn
-
-from chessboard import __version__, SolverContext, PIECE_LABELS
+from chessboard import PIECE_LABELS, SolverContext, __version__
+from numpy import median
 
 
 def run_scenario(params):

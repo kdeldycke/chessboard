@@ -20,7 +20,10 @@
 """ Definition of chess pieces and their behavioural properties. """
 
 from __future__ import (
-    division, print_function, absolute_import, unicode_literals
+    absolute_import,
+    division,
+    print_function,
+    unicode_literals
 )
 
 from collections import OrderedDict

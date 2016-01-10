@@ -20,17 +20,20 @@
 """ Utilities to search for valid set of positions. """
 
 from __future__ import (
-    division, print_function, absolute_import, unicode_literals
+    absolute_import,
+    division,
+    print_function,
+    unicode_literals
 )
 
 from itertools import chain
 
 from chessboard import (
+    PIECE_LABELS,
     AttackablePiece,
     Board,
     OccupiedPosition,
-    PIECE_LABELS,
-    VulnerablePosition,
+    VulnerablePosition
 )
 
 

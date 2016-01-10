@@ -20,18 +20,21 @@
 """ Board repesentation and utilities. """
 
 from __future__ import (
-    division, print_function, absolute_import, unicode_literals
+    absolute_import,
+    division,
+    print_function,
+    unicode_literals
 )
 
 from operator import or_
 
 from chessboard import (
-    ForbiddenIndex,
-    ForbiddenCoordinates,
-    OccupiedPosition,
-    VulnerablePosition,
-    AttackablePiece,
     PIECE_CLASSES,
+    AttackablePiece,
+    ForbiddenCoordinates,
+    ForbiddenIndex,
+    OccupiedPosition,
+    VulnerablePosition
 )
 
 

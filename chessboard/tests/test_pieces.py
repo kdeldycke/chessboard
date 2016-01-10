@@ -17,19 +17,16 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-from __future__ import (unicode_literals, print_function, absolute_import,
-                        division)
+from __future__ import (
+    absolute_import,
+    division,
+    print_function,
+    unicode_literals
+)
 
 import unittest
 
-from chessboard import (
-    Board,
-    King,
-    Queen,
-    Rook,
-    Bishop,
-    Knight,
-)
+from chessboard import Bishop, Board, King, Knight, Queen, Rook
 
 
 class TestKing(unittest.TestCase):
