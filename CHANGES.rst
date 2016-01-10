@@ -6,6 +6,7 @@ ChangeLog
 ------------------
 
 * Add default `ìsort` configuration.
+* Add more trove classifiers.
 
 
 1.4.0 (2015-11-23)
