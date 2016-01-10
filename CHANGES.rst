@@ -5,7 +5,7 @@ ChangeLog
 1.4.1 (unreleased)
 ------------------
 
-* No changes yet.
+* Add default `ìsort` configuration.
 
 
 1.4.0 (2015-11-23)
