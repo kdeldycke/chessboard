@@ -82,14 +82,18 @@ def cli(ctx):
 
 
 @cli.command(cls=Solve, short_help='Solve a chess puzzle.')
-@click.option('-l', '--length', required=True, type=POSITIVE_INT,
-              help='Length of the board.')
-@click.option('-h', '--height', required=True, type=POSITIVE_INT,
-              help='Height of the board.')
-@click.option('-s', '--silent', is_flag=True, default=False,
-              help='Do not render result boards in ASCII-art.')
-@click.option('-p', '--profile', is_flag=True, default=False,
-              help='Produce a profiling graph.')
+@click.option(
+    '-l', '--length', required=True, type=POSITIVE_INT,
+    help='Length of the board.')
+@click.option(
+    '-h', '--height', required=True, type=POSITIVE_INT,
+    help='Height of the board.')
+@click.option(
+    '-s', '--silent', is_flag=True, default=False,
+    help='Do not render result boards in ASCII-art.')
+@click.option(
+    '-p', '--profile', is_flag=True, default=False,
+    help='Produce a profiling graph.')
 @click.pass_context
 def solve(ctx, length, height, silent, profile, **pieces):
     """ Solve a puzzle constrained by board dimensions and pieces. """
