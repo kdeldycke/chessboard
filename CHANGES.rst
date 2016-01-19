@@ -2,7 +2,7 @@ ChangeLog
 =========
 
 
-1.4.1 (unreleased)
+1.5.0 (unreleased)
 ------------------
 
 * Add default `ìsort` configuration.
