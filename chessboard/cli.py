@@ -70,7 +70,9 @@ class Solve(click.Command):
 
 @click.group(invoke_without_command=True)
 @click_log.init(logger)
-@click_log.simple_verbosity_option(default='INFO', metavar='LEVEL')
+@click_log.simple_verbosity_option(
+    default='INFO', metavar='LEVEL',
+    help='Either CRITICAL, ERROR, WARNING, INFO or DEBUG. Defaults to INFO.')
 @click.version_option(__version__)
 @click.pass_context
 def cli(ctx):
