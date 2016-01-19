@@ -59,3 +59,7 @@ from chessboard.pieces import (
 from chessboard.board import Board
 from chessboard.solver import Permutations, SolverContext
 from chessboard.benchmark import Benchmark
+
+import logging
+
+logger = logging.getLogger(__name__)

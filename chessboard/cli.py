@@ -23,11 +23,12 @@ import multiprocessing
 import time
 
 import click
+import click_log
 from bprofile import BProfile
 from chessboard.benchmark import run_scenario
 from click.exceptions import BadParameter
 
-from . import PIECE_LABELS, Benchmark, SolverContext, __version__
+from . import PIECE_LABELS, Benchmark, SolverContext, __version__, logger
 
 
 class PositiveInt(click.types.IntParamType):
@@ -68,20 +69,16 @@ class Solve(click.Command):
 
 
 @click.group(invoke_without_command=True)
+@click_log.init(logger)
+@click_log.simple_verbosity_option(default='INFO', metavar='LEVEL')
 @click.version_option(__version__)
-@click.option('-v', '--verbose', is_flag=True, default=False,
-              help='Print much more debug statements.')
 @click.pass_context
-def cli(ctx, verbose):
+def cli(ctx):
     """ CLI to solve combinatoric chess puzzles. """
     # Print help screen and exit if no sub-commands provided.
     if ctx.invoked_subcommand is None:
         click.echo(ctx.get_help())
         ctx.exit()
-    # Load up global options to the context.
-    ctx.obj = {'verbose': verbose}
-    if ctx.obj['verbose']:
-        click.echo('I am about to invoke %s' % ctx.invoked_subcommand)
 
 
 @cli.command(cls=Solve, short_help='Solve a chess puzzle.')
@@ -106,9 +103,9 @@ def solve(ctx, length, height, silent, profile, **pieces):
     profiler = BProfile('solver-profile.png', enabled=profile)
 
     solver = SolverContext(length, height, **pieces)
-    click.echo(repr(solver))
+    logger.info(repr(solver))
 
-    click.echo('Searching positions...')
+    logger.info('Searching positions...')
     with profiler:
         start = time.time()
         for result in solver.solve():
@@ -116,11 +113,11 @@ def solve(ctx, length, height, silent, profile, **pieces):
                 click.echo(u'{}'.format(result))
         processing_time = time.time() - start
 
-    click.echo('{} results found in {:.2f} seconds.'.format(
+    logger.info('{} results found in {:.2f} seconds.'.format(
         solver.result_counter, processing_time))
 
     if profile:
-        click.echo('Execution profile saved at {}'.format(
+        logger.info('Execution profile saved at {}'.format(
             profiler.output_path))
 
 
