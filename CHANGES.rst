@@ -7,7 +7,7 @@ ChangeLog
 
 * Add default `ìsort` configuration.
 * Add more trove classifiers.
-* Add proper suppor of logging. Closes #2.
+* Add proper support of logging. Closes #2.
 
 
 1.4.0 (2015-11-23)
