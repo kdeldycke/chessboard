@@ -37,7 +37,7 @@ from . import PY2
 if PY2:
     from itertools import izip_longest
 else:
-    from itertools import zip_longest
+    from itertools import zip_longest as izip_longest
 
 
 class Piece(object):
