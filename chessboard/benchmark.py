@@ -30,6 +30,7 @@ import platform
 import time
 from collections import OrderedDict
 from os import path
+from itertools import chain
 
 import pandas
 import seaborn
@@ -101,8 +102,11 @@ class Benchmark(object):
         ('machine', platform.machine())])
 
     # Sorted column IDs.
-    column_ids = ['length', 'height'] + PIECE_LABELS.keys() + [
-        'solutions', 'execution_time'] + list(context.keys())
+    column_ids = list(chain.from_iterable([
+        ['length', 'height'],
+        PIECE_LABELS,
+        ['solutions', 'execution_time'],
+        context]))
 
     def __init__(self):
         """ Initialize the result database. """
@@ -131,7 +135,7 @@ class Benchmark(object):
         """ Graph n-queens problem for the current version and context. """
         # Filters out boards with pieces other than queens.
         nqueens = self.results
-        for piece_label in set(PIECE_LABELS.keys()).difference(['queen']):
+        for piece_label in set(PIECE_LABELS).difference(['queen']):
             nqueens = nqueens[nqueens[piece_label].map(pandas.isnull)]
 
         # Filters out non-square boards whose dimension are not aligned to the
