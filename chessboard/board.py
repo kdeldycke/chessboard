@@ -191,7 +191,8 @@ class Board(object):
         # position on the board.
         self.pieces.add(piece)
         self.occupancy[index] = True
-        self.exposed_territory = map(or_, self.exposed_territory, territory)
+        self.exposed_territory = list(
+            map(or_, self.exposed_territory, territory))
 
     def get(self, x, y):
         """ Return piece placed at the provided coordinates. """
