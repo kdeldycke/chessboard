@@ -8,7 +8,7 @@ ChangeLog
 * Add default `ìsort` configuration.
 * Add more trove classifiers.
 * Add proper support of logging. Closes #2.
-* Activate unittests in Python 3.3, 3.4 and 3.5.
+* Activate unittests in Python 3.3, 3.4 and 3.5. Closes #9.
 
 
 1.4.0 (2015-11-23)
