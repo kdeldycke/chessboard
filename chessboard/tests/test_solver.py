@@ -57,6 +57,7 @@ class TestPermutations(unittest.TestCase):
 
         results = []
         for perm in gen:
+            perm = list(perm)
             for level, (_, position) in enumerate(perm):
                 try:
                     if level == 1 and position == 2:
@@ -65,7 +66,7 @@ class TestPermutations(unittest.TestCase):
                     gen.skip_branch(level)
                     break
             else:
-                results.append(list(perm))
+                results.append(perm)
 
         self.assertEquals(results, [
             [('a', 0), ('b', 0), ('c', 0), ('c', 0)],
