@@ -23,6 +23,12 @@
 __version__ = '1.5.0'
 
 
+import sys
+
+PY2 = sys.version_info[0] == 2
+PY3 = sys.version_info[0] == 3
+
+
 # Defines custom exception first to avoid circular imports.
 
 class ForbiddenCoordinates(Exception):

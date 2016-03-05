@@ -27,10 +27,16 @@ from __future__ import (
 )
 
 from collections import OrderedDict
-from itertools import chain, izip_longest
+from itertools import chain
 from operator import attrgetter
 
 from chessboard import ForbiddenCoordinates
+
+from . import PY2
+if PY2:
+    from itertools import izip_longest
+else:
+    from itertools import zip_longest
 
 
 class Piece(object):

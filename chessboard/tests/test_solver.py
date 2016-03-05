@@ -25,10 +25,16 @@ from __future__ import (
 )
 
 import unittest
-from itertools import izip, product, repeat
+from itertools import product, repeat
 from operator import itemgetter
 
 from chessboard import King, Permutations, Queen, SolverContext
+
+from . import PY2
+if PY2:
+    from itertools import izip
+else:
+    izip = zip
 
 
 class TestPermutations(unittest.TestCase):
