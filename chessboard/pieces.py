@@ -33,6 +33,7 @@ from operator import attrgetter
 from chessboard import ForbiddenCoordinates
 
 from . import PY2
+
 if PY2:
     from itertools import izip_longest
 else:

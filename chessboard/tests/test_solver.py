@@ -31,6 +31,7 @@ from operator import itemgetter
 from chessboard import King, Permutations, Queen, SolverContext
 
 from .. import PY2
+
 if PY2:
     from itertools import izip
 else:
