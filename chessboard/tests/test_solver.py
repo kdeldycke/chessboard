@@ -49,7 +49,7 @@ class TestPermutations(unittest.TestCase):
     def test_generator(self):
         gen = Permutations({'a': 1}, 3)
         self.assertEquals(
-            [perm for perm in gen],
+            [list(perm) for perm in gen],
             [[('a', 0)], [('a', 1)], [('a', 2)]])
 
     def test_skip_branch(self):
@@ -65,7 +65,7 @@ class TestPermutations(unittest.TestCase):
                     gen.skip_branch(level)
                     break
             else:
-                results.append(perm)
+                results.append(list(perm))
 
         self.assertEquals(results, [
             [('a', 0), ('b', 0), ('c', 0), ('c', 0)],
