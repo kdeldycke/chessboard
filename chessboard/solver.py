@@ -91,7 +91,7 @@ class Permutations(object):
         """ Return the generator itself, not its results. """
         return self
 
-    def next(self):
+    def __next__(self):
         """ Return next valid permutation.
 
         Raise iteration exception when we explored all permutations.
@@ -103,6 +103,8 @@ class Permutations(object):
         else:
             self.increment()
         return zip(self.pieces, self.indexes)
+
+    next = __next__
 
     def skip_branch(self, level):
         """ Abandon the branch at the provided level and skip to the next.
