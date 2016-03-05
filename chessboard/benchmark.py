@@ -102,7 +102,7 @@ class Benchmark(object):
 
     # Sorted column IDs.
     column_ids = ['length', 'height'] + PIECE_LABELS.keys() + [
-        'solutions', 'execution_time'] + context.keys()
+        'solutions', 'execution_time'] + list(context.keys())
 
     def __init__(self):
         """ Initialize the result database. """
