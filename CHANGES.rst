@@ -9,6 +9,7 @@ ChangeLog
 * Add more trove classifiers.
 * Add proper support of logging. Closes #2.
 * Activate unittests in Python 3.3, 3.4 and 3.5. Closes #9.
+* Get detailed CPU info for each benckmark.
 
 
 1.4.0 (2015-11-23)

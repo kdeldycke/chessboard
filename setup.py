@@ -64,6 +64,7 @@ setup(
         'numpy',
         'pandas',
         'seaborn',
+        'py-cpuinfo',
     ],
 
     packages=find_packages(),

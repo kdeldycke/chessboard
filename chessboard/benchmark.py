@@ -32,6 +32,7 @@ from collections import OrderedDict
 from os import path
 from itertools import chain
 
+from cpuinfo import get_cpu_info
 import pandas
 import seaborn
 from chessboard import PIECE_LABELS, SolverContext, __version__
@@ -85,6 +86,7 @@ class Benchmark(object):
     csv_filepath = path.join(path.dirname(__file__), 'benchmark.csv')
 
     # Gather software and hardware metadata.
+    cpu_info = get_cpu_info()
     context = OrderedDict([
         # Solver.
         ('chessboard', __version__),
@@ -99,7 +101,14 @@ class Benchmark(object):
         ('java', platform.java_ver()[0]),
         # Hardware.
         ('architecture', platform.architecture()[0]),
-        ('machine', platform.machine())])
+        ('machine', platform.machine()),
+        # CPU.
+        ('cpu_vendor', cpu_info['vendor_id']),
+        ('cpu_model', cpu_info['brand']),
+        ('cpu_freq_actual', cpu_info['hz_actual'][0]),
+        ('cpu_freq_advertised', cpu_info['hz_advertised'][0]),
+        ('cpu_l2_cache', cpu_info['l2_cache_size']),
+    ])
 
     # Sorted column IDs.
     column_ids = list(chain.from_iterable([
