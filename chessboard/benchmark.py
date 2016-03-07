@@ -30,7 +30,6 @@ import platform
 import time
 from collections import OrderedDict
 from os import path
-from itertools import chain
 
 from cpuinfo import get_cpu_info
 import pandas
@@ -111,11 +110,8 @@ class Benchmark(object):
     ])
 
     # Sorted column IDs.
-    column_ids = list(chain.from_iterable([
-        ['length', 'height'],
-        PIECE_LABELS,
-        ['solutions', 'execution_time'],
-        context]))
+    column_ids = ['length', 'height'] + list(PIECE_LABELS) + [
+        'solutions', 'execution_time'] + list(context)
 
     def __init__(self):
         """ Initialize the result database. """
