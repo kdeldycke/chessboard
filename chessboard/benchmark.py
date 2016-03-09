@@ -130,7 +130,7 @@ class Benchmark(object):
     def save_csv(self):
         """ Dump all results to CSV. """
         # Sort results so we can start to see patterns right in the raw CSV.
-        self.results.sort(columns=self.column_ids, inplace=True)
+        self.results.sort_values(by=self.column_ids, inplace=True)
         # Gotcha: integers seems to be promoted to float64 because of
         # reindexation. See: http://pandas.pydata.org/pandas-docs/stable
         # /gotchas.html#na-type-promotions
