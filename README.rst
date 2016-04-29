@@ -302,6 +302,13 @@ Run `PEP8 <https://pep8.readthedocs.org>`_ and `Pylint
     $ pep8 chessboard
     $ pylint --rcfile=setup.cfg chessboard
 
+Build local documentation with `Sphinx <http://www.sphinx-doc.org>`_:
+
+.. code-block:: bash
+
+    $ pip install sphinx sphinx_rtd_theme
+    $ make --directory=./docs html
+
 
 Stability policy
 ----------------
