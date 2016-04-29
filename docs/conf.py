@@ -19,8 +19,7 @@ project = u'Chessboard'
 copyright = u'2016, Kevin Deldycke'
 author = u'Kevin Deldycke'
 
-version = u'1.5.0'
-release = u'1.5.0'
+version = release = u'1.5.0'
 
 language = None
 
@@ -56,7 +55,7 @@ if not on_rtd:
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 
-htmlhelp_basename = 'Chessboarddoc'
+htmlhelp_basename = project
 
 # Example configuration for intersphinx: refer to the Python standard library.
 intersphinx_mapping = {'https://docs.python.org/': None}
