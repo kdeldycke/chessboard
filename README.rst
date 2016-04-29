@@ -5,7 +5,7 @@ CLI to solve combinatoric chess puzzles.
 
 Stable release: |release| |dependencies| |license| |popularity|
 
-Development: |build| |coverage| |quality|
+Development: |build| |docs| |coverage| |quality|
 
 .. |release| image:: https://img.shields.io/pypi/v/chessboard.svg?style=flat
     :target: https://pypi.python.org/pypi/chessboard
@@ -22,6 +22,9 @@ Development: |build| |coverage| |quality|
 .. |build| image:: https://img.shields.io/travis/kdeldycke/chessboard/develop.svg?style=flat
     :target: https://travis-ci.org/kdeldycke/chessboard
     :alt: Unit-tests status
+.. |docs| image:: https://readthedocs.org/projects/chessboard/badge/?version=latest
+    :target: http://chessboard.readthedocs.io/en/latest/?badge=latest
+    :alt: Documentation Status
 .. |coverage| image:: https://codecov.io/github/kdeldycke/chessboard/coverage.svg?branch=develop
     :target: https://codecov.io/github/kdeldycke/chessboard?branch=develop
     :alt: Coverage Status
