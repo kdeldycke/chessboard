@@ -23,7 +23,7 @@ Development: |build| |docs| |coverage| |quality|
     :target: https://travis-ci.org/kdeldycke/chessboard
     :alt: Unit-tests status
 .. |docs| image:: https://readthedocs.org/projects/chessboard/badge/?version=develop
-    :target: http://chessboard.readthedocs.io/en/latest/?badge=develop
+    :target: http://chessboard.readthedocs.io/en/develop/
     :alt: Documentation Status
 .. |coverage| image:: https://codecov.io/github/kdeldycke/chessboard/coverage.svg?branch=develop
     :target: https://codecov.io/github/kdeldycke/chessboard?branch=develop
