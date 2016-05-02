@@ -40,7 +40,7 @@ TEST_DEPENDENCIES = [
 ]
 
 EXTRA_DEPENDENCIES = {
-    'doc': ['sphinx'],
+    'doc': ['sphinx', 'sphinx_rtd_theme'],
     'tests': TEST_DEPENDENCIES,
 }
 
