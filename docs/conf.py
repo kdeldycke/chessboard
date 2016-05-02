@@ -24,7 +24,7 @@ project = u'Chessboard'
 copyright = u'2016, Kevin Deldycke'
 author = u'Kevin Deldycke'
 
-version = release = u'1.5.0'
+version = release = chessboard.__version__
 
 language = None
 
