@@ -47,7 +47,7 @@ def get_long_description():
 
 
 setup(
-    name='chessboard',
+    name=MODULE_NAME,
     version=get_version(),
     description="CLI to solve combinatoric chess puzzles.",
     long_description=get_long_description(),
