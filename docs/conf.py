@@ -9,14 +9,10 @@ import chessboard
 
 extensions = [
     'sphinx.ext.autodoc',
-    'sphinx.ext.intersphinx',
+    'sphinx.ext.napoleon',
     'sphinx.ext.todo',
     'sphinx.ext.viewcode',
 ]
-
-templates_path = ['_templates']
-
-source_suffix = '.rst'
 
 master_doc = 'index'
 
@@ -26,23 +22,11 @@ author = u'Kevin Deldycke'
 
 version = release = chessboard.__version__
 
-language = None
-
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
-# Append '()' to :func: etc. cross-reference text.
-add_function_parentheses = True
-
-# If true, the current module name will be prepended to all description
-# unit titles (such as .. function::).
-#add_module_names = True
-
-# If true, sectionauthor and moduleauthor directives will be shown in the
-# output. They are ignored by default.
-#show_authors = False
-
-# The name of the Pygments (syntax highlighting) style to use.
-pygments_style = 'sphinx'
+# Enforce Google style docstrings.
+napoleon_google_docstring = True
+napoleon_numpy_docstring = False
 
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = True
@@ -55,12 +39,4 @@ if not on_rtd:
     html_theme = 'sphinx_rtd_theme'
     html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 
-# Add any paths that contain custom static files (such as style sheets) here,
-# relative to this directory. They are copied after the builtin static files,
-# so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static']
-
 htmlhelp_basename = project
-
-# Example configuration for intersphinx: refer to the Python standard library.
-intersphinx_mapping = {'https://docs.python.org/': None}
