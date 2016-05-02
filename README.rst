@@ -308,7 +308,7 @@ Build local documentation with `Sphinx <http://www.sphinx-doc.org>`_:
 
     $ pip install sphinx sphinx_rtd_theme
     $ sphinx-apidoc -f -o ./docs .
-    $ sphinx-build -b html ./docs ./docs/html
+    $ sphinx-build -n -b html ./docs ./docs/html
 
 
 Stability policy
