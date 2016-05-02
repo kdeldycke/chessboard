@@ -307,7 +307,8 @@ Build local documentation with `Sphinx <http://www.sphinx-doc.org>`_:
 .. code-block:: bash
 
     $ pip install sphinx sphinx_rtd_theme
-    $ make --directory=./docs html
+    $ sphinx-apidoc -f -o ./docs .
+    $ sphinx-build -b html ./docs ./docs/html
 
 
 Stability policy

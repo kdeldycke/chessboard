@@ -1,6 +1,12 @@
 # -*- coding: utf-8 -*-
 
 import os
+import sys
+
+# Expose package to autodoc.
+CUR_PATH = os.path.dirname(os.path.abspath(__file__))
+PROJECT_PATH = os.path.abspath(CUR_PATH + '/../')
+sys.path.insert(0, PROJECT_PATH)
 
 extensions = [
     'sphinx.ext.autodoc',
