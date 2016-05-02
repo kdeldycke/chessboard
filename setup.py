@@ -26,6 +26,24 @@ from setuptools import find_packages, setup
 
 MODULE_NAME = 'chessboard'
 
+DEPENDENCIES = [
+    'click >= 5.0',
+    'click_log',
+    'bprofile',
+    'numpy',
+    'pandas',
+    'seaborn',
+    'py-cpuinfo',
+]
+
+TEST_DEPENDENCIES = [
+]
+
+EXTRA_DEPENDENCIES = {
+    'doc': ['sphinx'],
+    'tests': TEST_DEPENDENCIES,
+}
+
 
 def get_version():
 
@@ -57,19 +75,12 @@ setup(
     url='http://github.com/kdeldycke/chessboard',
     license='GPLv2+',
 
-    install_requires=[
-        'click >= 5.0',
-        'click_log',
-        'bprofile',
-        'numpy',
-        'pandas',
-        'seaborn',
-        'py-cpuinfo',
-    ],
-
     packages=find_packages(),
-
-    tests_require=[],
+    install_requires=DEPENDENCIES,
+    tests_require=DEPENDENCIES + TEST_DEPENDENCIES,
+    extras_require=EXTRA_DEPENDENCIES,
+    dependency_links=[
+    ],
     test_suite=MODULE_NAME + '.tests',
 
     classifiers=[
