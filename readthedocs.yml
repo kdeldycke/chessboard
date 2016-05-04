@@ -1,0 +1,11 @@
+# Source: http://docs.readthedocs.io/en/latest/yaml-config.html
+
+# Don't build any extra formats
+formats:
+    - none
+
+conda:
+    file: conda.yml
+
+python:
+    setup_py_install: true
