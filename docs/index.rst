@@ -1,5 +1,4 @@
-Chessboard documentation
-========================
+.. include:: ../README.rst
 
 Contents:
 
