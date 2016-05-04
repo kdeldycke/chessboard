@@ -17,7 +17,7 @@ extensions = [
 master_doc = 'index'
 
 project = u'Chessboard'
-copyright = u'2016, Kevin Deldycke'
+copyright = u'2015-2016, Kevin Deldycke'
 author = u'Kevin Deldycke'
 
 version = release = chessboard.__version__
