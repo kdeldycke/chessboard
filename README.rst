@@ -415,6 +415,14 @@ The CLI code is based on the one I wrote for the `kdenlive-tools module
 license <https://github.com/kdeldycke/kdenlive-tools/blob/master/LICENSE>`_.
 
 
+Other resources
+---------------
+
+* [Combinatorial Generation](http://www.1stworks.com/ref/RuskeyCombGen.pdf)
+* [Applied Combinatorics](http://people.math.gatech.edu/~trotter/book.pdf)
+* [Extremal Problems](http://www-math.mit.edu/~rstan/transparencies/iap.pdf)
+
+
 License
 -------
 
