@@ -25,6 +25,7 @@ version = release = chessboard.__version__
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
 nitpicky = True
+html_last_updated_fmt = 'YYYY-MM-dd'
 
 # Enforce Google style docstrings.
 napoleon_google_docstring = True
