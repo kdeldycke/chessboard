@@ -7,6 +7,7 @@ Contents:
 
    readme
    chessboard
+   development
    changelog
 
 
