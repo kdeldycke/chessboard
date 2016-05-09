@@ -14,15 +14,15 @@ Philosophy
 Build status
 ------------
 
-==============  ==================  =================
-Branch          |master-branch|     |develop-branch|
-==============  ==================  =================
+==============  ==================  ===================
+Branch          |master-branch|__   |develop-branch|__
+==============  ==================  ===================
 Unittests       |build-stable|      |build-dev|
 Coverage        |coverage-stable|   |coverage-dev|
 Quality         |quality-stable|    |quality-dev|
 Dependencies    |deps-stable|       |deps-dev|
 Documentation   |docs-stable|       |docs-dev|
-==============  ==================  =================
+==============  ==================  ===================
 
 .. |master-branch| replace::
    `master`
