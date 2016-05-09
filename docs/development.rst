@@ -32,10 +32,10 @@ Documentation   |docs-stable|       |docs-dev|
     :alt: Unit-tests status
 
 .. |coverage-stable| image:: https://codecov.io/github/kdeldycke/chessboard/coverage.svg?branch=master
-    :target: https://codecov.io/github/kdeldycke/chessboard?branch=master
+    :target: https://codecov.io/gh/kdeldycke/chessboard/branch/master
     :alt: Coverage Status
 .. |coverage-dev| image:: https://codecov.io/github/kdeldycke/chessboard/coverage.svg?branch=develop
-    :target: https://codecov.io/github/kdeldycke/chessboard?branch=develop
+    :target: https://codecov.io/gh/kdeldycke/chessboard/branch/develop
     :alt: Coverage Status
 
 .. |quality-stable| image:: https://img.shields.io/scrutinizer/g/kdeldycke/chessboard.svg?style=flat
