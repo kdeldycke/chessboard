@@ -25,10 +25,10 @@ Documentation   |docs-stable|       |docs-dev|
 ==============  ==================  ===================
 
 .. |master-branch| replace::
-   `master`
+   ``master``
 __ https://github.com/kdeldycke/chessboard/tree/master
 .. |develop-branch| replace::
-   `develop`
+   ``develop``
 __ https://github.com/kdeldycke/chessboard/tree/develop
 
 .. |build-stable| image:: https://img.shields.io/travis/kdeldycke/chessboard/master.svg?style=flat
@@ -160,7 +160,8 @@ Publish packaging to `PyPi <https://pypi.python.org>`_:
     $ rm -rf ./build ./dist
     $ python ./setup.py sdist bdist_egg bdist_wheel upload -r pypi
 
-Bump revision back to its development state:
+Update revision with `bumpversion <https://github.com/peritus/bumpversion>`_
+and set it back to development state by increasing the ``patch`` level.
 
 .. code-block:: bash
 
@@ -171,7 +172,8 @@ Bump revision back to its development state:
     $ git commit -m "Post release version bump."
     $ git push
 
-Now if the next revision is no longer bug-fix only:
+Now if the next revision is no longer bug-fix only, bump the ``minor``
+revision level instead:
 
 .. code-block:: bash
 
