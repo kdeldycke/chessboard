@@ -1,35 +1,6 @@
 Development
 ===========
 
-Stable release: |release| |dependencies| |license| |popularity|
-
-Development: |build| |docs| |coverage| |quality|
-
-.. |release| image:: https://img.shields.io/pypi/v/chessboard.svg?style=flat
-    :target: https://pypi.python.org/pypi/chessboard
-    :alt: Last release
-.. |license| image:: https://img.shields.io/pypi/l/chessboard.svg?style=flat
-    :target: https://www.gnu.org/licenses/gpl-2.0.html
-    :alt: Software license
-.. |popularity| image:: https://img.shields.io/pypi/dm/chessboard.svg?style=flat
-    :target: https://pypi.python.org/pypi/chessboard#downloads
-    :alt: Popularity
-.. |dependencies| image:: https://img.shields.io/requires/github/kdeldycke/chessboard/master.svg?style=flat
-    :target: https://requires.io/github/kdeldycke/chessboard/requirements/?branch=master
-    :alt: Requirements freshness
-.. |build| image:: https://img.shields.io/travis/kdeldycke/chessboard/develop.svg?style=flat
-    :target: https://travis-ci.org/kdeldycke/chessboard
-    :alt: Unit-tests status
-.. |docs| image:: https://readthedocs.org/projects/chessboard/badge/?version=develop
-    :target: http://chessboard.readthedocs.io/en/develop/
-    :alt: Documentation Status
-.. |coverage| image:: https://codecov.io/github/kdeldycke/chessboard/coverage.svg?branch=develop
-    :target: https://codecov.io/github/kdeldycke/chessboard?branch=develop
-    :alt: Coverage Status
-.. |quality| image:: https://img.shields.io/scrutinizer/g/kdeldycke/chessboard.svg?style=flat
-    :target: https://scrutinizer-ci.com/g/kdeldycke/chessboard/?branch=develop
-    :alt: Code Quality
-
 
 Philosophy
 ----------
@@ -40,8 +11,57 @@ Philosophy
    optimizations).
 
 
-Setup a local development environment
--------------------------------------
+Build status
+------------
+
+==============  ==================  ===============
+Branch          `master`            `develop`
+==============  ==================  ===============
+Unittests       |build-stable|      |build-dev|
+Coverage        |coverage-stable|   |coverage-dev|
+Quality         |quality-stable|    |quality-dev|
+Dependencies    |deps-stable|       |deps-dev|
+Documentation   |docs-stable|       |docs-dev|
+==============  ==================  ===============
+
+.. |build-stable| image:: https://img.shields.io/travis/kdeldycke/chessboard/master.svg?style=flat
+    :target: https://travis-ci.org/kdeldycke/chessboard
+    :alt: Unit-tests status
+.. |build-dev| image:: https://img.shields.io/travis/kdeldycke/chessboard/master.svg?style=flat
+    :target: https://travis-ci.org/kdeldycke/chessboard
+    :alt: Unit-tests status
+
+.. |coverage-stable| image:: https://codecov.io/github/kdeldycke/chessboard/coverage.svg?branch=master
+    :target: https://codecov.io/github/kdeldycke/chessboard?branch=master
+    :alt: Coverage Status
+.. |coverage-dev| image:: https://codecov.io/github/kdeldycke/chessboard/coverage.svg?branch=develop
+    :target: https://codecov.io/github/kdeldycke/chessboard?branch=develop
+    :alt: Coverage Status
+
+.. |quality-stable| image:: https://img.shields.io/scrutinizer/g/kdeldycke/chessboard.svg?style=flat
+    :target: https://scrutinizer-ci.com/g/kdeldycke/chessboard/?branch=master
+    :alt: Code Quality
+.. |quality-dev| image:: https://img.shields.io/scrutinizer/g/kdeldycke/chessboard.svg?style=flat
+    :target: https://scrutinizer-ci.com/g/kdeldycke/chessboard/?branch=develop
+    :alt: Code Quality
+
+.. |deps-stable| image:: https://img.shields.io/requires/github/kdeldycke/chessboard/master.svg?style=flat
+    :target: https://requires.io/github/kdeldycke/chessboard/requirements/?branch=master
+    :alt: Requirements freshness
+.. |deps-dev| image:: https://img.shields.io/requires/github/kdeldycke/chessboard/develop.svg?style=flat
+    :target: https://requires.io/github/kdeldycke/chessboard/requirements/?branch=develop
+    :alt: Requirements freshness
+
+.. |docs-stable| image:: https://readthedocs.org/projects/chessboard/badge/?version=stable
+    :target: http://chessboard.readthedocs.io/en/stable/
+    :alt: Documentation Status
+.. |docs-dev| image:: https://readthedocs.org/projects/chessboard/badge/?version=develop
+    :target: http://chessboard.readthedocs.io/en/develop/
+    :alt: Documentation Status
+
+
+Setup a local environment
+-------------------------
 
 Check out latest development branch:
 
