@@ -14,15 +14,22 @@ Philosophy
 Build status
 ------------
 
-==============  ==================  ===============
-Branch          `master`            `develop`
-==============  ==================  ===============
+==============  ==================  =================
+Branch          |master-branch|     |develop-branch|
+==============  ==================  =================
 Unittests       |build-stable|      |build-dev|
 Coverage        |coverage-stable|   |coverage-dev|
 Quality         |quality-stable|    |quality-dev|
 Dependencies    |deps-stable|       |deps-dev|
 Documentation   |docs-stable|       |docs-dev|
-==============  ==================  ===============
+==============  ==================  =================
+
+.. |master-branch| replace::
+   `master`
+__ https://github.com/kdeldycke/chessboard/tree/master
+.. |develop-branch| replace::
+   `develop`
+__ https://github.com/kdeldycke/chessboard/tree/develop
 
 .. |build-stable| image:: https://img.shields.io/travis/kdeldycke/chessboard/master.svg?style=flat
     :target: https://travis-ci.org/kdeldycke/chessboard
