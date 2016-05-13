@@ -26,6 +26,10 @@ master_doc = 'index'
 
 project = "Chessboard"
 author = "Kevin Deldycke"
+
+# We use our own copyright template instead of the default as the latter strip
+# HTML content.
+html_show_copyright = False
 copyright = "2015-{}, <a href='http://kevin.deldycke.com'>{}</a>".format(
     time.strftime('%Y'), author)
 
@@ -35,6 +39,7 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
 nitpicky = True
 html_last_updated_fmt = 'YYYY-MM-dd'
+templates_path = ['templates']
 
 # Enforce Google style docstrings.
 napoleon_google_docstring = True
