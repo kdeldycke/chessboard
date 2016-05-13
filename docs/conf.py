@@ -1,7 +1,15 @@
 # -*- coding: utf-8 -*-
 
+from __future__ import (
+    absolute_import,
+    division,
+    print_function,
+    unicode_literals
+)
+
 import os
 import sys
+import time
 
 # Expose package to autodoc.
 sys.path.insert(0, os.path.abspath('..'))
@@ -16,9 +24,10 @@ extensions = [
 
 master_doc = 'index'
 
-project = u'Chessboard'
-author = u'Kevin Deldycke'
-copyright = u'2015-2016, <a href="http://kevin.deldycke.com>' + author + '</a>'
+project = "Chessboard"
+author = "Kevin Deldycke"
+copyright = "2015-{}, <a href='http://kevin.deldycke.com'>{}</a>".format(
+    time.strftime('%Y'), author)
 
 version = release = chessboard.__version__
 
