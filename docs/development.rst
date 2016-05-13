@@ -84,6 +84,10 @@ Run unit-tests:
 
     $ python ./setup.py nosetests
 
+
+Check and fix coding style
+--------------------------
+
 Run `isort <https://pep8.readthedocs.org>`_ utility to sort Python imports:
 
 .. code-block:: bash
@@ -100,7 +104,12 @@ Run `PEP8 <https://pep8.readthedocs.org>`_ and `Pylint
     $ pep8 chessboard
     $ pylint --rcfile=setup.cfg chessboard
 
-Build local documentation with `Sphinx <http://www.sphinx-doc.org>`_:
+
+Build documentation
+-------------------
+
+The documentation you're currently reading can be built locally with `Sphinx
+<http://www.sphinx-doc.org>`_:
 
 .. code-block:: bash
 
