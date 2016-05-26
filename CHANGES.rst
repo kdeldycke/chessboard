@@ -5,7 +5,7 @@ ChangeLog
 1.5.0 (unreleased)
 ------------------
 
-* Add default `ìsort` configuration.
+* Add default `isort` configuration.
 * Add more trove classifiers.
 * Add proper support of logging. Closes #2.
 * Activate unittests in Python 3.3, 3.4 and 3.5. Closes #9.
