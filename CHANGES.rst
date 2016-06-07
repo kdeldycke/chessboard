@@ -11,6 +11,7 @@ ChangeLog
 * Activate unittests in Python 3.3, 3.4 and 3.5. Closes #9.
 * Get detailed CPU info for each benckmark.
 * Add sphinx-based documentation.
+* Add a git mailmap template.
 
 
 `1.4.0 (2015-11-23) <http://github.com/kdeldycke/chessboard/compare/v1.3.0...v1.4.0>`_
