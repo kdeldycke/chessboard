@@ -92,6 +92,8 @@ setup(
         'License :: OSI Approved :: '
         'GNU General Public License v2 or later (GPLv2+)',
         'Operating System :: OS Independent',
+        # List of python versions and their support status:
+        # https://en.wikipedia.org/wiki/CPython#Version_history
         'Programming Language :: Python',
         'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 2.7',
