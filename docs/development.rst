@@ -76,7 +76,7 @@ Check out latest development branch:
 
     $ git clone git@github.com:kdeldycke/chessboard.git
     $ cd ./chessboard
-    $ python ./setup.py develop
+    $ pip install -e .
 
 Run unit-tests:
 
