@@ -6,6 +6,3 @@ formats:
 
 conda:
     file: conda.yml
-
-python:
-    setup_py_install: true
