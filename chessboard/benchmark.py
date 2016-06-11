@@ -136,7 +136,8 @@ class Benchmark(object):
         # Gotcha: integers seems to be promoted to float64 because of
         # reindexation. See: http://pandas.pydata.org/pandas-docs/stable
         # /gotchas.html#na-type-promotions
-        self.results.to_csv(self.csv_filepath, index=False)
+        self.results.reindex(columns=self.column_ids).to_csv(
+            self.csv_filepath, index=False)
 
     def nqueen_graph(self):
         """ Graph n-queens problem for the current version and context. """
