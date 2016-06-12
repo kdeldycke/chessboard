@@ -1,4 +1,2 @@
 # Install documentation requirements
-sphinx >= 1.4
-sphinx_rtd_theme
 -e .[docs]
