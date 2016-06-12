@@ -5,6 +5,8 @@ ChangeLog
 `1.5.0 (unreleased) <http://github.com/kdeldycke/chessboard/compare/v1.4.0...develop>`_
 ---------------------------------------------------------------------------------------
 
+.. note:: This version is not yet released and is under active development.
+
 * Add default ``isort`` configuration.
 * Add more trove classifiers.
 * Add proper support of logging. Closes #2.
