@@ -41,7 +41,9 @@ TEST_DEPENDENCIES = [
 ]
 
 EXTRA_DEPENDENCIES = {
-    'doc': ['sphinx >= 1.4', 'sphinx_rtd_theme'],
+    # Extra dependencies are made available through the `$ pip install .[docs]`
+    # command.
+    'docs': ['sphinx >= 1.4', 'sphinx_rtd_theme'],
     'tests': TEST_DEPENDENCIES,
 }
 

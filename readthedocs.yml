@@ -6,3 +6,8 @@ formats:
 
 conda:
     file: conda.yml
+
+python:
+    pip_install: true
+
+requirements_file: requirements-docs.txt

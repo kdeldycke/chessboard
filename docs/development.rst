@@ -113,7 +113,7 @@ The documentation you're currently reading can be built locally with `Sphinx
 
 .. code-block:: bash
 
-    $ pip install sphinx sphinx_rtd_theme
+    $ pip install -e .[docs]
     $ sphinx-apidoc -f -o ./docs .
     $ sphinx-build -b html ./docs ./docs/html
 
