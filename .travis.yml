@@ -36,7 +36,8 @@ before_install:
 
 # Install packages
 install:
-  - conda env create --name test_env --file conda.yml python=$TRAVIS_PYTHON_VERSION
+  - conda create --name test_env python=$TRAVIS_PYTHON_VERSION
+  - conda env update --name test_env --file conda.yml
   - source activate test_env
   # Check we installed the right Python version.
   - python --version
