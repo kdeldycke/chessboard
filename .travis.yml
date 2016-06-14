@@ -36,8 +36,8 @@ before_install:
 
 # Install packages
 install:
-  - conda create -q -n conda_env --file=conda.yml python=$TRAVIS_PYTHON_VERSION
-  - source activate conda_env
+  - conda env create --name test_env --file conda.yml python=$TRAVIS_PYTHON_VERSION
+  - source activate test_env
   - pip install -e .
   - pip install codecov
 
