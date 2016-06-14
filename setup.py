@@ -37,14 +37,18 @@ DEPENDENCIES = [
     'py-cpuinfo',
 ]
 
-TEST_DEPENDENCIES = [
-]
-
 EXTRA_DEPENDENCIES = {
-    # Extra dependencies are made available through the `$ pip install .[docs]`
-    # command.
-    'docs': ['sphinx >= 1.4', 'sphinx_rtd_theme'],
-    'tests': TEST_DEPENDENCIES,
+    # Extra dependencies are made available through the
+    # `$ pip install .[keyword]` command.
+    'docs': [
+        'sphinx >= 1.4',
+        'sphinx_rtd_theme'],
+    'tests': [
+        'nose',
+        'coverage'],
+    'develop': [
+        'isort',
+        'bumpversion'],
 }
 
 
@@ -80,7 +84,7 @@ setup(
 
     packages=find_packages(),
     install_requires=DEPENDENCIES,
-    tests_require=DEPENDENCIES + TEST_DEPENDENCIES,
+    tests_require=DEPENDENCIES + EXTRA_DEPENDENCIES['tests'],
     extras_require=EXTRA_DEPENDENCIES,
     dependency_links=[
     ],

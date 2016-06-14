@@ -41,12 +41,13 @@ install:
   - source activate test_env
   # Check we installed the right Python version.
   - python --version
-  - pip install -e .
-  - pip install codecov
+  - pip install .
 
 script:
-  - coverage run setup.py test
+  - pip install .[tests]
+  - coverage run setup.py nosetests
   - coverage report -m
 
 after_script:
-  codecov
+  - pip install codecov
+  - codecov

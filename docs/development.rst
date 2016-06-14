@@ -67,15 +67,31 @@ __ https://github.com/kdeldycke/chessboard/tree/develop
     :alt: Documentation Status
 
 
-Setup a local environment
--------------------------
+Setup a development environment
+-------------------------------
 
 Check out latest development branch:
 
 .. code-block:: bash
 
     $ git clone git@github.com:kdeldycke/chessboard.git
+    $ git checkout develop
     $ cd ./chessboard
+
+Install package in editable mode with all development dependencies:
+
+.. code-block:: bash
+
+    $ pip install -e .[develop]
+
+
+Run unit-tests
+--------------
+
+Install test dependencies:
+
+.. code-block:: bash
+
     $ pip install -e .[tests]
 
 Run unit-tests:
