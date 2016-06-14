@@ -3,6 +3,5 @@ dependencies:
     - scipy
     - matplotlib
     - pandas
-    - pip
     - pip:
         - sphinx >= 1.4
