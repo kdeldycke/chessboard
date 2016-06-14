@@ -1,5 +1,7 @@
-numpy
-scipy
-matplotlib
-pandas
-sphinx >= 1.4
+dependencies:
+- numpy
+- scipy
+- matplotlib
+- pandas
+- pip:
+  - sphinx >= 1.4
