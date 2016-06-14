@@ -7,7 +7,8 @@ language: python
 #sudo: false
 
 python:
-  # We don't actually use the Travis Python, but this keeps it organized.
+  # We're not directly using the Python distribution provided by Travis, but
+  # this variable will be fed to conda to install the right version.
   - "2.7"
   - "3.3"
   - "3.4"
@@ -31,7 +32,8 @@ before_install:
   - conda update --yes conda
   # Useful for debugging any issues with conda
   - conda info -a
-  # The next couple lines fix a crash with multiprocessing on Travis and are not specific to using Miniconda
+  # The next couple lines fix a crash with multiprocessing on Travis and are
+  # not specific to using Miniconda.
   - sudo rm -rf /dev/shm
   - sudo ln -s /run/shm /dev/shm
 

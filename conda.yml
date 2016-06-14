@@ -1,3 +1,5 @@
+# This is a conda environment.yml config file.
+# See: https://github.com/conda/conda-env#environmentyml
 dependencies:
     - numpy
     - scipy
