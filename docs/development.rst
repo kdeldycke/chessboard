@@ -75,8 +75,8 @@ Check out latest development branch:
 .. code-block:: bash
 
     $ git clone git@github.com:kdeldycke/chessboard.git
-    $ git checkout develop
     $ cd ./chessboard
+    $ git checkout develop
 
 Install package in editable mode with all development dependencies:
 
@@ -139,7 +139,14 @@ Start from the ``develop`` branch:
 .. code-block:: bash
 
     $ git clone git@github.com:kdeldycke/chessboard.git
+    $ cd ./chessboard
     $ git checkout develop
+
+Install development dependencies:
+
+.. code-block:: bash
+
+    $ pip install -e .[develop]
 
 Revision should already be set to the next version, so we just need to set the
 released date in the changelog:
@@ -167,7 +174,6 @@ Push packaging to the `test cheeseshop
 
 .. code-block:: bash
 
-    $ pip install wheel
     $ python ./setup.py register -r testpypi
     $ python ./setup.py clean
     $ rm -rf ./build ./dist
@@ -187,7 +193,6 @@ and set it back to development state by increasing the ``patch`` level.
 
 .. code-block:: bash
 
-    $ pip install bumpversion
     $ git checkout develop
     $ bumpversion --verbose patch
     $ git add ./chessboard/__init__.py ./CHANGES.rst
