@@ -47,6 +47,8 @@ EXTRA_DEPENDENCIES = {
         'nose',
         'coverage'],
     'develop': [
+        'pep8',
+        'pylint',
         'isort',
         'bumpversion'],
 }
