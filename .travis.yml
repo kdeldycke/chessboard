@@ -48,7 +48,7 @@ install:
 
 script:
   - pip install .[tests]
-  - coverage run setup.py nosetests
+  - nosetests
   - coverage report -m
 
 after_script:
