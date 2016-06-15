@@ -50,6 +50,7 @@ EXTRA_DEPENDENCIES = {
         'pep8',
         'pylint',
         'isort',
+        'wheel',
         'bumpversion'],
 }
 
