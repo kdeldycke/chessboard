@@ -84,39 +84,36 @@ Install package in editable mode with all development dependencies:
 
     $ pip install -e .[develop]
 
+Now you're ready to hack and abuse git!
 
-Run unit-tests
---------------
 
-Install test dependencies:
+Unit-tests
+----------
+
+Install test dependencies and run unit-tests:
 
 .. code-block:: bash
 
     $ pip install -e .[tests]
-
-Run unit-tests:
-
-.. code-block:: bash
-
-    $ python ./setup.py nosetests
+    $ nosetests
 
 
-Check and fix coding style
---------------------------
+Coding style
+------------
 
 Run `isort <https://pep8.readthedocs.org>`_ utility to sort Python imports:
 
 .. code-block:: bash
 
-    $ pip install isort
+    $ pip install -e .[develop]
     $ isort --apply
 
-Run `PEP8 <https://pep8.readthedocs.org>`_ and `Pylint
+Then run `PEP8 <https://pep8.readthedocs.org>`_ and `Pylint
 <http://docs.pylint.org>`_ code style checks:
 
 .. code-block:: bash
 
-    $ pip install pep8 pylint
+    $ pip install -e .[develop]
     $ pep8 chessboard
     $ pylint --rcfile=setup.cfg chessboard
 

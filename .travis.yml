@@ -45,7 +45,7 @@ install:
   # Check we installed the right Python version.
   - python --version
   - pip install codecov
-  - pip install .[tests]
+  - pip install -e .[tests]
 
 script:
   - coverage run ./setup.py nosetests
