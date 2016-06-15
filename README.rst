@@ -3,7 +3,7 @@ Chessboard
 
 CLI to solve combinatoric chess puzzles.
 
-Stable release: |release| |versions| |dependencies| |license| |popularity|
+Stable release: |release| |versions| |license| |dependencies| |popularity|
 
 Development: |build| |docs| |coverage| |quality|
 
