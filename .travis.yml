@@ -24,8 +24,8 @@ before_install:
     else
       MINICONDA_DIST="Miniconda3-latest-Linux-x86_64.sh";
     fi
-  - wget https://repo.continuum.io/miniconda/$MINICONDA_DIST -O miniconda.sh
-  - bash miniconda.sh -b -p $HOME/miniconda
+  - wget https://repo.continuum.io/miniconda/$MINICONDA_DIST -O ./miniconda.sh
+  - bash ./miniconda.sh -b -p $HOME/miniconda
   - export PATH="$HOME/miniconda/bin:$PATH"
   - hash -r
   - conda config --set always_yes yes --set changeps1 no
@@ -40,7 +40,7 @@ before_install:
 # Install packages
 install:
   - conda create --name test_env python=$TRAVIS_PYTHON_VERSION
-  - conda env update --name test_env --file conda.yml
+  - conda env update --name test_env --file ./conda.yml
   - source activate test_env
   # Check we installed the right Python version.
   - python --version
@@ -48,7 +48,7 @@ install:
   - pip install .[tests]
 
 script:
-  - coverage run setup.py nosetests
+  - coverage run ./setup.py nosetests
   - coverage report -m
 
 after_script:
