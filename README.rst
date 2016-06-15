@@ -7,22 +7,22 @@ Stable release: |release| |versions| |license| |dependencies| |popularity|
 
 Development: |build| |docs| |coverage| |quality|
 
-.. |release| image:: https://img.shields.io/pypi/v/chessboard.svg?style=flat
+.. |release| image:: https://img.shields.io/pypi/v/chessboard.svg
     :target: https://pypi.python.org/pypi/chessboard
     :alt: Last release
 .. |versions| image:: https://img.shields.io/pypi/pyversions/chessboard.svg
     :target: https://pypi.python.org/pypi/chessboard
     :alt: Python versions
-.. |license| image:: https://img.shields.io/pypi/l/chessboard.svg?style=flat
+.. |license| image:: https://img.shields.io/pypi/l/chessboard.svg
     :target: https://www.gnu.org/licenses/gpl-2.0.html
     :alt: Software license
-.. |popularity| image:: https://img.shields.io/pypi/dm/chessboard.svg?style=flat
+.. |popularity| image:: https://img.shields.io/pypi/dm/chessboard.svg
     :target: https://pypi.python.org/pypi/chessboard#downloads
     :alt: Popularity
-.. |dependencies| image:: https://img.shields.io/requires/github/kdeldycke/chessboard/master.svg?style=flat
+.. |dependencies| image:: https://img.shields.io/requires/github/kdeldycke/chessboard/master.svg
     :target: https://requires.io/github/kdeldycke/chessboard/requirements/?branch=master
     :alt: Requirements freshness
-.. |build| image:: https://img.shields.io/travis/kdeldycke/chessboard/develop.svg?style=flat
+.. |build| image:: https://img.shields.io/travis/kdeldycke/chessboard/develop.svg
     :target: https://travis-ci.org/kdeldycke/chessboard
     :alt: Unit-tests status
 .. |docs| image:: https://readthedocs.org/projects/chessboard/badge/?version=develop
@@ -31,7 +31,7 @@ Development: |build| |docs| |coverage| |quality|
 .. |coverage| image:: https://codecov.io/github/kdeldycke/chessboard/coverage.svg?branch=develop
     :target: https://codecov.io/github/kdeldycke/chessboard?branch=develop
     :alt: Coverage Status
-.. |quality| image:: https://img.shields.io/scrutinizer/g/kdeldycke/chessboard.svg?style=flat
+.. |quality| image:: https://img.shields.io/scrutinizer/g/kdeldycke/chessboard.svg
     :target: https://scrutinizer-ci.com/g/kdeldycke/chessboard/?branch=develop
     :alt: Code Quality
 
