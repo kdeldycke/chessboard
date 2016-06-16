@@ -1,26 +1,27 @@
 # After changing this file, check it on: http://lint.travis-ci.org/
 # Conda install recipe based on:
 #     https://gist.github.com/dan-blanchard/7045057
-#     https://github.com/conda/conda-docs/blob/master/docs/source/travis.rst
+#     http://conda.pydata.org/docs/travis.html
 
 language: python
 #sudo: false
 
+# We're not directly using the Python distribution provided by Travis, but this
+# variable will be fed to Conda to install the right version.
 python:
-  # We're not directly using the Python distribution provided by Travis, but
-  # this variable will be fed to conda to install the right version.
   - "2.7"
   - "3.3"
   - "3.4"
   - "3.5"
 
-# Setup anaconda and update it.
+# Update the system and setup a fresh Anaconda ecosystem.
 before_install:
   - sudo apt-get update
-  # We do this conditionally because it saves us some downloading if the
-  # version is the same.
+  # Explicitly download the Miniconda dedicated to the Python version we
+  # target, to ensure stability in case the default change in the future. Also
+  # speed things up a little bit by deploying the
   - if [[ "$TRAVIS_PYTHON_VERSION" == "2.7" ]]; then
-      MINICONDA_DIST="Miniconda-latest-Linux-x86_64.sh";
+      MINICONDA_DIST="Miniconda2-latest-Linux-x86_64.sh";
     else
       MINICONDA_DIST="Miniconda3-latest-Linux-x86_64.sh";
     fi
@@ -31,7 +32,7 @@ before_install:
   - conda config --set always_yes yes --set changeps1 no
   - conda update --all
   - conda install 'conda-env < 2.5.0'
-  # Useful for debugging any issues with conda
+  # Useful for debugging any issues with Conda.
   - conda info --all
   # The next couple lines fix a crash with multiprocessing on Travis and are
   # not specific to using Miniconda.
@@ -39,7 +40,7 @@ before_install:
   - sudo ln -s /run/shm /dev/shm
 
 install:
-  # Create an anaconda virtual env in a particular python version.
+  # Create an Anaconda virtual env in a particular Python version.
   - conda create --name test_env python=$TRAVIS_PYTHON_VERSION
   - conda env update --name test_env --file ./conda.yml
   - source activate test_env
