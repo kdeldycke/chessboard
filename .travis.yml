@@ -29,7 +29,7 @@ before_install:
   - export PATH="$HOME/miniconda/bin:$PATH"
   - hash -r
   - conda config --set always_yes yes --set changeps1 no
-  - conda update conda
+  - conda update --all
   - conda update 'conda-env < 2.5.0'
   # Useful for debugging any issues with conda
   - conda info -a
