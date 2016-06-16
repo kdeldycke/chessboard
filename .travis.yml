@@ -29,7 +29,7 @@ before_install:
   - export PATH="$HOME/miniconda/bin:$PATH"
   - hash -r
   - conda config --set always_yes yes --set changeps1 no
-  - conda update --yes conda
+  - conda update conda
   # Useful for debugging any issues with conda
   - conda info -a
   # The next couple lines fix a crash with multiprocessing on Travis and are
