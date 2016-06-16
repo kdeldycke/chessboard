@@ -31,7 +31,7 @@ before_install:
       brew upgrade --cleanup;
     else
       sudo apt-get update;
-      sudo apt-get upgrade -y;
+      sudo apt-get upgrade --force-yes;
     fi
   # Explicitly download the Miniconda dedicated to the Python version we
   # target, to ensure stability in case the default change in the future. Also
