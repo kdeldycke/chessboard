@@ -23,7 +23,8 @@ matrix:
 
 # Update the system and setup a fresh Anaconda ecosystem.
 before_install:
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]
+    then
       brew update
       brew upgrade --cleanup
     else
@@ -33,12 +34,14 @@ before_install:
   # Explicitly download the Miniconda dedicated to the Python version we
   # target, to ensure stability in case the default change in the future. Also
   # speed things up a little bit by only installing the minimal requirements.
-  - if [[ "$TRAVIS_PYTHON_VERSION" == "2.7" ]]; then
+  - if [[ "$TRAVIS_PYTHON_VERSION" == "2.7" ]]
+    then
       MINICONDA_DIST="Miniconda2-latest"
     else
       MINICONDA_DIST="Miniconda3-latest"
     fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]
+    then
       MINICONDA_DIST="$MINICONDA_DIST-MacOSX-x86_64.sh"
     else
       MINICONDA_DIST="$MINICONDA_DIST-Linux-x86_64.sh""
