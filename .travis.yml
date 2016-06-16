@@ -45,7 +45,6 @@ install:
   - source activate test_env
   # Check we installed the right Python version.
   - python --version
-  - conda info --all
   - pip install codecov
   - pip install -e .[tests]
 
