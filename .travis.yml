@@ -26,13 +26,6 @@ matrix:
 
 # Update the system and setup a fresh Anaconda ecosystem.
 before_install:
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
-      brew update;
-      brew upgrade --cleanup;
-    else
-      sudo -E apt-get update;
-      sudo -E apt-get upgrade;
-    fi
   # Explicitly download the Miniconda dedicated to the Python version we
   # target, to ensure stability in case the default change in the future. Also
   # speed things up a little bit by only installing the minimal requirements.
