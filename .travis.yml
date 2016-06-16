@@ -14,7 +14,7 @@ python:
   - "3.4"
   - "3.5"
 
-# Setup anaconda
+# Setup anaconda and update it.
 before_install:
   - sudo apt-get update
   # We do this conditionally because it saves us some downloading if the
@@ -32,19 +32,20 @@ before_install:
   - conda update --all
   - conda install 'conda-env < 2.5.0'
   # Useful for debugging any issues with conda
-  - conda info -a
+  - conda info --all
   # The next couple lines fix a crash with multiprocessing on Travis and are
   # not specific to using Miniconda.
   - sudo rm -rf /dev/shm
   - sudo ln -s /run/shm /dev/shm
 
-# Install packages
 install:
+  # Create an anaconda virtual env in a particular python version.
   - conda create --name test_env python=$TRAVIS_PYTHON_VERSION
   - conda env update --name test_env --file ./conda.yml
   - source activate test_env
   # Check we installed the right Python version.
   - python --version
+  - conda info --all
   - pip install codecov
   - pip install -e .[tests]
 
