@@ -4,7 +4,6 @@
 #     http://conda.pydata.org/docs/travis.html
 
 language: python
-#sudo: false
 
 # We're not directly using the Python distribution provided by Travis, but this
 # variable will be fed to Conda to install the right version.
@@ -14,16 +13,35 @@ python:
   - "3.4"
   - "3.5"
 
+os:
+  - linux
+  - osx
+
+matrix:
+  allow_failures:
+    - os: osx
+
 # Update the system and setup a fresh Anaconda ecosystem.
 before_install:
-  - sudo apt-get update
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
+      brew update
+      brew upgrade --cleanup
+    else
+      sudo apt-get update
+      sudo apt-get upgrade -y
+    fi
   # Explicitly download the Miniconda dedicated to the Python version we
   # target, to ensure stability in case the default change in the future. Also
   # speed things up a little bit by only installing the minimal requirements.
   - if [[ "$TRAVIS_PYTHON_VERSION" == "2.7" ]]; then
-      MINICONDA_DIST="Miniconda2-latest-Linux-x86_64.sh";
+      MINICONDA_DIST="Miniconda2-latest"
     else
-      MINICONDA_DIST="Miniconda3-latest-Linux-x86_64.sh";
+      MINICONDA_DIST="Miniconda3-latest"
+    fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
+      MINICONDA_DIST="$MINICONDA_DIST-MacOSX-x86_64.sh"
+    else
+      MINICONDA_DIST="$MINICONDA_DIST-Linux-x86_64.sh""
     fi
   - wget https://repo.continuum.io/miniconda/$MINICONDA_DIST -O ./miniconda.sh
   - bash ./miniconda.sh -b -p $HOME/miniconda
