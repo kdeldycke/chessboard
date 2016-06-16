@@ -19,7 +19,7 @@ before_install:
   - sudo apt-get update
   # Explicitly download the Miniconda dedicated to the Python version we
   # target, to ensure stability in case the default change in the future. Also
-  # speed things up a little bit by deploying the
+  # speed things up a little bit by only installing the minimal requirements.
   - if [[ "$TRAVIS_PYTHON_VERSION" == "2.7" ]]; then
       MINICONDA_DIST="Miniconda2-latest-Linux-x86_64.sh";
     else
