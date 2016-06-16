@@ -10,9 +10,12 @@ ChangeLog
 * Add default ``isort`` configuration.
 * Add more trove classifiers.
 * Add proper support of logging. Closes #2.
+* Use Miniconda to install ``numpy``, ``scipy``, ``matplotlib`` and ``pandas``
+  in Travis builds.
 * Activate unittests in Python 3.3, 3.4 and 3.5. Closes #9.
 * Get detailed CPU info for each benckmark.
 * Add sphinx-based documentation.
+* Use ``pip`` to install package and other extra dependencies.
 * Add a git mailmap template.
 
 
