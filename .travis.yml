@@ -5,31 +5,86 @@
 
 language: python
 
-# We're not directly using the Python distribution provided by Travis, but this
-# variable will be fed to Conda to install the right version.
-python:
-  - "2.7"
-  - "3.3"
-  - "3.4"
-  - "3.5"
-
-os:
-  - linux
-  - osx
-
-# Force OSX 10.11.
-osx_image: xcode7.3
-
+# We need to explicitely set all combination of the test matrix because Travis
+# OSX images do not support Python. See:
+# https://docs.travis-ci.com/user/multi-os/#Python-example-(unsupported-languages)
 matrix:
-  allow_failures:
-    - os: osx
+  include:
+
+    # We're not directly using the Python distribution provided by Travis, but
+    # this variable will be fed to Conda to install the right version.
+    - python: "2.7"
+      env: PYTHON_DIST="2.7"
+    - python: "3.3"
+      env: PYTHON_DIST="3.3"
+    - python: "3.4"
+      env: PYTHON_DIST="3.4"
+    - python: "3.5"
+      env: PYTHON_DIST="3.5"
+
+    # Xcode to OSX version matrix is available at:
+    # https://docs.travis-ci.com/user/osx-ci-environment/#OS-X-Version
+
+    # Xcode 6.2-beta is OSX 10.9.
+    - language: generic
+      os: osx
+      osx_image: beta-xcode6.2
+      env: PYTHON_DIST="2.7"
+    - language: generic
+      os: osx
+      osx_image: beta-xcode6.2
+      env: PYTHON_DIST="3.3"
+    - language: generic
+      os: osx
+      osx_image: beta-xcode6.2
+      env: PYTHON_DIST="3.4"
+    - language: generic
+      os: osx
+      osx_image: beta-xcode6.2
+      env: PYTHON_DIST="3.5"
+
+    # Xcode 7.1 is OSX 10.10.
+    - language: generic
+      os: osx
+      osx_image: xcode7.1
+      env: PYTHON_DIST="2.7"
+    - language: generic
+      os: osx
+      osx_image: xcode7.1
+      env: PYTHON_DIST="3.3"
+    - language: generic
+      os: osx
+      osx_image: xcode7.1
+      env: PYTHON_DIST="3.4"
+    - language: generic
+      os: osx
+      osx_image: xcode7.1
+      env: PYTHON_DIST="3.5"
+
+    # Xcode 8 is OSX 10.11.
+    - language: generic
+      os: osx
+      osx_image: xcode8
+      env: PYTHON_DIST="2.7"
+    - language: generic
+      os: osx
+      osx_image: xcode8
+      env: PYTHON_DIST="3.3"
+    - language: generic
+      os: osx
+      osx_image: xcode8
+      env: PYTHON_DIST="3.4"
+    - language: generic
+      os: osx
+      osx_image: xcode8
+      env: PYTHON_DIST="3.5"
 
 # Update the system and setup a fresh Anaconda ecosystem.
 before_install:
   # Explicitly download the Miniconda dedicated to the Python version we
   # target, to ensure stability in case the default change in the future. Also
   # speed things up a little bit by only installing the minimal requirements.
-  - if [[ "$TRAVIS_PYTHON_VERSION" == "2.7" ]]; then
+  - if [[ "$PYTHON_DIST" == "2.7" ]]; then
       MINICONDA_DIST="Miniconda2-latest";
     else
       MINICONDA_DIST="Miniconda3-latest";
@@ -55,7 +110,7 @@ before_install:
 
 install:
   # Create an Anaconda virtual env in a particular Python version.
-  - conda create --name test_env python=$TRAVIS_PYTHON_VERSION
+  - conda create --name test_env python=$PYTHON_DIST
   - conda env update --name test_env --file ./conda.yml
   - source activate test_env
   # Check we installed the right Python version.
