@@ -81,6 +81,8 @@ matrix:
 
 # Update the system and setup a fresh Anaconda ecosystem.
 before_install:
+  # Check default Python version installed.
+  - python --version
   # Explicitly download the Miniconda dedicated to the Python version we
   # target, to ensure stability in case the default change in the future. Also
   # speed things up a little bit by only installing the minimal requirements.
