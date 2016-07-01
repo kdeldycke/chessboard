@@ -2,10 +2,14 @@ ChangeLog
 =========
 
 
-`1.5.0 (2016-07-01) <http://github.com/kdeldycke/chessboard/compare/v1.4.0...v1.5.0>`_
---------------------------------------------------------------------------------------
+`1.5.1 (unreleased) <http://github.com/kdeldycke/chessboard/compare/v1.5.0...develop>`_
+---------------------------------------------------------------------------------------
 
 .. note:: This version is not yet released and is under active development.
+
+
+`1.5.0 (2016-07-01) <http://github.com/kdeldycke/chessboard/compare/v1.4.0...v1.5.0>`_
+--------------------------------------------------------------------------------------
 
 * Add default ``isort`` configuration.
 * Add more trove classifiers.
