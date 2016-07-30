@@ -50,8 +50,8 @@ napoleon_numpy_docstring = False
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = True
 
-# Use readthedocs.org theme both locally and online.
-# Source: https://github.com/snide/sphinx_rtd_theme#using-this-theme-locally-then-building-on-read-the-docs
+# Use RTD theme both locally and online. Source: https://github.com/snide
+# /sphinx_rtd_theme#using-this-theme-locally-then-building-on-read-the-docs
 on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
 if not on_rtd:
     import sphinx_rtd_theme
