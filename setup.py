@@ -47,7 +47,7 @@ EXTRA_DEPENDENCIES = {
         'nose',
         'coverage'],
     'develop': [
-        'pep8',
+        'pycodestyle',
         'pylint',
         'isort',
         'wheel',

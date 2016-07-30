@@ -109,13 +109,13 @@ imports:
     $ pip install -e .[develop]
     $ isort --apply
 
-Then run `PEP8 <https://pep8.readthedocs.org>`_ and `Pylint
+Then run `pycodestyle <https://pycodestyle.readthedocs.io>`_ and `Pylint
 <http://docs.pylint.org>`_ code style checks:
 
 .. code-block:: bash
 
     $ pip install -e .[develop]
-    $ pep8 chessboard
+    $ pycodestyle chessboard
     $ pylint --rcfile=setup.cfg chessboard
 
 
