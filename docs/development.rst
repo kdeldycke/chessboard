@@ -101,7 +101,8 @@ Install test dependencies and run unit-tests:
 Coding style
 ------------
 
-Run `isort <https://pep8.readthedocs.org>`_ utility to sort Python imports:
+Run `isort <https://github.com/timothycrosley/isort>`_ utility to sort Python
+imports:
 
 .. code-block:: bash
 
