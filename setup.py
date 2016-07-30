@@ -45,10 +45,10 @@ EXTRA_DEPENDENCIES = {
         'sphinx_rtd_theme'],
     'tests': [
         'nose',
-        'coverage'],
-    'develop': [
+        'coverage',
         'pycodestyle',
-        'pylint',
+        'pylint'],
+    'develop': [
         'isort',
         'wheel',
         'bumpversion'],

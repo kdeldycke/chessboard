@@ -114,7 +114,7 @@ Then run `pycodestyle <https://pycodestyle.readthedocs.io>`_ and `Pylint
 
 .. code-block:: bash
 
-    $ pip install -e .[develop]
+    $ pip install -e .[tests]
     $ pycodestyle chessboard
     $ pylint --rcfile=setup.cfg chessboard
 

@@ -124,6 +124,7 @@ before_script:
 script:
   - coverage run ./setup.py test
   - coverage report -m
+  - pycodestyle
 
 after_script:
   - codecov

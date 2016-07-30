@@ -8,6 +8,7 @@ ChangeLog
 .. note:: This version is not yet released and is under active development.
 
 * Replace ``pep8`` by ``pycodestyle``.
+* Automatticaly check Python coding style in travis jobs.
 
 
 `1.5.0 (2016-07-01) <http://github.com/kdeldycke/chessboard/compare/v1.4.0...v1.5.0>`_
