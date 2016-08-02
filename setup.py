@@ -51,6 +51,7 @@ EXTRA_DEPENDENCIES = {
     'develop': [
         'isort',
         'wheel',
+        'setuptools >= 24.2.1',
         'bumpversion'],
 }
 
@@ -86,6 +87,8 @@ setup(
     license='GPLv2+',
 
     packages=find_packages(),
+    # https://www.python.org/dev/peps/pep-0345/#version-specifiers
+    python_requires='>= 2.7, != 3.0, != 3.1, != 3.2',
     install_requires=DEPENDENCIES,
     tests_require=DEPENDENCIES + EXTRA_DEPENDENCIES['tests'],
     extras_require=EXTRA_DEPENDENCIES,
