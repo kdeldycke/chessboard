@@ -39,9 +39,23 @@ Development: |build| |docs| |coverage| |quality|
 Motivation
 ----------
 
-This project is a playground to test some optimization strategies in Python,
-but is essentially an example of a real-life Python package, and serve me as
-a boilerplate project for future CLI.
+This project started its life as a coding challenge I was asked to solve while
+interviewing in 2015 for a software engineering position at 
+`Uber <https://www.uber.com/careers/>`_.
+
+After the interview proccess ended, I kept toying with the code, as a playground
+to test some optimization strategies in Python. It is now a boilerplate that
+I use to:
+
+* bootstrap CLI-based projects powered with `Click <http://click.pocoo.org>`_,
+* keep up with the current state-of-art of `Python packaging <https://pypa.io>`_,
+* streamline the integration of a data stack (`Numpy <http://numpy.org>`_,
+  `Pandas <http://pandas.pydata.org>`_,
+  `Seaborn <https://stanford.edu/~mwaskom/software/seaborn>`_ and
+  `Conda <https://conda.anaconda.org>`_),
+* automate `testing and quality checks <http://meta.pycqa.org>`_ (unit-tests,
+  coverage, coding style),
+* provide an `auto-generated documentation <http://chessboard.readthedocs.io>`_.
 
 
 Install
