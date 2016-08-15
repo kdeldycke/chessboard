@@ -8,6 +8,8 @@ ChangeLog
 .. note:: This version is not yet released and is under active development.
 
 * Replace ``pep8`` by ``pycodestyle``.
+* Depends on unreleased ``pycodestyle 2.1.0.dev`` while we wait for the final
+  one.
 * Automatticaly check Python coding style in travis jobs.
 * Remove popularity badge: PyPI download counters are broken and no longer
   displayed.
