@@ -224,7 +224,7 @@ class TestBishop(unittest.TestCase):
             True, False, False,
             False, True, False,
             False, False, True,
-         ])
+        ])
         self.assertEquals(Bishop(board, c2i(1, 2)).territory, [
             False, False, False,
             True, False, True,

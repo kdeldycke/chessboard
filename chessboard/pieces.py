@@ -148,13 +148,13 @@ class Piece(object):
 
         Returns a list of relative movements up to the board's bound.
         """
-        left_top_shifts = map(lambda i: (-(i+1), -(i+1)), range(min(
+        left_top_shifts = map(lambda i: (-(i + 1), -(i + 1)), range(min(
             self.left_distance, self.top_distance)))
-        left_bottom_shifts = map(lambda i: (-(i+1), +(i+1)), range(min(
+        left_bottom_shifts = map(lambda i: (-(i + 1), +(i + 1)), range(min(
             self.left_distance, self.bottom_distance)))
-        right_top_shifts = map(lambda i: (+(i+1), -(i+1)), range(min(
+        right_top_shifts = map(lambda i: (+(i + 1), -(i + 1)), range(min(
             self.right_distance, self.top_distance)))
-        right_bottom_shifts = map(lambda i: (+(i+1), +(i+1)), range(min(
+        right_bottom_shifts = map(lambda i: (+(i + 1), +(i + 1)), range(min(
             self.right_distance, self.bottom_distance)))
         return set(chain(
             left_top_shifts, left_bottom_shifts,
