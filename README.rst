@@ -37,7 +37,7 @@ Motivation
 ----------
 
 This project started its life as a coding challenge I was asked to solve while
-interviewing in 2015 for a software engineering position at 
+interviewing in 2015 for a software engineering position at
 `Uber <https://www.uber.com/careers/>`_.
 
 After the interview proccess ended, I kept toying with the code, as a playground
