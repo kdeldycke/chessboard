@@ -14,6 +14,7 @@ ChangeLog
 * Remove popularity badge: PyPI download counters are broken and no longer
   displayed.
 * Test production of packages in Travis CI jobs.
+* Make wheels generated under Python 2 environnment available for Python 3 too.
 
 
 `1.5.0 (2016-07-01) <http://github.com/kdeldycke/chessboard/compare/v1.4.0...v1.5.0>`_
