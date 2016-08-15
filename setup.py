@@ -95,7 +95,7 @@ setup(
     extras_require=EXTRA_DEPENDENCIES,
     dependency_links=[
     ],
-    test_suite=MODULE_NAME + '.tests',
+    test_suite='{}.tests'.format(MODULE_NAME),
 
     classifiers=[
         # See: https://pypi.python.org/pypi?:action=list_classifiers
@@ -121,7 +121,7 @@ setup(
 
     entry_points={
         'console_scripts': [
-            'chessboard=chessboard.cli:cli',
+            'chessboard={}.cli:cli'.format(MODULE_NAME),
         ],
     }
 )
