@@ -13,7 +13,7 @@ import time
 
 # Expose package to autodoc.
 sys.path.insert(0, os.path.abspath('..'))
-import chessboard
+import chessboard  # noqa
 
 extensions = [
     'sphinx.ext.autodoc',
