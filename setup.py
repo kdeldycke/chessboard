@@ -102,6 +102,7 @@ setup(
         'Development Status :: 5 - Production/Stable',
         'Environment :: Console',
         'Intended Audience :: Developers',
+        'Intended Audience :: Science/Research',
         'License :: OSI Approved :: '
         'GNU General Public License v2 or later (GPLv2+)',
         'Operating System :: OS Independent',
