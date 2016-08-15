@@ -9,6 +9,8 @@ ChangeLog
 
 * Replace ``pep8`` by ``pycodestyle``.
 * Automatticaly check Python coding style in travis jobs.
+* Remove popularity badge: PyPI download counters are broken and no longer
+  displayed.
 
 
 `1.5.0 (2016-07-01) <http://github.com/kdeldycke/chessboard/compare/v1.4.0...v1.5.0>`_

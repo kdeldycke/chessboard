@@ -3,7 +3,7 @@ Chessboard
 
 CLI to solve combinatoric chess puzzles.
 
-Stable release: |release| |versions| |license| |dependencies| |popularity|
+Stable release: |release| |versions| |license| |dependencies|
 
 Development: |build| |docs| |coverage| |quality|
 
@@ -16,9 +16,6 @@ Development: |build| |docs| |coverage| |quality|
 .. |license| image:: https://img.shields.io/pypi/l/chessboard.svg
     :target: https://www.gnu.org/licenses/gpl-2.0.html
     :alt: Software license
-.. |popularity| image:: https://img.shields.io/pypi/dm/chessboard.svg
-    :target: https://pypi.python.org/pypi/chessboard#downloads
-    :alt: Popularity
 .. |dependencies| image:: https://img.shields.io/requires/github/kdeldycke/chessboard/master.svg
     :target: https://requires.io/github/kdeldycke/chessboard/requirements/?branch=master
     :alt: Requirements freshness
