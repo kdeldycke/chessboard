@@ -81,7 +81,7 @@ class Piece(object):
 
     @property
     def x(self):
-        """ Return the piece's hosrizontal position.
+        """ Return the piece's horizontal position.
 
         Property is used here so we only compute position once when needed.
         """
