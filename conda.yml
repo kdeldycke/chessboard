@@ -5,5 +5,7 @@ dependencies:
     - scipy
     - matplotlib
     - pandas
+    # XXX Might not be necessary once
+    # https://github.com/rtfd/readthedocs.org/pull/2368 is fixed.
     - pip:
         - sphinx >= 1.4
