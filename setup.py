@@ -93,7 +93,7 @@ setup(
 
     author='Kevin Deldycke',
     author_email='kevin@deldycke.com',
-    url='http://github.com/kdeldycke/chessboard',
+    url='https://github.com/kdeldycke/chessboard',
     license='GPLv2+',
 
     packages=find_packages(),
