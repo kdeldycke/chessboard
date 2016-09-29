@@ -15,6 +15,8 @@ ChangeLog
   displayed.
 * Test production of packages in Travis CI jobs.
 * Make wheels generated under Python 2 environnment available for Python 3 too.
+* Only show latest changes in the long description of the package instead of
+  the full changelog.
 
 
 `1.5.0 (2016-07-01) <http://github.com/kdeldycke/chessboard/compare/v1.4.0...v1.5.0>`_
