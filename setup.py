@@ -89,7 +89,7 @@ setup(
     version=get_version(),
     description="CLI to solve combinatoric chess puzzles.",
     long_description=get_long_description(),
-    keywords="chess puzzle CLI solver",
+    keywords=['chess', 'puzzle', 'CLI', 'solver'],
 
     author='Kevin Deldycke',
     author_email='kevin@deldycke.com',
