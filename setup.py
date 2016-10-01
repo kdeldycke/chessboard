@@ -63,16 +63,28 @@ EXTRA_DEPENDENCIES = {
 }
 
 
+<<<<<<< Updated upstream
 def read_file(*relative_path_elements):
     """ Return content of a file relative to this ``setup.py``. """
     file_path = path.join(path.dirname(__file__), *relative_path_elements)
     return io.open(file_path, encoding='utf8').read().strip()
+=======
+def read_file(*names):
+    """ Return content of a file relative to this ``setup.py``. """
+    with io.open(
+        os.path.join(os.path.dirname(__file__), *names),
+        encoding='utf-8'
+    ) as file_p:
+        return file_p.read()
+>>>>>>> Stashed changes
 
 
 # Cache fetched version.
 _version = None  # noqa
 def version():
     """ Extracts version from the ``__init__.py`` file at the module's root.
+
+    Inspired by: https://packaging.python.org/single_source_version/
     """
     global _version
     if _version:
