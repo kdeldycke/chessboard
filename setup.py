@@ -71,6 +71,8 @@ def read_file(*relative_path_elements):
 
 # Cache fetched version.
 _version = None  # noqa
+
+
 def version():
     """ Extracts version from the ``__init__.py`` file at the module's root.
 
