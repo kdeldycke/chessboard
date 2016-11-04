@@ -53,7 +53,7 @@ EXTRA_DEPENDENCIES = {
     'tests': [
         'nose',
         'coverage',
-        'pycodestyle >= 2.1.0.dev0',
+        'pycodestyle >= 2.1.0',
         'pylint'],
     'develop': [
         'isort',
@@ -133,10 +133,6 @@ setup(
     tests_require=DEPENDENCIES + EXTRA_DEPENDENCIES['tests'],
     extras_require=EXTRA_DEPENDENCIES,
     dependency_links=[
-        # XXX Waiting for pycodestyle 2.1.0 release.
-        'git+https://github.com/PyCQA/pycodestyle.git'
-        '@dc08dadd84369185f3c19782fd727dbf5029a056'
-        '#egg=pycodestyle-2.1.0.dev0',
     ],
     test_suite='{}.tests'.format(MODULE_NAME),
 
