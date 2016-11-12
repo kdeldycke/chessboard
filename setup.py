@@ -33,6 +33,7 @@ from os import path
 from setuptools import find_packages, setup
 
 MODULE_NAME = 'chessboard'
+PACKAGE_NAME = MODULE_NAME.replace('_', '-')
 
 DEPENDENCIES = [
     'click >= 5.0',
@@ -115,7 +116,7 @@ def long_description():
 
 
 setup(
-    name=MODULE_NAME,
+    name=PACKAGE_NAME,
     version=version(),
     description="CLI to solve combinatoric chess puzzles.",
     long_description=long_description(),
