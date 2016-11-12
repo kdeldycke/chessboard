@@ -122,8 +122,7 @@ before_script:
 
 script:
   # Launch unittests.
-  # XXX Process dependency links while we wait for pycodestyle 2.1.0 release.
-  - pip install --process-dependency-links -e .[tests]
+  - pip install -e .[tests]
   - coverage run ./setup.py test
   - coverage report -m
   # Check coding style.
