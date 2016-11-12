@@ -10,6 +10,7 @@ Contents
    chessboard
    development
    changelog
+   license
 
 
 Indices and tables

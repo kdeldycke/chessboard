@@ -299,11 +299,3 @@ Other resources
 * `Combinatorial Generation <http://www.1stworks.com/ref/RuskeyCombGen.pdf>`_
 * `Applied Combinatorics <http://people.math.gatech.edu/~trotter/book.pdf>`_
 * `Extremal Problems <http://www-math.mit.edu/~rstan/transparencies/iap.pdf>`_
-
-
-License
--------
-
-This software is licensed under the `GNU General Public License v2 or later
-(GPLv2+)
-<https://github.com/kdeldycke/chessboard/blob/master/LICENSE>`_.
