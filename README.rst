@@ -66,6 +66,9 @@ so you can install the latest stable release and its dependencies with a simple
 
     $ pip install chessboard
 
+In case it is not available on your system, see `pip installation instructions
+<https://pip.pypa.io/en/stable/installing>`_.
+
 
 Usage
 -----
