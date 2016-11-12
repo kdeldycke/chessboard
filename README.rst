@@ -312,6 +312,8 @@ license <https://github.com/kdeldycke/kdenlive-tools/blob/master/LICENSE>`_.
 Other resources
 ---------------
 
+* `Awesome Chess: curated list of assets
+  <https://github.com/hkirat/awesome-chess>`_
 * `Combinatorial Generation <http://www.1stworks.com/ref/RuskeyCombGen.pdf>`_
 * `Applied Combinatorics <http://people.math.gatech.edu/~trotter/book.pdf>`_
 * `Extremal Problems <http://www-math.mit.edu/~rstan/transparencies/iap.pdf>`_
