@@ -9,8 +9,6 @@ conda:
 
 python:
     pip_install: true
-    # XXX Waiting for https://github.com/rtfd/readthedocs.org/pull/2368 to work
-    # on production servers of readthedocs.org.
     extra_requirements:
         - docs
         - develop
