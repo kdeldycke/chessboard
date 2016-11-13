@@ -72,10 +72,10 @@ __ https://github.com/kdeldycke/chessboard/tree/develop
     :target: https://scrutinizer-ci.com/g/kdeldycke/chessboard/?branch=develop
     :alt: Code Quality
 
-.. |deps-stable| image:: https://img.shields.io/requires/github/kdeldycke/chessboard/master.svg?style=flat
+.. |deps-stable| image:: https://requires.io/github/kdeldycke/chessboard/requirements.svg?branch=master
     :target: https://requires.io/github/kdeldycke/chessboard/requirements/?branch=master
     :alt: Requirements freshness
-.. |deps-dev| image:: https://img.shields.io/requires/github/kdeldycke/chessboard/develop.svg?style=flat
+.. |deps-dev| image:: https://requires.io/github/kdeldycke/chessboard/requirements.svg?branch=develop
     :target: https://requires.io/github/kdeldycke/chessboard/requirements/?branch=develop
     :alt: Requirements freshness
 

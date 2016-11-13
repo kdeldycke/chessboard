@@ -16,7 +16,7 @@ Development: |build| |docs| |coverage| |quality|
 .. |license| image:: https://img.shields.io/pypi/l/chessboard.svg
     :target: https://www.gnu.org/licenses/gpl-2.0.html
     :alt: Software license
-.. |dependencies| image:: https://img.shields.io/requires/github/kdeldycke/chessboard/master.svg
+.. |dependencies| image:: https://requires.io/github/kdeldycke/chessboard/requirements.svg?branch=master
     :target: https://requires.io/github/kdeldycke/chessboard/requirements/?branch=master
     :alt: Requirements freshness
 .. |build| image:: https://travis-ci.org/kdeldycke/chessboard.svg?branch=develop
