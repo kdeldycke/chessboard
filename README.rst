@@ -19,7 +19,7 @@ Development: |build| |docs| |coverage| |quality|
 .. |dependencies| image:: https://img.shields.io/requires/github/kdeldycke/chessboard/master.svg
     :target: https://requires.io/github/kdeldycke/chessboard/requirements/?branch=master
     :alt: Requirements freshness
-.. |build| image:: https://img.shields.io/travis/kdeldycke/chessboard/develop.svg
+.. |build| image:: https://travis-ci.org/kdeldycke/chessboard.svg?branch=develop
     :target: https://travis-ci.org/kdeldycke/chessboard
     :alt: Unit-tests status
 .. |docs| image:: https://readthedocs.org/projects/chessboard/badge/?version=develop

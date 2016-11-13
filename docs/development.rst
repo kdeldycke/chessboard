@@ -51,10 +51,10 @@ __ https://github.com/kdeldycke/chessboard/tree/master
    ``develop``
 __ https://github.com/kdeldycke/chessboard/tree/develop
 
-.. |build-stable| image:: https://img.shields.io/travis/kdeldycke/chessboard/master.svg?style=flat
+.. |build-stable| image:: https://travis-ci.org/kdeldycke/chessboard.svg?branch=master
     :target: https://travis-ci.org/kdeldycke/chessboard
     :alt: Unit-tests status
-.. |build-dev| image:: https://img.shields.io/travis/kdeldycke/chessboard/master.svg?style=flat
+.. |build-dev| image:: https://travis-ci.org/kdeldycke/chessboard.svg?branch=develop
     :target: https://travis-ci.org/kdeldycke/chessboard
     :alt: Unit-tests status
 
