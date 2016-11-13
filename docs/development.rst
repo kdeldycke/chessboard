@@ -65,10 +65,10 @@ __ https://github.com/kdeldycke/chessboard/tree/develop
     :target: https://codecov.io/gh/kdeldycke/chessboard/branch/develop
     :alt: Coverage Status
 
-.. |quality-stable| image:: https://img.shields.io/scrutinizer/g/kdeldycke/chessboard.svg?style=flat
+.. |quality-stable| image:: https://scrutinizer-ci.com/g/kdeldycke/chessboard/badges/quality-score.png?b=master
     :target: https://scrutinizer-ci.com/g/kdeldycke/chessboard/?branch=master
     :alt: Code Quality
-.. |quality-dev| image:: https://img.shields.io/scrutinizer/g/kdeldycke/chessboard.svg?style=flat
+.. |quality-dev| image:: https://scrutinizer-ci.com/g/kdeldycke/chessboard/badges/quality-score.png?b=develop
     :target: https://scrutinizer-ci.com/g/kdeldycke/chessboard/?branch=develop
     :alt: Code Quality
 

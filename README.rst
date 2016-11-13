@@ -28,7 +28,7 @@ Development: |build| |docs| |coverage| |quality|
 .. |coverage| image:: https://codecov.io/github/kdeldycke/chessboard/coverage.svg?branch=develop
     :target: https://codecov.io/github/kdeldycke/chessboard?branch=develop
     :alt: Coverage Status
-.. |quality| image:: https://img.shields.io/scrutinizer/g/kdeldycke/chessboard.svg
+.. |quality| image:: https://scrutinizer-ci.com/g/kdeldycke/chessboard/badges/quality-score.png?b=develop
     :target: https://scrutinizer-ci.com/g/kdeldycke/chessboard/?branch=develop
     :alt: Code Quality
 
