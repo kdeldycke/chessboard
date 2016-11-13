@@ -58,10 +58,10 @@ __ https://github.com/kdeldycke/chessboard/tree/develop
     :target: https://travis-ci.org/kdeldycke/chessboard
     :alt: Unit-tests status
 
-.. |coverage-stable| image:: https://codecov.io/github/kdeldycke/chessboard/coverage.svg?branch=master
+.. |coverage-stable| image:: https://codecov.io/gh/kdeldycke/chessboard/branch/master/graph/badge.svg
     :target: https://codecov.io/gh/kdeldycke/chessboard/branch/master
     :alt: Coverage Status
-.. |coverage-dev| image:: https://codecov.io/github/kdeldycke/chessboard/coverage.svg?branch=develop
+.. |coverage-dev| image:: https://codecov.io/gh/kdeldycke/chessboard/branch/develop/graph/badge.svg
     :target: https://codecov.io/gh/kdeldycke/chessboard/branch/develop
     :alt: Coverage Status
 

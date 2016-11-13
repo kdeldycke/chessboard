@@ -25,7 +25,7 @@ Development: |build| |docs| |coverage| |quality|
 .. |docs| image:: https://readthedocs.org/projects/chessboard/badge/?version=develop
     :target: http://chessboard.readthedocs.io/en/develop/
     :alt: Documentation Status
-.. |coverage| image:: https://codecov.io/github/kdeldycke/chessboard/coverage.svg?branch=develop
+.. |coverage| image:: https://codecov.io/gh/kdeldycke/chessboard/branch/develop/graph/badge.svg
     :target: https://codecov.io/github/kdeldycke/chessboard?branch=develop
     :alt: Coverage Status
 .. |quality| image:: https://scrutinizer-ci.com/g/kdeldycke/chessboard/badges/quality-score.png?b=develop
