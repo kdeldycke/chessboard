@@ -2,10 +2,8 @@ ChangeLog
 =========
 
 
-`1.5.1 (unreleased) <http://github.com/kdeldycke/chessboard/compare/v1.5.0...develop>`_
----------------------------------------------------------------------------------------
-
-.. note:: This version is not yet released and is under active development.
+`1.5.1 (2016-11-17) <http://github.com/kdeldycke/chessboard/compare/v1.5.0...v1.5.1>`_
+--------------------------------------------------------------------------------------
 
 * Replace ``pep8`` by ``pycodestyle``.
 * Automatticaly check Python coding style in travis jobs.
