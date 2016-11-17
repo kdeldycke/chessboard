@@ -36,13 +36,13 @@ MODULE_NAME = 'chessboard'
 PACKAGE_NAME = MODULE_NAME.replace('_', '-')
 
 DEPENDENCIES = [
+    'bprofile',
     'click >= 5.0',
     'click_log',
-    'bprofile',
     'numpy',
     'pandas',
-    'seaborn',
     'py-cpuinfo',
+    'seaborn',
 ]
 
 EXTRA_DEPENDENCIES = {
@@ -52,15 +52,15 @@ EXTRA_DEPENDENCIES = {
         'sphinx >= 1.4',
         'sphinx_rtd_theme'],
     'tests': [
-        'nose',
         'coverage',
+        'nose',
         'pycodestyle >= 2.1.0',
         'pylint'],
     'develop': [
+        'bumpversion',
         'isort',
-        'wheel',
         'setuptools >= 24.2.1',
-        'bumpversion'],
+        'wheel'],
 }
 
 
