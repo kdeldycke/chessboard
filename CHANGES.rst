@@ -2,10 +2,8 @@ ChangeLog
 =========
 
 
-`1.5.2 (unreleased) <http://github.com/kdeldycke/chessboard/compare/v1.5.1...develop>`_
----------------------------------------------------------------------------------------
-
-.. note:: This version is not yet released and is under active development.
+`1.5.2 (2016-11-18) <http://github.com/kdeldycke/chessboard/compare/v1.5.1...v1.5.2>`_
+--------------------------------------------------------------------------------------
 
 * Always check for package metadata in Travis CI jobs.
 * Fix package's long description against PyPi rendering constraints.
