@@ -9,6 +9,7 @@ ChangeLog
 
 * Always check for package metadata in Travis CI jobs.
 * Fix package's long description against PyPi rendering constraints.
+* Add link to full changelog in package's long description.
 
 
 `1.5.1 (2016-11-17) <http://github.com/kdeldycke/chessboard/compare/v1.5.0...v1.5.1>`_
