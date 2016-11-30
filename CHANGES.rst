@@ -7,7 +7,7 @@ ChangeLog
 
 .. note:: This version is not yet released and is under active development.
 
-* No changes yet.
+* Fix rendering of changelog link in RST.
 
 
 `1.5.2 (2016-11-18) <http://github.com/kdeldycke/chessboard/compare/v1.5.1...v1.5.2>`_
