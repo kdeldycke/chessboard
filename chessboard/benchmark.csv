@@ -1,4 +1,4 @@
-length,height,queen,rook,bishop,king,knight,solutions,execution_time,chessboard,implementation,python,system,osx,linux,windows,java,architecture,machine,cpu_vendor,cpu_model,cpu_freq_actual,cpu_freq_advertised,cpu_l2_cache
+length,height,queen,rook,bishop,king,knight,solutions,execution_time,chessboard,implementation,python,system,macos,linux,windows,java,architecture,machine,cpu_vendor,cpu_model,cpu_freq_actual,cpu_freq_advertised,cpu_l2_cache
 1.0,1.0,1.0,,,,,1.0,0.000242948532104,1.5.0,CPython,2.7.10,Linux,,Ubuntu 15.10 wily,,,64bit,x86_64,GenuineIntel,Intel(R) Core(TM) i7-3667U CPU @ 2.00GHz,2.0,2.0,4096 KB
 1.0,1.0,1.0,,,,,1.0,0.000244140625,1.5.0,CPython,2.7.10,Linux,,Ubuntu 15.10 wily,,,64bit,x86_64,GenuineIntel,Intel(R) Core(TM) i7-3667U CPU @ 2.00GHz,2,2,4096 KB
 1.0,1.0,1.0,,,,,1.0,0.000277042388916,1.5.0,CPython,2.7.10,Linux,,Ubuntu 15.10 wily,,,64bit,x86_64,GenuineIntel,Intel(R) Core(TM) i7-3667U CPU @ 2.00GHz,3.0,2.0,4096 KB

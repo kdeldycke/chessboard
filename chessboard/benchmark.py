@@ -96,7 +96,7 @@ class Benchmark(object):
         ('python', platform.python_version()),
         # Underlaying OS.
         ('system', platform.system()),
-        ('osx', platform.mac_ver()[0]),
+        ('macos', platform.mac_ver()[0]),
         ('linux', ' '.join(platform.linux_distribution()).strip()),
         ('windows', platform.win32_ver()[1]),
         ('java', platform.java_ver()[0]),
