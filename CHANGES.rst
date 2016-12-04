@@ -7,7 +7,7 @@ ChangeLog
 
 .. note:: This version is not yet released and is under active development.
 
-* No changes yet.
+* Show selected log level in debug mode.
 
 
 `1.5.3 (2016-11-30) <http://github.com/kdeldycke/chessboard/compare/v1.5.2...v1.5.3>`_

@@ -20,6 +20,7 @@
 
 from __future__ import absolute_import, division, print_function
 
+import logging
 import multiprocessing
 import time
 
@@ -79,6 +80,15 @@ class Solve(click.Command):
 @click.pass_context
 def cli(ctx):
     """ CLI to solve combinatoric chess puzzles. """
+    level = click_log.get_level()
+    try:
+        level_to_name = logging._levelToName
+    # Fallback to pre-Python 3.4 internals.
+    except AttributeError:
+        level_to_name = logging._levelNames
+    level_name = level_to_name.get(level, level)
+    logger.debug('Verbosity set to {}.'.format(level_name))
+
     # Print help screen and exit if no sub-commands provided.
     if ctx.invoked_subcommand is None:
         click.echo(ctx.get_help())
