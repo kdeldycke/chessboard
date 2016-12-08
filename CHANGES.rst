@@ -10,7 +10,6 @@ ChangeLog
 * Show selected log level in debug mode.
 * Drop support and unittests on Mac OS X 10.9.
 * Add new macOS 10.12 target for Travis CI builds.
-* Target Python 3.6-dev in Travis CI builds.
 
 
 `1.5.3 (2016-11-30) <http://github.com/kdeldycke/chessboard/compare/v1.5.2...v1.5.3>`_
