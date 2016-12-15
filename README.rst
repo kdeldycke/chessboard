@@ -23,7 +23,7 @@ Development: |build| |docs| |coverage| |quality|
     :target: https://travis-ci.org/kdeldycke/chessboard
     :alt: Unit-tests status
 .. |docs| image:: https://readthedocs.org/projects/chessboard/badge/?version=develop
-    :target: http://chessboard.readthedocs.io/en/develop/
+    :target: https://chessboard.readthedocs.io/en/develop/
     :alt: Documentation Status
 .. |coverage| image:: https://codecov.io/gh/kdeldycke/chessboard/branch/develop/graph/badge.svg
     :target: https://codecov.io/github/kdeldycke/chessboard?branch=develop
@@ -44,15 +44,15 @@ After the interview proccess ended, I kept toying with the code, as a playground
 to test some optimization strategies in Python. It is now a boilerplate that
 I use to:
 
-* bootstrap CLI-based projects powered with `Click <http://click.pocoo.org>`_,
+* bootstrap CLI-based projects powered with `Click <https://click.pocoo.org>`_,
 * keep up with the current state-of-art of `Python packaging <https://pypa.io>`_,
-* streamline the integration of a data stack (`Numpy <http://numpy.org>`_,
-  `Pandas <http://pandas.pydata.org>`_,
+* streamline the integration of a data stack (`Numpy <https://numpy.org>`_,
+  `Pandas <https://pandas.pydata.org>`_,
   `Seaborn <https://stanford.edu/~mwaskom/software/seaborn>`_ and
   `Conda <https://conda.anaconda.org>`_),
-* automate `testing and quality checks <http://meta.pycqa.org>`_ (unit-tests,
+* automate `testing and quality checks <https://meta.pycqa.org>`_ (unit-tests,
   coverage, coding style and packaging),
-* provide an `auto-generated documentation <http://chessboard.readthedocs.io>`_.
+* provide an `auto-generated documentation <https://chessboard.readthedocs.io>`_.
 
 
 Install
@@ -296,6 +296,6 @@ Other resources
 
 * `Awesome Chess: curated list of assets
   <https://github.com/hkirat/awesome-chess>`_
-* `Combinatorial Generation <http://www.1stworks.com/ref/RuskeyCombGen.pdf>`_
-* `Applied Combinatorics <http://people.math.gatech.edu/~trotter/book.pdf>`_
-* `Extremal Problems <http://www-math.mit.edu/~rstan/transparencies/iap.pdf>`_
+* `Combinatorial Generation <https://www.1stworks.com/ref/RuskeyCombGen.pdf>`_
+* `Applied Combinatorics <https://people.math.gatech.edu/~trotter/book.pdf>`_
+* `Extremal Problems <https://www-math.mit.edu/~rstan/transparencies/iap.pdf>`_
