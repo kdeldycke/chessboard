@@ -42,8 +42,7 @@ DEPENDENCIES = [
     'numpy',
     'pandas',
     'py-cpuinfo',
-    'seaborn',
-]
+    'seaborn']
 
 EXTRA_DEPENDENCIES = {
     # Extra dependencies are made available through the
@@ -61,8 +60,7 @@ EXTRA_DEPENDENCIES = {
         'isort',
         'readme_renderer >= 16.0',
         'setuptools >= 24.2.1',
-        'wheel'],
-}
+        'wheel']}
 
 
 def read_file(*relative_path_elements):
@@ -120,8 +118,7 @@ def long_description():
         read_file('README.rst'),
         '\n'.join(changes),
         "`Full changelog <https://{}.readthedocs.io/en/develop/changelog.html"
-        "#changelog>`_.".format(PACKAGE_NAME),
-    ])
+        "#changelog>`_.".format(PACKAGE_NAME)])
 
 
 setup(
@@ -142,8 +139,7 @@ setup(
     install_requires=DEPENDENCIES,
     tests_require=DEPENDENCIES + EXTRA_DEPENDENCIES['tests'],
     extras_require=EXTRA_DEPENDENCIES,
-    dependency_links=[
-    ],
+    dependency_links=[],
     test_suite='{}.tests'.format(MODULE_NAME),
 
     classifiers=[
@@ -166,12 +162,9 @@ setup(
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: Implementation :: CPython',
         'Topic :: Education',
-        'Topic :: Games/Entertainment :: Board Games',
-    ],
+        'Topic :: Games/Entertainment :: Board Games'],
 
     entry_points={
         'console_scripts': [
-            'chessboard={}.cli:cli'.format(MODULE_NAME),
-        ],
-    }
+            'chessboard={}.cli:cli'.format(MODULE_NAME)]}
 )
