@@ -76,7 +76,7 @@ _version = None  # noqa
 
 
 def version():
-    """ Extracts version from the ``__init__.py`` file at the module's root.
+    """ Extract version from the ``__init__.py`` file at the module's root.
 
     Inspired by: https://packaging.python.org/single_source_version/
     """
