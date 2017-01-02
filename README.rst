@@ -133,7 +133,7 @@ Examples
 
 Simple 3x3 board with 2 kings and a rook:
 
-.. code-block:: bash
+.. code-block:: shell-session
 
     $ chessboard solve --length=3 --height=3 --king=2 --rook=1
     <SolverContext: length=3, height=3, pieces={'rook': 1, 'king': 2, 'queen': 0, 'bishop': 0, 'knight': 0}>
@@ -170,7 +170,7 @@ Simple 3x3 board with 2 kings and a rook:
 
 Famous eight queens puzzle, without printing the solutions to speed things up:
 
-.. code-block:: bash
+.. code-block:: shell-session
 
     $ chessboard solve --length=8 --height=8 --queen=8 --silent
     <SolverContext: length=8, height=8, pieces={'rook': 0, 'king': 0, 'queen': 8, 'bishop': 0, 'knight': 0}>
@@ -179,7 +179,7 @@ Famous eight queens puzzle, without printing the solutions to speed things up:
 
 Huge combinatoric problem can take some time to solve:
 
-.. code-block:: bash
+.. code-block:: shell-session
 
     $ chessboard solve --length=7 --height=7 --king=2 --queen=2 --bishop=2 --knight=1 --silent
     <SolverContext: length=7, height=7, pieces={'rook': 0, 'king': 2, 'queen': 2, 'bishop': 2, 'knight': 1}>
@@ -189,7 +189,7 @@ Huge combinatoric problem can take some time to solve:
 The CLI allow the production of a profiling graph, to identify code hot spots and
 bottleneck:.
 
-.. code-block:: bash
+.. code-block:: shell-session
 
     $ chessboard solve --length=6 --height=6 --king=2 --queen=2 --bishop=2 --knight=1 --silent --profile
     <SolverContext: length=6, height=6, pieces={'rook': 0, 'king': 2, 'queen': 2, 'bishop': 2, 'knight': 1}>
