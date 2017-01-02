@@ -2,8 +2,8 @@ Usage
 =====
 
 
-`chessboard`
-------------
+``chessboard``
+--------------
 
 List global options and commands:
 
@@ -25,8 +25,8 @@ List global options and commands:
       solve      Solve a chess puzzle.
 
 
-`chessboard solve`
-------------------
+``chessboard solve``
+--------------------
 
 Solver specific options:
 
@@ -50,8 +50,8 @@ Solver specific options:
       --help                Show this message and exit.
 
 
-`chessboard benchmark`
-----------------------
+``chessboard benchmark``
+------------------------
 
 Benchmark specific options:
 
@@ -69,8 +69,8 @@ Benchmark specific options:
       --help  Show this message and exit.
 
 
-`chessboard plot`
------------------
+``chessboard plot``
+-------------------
 
 Plotting specific options:
 
