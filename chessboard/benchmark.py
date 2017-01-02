@@ -121,7 +121,8 @@ class Benchmark(object):
 
     def load_csv(self):
         """ Load old benchmark results from CSV. """
-        self.results = self.results.append(pandas.read_csv(self.csv_filepath))
+        if path.exists(self.csv_filepath):
+            self.results = self.results.append(pandas.read_csv(self.csv_filepath))
 
     def add(self, new_results):
         """ Add new benchmark results. """
