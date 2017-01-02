@@ -17,7 +17,6 @@ import chessboard  # noqa  # isort:skip
 
 extensions = [
     'sphinx.ext.autodoc',
-    'sphinx.ext.napoleon',
     'sphinx.ext.todo',
     'sphinx.ext.viewcode',
 ]
@@ -44,10 +43,6 @@ nitpicky = True
 needs_sphinx = '1.4'
 html_last_updated_fmt = 'YYYY-MM-dd'
 templates_path = ['templates']
-
-# Enforce Google style docstrings.
-napoleon_google_docstring = True
-napoleon_numpy_docstring = False
 
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = True
