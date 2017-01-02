@@ -13,6 +13,7 @@ ChangeLog
 * Bump requirement to ``readme_renderer >= 16.0``.
 * Move installation instructions to documentation.
 * Move performance page to documentation.
+* Move CLI usage to own section in docs.
 
 
 `1.5.3 (2016-11-30) <https://github.com/kdeldycke/chessboard/compare/v1.5.2...v1.5.3>`_
