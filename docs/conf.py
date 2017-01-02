@@ -8,23 +8,34 @@ from __future__ import (
 )
 
 import os
+import subprocess
 import sys
 import time
 
-# Expose package to autodoc.
-sys.path.insert(0, os.path.abspath('..'))
-import chessboard  # noqa  # isort:skip
 
+# Fetch general information about the project.
+# Source: https://github.com/jaraco/skeleton/blob/skeleton/docs/conf.py
+root = os.path.join(os.path.dirname(__file__), '..')
+setup_script = os.path.join(root, 'setup.py')
+fields = ['--name', '--version', '--url', '--author']
+dist_info_cmd = [sys.executable, setup_script] + fields
+output_bytes = subprocess.check_output(dist_info_cmd, cwd=root)
+project_id, version, url, author = output_bytes.decode(
+    'utf-8').strip().split('\n')
+
+# Title-case each word of the project ID.
+project = ' '.join([word.title() for word in project_id.split('-')])
+htmlhelp_basename = project_id
+
+release = version
+
+# Addons.
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.todo',
-    'sphinx.ext.viewcode',
-]
+    'sphinx.ext.viewcode']
 
 master_doc = 'index'
-
-project = "Chessboard"
-author = "Kevin Deldycke"
 
 # We use our own copyright template instead of the default as the latter strip
 # HTML content.
@@ -34,11 +45,10 @@ copyright = (
     "<a href='https://github.com/kdeldycke/chessboard/graphs/contributors'>"
     "contributors</a>").format(time.strftime('%Y'), author)
 
-version = release = chessboard.__version__
-
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
 nitpicky = True
+
 # We need a recent sphinx because of the last update format.
 needs_sphinx = '1.4'
 html_last_updated_fmt = 'YYYY-MM-dd'
@@ -54,5 +64,3 @@ if not on_rtd:
     import sphinx_rtd_theme
     html_theme = 'sphinx_rtd_theme'
     html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
-
-htmlhelp_basename = project
