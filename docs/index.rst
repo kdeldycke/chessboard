@@ -7,6 +7,7 @@ Contents
    :maxdepth: 2
 
    install
+   performances
    chessboard
    development
    changelog
