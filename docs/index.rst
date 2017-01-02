@@ -7,7 +7,7 @@ Contents
    :maxdepth: 2
 
    install
-   usages
+   usage
    performances
    chessboard
    development
