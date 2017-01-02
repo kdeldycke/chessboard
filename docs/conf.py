@@ -54,6 +54,9 @@ needs_sphinx = '1.4'
 html_last_updated_fmt = 'YYYY-MM-dd'
 templates_path = ['templates']
 
+# Keep the same ordering as in original source code.
+autodoc_member_order = 'bysource'
+
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = True
 
