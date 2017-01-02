@@ -49,12 +49,12 @@ class Board(object):
     * directly reachable by another piece.
 
     Internal states of the board are materialized by a vector. A vector is a
-    simple iterable for which each element represent a square. If in the Piece
-    class we use a bytearray type so we can pack a lot of states in memory for
-    caching, here we prefer a list as it seems Python is a little bit faster
-    dealing with a list of boolean.
+    simple iterable for which each element represent a square. If in the
+    ``Piece`` class we use a ``bytearray`` type so we can pack a lot of states
+    in memory for caching, here we prefer a ``list`` as it seems Python is a
+    little bit faster dealing with a lists of ``boolean``.
 
-    2D positions on the board are noted (x, y)::
+    2D positions on the board are noted ``(x, y)``::
 
           0 1 2 3 4 …
         0 . . . . .
@@ -64,12 +64,12 @@ class Board(object):
         4 . . . . .
         …
 
-    * horizontal range x goes from 0 to m-1.
-    * vertical range y goes from 0 to n-1.
-    * top-left position is (0, 0).
-    * top-right position is (0, m-1).
-    * bottom-left position is (n-1, 0).
-    * bottom-right position is (n-1, m-1).
+    * horizontal range ``x`` goes from ``0`` to ``m-1``.
+    * vertical range ``y`` goes from ``0`` to ``n-1``.
+    * top-left position is ``(0, 0)``.
+    * top-right position is ``(0, m-1)``.
+    * bottom-left position is ``(n-1, 0)``.
+    * bottom-right position is ``(n-1, m-1)``.
     """
 
     def __init__(self, length, height):
