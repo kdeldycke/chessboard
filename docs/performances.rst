@@ -39,7 +39,7 @@ Results below are given in seconds, and were run with the ``--silent`` option.
 To run the standard benchmark suite and add results to the database, run the
 benchmark in a detached background process:
 
-.. code-block:: bash
+.. code-block:: shell-session
 
     $ nohup chessboard benchmark > /dev/null 2>&1 &
 
