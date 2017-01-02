@@ -44,8 +44,8 @@ class Board(object):
 
     This kind of chessboard only accept new pieces which are not overlapping
     squares:
-        * occupied by another piece;
-        * directly reachable by another piece.
+    * occupied by another piece;
+    * directly reachable by another piece.
 
     Internal states of the board are  materialized by a vector. A vector is a
     simple iterable for which each element represent a square. If in the Piece
@@ -54,12 +54,12 @@ class Board(object):
     dealing with a list of boolean.
 
     2D positions on the board are noted (x, y):
-        * horizontal range x goes from 0 to m-1.
-        * vertical range y goes from 0 to n-1.
-        * top-left position is (0, 0).
-        * top-right position is (0, m-1).
-        * bottom-left position is (n-1, 0).
-        * bottom-right position is (n-1, m-1).
+    * horizontal range x goes from 0 to m-1.
+    * vertical range y goes from 0 to n-1.
+    * top-left position is (0, 0).
+    * top-right position is (0, m-1).
+    * bottom-left position is (n-1, 0).
+    * bottom-right position is (n-1, m-1).
 
           0 1 2 3 4 …
         0 . . . . .
