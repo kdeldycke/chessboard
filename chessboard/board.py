@@ -51,9 +51,10 @@ class Board(object):
     Internal states of the board are materialized by a vector. A vector is a
     simple iterable for which each element represent a square.
 
-    For :class:`.Piece` we use a ``bytearray`` so we can pack a lot of states
-    in memory for caching. But here for boards, we prefer a ``list`` as it
-    seems Python is a little bit faster dealing with a lists of ``boolean``.
+    For :class:`.Piece` we use a :keyword:`bytearray` so we can pack a lot of
+    states in memory for caching. But here for boards, we prefer a common
+    :keyword:`list` of :keyword:`bool` as it seems Python is a little bit
+    faster dealing with these.
 
     2D positions on the board are noted ``(x, y)``::
 
