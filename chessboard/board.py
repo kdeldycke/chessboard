@@ -137,7 +137,7 @@ class Board(object):
     def new_vector(self):
         """ Returns a list of boolean flags of squares indexed linearly.
 
-        All states are initialized to False.
+        All states are initialized to :keyword:`False`.
         """
         return [False] * self.size
 
@@ -155,7 +155,7 @@ class Board(object):
                     x, y, self.length, self.height))
 
     def index_to_coordinates(self, index):
-        """ Return a set of 2D (x, y) coordinates from a linear index. """
+        """ Return a set of 2D ``(x, y)`` coordinates from a linear index. """
         self.validate_index(index)
         x = int(index % self.length)
         y = int((index - x) / self.length)
