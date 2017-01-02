@@ -6,7 +6,6 @@ Contents
 .. toctree::
    :maxdepth: 2
 
-   readme
    install
    chessboard
    development
