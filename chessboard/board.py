@@ -48,7 +48,7 @@ class Board(object):
     * occupied by another piece;
     * directly reachable by another piece.
 
-    Internal states of the board are  materialized by a vector. A vector is a
+    Internal states of the board are materialized by a vector. A vector is a
     simple iterable for which each element represent a square. If in the Piece
     class we use a bytearray type so we can pack a lot of states in memory for
     caching, here we prefer a list as it seems Python is a little bit faster
