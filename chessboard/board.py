@@ -44,6 +44,7 @@ class Board(object):
 
     This kind of chessboard only accept new pieces which are not overlapping
     squares:
+
     * occupied by another piece;
     * directly reachable by another piece.
 
@@ -54,6 +55,7 @@ class Board(object):
     dealing with a list of boolean.
 
     2D positions on the board are noted (x, y):
+
     * horizontal range x goes from 0 to m-1.
     * vertical range y goes from 0 to n-1.
     * top-left position is (0, 0).
