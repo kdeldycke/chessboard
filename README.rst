@@ -151,3 +151,4 @@ Other resources
 * `Combinatorial Generation <https://www.1stworks.com/ref/RuskeyCombGen.pdf>`_
 * `Applied Combinatorics <https://people.math.gatech.edu/~trotter/book.pdf>`_
 * `Extremal Problems <https://www-math.mit.edu/~rstan/transparencies/iap.pdf>`_
+* `Combinatorial Algorithms <https://news.ycombinator.com/item?id=13306704>`_
