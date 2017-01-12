@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (c) 2015-2016 Kevin Deldycke <kevin@deldycke.com>
+# Copyright (c) 2015-2017 Kevin Deldycke <kevin@deldycke.com>
 #                         and contributors.
 # All Rights Reserved.
 #
