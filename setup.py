@@ -53,12 +53,12 @@ EXTRA_DEPENDENCIES = {
     'tests': [
         'coverage',
         'nose',
+        'pipdeptree[graphviz]',
         'pycodestyle >= 2.1.0',
         'pylint'],
     'develop': [
         'bumpversion',
         'isort',
-        'pipdeptree[graphviz]',
         'readme_renderer >= 16.0',
         'setuptools >= 24.2.1',
         'wheel']}
