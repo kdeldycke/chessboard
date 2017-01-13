@@ -134,7 +134,8 @@ And once in a while, it's good to upgrade the graph of package dependencies:
 
 .. code-block:: shell-session
 
-    $ pipdeptree --graph-output png > ./docs/dependencies.png
+    $ pip install graphviz
+    $ pipdeptree --packages chessboard --graph-output png > ./docs/dependencies.png
 
 
 Coding style
