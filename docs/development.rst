@@ -127,7 +127,7 @@ conflicting dependencies:
 
 .. code-block:: shell-session
 
-    $ pip install -e .[tests]
+    $ pip install -e .[develop]
     $ pipdeptree
 
 And once in a while, it's good to upgrade the graph of package dependencies:
