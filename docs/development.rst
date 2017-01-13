@@ -130,6 +130,12 @@ conflicting dependencies:
     $ pip install -e .[tests]
     $ pipdeptree
 
+And once in a while, it's good to upgrade the graph of package dependencies:
+
+.. code-block:: shell-session
+
+    $ pipdeptree --graph-output png > ./docs/dependencies.png
+
 
 Coding style
 ------------

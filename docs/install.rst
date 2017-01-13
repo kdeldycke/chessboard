@@ -11,3 +11,13 @@ so you can install the latest stable release and its dependencies with a simple
 
 See also `pip installation instructions
 <https://pip.pypa.io/en/stable/installing/>`_.
+
+
+Dependencies
+------------
+
+FYI, here is a graph of package dependencies:
+
+.. image:: dependencies.png
+   :alt: Package dependency graph
+   :align: center
