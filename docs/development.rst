@@ -118,6 +118,19 @@ Install test dependencies and run unit-tests:
     $ nosetests
 
 
+Dependencies
+------------
+
+Because `pip doesn't have true dependency resolution yet
+<https://github.com/pypa/pip/issues/988>`_ we need to check we do not have any
+conflicting dependencies:
+
+.. code-block:: shell-session
+
+    $ pip install -e .[tests]
+    $ pipdeptree
+
+
 Coding style
 ------------
 

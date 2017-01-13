@@ -16,6 +16,7 @@ ChangeLog
 * Move CLI usage to own section in docs.
 * Activate unittests in Python 3.6.
 * Show environment variables in Travis jobs for debugging.
+* Check there is no conflicting dependencies in Travis jobs.
 
 
 `1.5.3 (2016-11-30) <https://github.com/kdeldycke/chessboard/compare/v1.5.2...v1.5.3>`_
