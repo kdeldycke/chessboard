@@ -45,7 +45,7 @@ class Permutations(object):
         # Transform the description of pieces population into a linear vector
         # sorted by UID. Piece symbols are represented by an integer whose
         # weight indicate the priority in the permutation tree, so that pieces
-        # covering the widest area are tested first. See #5.
+        # covering the widest area are tested first. See :issue:`5`.
         self.pieces = tuple(chain.from_iterable([
             [symbol] * quantity
             for symbol, quantity in sorted(pieces.items())]))
@@ -82,7 +82,7 @@ class Permutations(object):
         # Now that we incremented our indexes, we need to deduplicate positions
         # shering the same UIDs, by aligning piece's indexes to their parents.
         # This works thanks to the sort performed on self.pieces
-        # initialization. See #7.
+        # initialization. See :issue:`7`.
         for i in range(self.depth - 1):
             if (self.pieces[i] == self.pieces[i + 1]) and (
                     self.indexes[i] > self.indexes[i + 1]):
@@ -113,7 +113,7 @@ class Permutations(object):
         When we call out to skip to the next branch of the search space, we
         push sublevel pieces to the maximum positions of the board. So that the
         next time the permutation iterator is called, it can produce the vector
-        state of the next adjacent branch. See #3.
+        state of the next adjacent branch. See :issue:`3`.
         """
         for i in range(level + 1, self.depth):
             self.indexes[i] = self.range_size - 1

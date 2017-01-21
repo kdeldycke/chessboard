@@ -55,7 +55,7 @@ class Piece(object):
 
     # Integer uniquely identifying the type/kind of the piece. Used as a
     # shortcut to the class itself. Also serves as a ranking weight of the
-    # territory coverage (see #5).
+    # territory coverage (see :issue:`5`).
     uid = None
 
     # Cache territory occupied by pieces at a given position for a fixed board.
