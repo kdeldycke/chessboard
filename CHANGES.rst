@@ -53,10 +53,10 @@ ChangeLog
 
 * Add default ``isort`` configuration.
 * Add more trove classifiers.
-* Add proper support of logging. Closes #2.
+* Add proper support of logging. Closes :issue:`2`.
 * Use Miniconda to install ``numpy``, ``scipy``, ``matplotlib`` and ``pandas``
   in Travis builds.
-* Activate unittests in Python 3.3, 3.4 and 3.5. Closes #9.
+* Activate unittests in Python 3.3, 3.4 and 3.5. Closes :issue:`9`.
 * Activate unittests on macOS.
 * Get detailed CPU info for each benckmark.
 * Add sphinx-based documentation.
@@ -96,7 +96,7 @@ ChangeLog
 `1.1.0 (2015-08-28) <https://github.com/kdeldycke/chessboard/compare/v1.0.0...v1.1.0>`_
 ---------------------------------------------------------------------------------------
 
-* Use `bytearray` to represent board states. Closes #4.
+* Use `bytearray` to represent board states. Closes :issue:`4`.
 * Cache piece territories to speed solver up to 3x on board with big population
   of pieces.
 
@@ -107,7 +107,7 @@ ChangeLog
 * Do not spend time converting back and forth linear position to 2D position.
   Provides a 1.16x speedup.
 * Proceed permutation exploration with pieces of biggest territory coverage
-  first. Adds 16x speed-up. Closes #5.
+  first. Adds 16x speed-up. Closes :issue:`5`.
 * Add support for bumpversion.
 * Add new ``--profile`` option to produce an execution profile of the solver.
 
@@ -124,8 +124,8 @@ ChangeLog
 ---------------------------------------------------------------------------------------
 
 * Validate CLI user inputs and provides hints.
-* Abandon branches of the search space as soon as possible. Closes #3.
-* Deduplicate per-kind piece group permutations early. Closes #7.
+* Abandon branches of the search space as soon as possible. Closes :issue:`3`.
+* Deduplicate per-kind piece group permutations early. Closes :issue:`7`.
 * Add ``--silent`` option to skip displaying of all board results in ASCII art.
 
 

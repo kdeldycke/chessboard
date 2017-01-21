@@ -32,6 +32,7 @@ release = version
 # Addons.
 extensions = [
     'sphinx.ext.autodoc',
+    'sphinx.ext.extlinks',
     'sphinx.ext.todo',
     'sphinx.ext.viewcode']
 
@@ -56,6 +57,10 @@ templates_path = ['templates']
 
 # Keep the same ordering as in original source code.
 autodoc_member_order = 'bysource'
+
+extlinks = {
+    'issue': ('{}/issues/%s'.format(url), '#'),
+    'pull': ('{}/pull/%s'.format(url), 'PR #')}
 
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = True
