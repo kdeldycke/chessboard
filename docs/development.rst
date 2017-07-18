@@ -226,7 +226,7 @@ Push packaging to the `test cheeseshop
     $ ./setup.py clean --all
     $ ./setup.py sdist bdist_egg bdist_wheel upload -r testpypi
 
-Publish packaging to `PyPi <https://pypi.python.org>`_:
+Publish package to `PyPi <https://pypi.python.org>`_:
 
 .. code-block:: shell-session
 
