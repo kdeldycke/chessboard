@@ -2,6 +2,14 @@ ChangeLog
 =========
 
 
+`1.5.5 (unreleased) <https://github.com/kdeldycke/chessboard/compare/v1.5.5...develop>`_
+----------------------------------------------------------------------------------------
+
+.. note:: This version is not yet released and is under active development.
+
+* No changes yet.
+
+
 `1.5.4 (2017-08-11) <https://github.com/kdeldycke/chessboard/compare/v1.5.3...v1.5.4>`_
 ---------------------------------------------------------------------------------------
 
