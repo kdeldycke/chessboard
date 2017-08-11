@@ -2,10 +2,8 @@ ChangeLog
 =========
 
 
-`1.5.4 (unreleased) <https://github.com/kdeldycke/chessboard/compare/v1.5.3...develop>`_
-----------------------------------------------------------------------------------------
-
-.. note:: This version is not yet released and is under active development.
+`1.5.4 (2017-08-11) <https://github.com/kdeldycke/chessboard/compare/v1.5.3...v1.5.4>`_
+---------------------------------------------------------------------------------------
 
 * Show selected log level in debug mode.
 * Drop support and unittests on Mac OS X 10.9.
