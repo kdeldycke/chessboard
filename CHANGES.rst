@@ -10,6 +10,7 @@ ChangeLog
 * Drop support for Python 3.3.
 * Replace ``nose`` by ``pytest``.
 * Test package on Windows via AppVeyor.
+* Add AppVeyor badges.
 * Only notify by mail of test failures.
 
 

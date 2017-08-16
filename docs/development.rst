@@ -34,15 +34,16 @@ Which boils down to the following rules of thumb regarding stability:
 Build status
 ------------
 
-==============  ==================  ===================
-Branch          |master-branch|__   |develop-branch|__
-==============  ==================  ===================
-Unittests       |build-stable|      |build-dev|
-Coverage        |coverage-stable|   |coverage-dev|
-Quality         |quality-stable|    |quality-dev|
-Dependencies    |deps-stable|       |deps-dev|
-Documentation   |docs-stable|       |docs-dev|
-==============  ==================  ===================
+==========================  ===================  ===================
+Branch                      |master-branch|__    |develop-branch|__
+==========================  ===================  ===================
+Unittests (macOS & Linux)   |build-stable|       |build-dev|
+Unittests (Windows)         |build-stable-win|   |build-dev-win|
+Coverage                    |coverage-stable|    |coverage-dev|
+Quality                     |quality-stable|     |quality-dev|
+Dependencies                |deps-stable|        |deps-dev|
+Documentation               |docs-stable|        |docs-dev|
+==========================  ===================  ===================
 
 .. |master-branch| replace::
    ``master``
@@ -53,10 +54,17 @@ __ https://github.com/kdeldycke/chessboard/tree/develop
 
 .. |build-stable| image:: https://travis-ci.org/kdeldycke/chessboard.svg?branch=master
     :target: https://travis-ci.org/kdeldycke/chessboard
-    :alt: Unit-tests status
+    :alt: Unit-tests macOS & Linux status
 .. |build-dev| image:: https://travis-ci.org/kdeldycke/chessboard.svg?branch=develop
     :target: https://travis-ci.org/kdeldycke/chessboard
-    :alt: Unit-tests status
+    :alt: Unit-tests macOS & Linux status
+
+.. |build-stable-win| image:: https://ci.appveyor.com/api/projects/status/github/kdeldycke/chessboard?branch=master&svg=true
+    :target: https://ci.appveyor.com/project/kdeldycke/chessboard
+    :alt: Unit-tests Windows status
+.. |build-dev-win| image:: https://ci.appveyor.com/api/projects/status/github/kdeldycke/chessboard?branch=develop&svg=true
+    :target: https://ci.appveyor.com/project/kdeldycke/chessboard
+    :alt: Unit-tests Windows status
 
 .. |coverage-stable| image:: https://codecov.io/gh/kdeldycke/chessboard/branch/master/graph/badge.svg
     :target: https://codecov.io/gh/kdeldycke/chessboard/branch/master
