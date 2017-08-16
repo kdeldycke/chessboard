@@ -25,10 +25,10 @@ import multiprocessing
 import time
 
 import click
-from click.exceptions import BadParameter
-
 import click_log
 from bprofile import BProfile
+from click.exceptions import BadParameter
+
 from chessboard.benchmark import run_scenario
 
 from . import PIECE_LABELS, Benchmark, SolverContext, __version__, logger

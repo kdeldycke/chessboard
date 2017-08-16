@@ -33,11 +33,11 @@ from collections import OrderedDict
 from os import path
 
 import pandas
+import seaborn
+from cpuinfo import get_cpu_info
 from numpy import median
 
-import seaborn
 from chessboard import PIECE_LABELS, SolverContext, __version__
-from cpuinfo import get_cpu_info
 
 
 def run_scenario(params):

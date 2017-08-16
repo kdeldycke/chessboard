@@ -27,8 +27,8 @@ from __future__ import (
 
 import unittest
 
-from chessboard import Board, ForbiddenCoordinates, ForbiddenIndex
 import pytest
+from chessboard import Board, ForbiddenCoordinates, ForbiddenIndex
 
 
 class TestBoard(unittest.TestCase):
