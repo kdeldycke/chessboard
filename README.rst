@@ -54,7 +54,7 @@ I use to:
   `Seaborn <https://stanford.edu/~mwaskom/software/seaborn>`_ and
   `Conda <https://conda.anaconda.org>`_),
 * automate `testing and quality checks <https://meta.pycqa.org>`_ (unit-tests,
-  coverage, coding style and packaging),
+  coverage, coding style and packaging) on macOS, Linux and Windows,
 * provide an `auto-generated documentation <https://chessboard.readthedocs.io>`_.
 
 
