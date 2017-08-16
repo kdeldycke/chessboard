@@ -51,11 +51,11 @@ EXTRA_DEPENDENCIES = {
         'sphinx >= 1.4',
         'sphinx_rtd_theme'],
     'tests': [
-        'coverage',
-        'nose',
         'pipdeptree[graphviz]',
         'pycodestyle >= 2.1.0',
-        'pylint'],
+        'pylint',
+        'pytest',
+        'pytest-cov'],
     'develop': [
         'bumpversion',
         'isort',

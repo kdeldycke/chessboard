@@ -143,8 +143,7 @@ before_script:
 script:
   # Launch unittests.
   - pip install -e .[tests]
-  - coverage run ./setup.py test
-  - coverage report -m
+  - pytest
   # Check coding style.
   - pycodestyle
   # Test that there is no conflicting dependencies.

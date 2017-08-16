@@ -7,6 +7,7 @@ ChangeLog
 
 .. note:: This version is not yet released and is under active development.
 
+* Replace ``nose`` by ``pytest``.
 * Only notify by mail of test failures.
 
 
