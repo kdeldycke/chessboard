@@ -42,16 +42,14 @@ else:
 class TestPermutations(unittest.TestCase):
 
     def test_cartesian_product(self):
-        self.assertSetEqual(
-            set(map(frozenset, Permutations({'a': 1, 'b': 1, 'c': 1}))),
+        assert set(map(frozenset, Permutations({'a': 1, 'b': 1, 'c': 1}))) == \
             set([frozenset(zip(*x)) for x in izip(
-                repeat(list('abc')), product([0, 1, 2], repeat=3))]))
+                repeat(list('abc')), product([0, 1, 2], repeat=3))])
 
     def test_generator(self):
         gen = Permutations({'a': 1}, 3)
-        self.assertEquals(
-            [list(perm) for perm in gen],
-            [[('a', 0)], [('a', 1)], [('a', 2)]])
+        assert [list(perm) for perm in gen] == \
+            [[('a', 0)], [('a', 1)], [('a', 2)]]
 
     def test_skip_branch(self):
         gen = Permutations({'a': 1, 'b': 1, 'c': 2}, 5)
@@ -69,7 +67,7 @@ class TestPermutations(unittest.TestCase):
             else:
                 results.append(perm)
 
-        self.assertEquals(results, [
+        assert results == [
             [('a', 0), ('b', 0), ('c', 0), ('c', 0)],
             [('a', 0), ('b', 0), ('c', 0), ('c', 1)],
             [('a', 0), ('b', 0), ('c', 0), ('c', 2)],
@@ -369,15 +367,15 @@ class TestPermutations(unittest.TestCase):
             [('a', 4), ('b', 4), ('c', 2), ('c', 4)],
             [('a', 4), ('b', 4), ('c', 3), ('c', 3)],
             [('a', 4), ('b', 4), ('c', 3), ('c', 4)],
-            [('a', 4), ('b', 4), ('c', 4), ('c', 4)]])
+            [('a', 4), ('b', 4), ('c', 4), ('c', 4)]]
 
 
 class TestSolverContext(unittest.TestCase):
 
     def test_instanciation(self):
         solver = SolverContext(3, 3, king=2, queen=7)
-        self.assertEquals(solver.length, 3)
-        self.assertEquals(solver.height, 3)
+        assert solver.length == 3
+        assert solver.height == 3
         self.assertDictContainsSubset(
             {King.uid: 2, Queen.uid: 7}, solver.pieces)
 
@@ -395,8 +393,8 @@ class TestSolverContext(unittest.TestCase):
             (p.__class__.__name__, p.x, p.y) for p in r.pieces],
             key=itemgetter(0, 1, 2)))
             for r in results])
-        self.assertEquals(len(normalized_results), len(expected))
-        self.assertSetEqual(normalized_results, normalized_expected)
+        assert len(normalized_results) == len(expected)
+        assert normalized_results == normalized_expected
 
     def test_tinyest_board(self):
         solver = SolverContext(1, 1, king=1)
@@ -404,7 +402,7 @@ class TestSolverContext(unittest.TestCase):
         self.check_results(results, [
             [('King', 0, 0)],
         ])
-        self.assertEquals(solver.result_counter, 1)
+        assert solver.result_counter == 1
 
     def test_single_king(self):
         solver = SolverContext(3, 3, king=1)
@@ -420,7 +418,7 @@ class TestSolverContext(unittest.TestCase):
             [('King', 2, 1)],
             [('King', 2, 2)],
         ])
-        self.assertEquals(solver.result_counter, 9)
+        assert solver.result_counter == 9
 
     def test_wide_board(self):
         solver = SolverContext(4, 1, king=1)
@@ -431,7 +429,7 @@ class TestSolverContext(unittest.TestCase):
             [('King', 2, 0)],
             [('King', 3, 0)],
         ])
-        self.assertEquals(solver.result_counter, 4)
+        assert solver.result_counter == 4
 
     def test_long_board(self):
         solver = SolverContext(1, 4, king=1)
@@ -442,7 +440,7 @@ class TestSolverContext(unittest.TestCase):
             [('King', 0, 2)],
             [('King', 0, 3)],
         ])
-        self.assertEquals(solver.result_counter, 4)
+        assert solver.result_counter == 4
 
     def test_single_queen(self):
         solver = SolverContext(3, 3, queen=1)
@@ -458,13 +456,13 @@ class TestSolverContext(unittest.TestCase):
             [('Queen', 2, 1)],
             [('Queen', 2, 2)],
         ])
-        self.assertEquals(solver.result_counter, 9)
+        assert solver.result_counter == 9
 
     def test_no_queen_solutions(self):
         solver = SolverContext(3, 3, queen=3)
         results = solver.solve()
         self.check_results(results, [])
-        self.assertEquals(solver.result_counter, 0)
+        assert solver.result_counter == 0
 
     def test_two_kings_one_rook(self):
         solver = SolverContext(3, 3, king=2, rook=1)
@@ -475,7 +473,7 @@ class TestSolverContext(unittest.TestCase):
             [('King', 2, 0), ('King', 2, 2), ('Rook', 0, 1)],
             [('King', 0, 2), ('King', 2, 2), ('Rook', 1, 0)],
         ])
-        self.assertEquals(solver.result_counter, 4)
+        assert solver.result_counter == 4
 
     def test_two_rooks_four_knights(self):
         solver = SolverContext(4, 4, rook=2, knight=4)
@@ -506,18 +504,18 @@ class TestSolverContext(unittest.TestCase):
              ('Knight', 0, 0), ('Knight', 2, 0),
              ('Knight', 0, 2), ('Knight', 2, 2)],
         ])
-        self.assertEquals(solver.result_counter, 8)
+        assert solver.result_counter == 8
 
     @unittest.skip("Solver too slow")
     def test_eight_queens(self):
         solver = SolverContext(8, 8, queen=8)
         for _ in solver.solve():
             pass
-        self.assertEquals(solver.result_counter, 92)
+        assert solver.result_counter == 92
 
     @unittest.skip("Solver too slow")
     def test_big_family(self):
         solver = SolverContext(7, 7, king=2, queen=2, bishop=2, knight=1)
         for _ in solver.solve():
             pass
-        self.assertEquals(solver.result_counter, 1000000)
+        assert solver.result_counter == 1000000

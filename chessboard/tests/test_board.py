@@ -28,56 +28,57 @@ from __future__ import (
 import unittest
 
 from chessboard import Board, ForbiddenCoordinates, ForbiddenIndex
+import pytest
 
 
 class TestBoard(unittest.TestCase):
 
     def test_all_positions(self):
-        self.assertEquals(list(Board(3, 3).positions), [
+        assert list(Board(3, 3).positions) == [
             (0, 0), (1, 0), (2, 0),
             (0, 1), (1, 1), (2, 1),
-            (0, 2), (1, 2), (2, 2)])
+            (0, 2), (1, 2), (2, 2)]
 
     def test_coord_to_index(self):
-        self.assertEquals(Board(3, 3).coordinates_to_index(0, 0), 0)
-        self.assertEquals(Board(3, 3).coordinates_to_index(1, 1), 4)
-        self.assertEquals(Board(3, 3).coordinates_to_index(2, 2), 8)
+        assert Board(3, 3).coordinates_to_index(0, 0) == 0
+        assert Board(3, 3).coordinates_to_index(1, 1) == 4
+        assert Board(3, 3).coordinates_to_index(2, 2) == 8
 
     def test_translate_error(self):
-        with self.assertRaises(ForbiddenCoordinates):
+        with pytest.raises(ForbiddenCoordinates):
             Board(3, 3).coordinates_to_index(-1, 0)
-        with self.assertRaises(ForbiddenCoordinates):
+        with pytest.raises(ForbiddenCoordinates):
             Board(3, 3).coordinates_to_index(0, -1)
-        with self.assertRaises(ForbiddenCoordinates):
+        with pytest.raises(ForbiddenCoordinates):
             Board(3, 3).coordinates_to_index(0, 3)
-        with self.assertRaises(ForbiddenCoordinates):
+        with pytest.raises(ForbiddenCoordinates):
             Board(3, 3).coordinates_to_index(3, 0)
 
     def test_index_to_coord(self):
-        self.assertEquals(Board(3, 3).index_to_coordinates(0), (0, 0))
-        self.assertEquals(Board(3, 3).index_to_coordinates(1), (1, 0))
-        self.assertEquals(Board(3, 3).index_to_coordinates(2), (2, 0))
-        self.assertEquals(Board(3, 3).index_to_coordinates(3), (0, 1))
-        self.assertEquals(Board(3, 3).index_to_coordinates(4), (1, 1))
-        self.assertEquals(Board(3, 3).index_to_coordinates(5), (2, 1))
-        self.assertEquals(Board(3, 3).index_to_coordinates(6), (0, 2))
-        self.assertEquals(Board(3, 3).index_to_coordinates(7), (1, 2))
-        self.assertEquals(Board(3, 3).index_to_coordinates(8), (2, 2))
+        assert Board(3, 3).index_to_coordinates(0) == (0, 0)
+        assert Board(3, 3).index_to_coordinates(1) == (1, 0)
+        assert Board(3, 3).index_to_coordinates(2) == (2, 0)
+        assert Board(3, 3).index_to_coordinates(3) == (0, 1)
+        assert Board(3, 3).index_to_coordinates(4) == (1, 1)
+        assert Board(3, 3).index_to_coordinates(5) == (2, 1)
+        assert Board(3, 3).index_to_coordinates(6) == (0, 2)
+        assert Board(3, 3).index_to_coordinates(7) == (1, 2)
+        assert Board(3, 3).index_to_coordinates(8) == (2, 2)
 
     def test_wide_index_to_coord(self):
-        self.assertEquals(Board(1, 4).index_to_coordinates(0), (0, 0))
-        self.assertEquals(Board(1, 4).index_to_coordinates(1), (0, 1))
-        self.assertEquals(Board(1, 4).index_to_coordinates(2), (0, 2))
-        self.assertEquals(Board(1, 4).index_to_coordinates(3), (0, 3))
+        assert Board(1, 4).index_to_coordinates(0) == (0, 0)
+        assert Board(1, 4).index_to_coordinates(1) == (0, 1)
+        assert Board(1, 4).index_to_coordinates(2) == (0, 2)
+        assert Board(1, 4).index_to_coordinates(3) == (0, 3)
 
     def test_long_index_to_coord(self):
-        self.assertEquals(Board(4, 1).index_to_coordinates(0), (0, 0))
-        self.assertEquals(Board(4, 1).index_to_coordinates(1), (1, 0))
-        self.assertEquals(Board(4, 1).index_to_coordinates(2), (2, 0))
-        self.assertEquals(Board(4, 1).index_to_coordinates(3), (3, 0))
+        assert Board(4, 1).index_to_coordinates(0) == (0, 0)
+        assert Board(4, 1).index_to_coordinates(1) == (1, 0)
+        assert Board(4, 1).index_to_coordinates(2) == (2, 0)
+        assert Board(4, 1).index_to_coordinates(3) == (3, 0)
 
     def test_index_to_coord_error(self):
-        with self.assertRaises(ForbiddenIndex):
+        with pytest.raises(ForbiddenIndex):
             Board(3, 3).index_to_coordinates(-1)
-        with self.assertRaises(ForbiddenIndex):
+        with pytest.raises(ForbiddenIndex):
             Board(3, 3).index_to_coordinates(9)
