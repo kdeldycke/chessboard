@@ -55,6 +55,7 @@ EXTRA_DEPENDENCIES = {
         'pycodestyle >= 2.1.0',
         'pylint',
         'pytest',
+        # More pytest plugins at: http://plugincompat.herokuapp.com .
         'pytest-cov'],
     'develop': [
         'bumpversion',
