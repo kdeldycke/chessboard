@@ -15,8 +15,6 @@ matrix:
     # this variable will be fed to Conda to install the right version.
     - python: "2.7"
       env: PYTHON_DIST="2.7"
-    - python: "3.3"
-      env: PYTHON_DIST="3.3"
     - python: "3.4"
       env: PYTHON_DIST="3.4"
     - python: "3.5"
@@ -32,10 +30,6 @@ matrix:
       os: osx
       osx_image: xcode6.4
       env: PYTHON_DIST="2.7"
-    - language: generic
-      os: osx
-      osx_image: xcode6.4
-      env: PYTHON_DIST="3.3"
     - language: generic
       os: osx
       osx_image: xcode6.4
@@ -57,10 +51,6 @@ matrix:
     - language: generic
       os: osx
       osx_image: xcode8
-      env: PYTHON_DIST="3.3"
-    - language: generic
-      os: osx
-      osx_image: xcode8
       env: PYTHON_DIST="3.4"
     - language: generic
       os: osx
@@ -76,10 +66,6 @@ matrix:
       os: osx
       osx_image: xcode8.2
       env: PYTHON_DIST="2.7"
-    - language: generic
-      os: osx
-      osx_image: xcode8.2
-      env: PYTHON_DIST="3.3"
     - language: generic
       os: osx
       osx_image: xcode8.2
@@ -131,14 +117,6 @@ install:
 
 before_script:
   - pip install codecov
-  # Python 3.3 environments built by Anaconda are not capable of installing a
-  # fresh setuptools on macOS. To fix this issue we manually upgrade setuptools
-  # instead of waiting for the `pip install -e .[develop]` invocation below.
-  # More details at: https://github.com/ContinuumIO/anaconda-issues/issues/542
-  # XXX This hack can be removed once Python 3.3 gets deprecated.
-  - if [[ "$PYTHON_DIST" == "3.3"  ]] && [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
-      curl https://bootstrap.pypa.io/ez_setup.py -o - | python;
-    fi
 
 script:
   # Launch unittests.

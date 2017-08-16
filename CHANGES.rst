@@ -7,6 +7,7 @@ ChangeLog
 
 .. note:: This version is not yet released and is under active development.
 
+* Drop support for Python 3.3.
 * Replace ``nose`` by ``pytest``.
 * Only notify by mail of test failures.
 
