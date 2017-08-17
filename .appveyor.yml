@@ -21,8 +21,8 @@ install:
   # Print component versions.
   - git --version
   - choco --version
-  - %PYTHON%\\python.exe --version
-  - %PIP% --version
+  - "%PYTHON%\\python.exe --version"
+  - "%PIP% --version"
   # Install system dependencies.
   - choco install graphviz
   # Install test dependencies.
