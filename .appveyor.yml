@@ -34,3 +34,8 @@ after_test:
   # Test that building packages works.
   - "%PIP% install -e .[develop]"
   - "%PYTHON%\\python.exe setup.py sdist bdist_egg bdist_wheel"
+
+notifications:
+  - provider: Email
+    to: kevin@deldycke.com
+    on_build_success: false
