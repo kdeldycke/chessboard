@@ -24,7 +24,7 @@ install:
   - "%PYTHON%\\python.exe --version"
   - "%PIP% --version"
   # Install system dependencies.
-  - choco install graphviz
+  - choco install graphviz numpy
   # Install test dependencies.
   - "%PIP% install -e .[tests]"
 
