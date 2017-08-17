@@ -22,6 +22,9 @@ install:
   - choco --version
   - %PYTHON%\\python.exe --version
   - %PIP% --version
+  # Install system dependencies.
+  - choco install graphviz
+  # Install test dependencies.
   - "%PIP% install -e .[tests]"
 
 build: off
