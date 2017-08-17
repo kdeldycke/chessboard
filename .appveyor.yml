@@ -18,6 +18,10 @@ environment:
   PIP: "%PYTHON%\\Scripts\\pip"
 
 install:
+  - git --version
+  - choco --version
+  - %PYTHON%\\python.exe --version
+  - %PIP% --version
   - "%PIP% install -e .[tests]"
 
 build: off
