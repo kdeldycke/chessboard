@@ -18,6 +18,7 @@ environment:
   PIP: "%PYTHON%\\Scripts\\pip"
 
 install:
+  # Print component versions.
   - git --version
   - choco --version
   - %PYTHON%\\python.exe --version
