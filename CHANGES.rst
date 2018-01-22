@@ -12,6 +12,8 @@ ChangeLog
 * Test package on Windows via AppVeyor. Closes #15.
 * Add AppVeyor badges.
 * Only notify by mail of test failures.
+* Add project URLs to package metadata.
+* Bump requirement to ``setuptools >= 38.3.0``.
 
 
 `1.5.4 (2017-08-11) <https://github.com/kdeldycke/chessboard/compare/v1.5.3...v1.5.4>`_
