@@ -108,7 +108,7 @@ class Benchmark(object):
         ('cpu_model', cpu_info['brand']),
         ('cpu_freq_actual', cpu_info['hz_actual'][0]),
         ('cpu_freq_advertised', cpu_info['hz_advertised'][0]),
-        ('cpu_l2_cache', cpu_info['l2_cache_size']),
+        ('cpu_l2_cache', cpu_info.get('l2_cache_size', None)),
     ])
 
     # Sorted column IDs.
