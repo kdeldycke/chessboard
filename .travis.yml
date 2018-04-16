@@ -79,6 +79,24 @@ matrix:
       osx_image: xcode9.2
       env: PYTHON_DIST="3.6"
 
+    # macOS 10.13 latest image is Xcode 9.3.
+    - language: generic
+      os: osx
+      osx_image: xcode9.3
+      env: PYTHON_DIST="2.7"
+    - language: generic
+      os: osx
+      osx_image: xcode9.3
+      env: PYTHON_DIST="3.4"
+    - language: generic
+      os: osx
+      osx_image: xcode9.3
+      env: PYTHON_DIST="3.5"
+    - language: generic
+      os: osx
+      osx_image: xcode9.3
+      env: PYTHON_DIST="3.6"
+
 # Update the system and setup a fresh Anaconda ecosystem.
 before_install:
   # Show environment variables for debugging.

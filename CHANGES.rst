@@ -14,6 +14,7 @@ ChangeLog
 * Only notify by mail of test failures.
 * Add project URLs to package metadata.
 * Bump requirement to ``setuptools >= 38.3.0``.
+* Add new macOS 10.13 target for Travis CI builds.
 
 
 `1.5.4 (2017-08-11) <https://github.com/kdeldycke/chessboard/compare/v1.5.3...v1.5.4>`_
