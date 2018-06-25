@@ -64,6 +64,7 @@ EXTRA_DEPENDENCIES = {
         'isort',
         'readme_renderer >= 16.0',
         'setuptools >= 38.3.0',
+        'twine',
         'wheel']}
 
 

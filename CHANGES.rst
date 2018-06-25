@@ -16,6 +16,7 @@ ChangeLog
 * Bump requirement to ``setuptools >= 38.3.0``.
 * Add new macOS 10.13 target for Travis CI builds.
 * Remove the ``register`` step in development documentation.
+* Switch to ``twine`` for package upload.
 
 
 `1.5.4 (2017-08-11) <https://github.com/kdeldycke/chessboard/compare/v1.5.3...v1.5.4>`_

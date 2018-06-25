@@ -231,14 +231,16 @@ Push packaging to the `test cheeseshop
 .. code-block:: shell-session
 
     $ ./setup.py clean --all
-    $ ./setup.py sdist bdist_egg bdist_wheel upload -r testpypi
+    $ ./setup.py sdist bdist_egg bdist_wheel
+    $ twine upload --repository-url https://test.pypi.org/legacy/ dist/*
 
 Publish package to `PyPi <https://pypi.python.org>`_:
 
 .. code-block:: shell-session
 
     $ ./setup.py clean --all
-    $ ./setup.py sdist bdist_egg bdist_wheel upload -r pypi
+    $ ./setup.py sdist bdist_egg bdist_wheel
+    $ twine upload dist/*
 
 Update revision with `bumpversion <https://github.com/peritus/bumpversion>`_
 and set it back to development state by increasing the ``patch`` level.
