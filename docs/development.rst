@@ -230,7 +230,6 @@ Push packaging to the `test cheeseshop
 
 .. code-block:: shell-session
 
-    $ ./setup.py register -r testpypi
     $ ./setup.py clean --all
     $ ./setup.py sdist bdist_egg bdist_wheel upload -r testpypi
 
@@ -238,7 +237,6 @@ Publish package to `PyPi <https://pypi.python.org>`_:
 
 .. code-block:: shell-session
 
-    $ ./setup.py register -r pypi
     $ ./setup.py clean --all
     $ ./setup.py sdist bdist_egg bdist_wheel upload -r pypi
 
