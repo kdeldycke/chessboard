@@ -155,3 +155,5 @@ Other resources
 * `Applied Combinatorics <https://people.math.gatech.edu/~trotter/book.pdf>`_
 * `Extremal Problems <https://www-math.mit.edu/~rstan/transparencies/iap.pdf>`_
 * `Combinatorial Algorithms <https://news.ycombinator.com/item?id=13306704>`_
+* `Complexity of n-Queens Completion <https://jair.org/index.php/jair/article/view/11079>`_
+* `Is the N Queens problem NP-hard? <https://cstheory.stackexchange.com/questions/12682/is-the-n-queens-problem-np-hard>`_
